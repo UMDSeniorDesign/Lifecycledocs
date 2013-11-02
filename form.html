@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<script>
+			function formSubmit() {
+				var name = document.getElementById("name").value;
+				var age = document.getElementById("age").value;
+				var location = document.getElementById("location").value;
+				alert("Your form has been submited\n\n" + name + "\n" + age + "\n" + location);
+			}
+		</script>
+	</head>
+	
+	<body>
+		<form id="form">
+			Name: <input id="name" type="text"> <br>
+			Age: <input id="age" type="text"> <br>
+			Location: <input id="location" type="text"> <br>
+		</form>
+		
+		<button type="button" onclick="formSubmit()">Submit</button>
+	</body>
+</html>
