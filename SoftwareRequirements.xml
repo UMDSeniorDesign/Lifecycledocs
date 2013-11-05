@@ -5,66 +5,65 @@
     <DocumentTemplate>SoftwareRequirementsTemplate.tmp</DocumentTemplate>
     <Header></Header>
     <Footer>WSU-TC CptS 322/tSoftware Requirements Specification Template</Footer>
-	<Atrributes>
-		<Attribute type=Version>1.0</Attribute>
-		<Attribute type=Date>11/1/2013</Attribute>
-		<Attribute type=Name>Jeremiah Butler</Attribute>
-        <Attribute type=Prepared for>WSU-TC CptS 322—Software Engineering Principles I Instructor: A. David McKinnon, Ph.D. Spring 2005</Attribute>
+	<Attributes>
+		<Attribute> "type"=Version>1.0</Attribute>
+		<Attribute> "type"=Date>11/1/2013</Attribute>
+		<Attribute> "type"=Name>Jeremiah Butler</Attribute>
+        <Attribute> "type"=Prepared for>WSU-TC CptS 322—Software Engineering Principles I Instructor: A. David McKinnon, Ph.D. Spring 2005</Attribute>
 	</Attributes>
 	<Sections>
-		<Section number=0>Revision History</Section>
-		<Section number=0>Document Approval</Section>
-		<Section number=1>Introduction
-            <Subsection number=1>Purpose</Subsection>
-            <Subsection number=2>Scope</Subsection>
-            <Subsection number=3>Definitions, Acronyms, and Abbreviations</Subsection>
-            <Subsection number=4>References</Subsection>
-            <Subsection number=5>Overview</Subsection>
+		<Section>> "number"=0.1>Revision History</Section>
+		<Section>> "number"=0.2>Document Approval</Section>
+		<Section>> "number"=1>Introduction
+            <Subsection> "number"=1>Purpose</Subsection>
+            <Subsection> "number"=2>Scope</Subsection>
+            <Subsection> "number"=3>Definitions, Acronyms, and Abbreviations</Subsection>
+            <Subsection> "number"=4>References</Subsection>
+            <Subsection> "number"=5>Overview</Subsection>
         </Section>
-        <Section number=2>General Description
-            <Subsection number=1>Product Perspective</Subsection>
-            <Subsection number=2>Product Functions</Subsection>
-            <Subsection number=3>User Characteristics</Subsection>
-            <Subsection number=4>General Constraints</Subsection>
-            <Subsection number=5>Assumptions and Dependencies</Subsection>
+        <Section>> "number"=2>General Description
+            <Subsection> "number"=1>Product Perspective</Subsection>
+            <Subsection> "number"=2>Product Functions</Subsection>
+            <Subsection> "number"=3>User Characteristics</Subsection>
+            <Subsection> "number"=4>General Constraints</Subsection>
+            <Subsection> "number"=5>Assumptions and Dependencies</Subsection>
         </Section>
-        <Section number=3>Specific Requirements
-	        <Subsection number=1>External Interface Requirements
-                <Subsection number=1>User Interfaces</Subsection>
-                <Subsection number=2>Hardware Interfaces</Subsection>
-                <Subsection number=3>Software Interfaces</Subsection>
-                <Subsection number=4>Communications Interfaces</Subsection>
+        <Section>> "number"=3>Specific Requirements
+	        <Subsection> "number"=1>External Interface Requirements
+                <Subsection> "number"=1>User Interfaces</Subsection>
+                <Subsection> "number"=2>Hardware Interfaces</Subsection>
+                <Subsection> "number"=3>Software Interfaces</Subsection>
+                <Subsection> "number"=4>Communications Interfaces</Subsection>
             </Subsection>
-	        <Subsection number=2>Functional Requirements
-                <Subsection number=1>Functional Requirement or Feature #1</Subsection>
-                <Subsection number=2>Functional Requirement or Feature #2</Subsection>
+	        <Subsection> "number"=2>Functional Requirements
+                <Subsection> "number"=1>Functional Requirement or Feature #1</Subsection>
+                <Subsection> "number"=2>Functional Requirement or Feature #2</Subsection>
             </Subsection>
-	        <Subsection number=3>Use Cases
-                <Subsection number=1>Use Case #1</Subsection>
-                <Subsection number=2>Use Case #2</Subsection>
+	        <Subsection> ""number""=3>Use Cases
+                <Subsection> "number"=1>Use Case #1</Subsection>
+                <Subsection> "number"=2>Use Case #2</Subsection>
             </Subsection>
-	        <Subsection number=4>Classes/Objects
-                <Subsection number=1>Class / Object #1</Subsection>
-                <Subsection number=2>Class / Object #2</Subsection>
+	        <Subsection> "number"=4>Classes/Objects
+                <Subsection> "number"=1>Class / Object #1</Subsection>
+                <Subsection> "number"=2>Class / Object #2</Subsection>
             </Subsection>
-	        <Subsection number=5>Non-Functional Requirements
-                <Subsection number=1>Performance</Subsection>
-                <Subsection number=2>Reliability</Subsection>
-                <Subsection number=3>Availability</Subsection>
-                <Subsection number=4>Security</Subsection>
-                <Subsection number=5>Maintainability</Subsection>
-                <Subsection number=6>Portability</Subsection>
+	        <Subsection> "number"=5>Non-Functional Requirements
+                <Subsection> "number"=1>Performance</Subsection>
+                <Subsection> "number"=2>Reliability</Subsection>
+                <Subsection> "number"=3>Availability</Subsection>
+                <Subsection> "number"=4>Security</Subsection>
+                <Subsection> "number"=5>Maintainability</Subsection>
+                <Subsection> "number"=6>Portability</Subsection>
             </Subsection>
-            <Subsection number=6>Inverse Requirements</Subsection>
-            <Subsection number=7>Design Constraints</Subsection>
-            <Subsection number=8>Logical Database Requirements</Subsection>
-            <Subsection number=9>Other Requirements</Subsection>
+            <Subsection> "number"=6>Inverse Requirements</Subsection>
+            <Subsection> "number"=7>Design Constraints</Subsection>
+            <Subsection> "number"=8>Logical Database Requirements</Subsection>
+            <Subsection> "number"=9>Other Requirements</Subsection>
         </Section>
-        <Section number=4>General Description
-            <Subsection number=1>Sequence Diagrams</Subsection>
-            <Subsection number=3>Data Flow Diagrams (DFD)</Subsection>
-            <Subsection number=2>State-Transition Diagrams (STD)</Subsection>
+        <Section>> "number"=4>General Description
+            <Subsection> "number"=1>Sequence Diagrams</Subsection>
+            <Subsection> "number"=3>Data Flow Diagrams (DFD)</Subsection>
+            <Subsection> "number"=2>State-Transition Diagrams (STD)</Subsection>
         </Section>
 	</Sections>
 </LifecycleDocument>
-
