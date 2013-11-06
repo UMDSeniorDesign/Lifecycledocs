@@ -12,7 +12,10 @@
 		            url: "SoftwareRequirements.xml",
 		            dataType: "html",
 		            success: function(xml) {
-		                alert($(xml).find("Section").text())
+		                $(xml).find("Section").each(function() {
+		                    alert($(this).text());
+		                });
+		                //alert($(xml).find("Section").text())
 		                }});
 		    });
 	    });

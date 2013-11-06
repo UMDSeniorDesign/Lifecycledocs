@@ -12,23 +12,23 @@
         <Attribute> "type"=Prepared for>WSU-TC CptS 322—Software Engineering Principles I Instructor: A. David McKinnon, Ph.D. Spring 2005</Attribute>
 	</Attributes>
 	<Sections>
-		<Section>> "number"=0.1>Revision History</Section>
-		<Section>> "number"=0.2>Document Approval</Section>
-		<Section>> "number"=1>Introduction
+		<Section> "number"=0.1>Revision History</Section>
+		<Section> "number"=0.2>Document Approval</Section>
+		<Section> "number"=1>Introduction
             <Subsection> "number"=1>Purpose</Subsection>
             <Subsection> "number"=2>Scope</Subsection>
             <Subsection> "number"=3>Definitions, Acronyms, and Abbreviations</Subsection>
             <Subsection> "number"=4>References</Subsection>
             <Subsection> "number"=5>Overview</Subsection>
         </Section>
-        <Section>> "number"=2>General Description
+        <Section> "number"=2>General Description
             <Subsection> "number"=1>Product Perspective</Subsection>
             <Subsection> "number"=2>Product Functions</Subsection>
             <Subsection> "number"=3>User Characteristics</Subsection>
             <Subsection> "number"=4>General Constraints</Subsection>
             <Subsection> "number"=5>Assumptions and Dependencies</Subsection>
         </Section>
-        <Section>> "number"=3>Specific Requirements
+        <Section> "number"=3>Specific Requirements
 	        <Subsection> "number"=1>External Interface Requirements
                 <Subsection> "number"=1>User Interfaces</Subsection>
                 <Subsection> "number"=2>Hardware Interfaces</Subsection>
@@ -60,7 +60,7 @@
             <Subsection> "number"=8>Logical Database Requirements</Subsection>
             <Subsection> "number"=9>Other Requirements</Subsection>
         </Section>
-        <Section>> "number"=4>General Description
+        <Section> "number"=4>General Description
             <Subsection> "number"=1>Sequence Diagrams</Subsection>
             <Subsection> "number"=3>Data Flow Diagrams (DFD)</Subsection>
             <Subsection> "number"=2>State-Transition Diagrams (STD)</Subsection>
