@@ -3,7 +3,6 @@
      <head>
 	    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-	
 	<script>
 	    $(document).ready(function(){
 		    $("a").click(function(event){
@@ -11,11 +10,25 @@
 		    });
 	    });
 	</script>
+	
+	<script>
+	    function open() {
+	        var doc = window.open('#file');
+	        doc.document.open();
+	        
+	        doc.close();
+	    }
+	</script>
     </head>
 	<title>Lifecycle Documents</title>
     <body>
 	<div id="siteControl" data-role="page">
-	    <a href="#">Click Me</a>
+	    <a href="#">Click Me</a> <br>
+	    
+	    <button type="button" onclick="open()">Open</button>
+	    <input type="file" id="file" name="file"> <br>
+	    
+	    <button type="button" >Create</button>
     </div>
     </body>
     </center>
