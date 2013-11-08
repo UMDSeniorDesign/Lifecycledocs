@@ -6,64 +6,64 @@
     <Header></Header>
     <Footer>WSU-TC CptS 322/tSoftware Requirements Specification Template</Footer>
 	<Attributes>
-		<Attribute> "type"=Version>1.0</Attribute>
-		<Attribute> "type"=Date>11/1/2013</Attribute>
-		<Attribute> "type"=Name>Jeremiah Butler</Attribute>
-        <Attribute> "type"=Prepared for>WSU-TC CptS 322—Software Engineering Principles I Instructor: A. David McKinnon, Ph.D. Spring 2005</Attribute>
+		<Version>1.0</Version>
+		<Date>11/1/2013</Date>
+		<Name>Jeremiah Butler</Name>
+        <PreparedFor>WSU-TC CptS 322—Software Engineering Principles I Instructor: A. David McKinnon, Ph.D. Spring 2005</PreparedFor>
 	</Attributes>
 	<Sections>
-		<Section> "number"=0.1>Revision History</Section>
-		<Section> "number"=0.2>Document Approval</Section>
-		<Section> "number"=1>Introduction
-            <Subsection> "number"=1>Purpose</Subsection>
-            <Subsection> "number"=2>Scope</Subsection>
-            <Subsection> "number"=3>Definitions, Acronyms, and Abbreviations</Subsection>
-            <Subsection> "number"=4>References</Subsection>
-            <Subsection> "number"=5>Overview</Subsection>
-        </Section>
-        <Section> "number"=2>General Description
-            <Subsection> "number"=1>Product Perspective</Subsection>
-            <Subsection> "number"=2>Product Functions</Subsection>
-            <Subsection> "number"=3>User Characteristics</Subsection>
-            <Subsection> "number"=4>General Constraints</Subsection>
-            <Subsection> "number"=5>Assumptions and Dependencies</Subsection>
-        </Section>
-        <Section> "number"=3>Specific Requirements
-	        <Subsection> "number"=1>External Interface Requirements
-                <Subsection> "number"=1>User Interfaces</Subsection>
-                <Subsection> "number"=2>Hardware Interfaces</Subsection>
-                <Subsection> "number"=3>Software Interfaces</Subsection>
-                <Subsection> "number"=4>Communications Interfaces</Subsection>
-            </Subsection>
-	        <Subsection> "number"=2>Functional Requirements
-                <Subsection> "number"=1>Functional Requirement or Feature #1</Subsection>
-                <Subsection> "number"=2>Functional Requirement or Feature #2</Subsection>
-            </Subsection>
-	        <Subsection> ""number""=3>Use Cases
-                <Subsection> "number"=1>Use Case #1</Subsection>
-                <Subsection> "number"=2>Use Case #2</Subsection>
-            </Subsection>
-	        <Subsection> "number"=4>Classes/Objects
-                <Subsection> "number"=1>Class / Object #1</Subsection>
-                <Subsection> "number"=2>Class / Object #2</Subsection>
-            </Subsection>
-	        <Subsection> "number"=5>Non-Functional Requirements
-                <Subsection> "number"=1>Performance</Subsection>
-                <Subsection> "number"=2>Reliability</Subsection>
-                <Subsection> "number"=3>Availability</Subsection>
-                <Subsection> "number"=4>Security</Subsection>
-                <Subsection> "number"=5>Maintainability</Subsection>
-                <Subsection> "number"=6>Portability</Subsection>
-            </Subsection>
-            <Subsection> "number"=6>Inverse Requirements</Subsection>
-            <Subsection> "number"=7>Design Constraints</Subsection>
-            <Subsection> "number"=8>Logical Database Requirements</Subsection>
-            <Subsection> "number"=9>Other Requirements</Subsection>
-        </Section>
-        <Section> "number"=4>General Description
-            <Subsection> "number"=1>Sequence Diagrams</Subsection>
-            <Subsection> "number"=3>Data Flow Diagrams (DFD)</Subsection>
-            <Subsection> "number"=2>State-Transition Diagrams (STD)</Subsection>
-        </Section>
+		<RevisionHistory>0.1</RevisionHistory>
+		<DocumentApproval>0.2</DocumentApproval>
+		<Introduction>1
+            <Purpose>1</Purpose>
+            <Scope>2</Scope>
+            <DefinitionsAcronymsAndAbbreviations>3</DefinitionsAcronymsAndAbbreviations>
+            <References>4</References>
+            <Overview>5</Overview>
+        </Introduction>
+        <GeneralDescription>2
+            <ProductPerspective>1</ProductPerspective>
+            <ProductFunctions>2</ProductFunctions>
+            <UserCharacteristics>3</UserCharacteristics>
+            <GeneralConstraints>4</GeneralConstraints>
+            <AssumptionsAndDependencies>5</AssumptionsAndDependencies>
+        </GeneralDescription>
+        <SpecificRequirements>3
+	        <ExternalInterfaceRequirements>1
+                <UserInterfaces>1</UserInterfaces>
+                <HardwareInterfaces>2</HardwareInterfaces>
+                <SoftwareInterfaces>3</SoftwareInterfaces>
+                <CommunicationsInterfaces>4</CommunicationsInterfaces>
+            </ExternalInterfaceRequirements>
+	        <FunctionalRequirements>2
+                <FunctionalRequirement>1</FunctionalRequirement>
+                <FunctionalRequirement>2</FunctionalRequirement>
+            </FunctionalRequirements>
+	        <UseCases>3
+                <UseCase>1</UseCase>
+                <UseCase>2</UseCase>
+            </UseCases>
+	        <ClassesOrObjects>4
+                <ClassOrObject>1</ClassOrObject>
+                <ClassOrObject>2</ClassOrObject>
+            </ClassesOrObjects>
+	        <Non-FunctionalRequirements>5
+                <Performance>1</Performance>
+                <Reliability>2</Reliability>
+                <Availability>3</Availability>
+                <Security>4</Security>
+                <Maintainability>5</Maintainability>
+                <Portability>6</Portability>
+            </Non-FunctionalRequirements>
+            <InverseRequirements>6</InverseRequirements>
+            <DesignConstraints>7</DesignConstraints>
+            <LogicalDatabaseRequirements>8</LogicalDatabaseRequirements>
+            <OtherRequirements>9</OtherRequirements>
+        </SpecificRequirements>
+        <GeneralDescription>4
+            <SequenceDiagrams>1</SequenceDiagrams>
+            <DataFlowDiagrams>2</DataFlowDiagrams>
+            <State-TransitionDiagrams>3</State-TransitionDiagrams>
+        </GeneralDescription>
 	</Sections>
 </LifecycleDocument>
