@@ -1,35 +1,56 @@
 <html>
     <center>
-     <head>
-	    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-        <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-	<script>
-	    $(document).ready(function(){
-		    $("a").click(function(event){
-			    alert("You clicked me!");
-		    });
-	    });
-	</script>
+        <head>
+	        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+            <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	        <script>
+	            $(document).ready(function(){
+		            $("a").click(function(event){
+			            alert("You clicked me!");
+		            });
+	            });
+	        </script>
 	
-	<script>
-	    function open() {
-	        var doc = window.open('#file');
-	        doc.document.open();
+	        <script>
+	            $(document).ready(function(){
+                    $("#open").click(function(){
+                        $("#preview").load("SoftwareRequirements.xml");
+                    });
+                });
+	        </script>
 	        
-	        doc.close();
-	    }
-	</script>
-    </head>
+	        <style type="text/css">
+	            #preview {
+	                height: 100%;
+	                width: 50%;
+	                float: right;
+	            }
+	            #siteControl {
+	                height: 100%;
+	                width: 50%;
+	                float: left;
+	            }
+	            
+	        </style>
+        </head>
+        
 	<title>Lifecycle Documents</title>
-    <body>
-	<div id="siteControl" data-role="page">
-	    <a href="#">Click Me</a> <br>
+	
+        <body>
+            <div id="wrapper">
+                <div id="preview">
+                    <p>this is a preview</p>
+                </div>
+                
+                <div id="siteControl" data-role="page">
+	                <a href="#">Click Me</a> <br>
 	    
-	    <button type="button" onclick="open()">Open</button>
-	    <input type="file" id="file" name="file"> <br>
+	                <button id="open">Open</button>
+	                <input type="file" id="file">
 	    
-	    <button type="button" >Create</button>
-    </div>
-    </body>
+	                <button type="button" >Create</button>
+                </div>
+            </div>
+        </body>
     </center>
 </html>
