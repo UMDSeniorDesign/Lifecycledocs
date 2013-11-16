@@ -1,0 +1,37 @@
+<Sections>
+    <Section>
+        <name>Section 1</name>
+        <number>1</number>
+        <requirement>2</requirement>
+    </Section>
+    <Section>
+        <name>Section 2</name>
+        <number>2</number>
+        <requirement>4</requirement>
+    </Section>
+    <Section>
+        <name>Section 3</name>
+        <number>3</number>
+        <requirement>0</requirement>
+    </Section>
+    <Section>
+        <name>Section 4</name>
+        <number>4</number>
+        <requirement>1</requirement>
+    </Section>
+    <Section>
+        <name>Section 5</name>
+        <number>5</number>
+        <requirement>*</requirement>
+    </Section>
+    <Section>
+        <name>Section 6</name>
+        <number>6</number>
+        <requirement>3</requirement>
+    </Section>
+    <Section>
+        <name>Section 7</name>
+        <number>7</number>
+        <requirement>5</requirement>
+    </Section>
+</Sections>

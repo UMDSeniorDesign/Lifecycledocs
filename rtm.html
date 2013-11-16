@@ -2,23 +2,64 @@
 <html>
     <body>
     <script>
+        //Init xmlhttp for appropriate browser
         if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp=new XMLHttpRequest();
         }
         else { // code for IE6, IE5
             xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
         }
+        //Get Requirements XML -> store in x
         xmlhttp.open("GET","requirements.xml",false);
         xmlhttp.send();
         xmlDoc=xmlhttp.responseXML; 
-
-        document.write("<table border='1'>");
         var x=xmlDoc.getElementsByTagName("Requirement");
+        
+        //Get useCase XML -> store in y
+        xmlhttp.open("GET","useCase.xml",false);
+        xmlhttp.send();
+        xmlDoc=xmlhttp.responseXML; 
+        var y=xmlDoc.getElementsByTagName("Section");
+        
+        //Get testCase XML -> store in z
+        xmlhttp.open("GET","testCase.xml",false);
+        xmlhttp.send();
+        xmlDoc=xmlhttp.responseXML; 
+        var z=xmlDoc.getElementsByTagName("Section");
+        
+        //Write Table
+        document.write("<table border='1'>");
+        document.write("<tr><td>");
+        document.write("Requirement");
+        document.write("</td><td>");
+        document.write("ID");
+        document.write("</td><td>");
+        document.write("Use Case Location");
+        document.write("</td><td>");
+        document.write("Test Case Location");
+        document.write("</td></tr>");
+        
         for (i=0;i<x.length;i++) { 
+            //Add Requirement
             document.write("<tr><td>");
             document.write(x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue);
+            //Add ID
             document.write("</td><td>");
             document.write(x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue);
+            //Search Use case doc for current Requirement
+            document.write("</td><td>");
+            for (j=0;j<y.length;j++) {
+                if(x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue == y[j].getElementsByTagName("requirement")[0].childNodes[0].nodeValue) {
+                    document.write(y[j].getElementsByTagName("number")[0].childNodes[0].nodeValue)
+                }
+            }
+            //Search Test case doc for current Requirement
+            document.write("</td><td>");
+            for (j=0;j<y.length;j++) {
+                if(x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue == z[j].getElementsByTagName("requirement")[0].childNodes[0].nodeValue) {
+                    document.write(z[j].getElementsByTagName("number")[0].childNodes[0].nodeValue)
+                }
+            }
             document.write("</td></tr>");
         }
         document.write("</table>");
