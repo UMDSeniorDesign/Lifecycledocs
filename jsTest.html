@@ -13,11 +13,9 @@
 		            dataType: "html",
 		            success: function(xml) {
 		                $(xml).find("Sections").each(function() {
-		                    //alert($(this).text());
 		                    $("#Sections").append($(this).text());
 		                });
-		                //alert($(xml).find("Section").text())
-		                }});
+		          }});
 		    });
 	    });
 	</script>
