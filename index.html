@@ -14,7 +14,8 @@
 	        <script>
 	            $(document).ready(function(){
                     $("#open").click(function(){
-                        $("#preview").load("SoftwareRequirements.xml");
+                        var doc = document.getElemenById("file").value;
+                        $("#preview").load(doc);
                     });
                 });
 	        </script>
@@ -43,7 +44,7 @@
                 </div>
                 
                 <div id="siteControl" data-role="page">
-	                <a href="#">Click Me</a> <br>
+	                <!-- <a href="#">Click Me</a> <br> -->
 	    
 	                <button id="open">Open</button>
 	                <input type="file" id="file">
