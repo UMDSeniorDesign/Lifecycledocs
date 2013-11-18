@@ -1,0 +1,50 @@
+<html>
+    <center>
+        <head>
+            <link rel="stylesheet" href="/Lifecycledocs/CSS/indexStyle.css"/>
+	        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+            <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+            
+	        <script>
+	            $(document).ready(function(){
+		            $("a").click(function(event){
+			            alert("You clicked me!");
+		            });
+	            });
+	        </script>
+	
+	        <script>
+	            $(document).ready(function(){
+                    $("#open").click(function(){
+                        var doc = document.getElementById("file").value;
+                        $("#preview").load(doc);
+                        // $("#preview").load("rtm.html");
+                    });
+                });
+	        </script>
+	        
+        </head>
+        
+	<title>Lifecycle Documents</title>
+	
+        <body>
+            <div id="wrapper">
+                <div id ="head">
+                    
+                </div>
+                <div id="preview">
+                    <p>this is a preview</p>
+                </div>
+                
+                <div id="siteControl" data-role="page">
+	                <!-- <a href="#">Click Me</a> <br> -->
+	    
+	                <button id="open">Open</button>
+	                <input type="file" id="file">
+	    
+	                <button type="button" >Create</button>
+                </div>
+            </div>
+        </body>
+    </center>
+</html>

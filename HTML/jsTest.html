@@ -1,0 +1,39 @@
+<html>
+    <center>
+     <head>
+	    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	    <title>jQuery.parseXML demo</title>
+	<script>
+	    $(document).ready(function(){
+		    $("a").click(function(event){
+		        $.ajax({
+		            type: "GET",
+		            url: "SoftwareRequirements.xml",
+		            dataType: "html",
+		            success: function(xml) {
+		                $(xml).find("Sections").each(function() {
+		                    $("#Sections").append($(this).text());
+		                });
+		          }});
+		    });
+	    });
+	</script>
+	<script>
+	    function parseXML(xmlText){
+	        alert(xmlText);
+	        xmlDoc = $.parseXML( xmlText );
+	        xmlText = $( xmlDoc );
+	        sections = $xmlText.find( "Section" );
+	        alert(sections);
+	    }
+	</script>
+    </head>
+    <body>
+	<div id="siteControl" data-role="page">
+	    <a href="#">Click Me</a>
+	    <p id="Sections"></p>
+    </div>
+    </body>
+    </center>
+</html>

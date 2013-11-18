@@ -1,0 +1,26 @@
+<Requirements>
+    <Requirement>
+        <name>XML use must be transparent</name>
+        <id>0</id>
+    </Requirement>
+    <Requirement>
+        <name>Run in windows 7</name>
+        <id>1</id>
+    </Requirement>
+    <Requirement>
+        <name>Fully compatable with IE</name>
+        <id>2</id>
+    </Requirement>
+    <Requirement>
+        <name>Export to HTML</name>
+        <id>3</id>
+    </Requirement>
+    <Requirement>
+        <name>Export to PDF</name>
+        <id>4</id>
+    </Requirement>
+    <Requirement>
+        <name>Requirements Tracability Matrix!</name>
+        <id>5</id>
+    </Requirement>
+</Requirements>
