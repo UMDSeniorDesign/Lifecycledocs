@@ -3,35 +3,56 @@
         <name>Section 1</name>
         <number>1</number>
         <requirement>0</requirement>
+        <testedBy>Jeremiah Butler</testedBy>
+        <status>Passed</status>
+        <date>01/22/1992</date>
     </Section>
     <Section>
         <name>Section 2</name>
         <number>2</number>
         <requirement>1</requirement>
+        <testedBy>Kevin Palmer</testedBy>
+        <status>Failed</status>
+        <date>09/13/2012</date>
     </Section>
     <Section>
         <name>Section 3</name>
         <number>3</number>
         <requirement>*</requirement>
+        <testedBy>*</testedBy>
+        <status>*</status>
+        <date>*</date>
     </Section>
     <Section>
         <name>Section 4</name>
         <number>4</number>
         <requirement>2</requirement>
+        <testedBy>Ari Ushani</testedBy>
+        <status>Passed</status>
+        <date>05/08/2010</date>
     </Section>
     <Section>
         <name>Section 5</name>
         <number>5</number>
         <requirement>3</requirement>
+        <testedBy>Pete Magalhaes</testedBy>
+        <status>Failed</status>
+        <date>11/29/2000</date>
     </Section>
     <Section>
         <name>Section 6</name>
         <number>6</number>
         <requirement>4</requirement>
+        <testedBy>*</testedBy>
+        <status>*</status>
+        <date>*</date>
     </Section>
     <Section>
         <name>Section 7</name>
         <number>7</number>
         <requirement>5</requirement>
+        <testedBy>Jeremiah Butler</testedBy>
+        <status>Failed</status>
+        <date>03/09/2012</date>
     </Section>
 </Sections>

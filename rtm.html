@@ -32,17 +32,28 @@
         document.write("<tr><td>");
         document.write("Requirement");
         document.write("</td><td>");
+        document.write("Location");
+        document.write("</td><td>");
         document.write("ID");
         document.write("</td><td>");
         document.write("Use Case Location");
         document.write("</td><td>");
         document.write("Test Case Location");
+        document.write("</td><td>");
+        document.write("Tested By");
+        document.write("</td><td>");
+        document.write("Result");
+        document.write("</td><td>");
+        document.write("Date");
         document.write("</td></tr>");
         
         for (i=0;i<x.length;i++) { 
             //Add Requirement
             document.write("<tr><td>");
             document.write(x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue);
+            //Add Requirement Location
+            document.write("</td><td>");
+            document.write(x[i].getElementsByTagName("section")[0].childNodes[0].nodeValue);
             //Add ID
             document.write("</td><td>");
             document.write(x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue);
@@ -50,14 +61,30 @@
             document.write("</td><td>");
             for (j=0;j<y.length;j++) {
                 if(x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue == y[j].getElementsByTagName("requirement")[0].childNodes[0].nodeValue) {
-                    document.write(y[j].getElementsByTagName("number")[0].childNodes[0].nodeValue)
+                    document.write(y[j].getElementsByTagName("number")[0].childNodes[0].nodeValue);
                 }
             }
             //Search Test case doc for current Requirement
             document.write("</td><td>");
             for (j=0;j<y.length;j++) {
                 if(x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue == z[j].getElementsByTagName("requirement")[0].childNodes[0].nodeValue) {
-                    document.write(z[j].getElementsByTagName("number")[0].childNodes[0].nodeValue)
+                    //Write Test case location
+                    document.write(z[j].getElementsByTagName("number")[0].childNodes[0].nodeValue);
+                    document.write("</td><td>");
+                    var test = z[j].getElementsByTagName("testedBy")[0].childNodes[0].nodeValue;
+                    if (test != '*'){
+                        document.write(test);
+                    }
+                    document.write("</td><td>");
+                    test = z[j].getElementsByTagName("status")[0].childNodes[0].nodeValue;
+                    if (test != '*'){
+                        document.write(test);
+                    }
+                    document.write("</td><td>");
+                    test = z[j].getElementsByTagName("date")[0].childNodes[0].nodeValue;
+                    if (test != '*'){
+                        document.write(test);
+                    }
                 }
             }
             document.write("</td></tr>");
