@@ -10,19 +10,19 @@
             xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
         }
         //Get Requirements XML -> store in x
-        xmlhttp.open("GET","requirements.xml",false);
+        xmlhttp.open("GET","/Lifecycledocs/XML/requirements.xml",false);
         xmlhttp.send();
         xmlDoc=xmlhttp.responseXML; 
         var x=xmlDoc.getElementsByTagName("Requirement");
         
         //Get useCase XML -> store in y
-        xmlhttp.open("GET","useCase.xml",false);
+        xmlhttp.open("GET","/Lifecycledocs/XML/useCase.xml",false);
         xmlhttp.send();
         xmlDoc=xmlhttp.responseXML; 
         var y=xmlDoc.getElementsByTagName("Section");
         
         //Get testCase XML -> store in z
-        xmlhttp.open("GET","testCase.xml",false);
+        xmlhttp.open("GET","/Lifecycledocs/XML/testCase.xml",false);
         xmlhttp.send();
         xmlDoc=xmlhttp.responseXML; 
         var z=xmlDoc.getElementsByTagName("Section");
