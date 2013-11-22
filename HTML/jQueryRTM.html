@@ -3,7 +3,7 @@
     <body>
     <center>
     <script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.1.min.js" > </script>
-    <script type="text/javascript" src="http://www.kunalbabre.com/projects/table2CSV.js" > </script>
+    
     <script>
         //Init xmlhttp for appropriate browser
         if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -31,68 +31,56 @@
         var z=xmlDoc.getElementsByTagName("Section");
         
         //Write Table
-        document.write("<table border='1'>");
-        document.write("<tr><td>");
-        document.write("Requirement");
-        document.write("</td><td>");
-        document.write("Location");
-        document.write("</td><td>");
-        document.write("ID");
-        document.write("</td><td>");
-        document.write("Use Case Location");
-        document.write("</td><td>");
-        document.write("Test Case Location");
-        document.write("</td><td>");
-        document.write("Tested By");
-        document.write("</td><td>");
-        document.write("Result");
-        document.write("</td><td>");
-        document.write("Date");
-        document.write("</td></tr>");
+        var content = "<table>"
+        
+        content += '<tr><td>' + 'Requirement ' + '</td><td>' + 'Location' + '</td><td>' + 'ID' + '</td><td>' + 'Use Case Location' + '</td><td>' + 'Test Case Location' + '</td><td>' + 'Tested By' + '</td><td>' + 'Result' + '</td><td>' + 'Date' + '</td></tr>';
         
         for (i=0;i<x.length;i++) { 
             //Add Requirement
-            document.write("<tr><td>");
-            document.write(x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue);
+            content += '<tr><td>';
+            content += x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
             //Add Requirement Location
-            document.write("</td><td>");
-            document.write(x[i].getElementsByTagName("section")[0].childNodes[0].nodeValue);
+            content += '</td><td>';
+            content += x[i].getElementsByTagName("section")[0].childNodes[0].nodeValue;
             //Add ID
-            document.write("</td><td>");
-            document.write(x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue);
+            content += '</td><td>';
+            content += x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
             //Search Use case doc for current Requirement
-            document.write("</td><td>");
+            content += '</td><td>';
             for (j=0;j<y.length;j++) {
                 if(x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue == y[j].getElementsByTagName("requirement")[0].childNodes[0].nodeValue) {
-                    document.write(y[j].getElementsByTagName("number")[0].childNodes[0].nodeValue);
+                    content += y[j].getElementsByTagName("number")[0].childNodes[0].nodeValue;
                 }
             }
             //Search Test case doc for current Requirement
-            document.write("</td><td>");
+            content += '</td><td>';
             for (j=0;j<y.length;j++) {
                 if(x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue == z[j].getElementsByTagName("requirement")[0].childNodes[0].nodeValue) {
                     //Write Test case location
-                    document.write(z[j].getElementsByTagName("number")[0].childNodes[0].nodeValue);
-                    document.write("</td><td>");
+                    content += z[j].getElementsByTagName("number")[0].childNodes[0].nodeValue;
+                    content += '</td><td>';
                     var test = z[j].getElementsByTagName("testedBy")[0].childNodes[0].nodeValue;
                     if (test != '*'){
-                        document.write(test);
+                        content += test;
                     }
-                    document.write("</td><td>");
+                    content += '</td><td>';
                     test = z[j].getElementsByTagName("status")[0].childNodes[0].nodeValue;
                     if (test != '*'){
-                        document.write(test);
+                        content += test;
                     }
-                    document.write("</td><td>");
+                    content += '</td><td>';
                     test = z[j].getElementsByTagName("date")[0].childNodes[0].nodeValue;
                     if (test != '*'){
-                        document.write(test);
+                        content += test;
                     }
                 }
             }
-            document.write("</td></tr>");
+            content += '</td></tr>';
         }
-        document.write("</table>");
+        
+        content += '</table>';
+        $('#table').append(content);
+        
         //$('#document).table2CSV();
         </script>
         <div id="table"></div>
