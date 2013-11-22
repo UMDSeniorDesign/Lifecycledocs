@@ -31,7 +31,7 @@
         var z=xmlDoc.getElementsByTagName("Section");
         
         //Write Table
-        document.write("<table border='1'>");
+        document.write("<table id='RTM' border='1'>");
         document.write("<tr><td>");
         document.write("Requirement");
         document.write("</td><td>");
@@ -93,7 +93,7 @@
             document.write("</td></tr>");
         }
         document.write("</table>");
-        //$('#document).table2CSV();
+        $('#RTM').table2CSV();
         </script>
         <div id="table"></div>
         </center>
