@@ -83,51 +83,21 @@ that may have extra information or incorrect, differently tagged elements
     return content;
 }
 
-function downloadTableAsCSV() {
-    var csvData = [];
-    var headerArr = [];
-    var el = this;
-
-    //header
-    var numCols = options.header.length;
-    var tmpRow = []; // construct header avalible array
-
-    if (numCols > 0) {
-        for (var i = 0; i < numCols; i++) {
-            tmpRow[tmpRow.length] = formatData(options.header[i]);
-        }
-    } else {
-        $(el).filter(':visible').find('th').each(function() {
-            if ($(this).css('display') != 'none') tmpRow[tmpRow.length] = formatData($(this).html());
-        });
-    }
-
-    row2CSV(tmpRow);
-
-    // actual data
-    $(el).find('tr').each(function() {
-        var tmpRow = [];
-        $(this).filter(':visible').find('td').each(function() {
-            if ($(this).css('display') != 'none') tmpRow[tmpRow.length] = formatData($(this).html());
-        });
-        row2CSV(tmpRow);
-    });
-    if (options.delivery == 'popup') {
-        var mydata = csvData.join('\n');
-        return popup(mydata);
-    } else {
-        var mydata = csvData.join('\n');
-        return mydata;
-    }
-
-    function row2CSV(tmpRow) {
-        var tmp = tmpRow.join('') // to remove any blank rows
-        // alert(tmp);
-        if (tmpRow.length > 0 && tmp != '') {
-            var mystr = tmpRow.join(options.separator);
+jQuery.fn.downloadTableAsCSV = function(filename) {
+//Function to convert HTML row to CSV
+    function row2CSV(tableRow, rowIndex) {
+        var emptyRow = tableRow.join('') 
+    // to check for any blank rows
+        if (tableRow.length >= 0 && emptyRow != '') {
+            if (rowIndex > 0)
+                var mystr = '\n';
+            else
+                var mystr = '';
+            mystr += tableRow.join(',');
             csvData[csvData.length] = mystr;
         }
     }
+//Function to remove HTML characters and replace them with CSV ones
     function formatData(input) {
         // replace " with â€œ
         var regexp = new RegExp(/["]/g);
@@ -138,4 +108,26 @@ function downloadTableAsCSV() {
         if (output == "") return '';
         return '"' + output + '"';
     }
+//Function to download RTM.csv file
+    function download(filename, text) {
+    var dl= document.createElement('a');
+    dl.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(text));
+    dl.setAttribute('download', filename);
+    dl.click();
+    }
+    
+//Array for CSV data
+    var csvData = [];
+
+// Convert each row from html to CSV
+    $(this).find('tr').each(function(i) {
+        var tableDataRow = [];
+        $(this).filter(':visible').find('td').each(function() {
+            if ($(this).css('display') != 'none') tableDataRow[tableDataRow.length] = formatData($(this).html());
+        });
+        row2CSV(tableDataRow, i);
+    });
+    
+//And finally, Download the file
+    download(filename, csvData);
 }

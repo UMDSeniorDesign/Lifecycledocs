@@ -5,18 +5,19 @@
     <script src="/Lifecycledocs/JS/RTM.js" type="text/javascript"></script>
     
     <script>
-        // Handler for .ready() called.
-        $( document ).ready(function() {
-        $('#RTM').append(rtmHTMLtable());
-        
-        //$('#RTM').table2CSV();
-        
+        // Handler to make sure Document is ready for Javascript
+        $(document).ready(function() {
+            //Create table and append it to the Div
+            $('#RTM').append(rtmHTMLtable());
         });
     </script>
     <script>
+        // Handler to make sure Document is ready for Javascript
 	    $(document).ready(function(){
+	        // Handler to run function on Button click
             $("#save").click(function(){
-                $('#RTM').downloadTableAsCSV();
+                //Convert HTML table in RTM Div to CSV and Download it
+                $('#RTM').downloadTableAsCSV($('textarea#fileText').val());
             });
         });
     </script>
@@ -24,7 +25,15 @@
     <body>
     <center>
     <div id="RTM"></div>
+    <p>
+    Save Requirements Traceability Matrix as: 
+    <textarea id="fileText" rows="1" cols="25">
+    RTM.csv
+    </textarea>
+    </p>
+    <p>
      <button id="save">Save RTM</button>
+    </p>
     </center>
     </body>
 </html>
