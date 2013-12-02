@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <script> 
+			function loadXML(dname) {
+				if (window.XMLHttpRequest) {
+					xmlhttp =  new XMLHttpRequest();
+				} else { 
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				
+				if (xmlhttp!=null) { 
+					xmlhttp.open("GET",dname,false);
+					xmlhttp.send();
+					return xmlhttp.responseXML;
+                } else { // If error occurs
+					alert("error");
+				}
+			} ;
+		</script>
+		
+		
+    </head>
+    
+    <body>
+        
+    </body>
+</html>
