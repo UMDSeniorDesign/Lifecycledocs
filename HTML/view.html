@@ -1,6 +1,5 @@
 <html>
 	<head>
-	
 	    <style type="text/css">
 		    #preview {
 		        float: right;
@@ -36,54 +35,39 @@
 					xmlhttp.send();
 					return xmlhttp.responseXML;
                 } else { // If error occurs
-					alert("ERROR ALERT!");
+					alert("error");
 				}
 			} ;
 		</script>
 		
-	<!--	<script>
-		    function getEle() {
-	            xmlDoc = loadXML("fileToLoad");
-                
-                
-                var content = '<textarea id="input">';
-                
-                for (i=0;i<x.length;i++) {
-                    content += x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
-                } 
-                
-                content += '</textarea>';
-                $('#tableOfContents').append(content);
-                
-		    }
-		</script> -->
-		
 		<script>
 		    function getTableOfContents() {
-		        // var file = document.getElementById("fileToLoad").value;
 	            xmlDoc = loadXML("/Lifecycledocs/XML/requirements.xml");
 	        
 	            var y = xmlDoc.documentElement.childNodes;
 	            
 	            for (i = 0; i < y.length; i++) {
                     if (y[i].nodeType != 3) {
-                        //document.getElementById("textinput").innerHTML = "Nodename: " + y[i].nodeName;
-                        $('#tableInput').append(y[i].nodeName + "\n");
-                        $('#textInput').append(y[i].childNodes[0].nodeValue + "\n");
+                        $('#tableInput').append("<a href='" + y[i].childNodes[0].nodeValue + "' onclick='editSection(y, i)'>" + y[i].nodeName + "</a> <br>");
+                        //$('#textInput').append(y[i].childNodes[0].nodeValue + "\n");
+                        
                         for (z = 0; z < y[i].childNodes.length; z++) {
                             if (y[i].childNodes[z].nodeType != 3) {
                                 //document.getElementById("textinput").innerHTML = "Nodename: " + y[i].childNodes[z].nodeName;
-                                $('#tableInput').append(y[i].childNodes[z].nodeName + "\n");
-                                $('#textInput').append(y[i].childNodes[z].childNodes[0].nodeValue + "\n");
-                               // document.getElementById("textinput").innerHTML = "value: " + y[i].childNodes[z].childNodes[0].nodeValue;
+                                $('#tableInput').append("<a href='" + y[i].childNodes[z].childNodes[0].nodeValue + "' onclick='editSection(y, i)'>" + y[i].childNodes[z].nodeName  + "</a> <br>");
+                                //$('#textInput').append(y[i].childNodes[z].childNodes[0].nodeValue + "\n");
                             }
                         }
                     }
 	            }
-	            }
-	        
+		    }
 		</script>
 		
+		<script>
+		    function editSection(y, i) {
+		       $('#textInput').append(y[i].childNodes[0].nodeValue + "\n");
+		    }
+		</script>
 	</head>
 	
 	<body>
@@ -92,10 +76,11 @@
 		    	<button onclick="getTableOfContents()">Load</button>
 				<input type="file" id="fileToLoad">
 			    <textarea id="textInput" style="width: 50%; height: 100%"></textarea>
+			    
 			</div>
 			
 			<div id="tableOfContents">
-			    <textarea id="tableInput" style="width: 50%; height: 100%"></textarea>
+			    <div id="tableInput" style="width: 50%; height: 100%"></div>
 			</div>
 		</div>
 	</body>

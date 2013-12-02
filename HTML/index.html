@@ -1,52 +1,29 @@
 <html>
-    <center>
-        <head>
-            <link rel="stylesheet" href="/Lifecycledocs/CSS/indexStyle.css"/>
-	        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-            <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-	        <script>
-	            $(document).ready(function(){
-		            $("a").click(function(event){
-			            alert("You clicked me!");
-		            });
+    <head>
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <!--<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script>
+            $(document).ready(function(){
+	            $("a").click(function(event){
+		            alert("You clicked me!");
 	            });
-	        </script>
-	
-	        <script>
-	            function openDoc() {
-	                document.open();
-	                document.write(test.txt);
-	                document.close();
-                }
-	        </script>
+            });
+        </script>-->
+
 	        
-	        <script>
-	        
-	        </script>
-        </head>
+    </head>
         
-	<title>Lifecycle Documents</title>
-	
-        <body>
-            <div id="wrapper">
-                <div id ="head">
-                    <div id="siteControl">
-	                    <!-- <a href="#">Click Me</a> <br> -->
-	                    <button id="open" onclick="openDoc()">Open</button>
-	                
-	                    <button id="create">Create</button>
-                    </div>
-                
-                </div>
-                
-                <div id="contentTable">
-                    
-                </div>
-                
-                <div id="preview">
-                    <p>this is a preview</p>
+<title>Lifecycle Documents</title>
+
+    <body>
+        <div id="wrapper">
+            <div id ="head">
+                <div id="siteControl">
+                    <!-- <a href="#">Click Me</a> <br> -->
+                    <button id="open" onclick=location.href='view.html'>Open Project</button>
+                    <button id="create" onclick=location.href='new.html'>New Project</button>
                 </div>
             </div>
-        </body>
-    </center>
+        </div>
+    </body>
 </html>
