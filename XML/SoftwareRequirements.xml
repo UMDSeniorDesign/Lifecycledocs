@@ -3,7 +3,7 @@
     <DocumentTitle>Project Name</DocumentTitle>
     <DocumentType>Software Requirements Specification</DocumentType>
     <DocumentTemplate>SoftwareRequirementsTemplate.tmp</DocumentTemplate>
-    <Header></Header>
+    <Header>7</Header>
     <Footer>WSU-TC CptS 322/tSoftware Requirements Specification Template</Footer>
 	<Attributes>
 		<Version>1.0</Version>

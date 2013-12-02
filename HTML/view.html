@@ -3,17 +3,17 @@
 	    <style type="text/css">
 		    #preview {
 		        float: right;
-		        width: 50%;
-		        height: 100%;
+		        width: 60%;
+		        height: 80%;
 		    }
 		    #tableOfContents {
 		        float: left;
-		        width: 50%;
-		        height 100%;
+		        width: 40%;
+		        height 80%;
 		    }
-		    #input {
-		        width:50%; 
-		        height:50%
+		    #head {
+		        width:100%%; 
+		        height:20%
 		    }
 	    </style>
 		
@@ -41,21 +41,20 @@
 		</script>
 		
 		<script>
-		    function getTableOfContents() {
-	            xmlDoc = loadXML("/Lifecycledocs/XML/requirements.xml");
+		    function getTableOfContents(doc) {
+	            xmlDoc = loadXML("/Lifecycledocs/XML/" + doc + ".xml");
 	        
 	            var y = xmlDoc.documentElement.childNodes;
 	            
 	            for (i = 0; i < y.length; i++) {
                     if (y[i].nodeType != 3) {
-                        $('#tableInput').append("<a href='" + y[i].childNodes[0].nodeValue + "' onclick='editSection(y, i)'>" + y[i].nodeName + "</a> <br>");
-                        //$('#textInput').append(y[i].childNodes[0].nodeValue + "\n");
+                        $('#tableInput').append("<a href='" + y[i].childNodes[0].nodeValue + "'>" + y[i].nodeName + "</a> <br>");
+                        $('#textInput').append(y[i].childNodes[0].nodeValue + "\n");
                         
                         for (z = 0; z < y[i].childNodes.length; z++) {
                             if (y[i].childNodes[z].nodeType != 3) {
-                                //document.getElementById("textinput").innerHTML = "Nodename: " + y[i].childNodes[z].nodeName;
-                                $('#tableInput').append("<a href='" + y[i].childNodes[z].childNodes[0].nodeValue + "' onclick='editSection(y, i)'>" + y[i].childNodes[z].nodeName  + "</a> <br>");
-                                //$('#textInput').append(y[i].childNodes[z].childNodes[0].nodeValue + "\n");
+                                $('#tableInput').append("<a href='" + y[i].childNodes[z].childNodes[0].nodeValue + "'>" + y[i].childNodes[z].nodeName  + "</a> <br>");
+                                $('#textInput').append(y[i].childNodes[z].childNodes[0].nodeValue + "\n");
                             }
                         }
                     }
@@ -63,24 +62,30 @@
 		    }
 		</script>
 		
-		<script>
+		<!--<script>
 		    function editSection(y, i) {
 		       $('#textInput').append(y[i].childNodes[0].nodeValue + "\n");
 		    }
-		</script>
+		</script>-->
 	</head>
 	
 	<body>
 		<div id="wrapper">
+		    <div="head">
+		        <button onclick=getTableOfContents('SoftwareRequirements')>Software Requirements</button>
+		        <button onclick=getTableOfContents('testCase')>Test Case</button>
+		        <button onclick=getTableOfContents("useCase")>Use Case</button>
+		        <button onclick=location.href='/Lifecycledocs/HTML/rtm.html'>Create Matrix</button>
+		    </div>
 			<div id="preview">
-		    	<button onclick="getTableOfContents()">Load</button>
-				<input type="file" id="fileToLoad">
-			    <textarea id="textInput" style="width: 50%; height: 100%"></textarea>
-			    
+			    <h1>Preview</h1>
+			    <textarea id="textInput" style="width: 100%; height: 100%"></textarea>
+			    <button onclick=location.href='index.html'>Exit & Save</button>
 			</div>
 			
 			<div id="tableOfContents">
-			    <div id="tableInput" style="width: 50%; height: 100%"></div>
+			    <h1>Table of Contents</h1>
+			    <div id="tableInput"></div>
 			</div>
 		</div>
 	</body>
