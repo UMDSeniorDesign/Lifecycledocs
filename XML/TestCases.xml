@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LifecycleDocument>
+    <DocumentTitle>Project Name</DocumentTitle>
+    <DocumentType>Use Cases Specification</DocumentType>
+    <DocumentTemplate>UseCasesTemplate.tmp</DocumentTemplate>
+    <Header></Header>
+    <Footer>WSU-TC CptS 322/tSoftware Requirements Specification Template</Footer>
+	<Attributes>
+		<Version>1.0</Version>
+		<Date>12/2/2013</Date>
+		<Name>Jeremiah Butler</Name>
+        <PreparedFor>WSU-TC CptS 322—Software Engineering Principles I Instructor: A. David McKinnon, Ph.D. Spring 2005</PreparedFor>
+	</Attributes>
+	<Sections>
+	    <TestCase1>
+	    <TestScope>Identify what was tested</TestScope>
+	    <TestSummary>A summary of test results</TestSummary>
+	    <Conclusions>Compare with previous test results, etc</Conclusions>
+	    </TestCase1>
+	    <TestCase2>
+	    <TestScope>Identify what was tested</TestScope>
+	    <TestSummary>A summary of test results</TestSummary>
+	    <Conclusions>Compare with previous test results, etc</Conclusions>
+	    </TestCase2>
+	</Sections>
+</LifecycleDocument>
