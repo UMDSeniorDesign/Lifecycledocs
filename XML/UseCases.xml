@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LifecycleDocument>
+    <DocumentTitle>Project Name</DocumentTitle>
+    <DocumentType>Use Cases Specification</DocumentType>
+    <DocumentTemplate>UseCasesTemplate.tmp</DocumentTemplate>
+    <Header></Header>
+    <Footer>WSU-TC CptS 322/tSoftware Requirements Specification Template</Footer>
+	<Attributes>
+		<Version>1.0</Version>
+		<Date>12/2/2013</Date>
+		<Name>Jeremiah Butler</Name>
+        <PreparedFor>WSU-TC CptS 322—Software Engineering Principles I Instructor: A. David McKinnon, Ph.D. Spring 2005</PreparedFor>
+	</Attributes>
+	<Sections>
+	    <UseCase1>
+	    <BriefDescription>Brief description of use-case</BriefDescription>
+	    <Preconditions>
+	        <Precondition1>precondition-1 info</Precondition1>
+	        <Precondition2>precondition-2 info</Precondition2>
+	    </Preconditions>
+	    <BasicFlowOfEvents>Step 1; Step 2; Step 3</BasicFlowOfEvents>
+	    <AlternateFlows>Alternate Flow steps</AlternateFlows>
+	    <SubFlows>Sub Flow steps</SubFlows>
+	    <KeyScenarios>Scenario 1; Scenario 2</KeyScenarios>
+	    <PostConditions>Post condition 1; Post condition 2</PostConditions>
+	    <ExtensionPoints>Extension Point 1</ExtensionPoints>
+	    <SpecificRequirements>Supplementary requirement 1; Supplementary requirement 2</SpecificRequirements>
+	    <AdditionalInformation>Additional stuff goes here</AdditionalInformation>
+	    </UseCase1>
+	    <UseCase2>
+	    <BriefDescription>Brief description of use-case</BriefDescription>
+	    <Preconditions>
+	        <Precondition1>precondition-1 info</Precondition1>
+	        <Precondition2>precondition-2 info</Precondition2>
+	    </Preconditions>
+	    <BasicFlowOfEvents>Step 1; Step 2; Step 3</BasicFlowOfEvents>
+	    <AlternateFlows>Alternate Flow steps</AlternateFlows>
+	    <SubFlows>Sub Flow steps</SubFlows>
+	    <KeyScenarios>Scenario 1; Scenario 2</KeyScenarios>
+	    <PostConditions>Post condition 1; Post condition 2</PostConditions>
+	    <ExtensionPoints>Extension Point 1</ExtensionPoints>
+	    <SpecificRequirements>Supplementary requirement 1; Supplementary requirement 2</SpecificRequirements>
+	    <AdditionalInformation>Additional stuff goes here</AdditionalInformation>
+	    </UseCase2>
+	</Sections>
+</LifecycleDocument>
