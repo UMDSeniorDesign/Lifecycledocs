@@ -1,101 +1,39 @@
 <!DOCTYPE html>
 <html>
+    <head>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js" > </script>
+    <script src="/Lifecycledocs/JS/RTM.js" type="text/javascript"></script>
+    
+    <script>
+        // Handler to make sure Document is ready for Javascript
+        $(document).ready(function() {
+            //Create table and append it to the Div
+            $('#RTM').append(rtmHTMLtable());
+        });
+    </script>
+    <script>
+        // Handler to make sure Document is ready for Javascript
+	    $(document).ready(function(){
+	        // Handler to run function on Button click
+            $("#save").click(function(){
+                //Convert HTML table in RTM Div to CSV and Download it
+                $('#RTM').downloadTableAsCSV($('textarea#fileText').val());
+            });
+        });
+    </script>
+    </head>
     <body>
     <center>
-    <script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.1.min.js" > </script>
-    <script type="text/javascript" src="http://www.kunalbabre.com/projects/table2CSV.js" > </script>
-    <script>
-        //Init xmlhttp for appropriate browser
-        if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp=new XMLHttpRequest();
-        }
-        else { // code for IE6, IE5
-            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        //Get Requirements XML -> store in x
-        xmlhttp.open("GET","/Lifecycledocs/XML/requirements.xml",false);
-        xmlhttp.send();
-        xmlDoc=xmlhttp.responseXML; 
-        var x=xmlDoc.getElementsByTagName("Requirement");
-        
-        //Get useCase XML -> store in y
-        xmlhttp.open("GET","/Lifecycledocs/XML/useCase.xml",false);
-        xmlhttp.send();
-        xmlDoc=xmlhttp.responseXML; 
-        var y=xmlDoc.getElementsByTagName("Section");
-        
-        //Get testCase XML -> store in z
-        xmlhttp.open("GET","/Lifecycledocs/XML/testCase.xml",false);
-        xmlhttp.send();
-        xmlDoc=xmlhttp.responseXML; 
-        var z=xmlDoc.getElementsByTagName("Section");
-        
-        //Write Table
-        document.write("<table id='RTM' border='1'>");
-        document.write("<tr><td>");
-        document.write("Requirement");
-        document.write("</td><td>");
-        document.write("Location");
-        document.write("</td><td>");
-        document.write("ID");
-        document.write("</td><td>");
-        document.write("Use Case Location");
-        document.write("</td><td>");
-        document.write("Test Case Location");
-        document.write("</td><td>");
-        document.write("Tested By");
-        document.write("</td><td>");
-        document.write("Result");
-        document.write("</td><td>");
-        document.write("Date");
-        document.write("</td></tr>");
-        
-        for (i=0;i<x.length;i++) { 
-            //Add Requirement
-            document.write("<tr><td>");
-            document.write(x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue);
-            //Add Requirement Location
-            document.write("</td><td>");
-            document.write(x[i].getElementsByTagName("section")[0].childNodes[0].nodeValue);
-            //Add ID
-            document.write("</td><td>");
-            document.write(x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue);
-            //Search Use case doc for current Requirement
-            document.write("</td><td>");
-            for (j=0;j<y.length;j++) {
-                if(x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue == y[j].getElementsByTagName("requirement")[0].childNodes[0].nodeValue) {
-                    document.write(y[j].getElementsByTagName("number")[0].childNodes[0].nodeValue);
-                }
-            }
-            //Search Test case doc for current Requirement
-            document.write("</td><td>");
-            for (j=0;j<y.length;j++) {
-                if(x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue == z[j].getElementsByTagName("requirement")[0].childNodes[0].nodeValue) {
-                    //Write Test case location
-                    document.write(z[j].getElementsByTagName("number")[0].childNodes[0].nodeValue);
-                    document.write("</td><td>");
-                    var test = z[j].getElementsByTagName("testedBy")[0].childNodes[0].nodeValue;
-                    if (test != '*'){
-                        document.write(test);
-                    }
-                    document.write("</td><td>");
-                    test = z[j].getElementsByTagName("status")[0].childNodes[0].nodeValue;
-                    if (test != '*'){
-                        document.write(test);
-                    }
-                    document.write("</td><td>");
-                    test = z[j].getElementsByTagName("date")[0].childNodes[0].nodeValue;
-                    if (test != '*'){
-                        document.write(test);
-                    }
-                }
-            }
-            document.write("</td></tr>");
-        }
-        document.write("</table>");
-        $('#RTM').table2CSV();
-        </script>
-        <div id="table"></div>
-        </center>
-        </body>
+    <div id="RTM"></div>
+    <p>
+    Save Requirements Traceability Matrix as: 
+    <textarea id="fileText" rows="1" cols="25">
+    RTM.csv
+    </textarea>
+    </p>
+    <p>
+     <button id="save">Save RTM</button>
+    </p>
+    </center>
+    </body>
 </html>
