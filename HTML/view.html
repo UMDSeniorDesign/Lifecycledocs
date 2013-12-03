@@ -64,7 +64,7 @@
 		
 		<script>
 		    function clear() {
-		        document.getElementById("tableInput").innerHTML = "";
+		        document.getElementById("tableInput").inne = "";
 		        $("#textInput").val("");
 		    }
 		</script>
@@ -79,9 +79,9 @@
 	<body>
 		<div id="wrapper">
 		    <div="head">
-		        <button onclick="getTableOfContents('SoftwareRequirements'); clear();">Software Requirements</button>
-		        <button onclick="getTableOfContents('TestCases'); clear();">Test Case</button>
-		        <button onclick="getTableOfContents('UseCases'); clear();">Use Case</button>
+		        <button onclick="clear(); getTableOfContents('SoftwareRequirements');">Software Requirements</button>
+		        <button onclick="clear(); getTableOfContents('TestCases');">Test Case</button>
+		        <button onclick="clear(); getTableOfContents('UseCases');">Use Case</button>
 		        <button onclick=location.href='/Lifecycledocs/HTML/rtm.html'>Create Matrix</button>
 		    </div>
 			<div id="preview">
