@@ -42,9 +42,6 @@
 		
 		<script>
 		    function getTableOfContents(doc) {
-		        document.getElementById("#tableInput").innerHTML = "";
-		        document.getElementById("#textInput").innerHTML = "";
-
 	            xmlDoc = loadXML("/Lifecycledocs/XML/" + doc + ".xml");
 	        
 	            var y = xmlDoc.documentElement.childNodes;
@@ -65,6 +62,12 @@
 		    }
 		</script>
 		
+		<script>
+		    function clear() {
+		        $("#textInput").val("");
+		    }
+		</script>
+		
 		<!--<script>
 		    function editSection(y, i) {
 		       $('#textInput').append(y[i].childNodes[0].nodeValue + "\n");
@@ -75,9 +78,9 @@
 	<body>
 		<div id="wrapper">
 		    <div="head">
-		        <button onclick=getTableOfContents('SoftwareRequirements')>Software Requirements</button>
-		        <button onclick=getTableOfContents('TestCase')>Test Case</button>
-		        <button onclick=getTableOfContents("UseCase")>Use Case</button>
+		        <button onclick="getTableOfContents('SoftwareRequirements'); clear()">Software Requirements</button>
+		        <button onclick="getTableOfContents('TestCase'); clear()">Test Case</button>
+		        <button onclick="getTableOfContents('UseCase'); clear()";>Use Case</button>
 		        <button onclick=location.href='/Lifecycledocs/HTML/rtm.html'>Create Matrix</button>
 		    </div>
 			<div id="preview">
