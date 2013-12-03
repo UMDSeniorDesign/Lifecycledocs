@@ -42,6 +42,9 @@
 		
 		<script>
 		    function getTableOfContents(doc) {
+		        document.getElementById("#tableInput").innerHTML = "";
+		        document.getElementById("#textInput").innerHTML = "";
+
 	            xmlDoc = loadXML("/Lifecycledocs/XML/" + doc + ".xml");
 	        
 	            var y = xmlDoc.documentElement.childNodes;
@@ -73,8 +76,8 @@
 		<div id="wrapper">
 		    <div="head">
 		        <button onclick=getTableOfContents('SoftwareRequirements')>Software Requirements</button>
-		        <button onclick=getTableOfContents('testCase')>Test Case</button>
-		        <button onclick=getTableOfContents("useCase")>Use Case</button>
+		        <button onclick=getTableOfContents('TestCase')>Test Case</button>
+		        <button onclick=getTableOfContents("UseCase")>Use Case</button>
 		        <button onclick=location.href='/Lifecycledocs/HTML/rtm.html'>Create Matrix</button>
 		    </div>
 			<div id="preview">
