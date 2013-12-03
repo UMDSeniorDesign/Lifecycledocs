@@ -111,7 +111,7 @@ jQuery.fn.downloadTableAsCSV = function(filename) {
 //Function to download RTM.csv file
     function download(filename, text) {
     var dl= document.createElement('a');
-    dl.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(text));
+    dl.setAttribute('href', 'data:text/text;charset=utf-8,' + encodeURIComponent(text));
     dl.setAttribute('download', filename);
     dl.click();
     }
