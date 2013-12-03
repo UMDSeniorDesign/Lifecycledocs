@@ -3,7 +3,7 @@
     <DocumentTitle>Project Name</DocumentTitle>
     <DocumentType>Use Cases Specification</DocumentType>
     <DocumentTemplate>UseCasesTemplate.tmp</DocumentTemplate>
-    <Header></Header>
+    <Header>*</Header>
     <Footer>WSU-TC CptS 322/tSoftware Requirements Specification Template</Footer>
 	<Attributes>
 		<Version>1.0</Version>
