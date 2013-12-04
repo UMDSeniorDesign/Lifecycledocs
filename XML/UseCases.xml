@@ -4,12 +4,12 @@
     <DocumentType>Use Cases Specification</DocumentType>
     <DocumentTemplate>UseCasesTemplate.tmp</DocumentTemplate>
     <Header>8</Header>
-    <Footer>WSU-TC CptS 322/tSoftware Requirements Specification Template</Footer>
+    <Footer>Use Cases Template</Footer>
 	<Attributes>
 		<Version>1.0</Version>
 		<Date>12/2/2013</Date>
 		<Name>Jeremiah Butler</Name>
-        <PreparedFor>WSU-TC CptS 322—Software Engineering Principles I Instructor: A. David McKinnon, Ph.D. Spring 2005</PreparedFor>
+        <PreparedFor>Senior Design Use Case Demo</PreparedFor>
 	</Attributes>
 	<Sections>
 	    <UseCase1>
