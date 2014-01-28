@@ -1,5 +1,17 @@
 <html>
 	<head>
+		<HTA:APPLICATION
+		border="thin"
+		borderStyle="normal"
+		caption="yes"
+		maximizeButton="yes"
+		minimizeButton="yes"
+		showInTaskbar="no"
+		windowState="maximize"
+		innerBorder="yes"
+		navigable="yes"
+		scroll="auto"
+		scrollFlat="yes" />
 	    <style type="text/css">
 		    #preview {
 		        float: right;
@@ -17,11 +29,6 @@
 		    }
 	    </style>
 		
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js" > </script>
-	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-	<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-
 		<script> 
 			function loadXML(dname) {
 				if (window.XMLHttpRequest) {
@@ -79,7 +86,7 @@
 		        <button onclick="getTableOfContents('SoftwareRequirements');">Software Requirements</button>
 		        <button onclick="getTableOfContents('TestCases');">Test Case</button>
 		        <button onclick="getTableOfContents('UseCases');">Use Case</button>
-		        <button onclick=location.href='/Lifecycledocs/HTML/rtm.html'>Create Matrix</button>
+		        <button onclick=location.href='rtm.hta'>Create Matrix</button>
 		    </div>
 			<div id="preview">
 			    <h1>Preview</h1>
