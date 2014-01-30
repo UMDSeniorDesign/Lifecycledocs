@@ -1,14 +1,14 @@
 function rtmHTMLtable(){
     //Init xmlhttp for appropriate browser
-    if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp=new XMLHttpRequest();
-    }
-    else { // code for IE6, IE5
-        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-    }
+    //if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+        //xmlhttp=new XMLHttpRequest();
+    //}
+    //else { // code for IE6, IE5
+        //xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    //}
         
 /*
-This is where we need a schema. Right now there is not dynamic ability to this
+This is where we need a schema. Right now there is no dynamic ability to this
 Tags are hard coded, Okay for now however we have no ability to handle documents
 that may have extra information or incorrect, differently tagged elements
 */

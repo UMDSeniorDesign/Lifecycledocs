@@ -7,7 +7,7 @@
 		maximizeButton="yes"
 		minimizeButton="yes"
 		showInTaskbar="no"
-		windowState="maximize"
+		<!--windowState="maximize"-->
 		innerBorder="yes"
 		navigable="yes"
 		scroll="auto"
@@ -57,23 +57,32 @@
 	            var xmlDoc = new ActiveXObject("Msxml2.DOMDocument.6.0");
 				xmlDoc.async = false;
 				xmlDoc.load("../XML/" + doc + ".xml");
-				alert(xmlDoc.xml);
+				//alert(xmlDoc.xml);
 	            var y = "";
 	            var y = xmlDoc.documentElement.childNodes;
 	       
 	            for (i = 0; i < y.length; i++) {
 	                if (y[i].nodeType != 3 && y[i].childNodes[0].nodeValue != null && y[i].childNodes[0].nodeValue != undefined) {
-                        document.getElementById("tableInput").append("<a href='" + y[i].childNodes[0].nodeValue + "'>" + y[i].nodeName + "</a> <br>");
-                        document.getElementById("textInput").append(y[i].childNodes[0].nodeValue + "\n");
+						var table = document.getElementById("tableInput");
+						table.value += ("<a href='" + y[i].childNodes[0].nodeValue + "'>" + y[i].nodeName + "</a> <br>");
+                        //document.getElementById("tableInput").append("<a href='" + y[i].childNodes[0].nodeValue + "'>" + y[i].nodeName + "</a> <br>");
+                        //document.getElementById("textInput").append(y[i].childNodes[0].nodeValue + "\n");
+						var text = document.getElementById("textInput");
+						text.value += (y[i].childNodes[0].nodeValue + "\n");
                         
                         for (z = 0; z < y[i].childNodes.length; z++) {
                             if (y[i].childNodes[z].nodeType != 3) {
-                                docuemnt.getElementById("tableInput").append("<a href='" + y[i].childNodes[z].childNodes[0].nodeValue + "'>" + y[i].childNodes[z].nodeName  + "</a> <br>");
-                                document.getElementById("textInput").append(y[i].childNodes[z].childNodes[0].nodeValue + "\n");
+								var subTable = document.getElementById("tableInput");
+								subTable += ("<a href='" + y[i].childNodes[z].childNodes[0].nodeValue + "'>" + y[i].childNodes[z].nodeName  + "</a> <br>");
+                                //document.getElementById("tableInput").append("<a href='" + y[i].childNodes[z].childNodes[0].nodeValue + "'>" + y[i].childNodes[z].nodeName  + "</a> <br>");
+                                //document.getElementById("textInput").append(y[i].childNodes[z].childNodes[0].nodeValue + "\n");
+								var subText = document.getElementById("textInput");
+								subText.value += (y[i].childNodes[z].childNodes[0].nodeValue + "\n");
                             }
                         }
                     }
 	            }
+				alert(document.getElementById("tableInput").value);
 		    }
 		</script>
 		
