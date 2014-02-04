@@ -57,7 +57,54 @@ function rtmHTMLtable(){
         }
         content += '</td></tr>';
     }
-        
     content += '</table>';
     return content;
 }
+/*function downloadTableAsCSV(filename) {
+//Function to convert HTML row to CSV
+	function row2CSV(tableRow, rowIndex){
+		var emptyRow = tableRow.join('');
+		//check for any blank rows
+		if(tableRow.length >= 0 && emptyRow != ''){
+			if(rowIndex > 0)
+				var mystr = '\n';
+			else
+				var mystr = '';
+			mystr += tableRow.join(',');
+			csvData[csvData.length] = mystr;
+		}
+	}
+	//Function to remove HTML characters and replace them with CSV ones
+    function formatData(input) {
+        // replace " with â€œ
+        var regexp = new RegExp(/["]/g);
+        var output = input.replace(regexp, "â€œ");
+        //HTML
+        var regelement('a')
+    dl.setAttribute('href', 'data:text/text;charset=utf-8,' + encodeURIComponent(text));
+    dl.setAttribute('download', filename);
+    dl.click();xp = new RegExp(/\<[^\<]+\>/g);
+        var output = output.replace(regexp, "");
+        if (output == "") return '';
+        return '"' + output + '"';
+    }
+//Function to download RTM.csv file
+    function download(filename, text) {
+    var dl= document.createE
+    }
+    
+//Array for CSV data
+    var csvData = [];
+
+// Convert each row from html to CSV
+    $(this).find('tr').each(function(i) {
+        var tableDataRow = [];
+        $(this).filter(':visible').find('td').each(function() {
+            if ($(this).css('display') != 'none') tableDataRow[tableDataRow.length] = formatData($(this).html());
+        });
+        row2CSV(tableDataRow, i);
+    });
+    
+//And finally, Download the file
+    download(filename, csvData);
+}*/

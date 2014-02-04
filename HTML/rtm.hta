@@ -20,16 +20,14 @@
 		document.onreadystatechange = function () {
 			if (document.readyState == "complete") {
 			//Create table and append it to the Div
-            document.getElementById("RTM").value = (rtmHTMLtable());
-			alert(document.getElementById("RTM").value);
+            document.getElementById("RTM").innerHTML = (rtmHTMLtable());
 			}
 		}
-        //document.ready(function() {
-            //Create table and append it to the Div
-            //document.getElementById("RTM").value += (rtmHTMLtable());
-        //});
     </script>
     <script>
+	function saveRTM(){
+		//document.getElementById("RTM").downloadTableAsCSV(document.getElementById("fileText").value);
+	}
       /*  // Handler to make sure Document is ready for Javascript
 	    document.ready(function(){
 	        // Handler to run function on Button click
@@ -59,7 +57,7 @@
     </p>
     <p>
      <button id="back" onclick=location.href='view.hta'>Back</button>
-     <button id="save">Save RTM</button>
+     <button id="save" onclick=saveRTM()>Save RTM</button>
     </p>
     </center>
     
