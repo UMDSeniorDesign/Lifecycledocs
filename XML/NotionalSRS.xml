@@ -329,14 +329,14 @@ See Appendices A2
 Changes will be acknowledged by changing the version number of the document.  Changes will initially be marked in red until changes are approved by the entire team and the team supervisor, Mr. Grimley.
 </ChangeManagementProcess>
 
-
+</SoftwareRequirementsSpecification>
 
 
 
 	
 	<!--Below is Michael's template.  Above is functional requirements based off his. -->
 	
-	
+	<!--
     <GeneralRequirement id="FR01" type="input" shortName="StartUp">
       <Name>System StartUp</Name>
       <Description></Description>
@@ -368,19 +368,4 @@ Changes will be acknowledged by changing the version number of the document.  Ch
   
   
   
-  <!--THIS SHIT BELOW MAY BE ALREADY DONE. CHECK BACK LATER.-->
 
-  
-  <InterfaceRequirements>
-    <!-- Pretty much the same stuff as 'Functional Requirements. -->
-  </InterfaceRequirements>
-
-  <PerformanceRequirements>
-    <!-- Pretty much the same stuff as 'Functional Requirements. -->
-  </PerformanceRequirements>
-
-  <ExternalRequirements>
-    <!-- Pretty much the same stuff as 'Functional Requirements. -->
-  </ExternalRequirements>
-
-</SoftwareRequirementsSpecification>
