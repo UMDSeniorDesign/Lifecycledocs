@@ -31,12 +31,16 @@
 		var table = document.getElementById("RTM").innerHTML;
 		table = table.replace('<TABLE border=1>','');
 		table = table.replace('<TBODY>','');
-		table = table.replace('<TR>','');
-		table = table.replace('<TD>','');
-		for(var i = 0; i < 10; i++){
-			table = table.replace('<TD>', '');
-			table = table.replace('</TD>', ',');
+		while(table.search('<TD>') != -1){
+			table = table.replace('<TD>','');
+		}
+		while(table.search('<TR>') != -1){
 			table = table.replace('<TR>','');
+		}
+		while(table.search('</TD>') != -1){
+			table = table.replace('</TD>', ',');
+		}
+		while(table.search('</TR>') != -1){
 			table = table.replace('</TR>','/n');
 		}
 		alert(table);
