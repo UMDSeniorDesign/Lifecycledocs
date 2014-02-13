@@ -1,0 +1,21 @@
+Project Name
+Software Requirements Specification
+SoftwareRequirementsTemplate.tmp
+*
+WSU-TC CptS 322/tSoftware Requirements Specification Template
+null
+1.0
+11/1/2013
+Jeremiah Butler
+WSU-TC CptS 322—Software Engineering Principles I Instructor: A. David McKinnon, Ph.D. Spring 2005
+null
+0.1
+0.2
+1
+            		
+2
+            		
+3
+	        	
+4
+            		
