@@ -30,8 +30,14 @@
 	    </style>
 		
 		<script> 
-			/*function loadXML(dname) {
-				if (window.XMLHttpRequest) {
+			function loadXML(dname) {
+				var xmlDoc = new ActiveXObject("Msxml2.DOMDocument.6.0");
+				xmlDoc.async = false;
+				xmlDoc.load("../XML/" + dname + ".xml");
+				
+				return xmlDoc;
+				
+				/*if (window.XMLHttpRequest) {
 					xmlhttp =  new XMLHttpRequest();
 				} else { 
 					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
@@ -43,21 +49,24 @@
 					return xmlhttp.responseXML;
                 } else { // If error occurs
 					alert("error");
-				}
-			} ;*/
+				} */
+			} ;
 		</script>
 		
 		<script>
-		    function getTableOfContents(doc) {
+		    function getTableOfContents() {
+				var xmlDoc = loadXML("SoftwareRequirements");
+				
 				document.getElementById("tableInput").innerHTML = '';
 		         //document.getElementById("tableInput").empty();
 		         //document.getElementById("textInput").empty();
                 document.getElementById("textInput").value = '';
                 
-	            var xmlDoc = new ActiveXObject("Msxml2.DOMDocument.6.0");
+	            /*var xmlDoc = new ActiveXObject("Msxml2.DOMDocument.6.0");
 				xmlDoc.async = false;
 				xmlDoc.load("../XML/" + doc + ".xml");
-				//alert(xmlDoc.xml);
+				alert(xmlDoc.xml);
+				*/
 	            var y = "";
 	            var y = xmlDoc.documentElement.childNodes;
 	       
@@ -93,6 +102,13 @@
 		</script>-->
 		
 		<script>
+			function updateXML() {
+				
+			}
+			
+		</script>
+		
+		<script>
 		function saveDoc() {
 				var file_location = "C:/Users/Ushani/Desktop/text.txt";
 				var fs = new ActiveXObject("Scripting.FileSystemObject");
@@ -102,12 +118,13 @@
 				file.close();
 			}
 		</script>
+		
 	</head>
 	
 	<body>
 		<div id="wrapper">
 		    <div="head">
-		        <button onclick="getTableOfContents('SoftwareRequirements');">Software Requirements</button>
+		        <button onclick="getTableOfContents();">Software Requirements</button>
 		        <button onclick="getTableOfContents('TestCases');">Test Case</button>
 		        <button onclick="getTableOfContents('UseCases');">Use Case</button>
 		        <button onclick=location.href='rtm.hta'>Create Matrix</button>
