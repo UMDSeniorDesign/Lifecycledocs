@@ -60,51 +60,39 @@ function rtmHTMLtable(){
     content += '</table>';
     return content;
 }
-/*function downloadTableAsCSV(filename) {
-//Function to convert HTML row to CSV
-	function row2CSV(tableRow, rowIndex){
-		var emptyRow = tableRow.join('');
-		//check for any blank rows
-		if(tableRow.length >= 0 && emptyRow != ''){
-			if(rowIndex > 0)
-				var mystr = '\n';
-			else
-				var mystr = '';
-			mystr += tableRow.join(',');
-			csvData[csvData.length] = mystr;
+function saveRTM(){
+		var file_location = "../" + document.getElementById("fileText").value;
+		var fs = new ActiveXObject("Scripting.FileSystemObject");
+		var table = document.getElementById("RTM").innerHTML;
+		table = table.replace('<TABLE border=1>','');
+		table = table.replace('<TBODY>','');
+		while(table.search('\n') != -1){
+			table = table.replace('\n','');
 		}
-	}
-	//Function to remove HTML characters and replace them with CSV ones
-    function formatData(input) {
-        // replace " with â€œ
-        var regexp = new RegExp(/["]/g);
-        var output = input.replace(regexp, "â€œ");
-        //HTML
-        var regelement('a')
-    dl.setAttribute('href', 'data:text/text;charset=utf-8,' + encodeURIComponent(text));
-    dl.setAttribute('download', filename);
-    dl.click();xp = new RegExp(/\<[^\<]+\>/g);
-        var output = output.replace(regexp, "");
-        if (output == "") return '';
-        return '"' + output + '"';
-    }
-//Function to download RTM.csv file
-    function download(filename, text) {
-    var dl= document.createE
-    }
-    
-//Array for CSV data
-    var csvData = [];
-
-// Convert each row from html to CSV
-    $(this).find('tr').each(function(i) {
-        var tableDataRow = [];
-        $(this).filter(':visible').find('td').each(function() {
-            if ($(this).css('display') != 'none') tableDataRow[tableDataRow.length] = formatData($(this).html());
-        });
-        row2CSV(tableDataRow, i);
-    });
-    
-//And finally, Download the file
-    download(filename, csvData);
-}*/
+		while(table.search('</TR>') != -1){
+			table = table.replace('</TR>','\n');
+		}
+		while(table.search('<TD>') != -1){
+			table = table.replace('<TD>','');
+		}
+		while(table.search('<TR>') != -1){
+			table = table.replace('<TR>','');
+		}
+		while(table.search('</TD>') != -1){
+			table = table.replace('</TD>', ',');
+		}
+		while(table.search(/<\/?[^>]+(>|$)/g) != -1){
+		//remove html tags
+		table = table.replace(/<\/?[^>]+(>|$)/g, "");
+		}
+		while(table.search(/\r/g) != -1){
+		//remove whitespace (regexs found via google)
+		table = table.replace(/\r/g, "");
+		}
+		table = table.replace('</TBODY>','');
+		table = table.replace('</TABLE>','');
+		file = fs.CreateTextFile(file_location, true);
+		file.write(table);
+		file.close();
+		alert("Table Saved!");
+}
