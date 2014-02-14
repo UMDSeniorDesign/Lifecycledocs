@@ -24,59 +24,18 @@
 			}
 		}
     </script>
-    <script>
-	function saveRTM(){
-		var file_location = "../rtm.csv";
-		var fs = new ActiveXObject("Scripting.FileSystemObject");
-		var table = document.getElementById("RTM").innerHTML;
-		table = table.replace('<TABLE border=1>','');
-		table = table.replace('<TBODY>','');
-		table = table.replace('<TR>','');
-		table = table.replace('<TD>','');
-		for(var i = 0; i < 10; i++){
-			table = table.replace('<TD>', '');
-			table = table.replace('</TD>', ',');
-			table = table.replace('<TR>','');
-			table = table.replace('</TR>','/n');
-		}
-		alert(table);
-		//table.search("</TD>").forEach;
-		file = fs.CreateTextFile(file_location, true);
-		file.write(table);
-		file.close();
-	}
-      /*  // Handler to make sure Document is ready for Javascript
-	    document.ready(function(){
-	        // Handler to run function on Button click
-            document.getElementById("save").click(function(){
-                //Convert HTML table in RTM Div to CSV and Download it
-              //  $('#RTM').downloadTableAsCSV($('textarea#fileText').val()); 
-               document.getElementById("RTM").downloadTableAsCSV(document.getElementById('input#fileText').val());
-            });
-        });*/
-        
-    </script>
-    
     </head>
-    
     <body>
-
     <center> 
-    
      <div id="RTM"></div>
-     
     <p>
     Save Requirements Traceability Matrix as: 
-   <!-- <textarea id="fileText" rows="0" cols="25"> -->
     <input id="fileText" type="text" name="RTM" value="RTM.csv">
-    
-    </textarea>
     </p>
     <p>
      <button id="back" onclick=location.href='view.hta'>Back</button>
      <button id="save" onclick=saveRTM()>Save RTM</button>
     </p>
     </center>
-    
     </body>
 </html>
