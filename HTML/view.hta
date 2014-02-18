@@ -16,7 +16,7 @@
 		    #preview {
 		        float: right;
 		        width: 60%;
-		        height: 80%;
+		        height: 60%;
 		    }
 		    #tableOfContents {
 		        float: left;
@@ -29,102 +29,55 @@
 		    }
 	    </style>
 		
-		<script> 
-			function loadXML(dname) {
-				var xmlDoc = new ActiveXObject("Msxml2.DOMDocument.6.0");
-				xmlDoc.async = false;
-				xmlDoc.load("../XML/" + dname + ".xml");
-				
-				return xmlDoc;
-				
-				/*if (window.XMLHttpRequest) {
-					xmlhttp =  new XMLHttpRequest();
-				} else { 
-					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-				}
-				
-				if (xmlhttp!=null) { 
-					xmlhttp.open("GET",dname,false);
-					xmlhttp.send();
-					return xmlhttp.responseXML;
-                } else { // If error occurs
-					alert("error");
-				} */
-			} ;
-		</script>
+		<script src="../JS/loadXML.js"></script>
+		<script src="../JS/updateXML.js"></script>
+		<script src="../JS/saveXML.js"></script>
 		
 		<script>
-		    function getTableOfContents() {
-				var xmlDoc = loadXML("SoftwareRequirements");
+		    function getTableOfContents(file_name) {
+				var XML = loadXML(file_name);
+				
+				var y = XML.documentElement.childNodes;
+				
+				var table = document.getElementById("tableInput");
+				var text = document.getElementById("textInput");
 				
 				document.getElementById("tableInput").innerHTML = '';
-		         //document.getElementById("tableInput").empty();
-		         //document.getElementById("textInput").empty();
                 document.getElementById("textInput").value = '';
-                
-	            /*var xmlDoc = new ActiveXObject("Msxml2.DOMDocument.6.0");
-				xmlDoc.async = false;
-				xmlDoc.load("../XML/" + doc + ".xml");
-				alert(xmlDoc.xml);
-				*/
-	            var y = "";
-	            var y = xmlDoc.documentElement.childNodes;
 	       
 	            for (i = 0; i < y.length; i++) {
-	                if (y[i].nodeType != 3) {
-						var table = document.getElementById("tableInput");
-						table.innerHTML += ("<a href='" + y[i].childNodes[0].nodeValue + "'>" + y[i].nodeName + "</a> <br>");
-                        //document.getElementById("tableInput").append("<a href='" + y[i].childNodes[0].nodeValue + "'>" + y[i].nodeName + "</a> <br>");
-                        //document.getElementById("textInput").append(y[i].childNodes[0].nodeValue + "\n");
-						var text = document.getElementById("textInput");
-						text.value += (y[i].childNodes[0].nodeValue + "\n");
-                        
+					table.innerHTML += ("<a href='edit.hta'; onclick='store(" + i + ")'; >" + y[i].nodeName + "</a> <br>");	
+					text.value += (y[i].childNodes[0].nodeValue + "\n");
+                 
                         for (z = 0; z < y[i].childNodes.length; z++) {
-                            if (y[i].childNodes[z].nodeType != 3) {
+                            if (y[i].childNodes[z].nodeType != 3) {	
 								var subTable = document.getElementById("tableInput");
 								subTable.innerHTML += ("<a href='" + y[i].childNodes[z].childNodes[0].nodeValue + "'>" + y[i].childNodes[z].nodeName  + "</a> <br>");
-                                //document.getElementById("tableInput").append("<a href='" + y[i].childNodes[z].childNodes[0].nodeValue + "'>" + y[i].childNodes[z].nodeName  + "</a> <br>");
-                                //document.getElementById("textInput").append(y[i].childNodes[z].childNodes[0].nodeValue + "\n");
+
 								var subText = document.getElementById("textInput");
 								subText.value += (y[i].childNodes[z].childNodes[0].nodeValue + "\n");
                             }
                         }
-                    }
-	            }
-				//alert(document.getElementById("tableInput").value);
-		    }
-		</script>
-		
-		<!--<script>
-		    function editSection(y, i) {
-		       $('#textInput').append(y[i].childNodes[0].nodeValue + "\n");
-		    }
-		</script>-->
-		
-		<script>
-			function updateXML() {
-				
-			}
-			
+                }
+	        }		
 		</script>
 		
 		<script>
-		function saveDoc() {
-				var file_location = "../XML/text.txt";
-				var fs = new ActiveXObject("Scripting.FileSystemObject");
+			function store(i) {
+				var XML = loadXML("SoftwareRequirements");
+				var y = XML.documentElement.childNodes;
 				
-				file = fs.CreateTextFile(file_location, true);
-				file.write(document.getElementById("textInput").value);
-				file.close();
+				document.cookie = "name=" + y[i].nodeName;
+				document.cookie = "value=" + y[i].childNodes[0].nodeValue;
+				//alert(document.cookie);
 			}
 		</script>
-		
 	</head>
 	
 	<body>
 		<div id="wrapper">
 		    <div="head">
-		        <button onclick="getTableOfContents();">Software Requirements</button>
+		        <button onclick="getTableOfContents('SoftwareRequirements');">Software Requirements</button>
 		        <button onclick="getTableOfContents('TestCases');">Test Case</button>
 		        <button onclick="getTableOfContents('UseCases');">Use Case</button>
 		        <button onclick=location.href='rtm.hta'>Create Matrix</button>
@@ -136,7 +89,8 @@
 			<div id="preview">
 			    <h1>Preview</h1>
 			    <textarea id="textInput" style="width: 100%; height: 100%"></textarea>
-			    <button onclick="saveDoc()">Exit & Save</button>
+				<button onclick="updateXML()">Update</button>
+			    <button onclick="saveXML()">Save</button>
 			</div>
 		</div>
 	</body>

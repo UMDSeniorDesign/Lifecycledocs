@@ -1,0 +1,47 @@
+<HTML>
+	<head>
+		<script src="../JS/loadXML.js"></script>
+		<script src="../JS/saveXML.js"></script>
+		
+		<script>
+			function loadPage() {
+				//XML = loadXML();
+				var text = document.getElementById("text");
+				var name = document.getElementById("value");
+				
+				var cookiearray = document.cookie.split(';');
+				var n = cookiearray[0].split('=')[1];
+				var v = cookiearray[1].split('=')[1];
+						
+				name.innerHTML = n;
+				text.value = v;
+			}
+		</script>
+		
+		<script>
+			function update() {
+				var XML = loadXML("SoftwareRequirements");
+				var y = XML.documentElement.childNodes;
+				
+				var text = document.getElementById("text");
+				var name = document.getElementById("value");
+				
+				var cookiearray = document.cookie.split(';');
+				var n = cookiearray[0].split('=')[1];
+				var v = cookiearray[1].split('=')[1];
+				
+				var x = XML.getElementsByTagName(n)[0].childNodes[0];
+				x.nodeValue = text.value;
+				
+				alert(x.nodeValue);
+			}
+		</script>
+	</head>
+	
+	<body onload="loadPage()">
+		<p id="value"></p>
+		<textarea id="text"></textarea>
+		<button onclick="update()">Update</button>
+		<button onclick=location.href='view.hta'>Back</button>
+	</body>
+</HTML>
