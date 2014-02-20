@@ -2,6 +2,8 @@
 	<head>
 		<script src="../JS/loadXML.js"></script>
 		<script src="../JS/saveXML.js"></script>
+		<script src="../JS/store.js"></script>
+
 		
 		<script>
 			function loadPage() {
@@ -10,8 +12,8 @@
 				var name = document.getElementById("value");
 				
 				var cookiearray = document.cookie.split(';');
-				var n = cookiearray[0].split('=')[1];
-				var v = cookiearray[1].split('=')[1];
+				var n = cookiearray[store(i)].split('=')[1];
+				var v = cookiearray[store(i)].split('=')[1];
 						
 				name.innerHTML = n;
 				text.value = v;

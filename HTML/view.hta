@@ -32,6 +32,7 @@
 		<script src="../JS/loadXML.js"></script>
 		<script src="../JS/updateXML.js"></script>
 		<script src="../JS/saveXML.js"></script>
+		<script src="../JS/store.js"></script>
 		
 		<script>
 		    function getTableOfContents(file_name) {
@@ -46,32 +47,29 @@
                 document.getElementById("textInput").value = '';
 	       
 	            for (i = 0; i < y.length; i++) {
-					table.innerHTML += ("<a href='edit.hta'; onclick='store(" + i + ")'; >" + y[i].nodeName + "</a> <br>");	
+					table.innerHTML += ("<a href='edit.hta'; onclick='store(i)'>" + y[i].nodeName + "</a> <br>");	
 					text.value += (y[i].childNodes[0].nodeValue + "\n");
                  
+					document.cookie = y[i].nodeName + "=" + y[i].childNodes[0].nodeValue;
+					
                         for (z = 0; z < y[i].childNodes.length; z++) {
                             if (y[i].childNodes[z].nodeType != 3) {	
-								var subTable = document.getElementById("tableInput");
-								subTable.innerHTML += ("<a href='" + y[i].childNodes[z].childNodes[0].nodeValue + "'>" + y[i].childNodes[z].nodeName  + "</a> <br>");
+								//var subTable = document.getElementById("tableInput");
+								table.innerHTML += ("<a href='edit.hta'; >" + y[i].childNodes[z].nodeName  + "</a> <br>");
 
-								var subText = document.getElementById("textInput");
-								subText.value += (y[i].childNodes[z].childNodes[0].nodeValue + "\n");
+								//var subText = document.getElementById("textInput");
+								text.value += (y[i].childNodes[z].childNodes[0].nodeValue + "\n");
+								
+								document.cookie = y[i].childNodes[z].nodeName + "=" + y[i].childNodes[z].childNodes[0].nodeValue;
+
                             }
                         }
                 }
+				
+				alert(document.cookie);
 	        }		
 		</script>
-		
-		<script>
-			function store(i) {
-				var XML = loadXML("SoftwareRequirements");
-				var y = XML.documentElement.childNodes;
-				
-				document.cookie = "name=" + y[i].nodeName;
-				document.cookie = "value=" + y[i].childNodes[0].nodeValue;
-				//alert(document.cookie);
-			}
-		</script>
+
 	</head>
 	
 	<body>
