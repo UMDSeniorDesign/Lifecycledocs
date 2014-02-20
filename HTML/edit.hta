@@ -12,12 +12,13 @@
 				
 				var cookiearray = document.cookie.split(';');
 
-				alert(cookiearray.length);
-				
-				for(var i = 0; i < cookiearray.length; i++) {
-					var n = cookiearray[i].split('=')[0];
-					var v = cookiearray[i].split('=')[1];
-				}
+				var index = cookiearray[(cookiearray.length)-1];
+				alert(index);
+				//document.cookie.split(',');
+				//alert(cookiearray);
+					var n = cookiearray[index+1].split('=')[0];
+					var v = cookiearray[index+1].split('=')[1];
+				//alert(n);
 				
 				name.innerHTML = n;
 				text.value = v;

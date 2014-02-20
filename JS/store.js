@@ -1,9 +1,15 @@
-function store(i) {
-	return i;
-				/*var XML = loadXML("SoftwareRequirements");
-				var y = XML.documentElement.childNodes;
-				
-				document.cookie = "name=" + y[i].nodeName;
-				document.cookie = "value=" + y[i].childNodes[0].nodeValue;
-				alert(document.cookie);*/
+
+function checkCookie(value) {
+	document.cookie = value;
+	//alert(document.cookie);
+	/*var val = value + "=";
+	var y = document.cookie.split(';');
+	
+	for(var i = 0; i < y.length; i++) {
+		var x = y[i];
+		 alert(x);
+		if(x.indexOf(value) == 0)
+			return x.substring(val.length, x.length);
+	}
+	*/
 }
