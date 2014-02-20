@@ -12,12 +12,14 @@
 				
 				var cookiearray = document.cookie.split(';');
 
-				var index = cookiearray[(cookiearray.length)-1];
-				alert(index);
+				var foo = cookiearray[(cookiearray.length)-1];
+				alert(foo);
 				//document.cookie.split(',');
 				//alert(cookiearray);
-					var n = cookiearray[index+1].split('=')[0];
-					var v = cookiearray[index+1].split('=')[1];
+				var n = cookiearray[foo].split('=')[0];
+				var v = cookiearray[foo].split('=')[1];
+					//var n = cookiearray[index].split('=')[0];
+					//var v = cookiearray[index].split('=')[1];
 				//alert(n);
 				
 				name.innerHTML = n;
