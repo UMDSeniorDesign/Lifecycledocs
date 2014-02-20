@@ -7,14 +7,18 @@
 		
 		<script>
 			function loadPage() {
-				//XML = loadXML();
 				var text = document.getElementById("text");
 				var name = document.getElementById("value");
 				
 				var cookiearray = document.cookie.split(';');
-				var n = cookiearray[store(i)].split('=')[1];
-				var v = cookiearray[store(i)].split('=')[1];
-						
+
+				alert(cookiearray.length);
+				
+				for(var i = 0; i < cookiearray.length; i++) {
+					var n = cookiearray[i].split('=')[0];
+					var v = cookiearray[i].split('=')[1];
+				}
+				
 				name.innerHTML = n;
 				text.value = v;
 			}
