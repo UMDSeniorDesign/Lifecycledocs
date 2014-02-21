@@ -13,15 +13,9 @@
 				var cookiearray = document.cookie.split(';');
 
 				var index = cookiearray[(cookiearray.length)-1];
-				//alert(foo);
-				//document.cookie.split(',');
-				//alert(cookiearray);
-				var i = parseInt(index);
+				var i = parseInt(index);									/* Changes index from 'string' to 'int' */
 				var n = cookiearray[i].split('=')[0];
 				var v = cookiearray[i].split('=')[1];
-					//var n = cookiearray[index].split('=')[0];
-					//var v = cookiearray[index].split('=')[1];
-				//alert(n);
 				
 				name.innerHTML = n;
 				text.value = v;
@@ -29,21 +23,17 @@
 		</script>
 		
 		<script>
-			function update() {
-				var XML = loadXML("SoftwareRequirements");
-				var y = XML.documentElement.childNodes;
-				
+			function update() {												/* Still working on this.. doesn't work yet */
 				var text = document.getElementById("text");
 				var name = document.getElementById("value");
 				
 				var cookiearray = document.cookie.split(';');
-				var n = cookiearray[0].split('=')[1];
-				var v = cookiearray[1].split('=')[1];
+				var index = parseInt(cookiearray[(cookiearray.length)-1]);
 				
-				var x = XML.getElementsByTagName(n)[0].childNodes[0];
-				x.nodeValue = text.value;
+				cookiearray[index].split('=')[1] = text.value;
 				
-				alert(x.nodeValue);
+	
+				alert(cookiearray[index].split('=')[1]);
 			}
 		</script>
 	</head>
