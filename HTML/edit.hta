@@ -30,10 +30,12 @@
 				var cookiearray = document.cookie.split(';');
 				var index = parseInt(cookiearray[(cookiearray.length)-1]);
 				
-				cookiearray[index].split('=')[1] = text.value;
-				
-	
+				var value = cookiearray[index].split('=');
+				value[1] = text.value;
+				cookiearray[index] = value.join('=');
+				document.cookie = cookiearray.join(';');
 				alert(cookiearray[index].split('=')[1]);
+				alert(document.cookie);
 			}
 		</script>
 	</head>
