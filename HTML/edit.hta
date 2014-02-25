@@ -33,9 +33,10 @@
 				var value = cookiearray[index].split('=');
 				value[1] = text.value;
 				cookiearray[index] = value.join('=');
-				document.cookie = cookiearray.join(';');
-				alert(cookiearray[index].split('=')[1]);
-				alert(document.cookie);
+				document.cookie = cookiearray.join(';'); 
+				
+				//alert(text.value);
+				alert();
 			}
 		</script>
 	</head>

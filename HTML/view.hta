@@ -46,39 +46,52 @@
 				
 				var counter = 0;
 				
+				
 				document.getElementById("tableInput").innerHTML = '';
                 document.getElementById("textInput").value = '';
 	       
 	            for (i = 0; i < y.length; i++) {
 					table.innerHTML += ("<a href='edit.hta'; onclick='checkCookie("+counter+")';>" + y[i].nodeName + "</a> <br>");	
-					text.value += (y[i].childNodes[0].nodeValue + "\n");
+					//text.value += (y[i].childNodes[0].nodeValue + "\n");
                  
 					document.cookie = y[i].nodeName + "=" + y[i].childNodes[0].nodeValue;
 					
 					counter++;
 					
-                        for (z = 0; z < y[i].childNodes.length; z++) {
+					
+                        /*for (z = 0; z < y[i].childNodes.length; z++) {
                             if (y[i].childNodes[z].nodeType != 3) {	
-								//var subTable = document.getElementById("tableInput");
 								table.innerHTML += ("<a href='edit.hta'; onclick='checkCookie("+counter+")'; >" + y[i].childNodes[z].nodeName  + "</a> <br>");
-
-								//var subText = document.getElementById("textInput");
 								text.value += (y[i].childNodes[z].childNodes[0].nodeValue + "\n");
 								
 								document.cookie = y[i].childNodes[z].nodeName + "=" + y[i].childNodes[z].childNodes[0].nodeValue;
 
 								counter++;
                             }
-                        }
-                }
+                        } */
+                }	
 				
-				//alert(document.cookie);
+				getValues();
 	        }		
 		</script>
+			
+		<script>
+			function getValues() {
+				cookiearray = document.cookie.split(';');
+				
+				var text = document.getElementById("textInput");
 
+				for(var i = 0; i < cookiearray.length; i++) {
+					text.value += cookiearray[i].split('=')[1];
+					text.value += "\n";
+				}
+				
+			}
+		</script>
+		
 	</head>
 	
-	<body>
+	<body onload="getValues()">
 		<div id="wrapper">
 		    <div="head">
 		        <button onclick="getTableOfContents('SoftwareRequirements');">Software Requirements</button>
