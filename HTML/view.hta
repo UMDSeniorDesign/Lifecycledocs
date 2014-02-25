@@ -34,7 +34,14 @@
 		<script src="../JS/saveXML.js"></script>
 		<script src="../JS/store.js"></script>
 
-			
+		<script>
+			function load(file_name) {
+				if(document.cookie == "") {
+					getTableOfContents(file_name);
+				}
+			}
+		</script>
+		
 		<script>
 		    function getTableOfContents(file_name) {
 				var XML = loadXML(file_name);
@@ -94,9 +101,9 @@
 	<body onload="getValues()">
 		<div id="wrapper">
 		    <div="head">
-		        <button onclick="getTableOfContents('SoftwareRequirements');">Software Requirements</button>
-		        <button onclick="getTableOfContents('TestCases');">Test Case</button>
-		        <button onclick="getTableOfContents('UseCases');">Use Case</button>
+		        <button onclick="load('SoftwareRequirements');">Software Requirements</button>
+		        <button onclick="load('TestCases');">Test Case</button>
+		        <button onclick="load('UseCases');">Use Case</button>
 		        <button onclick=location.href='rtm.hta'>Create Matrix</button>
 		    </div>
 			<div id="tableOfContents">
