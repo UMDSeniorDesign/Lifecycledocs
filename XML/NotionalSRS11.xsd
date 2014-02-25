@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    attributeFormDefault="unqualified">
+
+    <xsd:element name="ProjectLifecycleDocuments" type="ProjectLifecycleDocumentsType"/>
+    <xsd:complexType name="ProjectLifecycleDocumentsType">
+        <xsd:sequence>
+            <xsd:element ref="Introduction"/>
+            <xsd:element ref="UseCaseDocument"/>
+            <xsd:element ref="DesignDocument"/>
+            <xsd:element ref="TestCaseDocument"/>
+        </xsd:sequence>
+        <xsd:attribute name="id" use="required" type="xsd:ID"/>
+    </xsd:complexType>
+
+    <xsd:element name="SoftwareRequirementsDocument" type="SoftwareRequirementsDocumentType"/>
+    <xsd:complexType name="SoftwareRequirementsDocumentType">
+        <xsd:sequence>
+            <xsd:element ref="Introduction"/>
+            <xsd:element ref="GeneralDescription"/>
+            <xsd:element ref="SpecificRequirements"/>
+
+            <!-- Other global elements to be referenced here. -->
+            <xsd:element name="AnalysisModels" type="AnalysisModelType"/>
+        </xsd:sequence>
+        <xsd:attribute name="id" use="required" type="xsd:ID"/>
+    </xsd:complexType>
+
+    <xsd:element name="Introduction" type="IntroductionType"/>
+    <xsd:complexType name="IntroductionType">
+        <xsd:sequence>
+            <xsd:element ref="Title"/>
+            <xsd:element ref="Para" minOccurs="1" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="id" use="required" type="xsd:ID"/>
+    </xsd:complexType>
+
+    <xsd:element name="Title" type="TitleType"/>
+    <xsd:complexType name="TitleType">
+        <!-- This is just an example. You may want allow references within paragrapghs... -->
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="id" use="optional" type="xsd:ID"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    
+
+    <xsd:element name="Para" type="ParaType"/>
+    <xsd:simpleType name="ParaType">
+        <xsd:restriction base="xsd:string"/>
+    </xsd:simpleType>
+
+    <xsd:element name="GeneralDescription" type="GeneralDescriptionType"/>
+    <xsd:complexType name="GeneralDescriptionType">
+
+        <!-- This is just an example. It may be more complex than this... -->
+        <xsd:sequence>
+
+            <xsd:element ref="Title" minOccurs="1" maxOccurs="unbounded"/>
+            <xsd:element ref="Para"/>
+        </xsd:sequence>
+        <xsd:attribute name="id" use="optional" type="xsd:ID"/>
+    </xsd:complexType>
+
+    <xsd:element name="SpecificRequirements" type="SpecificRequirementsType"/>
+    <xsd:complexType name="SpecificRequirementsType">
+        <!-- This is just an example. It may be more complex than this... -->
+        <xsd:sequence>
+            <xsd:element ref="Requirement" minOccurs="1" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="id" use="optional" type="xsd:ID"/>
+    </xsd:complexType>
+
+    <xsd:element name="Requirement" type="RequirementType"> </xsd:element>
+
+    <xsd:complexType name="RequirementType">
+        <!-- This is just an example. It may be more complex than this... -->
+        <xsd:sequence>
+            <xsd:element ref="Title" minOccurs="1" maxOccurs="unbounded"/>
+            <xsd:element ref="Para"/>
+            <xsd:element ref="subReq" minOccurs="0" maxOccurs="unbounded"/>
+            
+        </xsd:sequence>
+        <xsd:attribute name="id" use="optional" type="xsd:ID"/>
+        <xsd:attribute name="name" use="required" type="xsd:string"/>
+    </xsd:complexType>
+
+    <xsd:element name="subReq" type="subReqType"/>
+    <xsd:complexType name="subReqType">
+        <xsd:sequence>
+            <xsd:element ref="Title" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="Para" minOccurs="1" maxOccurs="unbounded"/>
+        </xsd:sequence>
+                <xsd:attribute name="id" type="xsd:ID"/>
+    </xsd:complexType>
+    
+    
+    <xsd:complexType name="AnalysisModelType"/>
+    <xsd:element name="UseCaseDocument" type="UseCaseDocumentType"/>
+    <xsd:complexType name="UseCaseDocumentType">
+        <xsd:sequence>
+            <xsd:element ref="Introduction"/>
+            <!-- Other global elements to be referenced here. -->
+        </xsd:sequence>
+        <xsd:attribute name="id" use="required" type="xsd:ID"/>
+    </xsd:complexType>
+    <xsd:element name="DesignDocument" type="DesignDocumentType"/>
+    <xsd:complexType name="DesignDocumentType">
+        <xsd:sequence>
+            <xsd:element ref="Introduction"/>
+            <!-- Other global elements to be referenced here. -->
+        </xsd:sequence>
+        <xsd:attribute name="id" use="required" type="xsd:ID"/>
+    </xsd:complexType>
+
+    <xsd:element name="TestCaseDocument" type="TestCaseDocumentType"/>
+    <xsd:complexType name="TestCaseDocumentType">
+        <xsd:sequence>
+            <xsd:element ref="Introduction"/>
+            <!-- Other global elements to be referenced here. -->
+        </xsd:sequence>
+        <xsd:attribute name="id" use="required" type="xsd:ID"/>
+    </xsd:complexType>
+</xsd:schema>
