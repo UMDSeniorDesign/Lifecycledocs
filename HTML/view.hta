@@ -33,12 +33,24 @@
 		<script src="../JS/updateXML.js"></script>
 		<script src="../JS/saveXML.js"></script>
 		<script src="../JS/store.js"></script>
+		<script src="../JS/getFromCookie.js"></script>
 		
 		<script>
 		    function getTableOfContents(file_name) {
+				var cookieFile = getFromCookie("fileName");
+				if(file_name == "current" && cookieFile != ""){
+					//set filename to the one stored in cookie so page loads Table of Contents
+					file_name = cookieFile;
+				}
+				if(file_name == "current" && cookieFile == ""){
+					//Initial Load, used to avoid null pointer error
+					return;
+				}
 				var XML = loadXML(file_name);
 				var y = XML.documentElement.childNodes;
-				if(document.cookie == ""){
+				
+				if(cookieFile != file_name){
+					document.cookie = "fileName="+file_name;
 					for (i = 0; i < y.length; i++) {
 						document.cookie = y[i].nodeName + "=" + y[i].childNodes[0].nodeValue;
 					}
@@ -47,7 +59,7 @@
 				var table = document.getElementById("tableInput");
 				var text = document.getElementById("textInput");
 				
-				var counter = 0;
+				var counter = 1;
 				
 				document.getElementById("tableInput").innerHTML = '';
                 document.getElementById("textInput").value = '';
@@ -90,7 +102,7 @@
 		
 	</head>
 	
-	<body onload="getValues()">
+	<body onload="getTableOfContents('current')">
 		<div id="wrapper">
 		    <div="head">
 		        <button onclick="getTableOfContents('SoftwareRequirements');">Software Requirements</button>
