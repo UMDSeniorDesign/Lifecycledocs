@@ -35,9 +35,6 @@
 				cookiearray[index] = value.join('=');
 				//document.cookie = cookiearray.join(';');
 				document.cookie = cookiearray[index]; 
-				
-				//alert(cookiearray[index]);
-				//alert(document.cookie);
 			}
 		</script>
 	</head>
@@ -45,7 +42,7 @@
 	<body onload="loadPage()">
 		<p id="value"></p>
 		<textarea id="text"></textarea>
-		<button onclick="update()">Update</button>
+		<button onclick="update();location.href='view.hta'">Update</button>
 		<button onclick=location.href='view.hta'>Back</button>
 	</body>
 </HTML>

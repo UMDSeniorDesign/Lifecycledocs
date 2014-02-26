@@ -33,26 +33,21 @@
 		<script src="../JS/updateXML.js"></script>
 		<script src="../JS/saveXML.js"></script>
 		<script src="../JS/store.js"></script>
-
-		<script>
-			function load(file_name) {
-				if(document.cookie == "") {
-					getTableOfContents(file_name);
-				}
-			}
-		</script>
 		
 		<script>
 		    function getTableOfContents(file_name) {
 				var XML = loadXML(file_name);
-				
 				var y = XML.documentElement.childNodes;
+				if(document.cookie == ""){
+					for (i = 0; i < y.length; i++) {
+						document.cookie = y[i].nodeName + "=" + y[i].childNodes[0].nodeValue;
+					}
+				}
 				
 				var table = document.getElementById("tableInput");
 				var text = document.getElementById("textInput");
 				
 				var counter = 0;
-				
 				
 				document.getElementById("tableInput").innerHTML = '';
                 document.getElementById("textInput").value = '';
@@ -60,11 +55,8 @@
 	            for (i = 0; i < y.length; i++) {
 					table.innerHTML += ("<a href='edit.hta'; onclick='checkCookie("+counter+")';>" + y[i].nodeName + "</a> <br>");	
 					//text.value += (y[i].childNodes[0].nodeValue + "\n");
-                 
-					document.cookie = y[i].nodeName + "=" + y[i].childNodes[0].nodeValue;
 					
 					counter++;
-					
 					
                         /*for (z = 0; z < y[i].childNodes.length; z++) {
                             if (y[i].childNodes[z].nodeType != 3) {	
@@ -101,9 +93,9 @@
 	<body onload="getValues()">
 		<div id="wrapper">
 		    <div="head">
-		        <button onclick="load('SoftwareRequirements');">Software Requirements</button>
-		        <button onclick="load('TestCases');">Test Case</button>
-		        <button onclick="load('UseCases');">Use Case</button>
+		        <button onclick="getTableOfContents('SoftwareRequirements');">Software Requirements</button>
+		        <button onclick="getTableOfContents('TestCases');">Test Case</button>
+		        <button onclick="getTableOfContents('UseCases');">Use Case</button>
 		        <button onclick=location.href='rtm.hta'>Create Matrix</button>
 		    </div>
 			<div id="tableOfContents">
