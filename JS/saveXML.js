@@ -1,8 +1,16 @@
 function saveXML() {
-	var file_location = "../text.txt";
+	var file_location = "../XML/"+getFromCookie("fileName")+"TestSave.xml";
 	var fs = new ActiveXObject("Scripting.FileSystemObject");
-				
+	var cookiearray = document.cookie.split(';');
+	var newFile = "<?xml version='1.0' encoding='UTF-8'?>\n";
+	for(i = 1; i < cookiearray.length; i++){
+		var value = cookiearray[i].split('=');
+		value[0] = value[0].replace(' ','');
+		newFile += "<"+value[0]+">";
+		newFile += value[1];
+		newFile += "</"+value[0]+">\n";
+	}
 	file = fs.CreateTextFile(file_location, true);
-	file.write(document.getElementById("textInput").value);
+	file.write(newFile);
 	file.close();
 }
