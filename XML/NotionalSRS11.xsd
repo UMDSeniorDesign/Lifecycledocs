@@ -44,7 +44,7 @@
             </xsd:extension>
         </xsd:simpleContent>
     </xsd:complexType>
-    
+
 
     <xsd:element name="Para" type="ParaType"/>
     <xsd:simpleType name="ParaType">
@@ -80,22 +80,29 @@
             <xsd:element ref="Title" minOccurs="1" maxOccurs="unbounded"/>
             <xsd:element ref="Para"/>
             <xsd:element ref="subReq" minOccurs="0" maxOccurs="unbounded"/>
-            
+
         </xsd:sequence>
         <xsd:attribute name="id" use="optional" type="xsd:ID"/>
         <xsd:attribute name="name" use="required" type="xsd:string"/>
     </xsd:complexType>
 
     <xsd:element name="subReq" type="subReqType"/>
+    <xsd:element name="subTitle" type="subTitleType"/>
+
+    <xsd:complexType name="subTitleType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string"> </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
     <xsd:complexType name="subReqType">
         <xsd:sequence>
-            <xsd:element ref="Title" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element ref="Para" minOccurs="1" maxOccurs="unbounded"/>
+            <xsd:element ref="subTitle"/>
         </xsd:sequence>
-                <xsd:attribute name="id" type="xsd:ID"/>
+        <xsd:attribute name="id" type="xsd:ID"/>
     </xsd:complexType>
-    
-    
+
+
     <xsd:complexType name="AnalysisModelType"/>
     <xsd:element name="UseCaseDocument" type="UseCaseDocumentType"/>
     <xsd:complexType name="UseCaseDocumentType">
