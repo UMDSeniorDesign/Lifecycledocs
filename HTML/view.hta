@@ -51,24 +51,29 @@
 				
 				if(cookieFile != file_name){
 					document.cookie = "fileName="+file_name;
-					for (i = 0; i < y.length; i++) {
+					loadXMLValuesCookie(y);
+					/*for (i = 0; i < y.length; i++) {
 						document.cookie = y[i].nodeName + "=" + y[i].childNodes[0].nodeValue;
-					}
+						if (y[i].hasChildNodes()){
+							alert(y[i].nodeName + " Has Child");
+						}
+					}*/
 				}
 				
 				var table = document.getElementById("tableInput");
 				var text = document.getElementById("textInput");
 				
-				var counter = 1;
+				//var counter = 1;
 				
 				document.getElementById("tableInput").innerHTML = '';
                 document.getElementById("textInput").value = '';
 	       
-	            for (i = 0; i < y.length; i++) {
-					table.innerHTML += ("<a href='edit.hta'; onclick='checkCookie("+counter+")';>" + y[i].nodeName + "</a> <br>");	
+				loadXMLValuesTOC(y);
+	           // for (i = 0; i < y.length; i++) {
+					//table.innerHTML += ("<a href='edit.hta'; onclick='checkCookie("+counter+")';>" + y[i].nodeName + "</a> <br>");	
 					//text.value += (y[i].childNodes[0].nodeValue + "\n");
 					
-					counter++;
+					//counter++;
 					
                         /*for (z = 0; z < y[i].childNodes.length; z++) {
                             if (y[i].childNodes[z].nodeType != 3) {	
@@ -80,19 +85,49 @@
 								counter++;
                             }
                         } */
-                }	
+                //}	
 				
 				getValues();
 	        }		
 		</script>
-			
+		
+		<script>
+			function loadXMLValuesCookie(node){
+				for (i = 0; i < node.length; i++) {
+					//alert(node[i].nodeName);
+					document.cookie = node[i].nodeName + "=" + node[i].childNodes[0].nodeValue;
+					if(node[i].childNodes[0].hasChildNodes()){
+						//alert(node[i].nodeName+" Has Child");
+						loadXMLValuesCookie(node[i].childNodes);
+						i++;
+					}
+				}
+			}
+		</script>
+		<script>
+			function loadXMLValuesTOC(node){
+			var counter = 1;
+			var table = document.getElementById("tableInput");
+				for (i = 0; i < node.length; i++) {
+					//alert(node[i].nodeName);
+					table.innerHTML += ("<a href='edit.hta'; onclick='checkCookie("+counter+")';>" + node[i].nodeName + "</a> <br>");
+					counter ++;
+					if(node[i].childNodes[0].hasChildNodes()){
+						//alert(node[i].nodeName+" Has Child");
+						loadXMLValuesTOC(node[i].childNodes);
+						i++;
+					}
+				}
+			}
+		</script>
+		
 		<script>
 			function getValues() {
 				cookiearray = document.cookie.split(';');
 				
 				var text = document.getElementById("textInput");
 
-				for(var i = 0; i < cookiearray.length; i++) {
+				for(var i = 1; i < cookiearray.length; i++) {
 					text.value += cookiearray[i].split('=')[1];
 					text.value += "\n";
 				}
