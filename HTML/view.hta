@@ -48,8 +48,15 @@
 					//Initial Load, used to avoid null pointer error
 					return;
 				}
+				
 				var XML = loadXML(file_name);
+				
+				//alert(XML.parseError.errorCode); 						XML ERROR FINDERS
+				//alert(XML.parseError.reason);
+				//alert(XML.parseError.line);
 				var y = XML.documentElement.childNodes;
+				
+				//alert(y);
 				
 				if(cookieFile != file_name){
 					document.cookie = "fileName="+file_name;
@@ -62,7 +69,6 @@
 				document.getElementById("tableInput").innerHTML = '';
                 document.getElementById("textInput").value = '';
 	       
-				alert(XML.getElementsByTagName("Introduction")[0].childNodes[0].nodeValue);
 				loadXMLValuesTOC(y, counter);
 	           	getValues();
 	        }		
@@ -85,11 +91,15 @@
 			function loadXMLValuesTOC(node, counter){
 				var table = document.getElementById("tableInput");
 				
+				//alert(node.length);
+				
 				for (i = 0; i < node.length; i++) {
 					table.innerHTML += ("<a href='edit.hta'; onclick='checkCookie("+counter+")';>" + node[i].nodeName + "</a> <br>");
 					counter ++;
+					alert(node[i].childNodes[0].nodeValue);
 					
 					if(node[i].childNodes[0].hasChildNodes()) {	
+						
 						loadXMLValuesTOC(node[i].childNodes, counter);
 						counter++;
 						i++;
@@ -116,6 +126,7 @@
 	<body onload="getTableOfContents('current')">
 		<div id="wrapper">
 		    <div="head">
+				<button onclick="getTableOfContents('NotionalSRSTEST');">NotionalSRS</button>
 		        <button onclick="getTableOfContents('SoftwareRequirements');">Software Requirements</button>
 		        <button onclick="getTableOfContents('TestCases');">Test Case</button>
 		        <button onclick="getTableOfContents('UseCases');">Use Case</button>

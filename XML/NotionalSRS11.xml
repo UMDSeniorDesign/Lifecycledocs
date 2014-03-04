@@ -1,9 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <!--First draft of our SRS in XML.  2/11/2014 12:10PM - KP -->
 <!--TO DO-->
 <!--Input Name tags for each .0 section including introduction, general description, etc-->
 <!--Little formatting spaces, any other messed up shit-->
 
-<?xml version="1.0" encoding="UTF-8"?>
+
 
 <!--<?xml-stylesheet type="text/xsl" href="NotionalSRS11.xsl"?>-->
 
@@ -146,10 +148,10 @@
 			<subReq sectionID="3.1.3.3">
 				<Para>System shall provide a mechanism to associate related parts of each document. (e.g. Requirement x is associated with design element y and test case z).</Para>
 			</subReq>
-			<sugReq sectionID="3.1.3.4">
+			<subReq sectionID="3.1.3.4">
 				<Para>System shall produce XML instances conformant with an XML schema designed and developed by the team.</Para>
 			</subReq>
-			<suqReq sectionID="3.1.3.5">
+			<subReq sectionID="3.1.3.5">
 				<Para>System shall be able to auto-generate a Requirements Traceability Matrix at any point during development.</Para>
 			</subReq>			
 		
@@ -560,10 +562,10 @@
 
 </Requirement>
 <!--THIS WILL BE IN NEXT VERSION
-  		--THIS WILL BE IN NEXT VERSION
-  		--THIS WILL BE IN NEXT VERSION
-  		--THIS WILL BE IN NEXT VERSION
-  	--THIS WILL BE IN NEXT VERSION
+  		THIS WILL BE IN NEXT VERSION
+  		THIS WILL BE IN NEXT VERSION
+  		THIS WILL BE IN NEXT VERSION
+  	THIS WILL BE IN NEXT VERSION
 <Classes sectionID="3.4">
 Will be included in next version.
 <Class sectionID="3.4.1">
