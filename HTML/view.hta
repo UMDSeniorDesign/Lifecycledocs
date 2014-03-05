@@ -51,13 +51,13 @@
 				
 				var XML = loadXML(file_name);
 				
-				//alert(XML.parseError.errorCode); 						XML ERROR FINDERS
-				//alert(XML.parseError.reason);
-				//alert(XML.parseError.line);
+				/* alert("Code: " + XML.parseError.errorCode + 								XML Error Finder
+					"\nReason: " + XML.parseError.reason + 
+					"\nLine: " + XML.parseError.line);
+				*/
+				
 				var y = XML.documentElement.childNodes;
-				
-				//alert(y);
-				
+								
 				if(cookieFile != file_name){
 					document.cookie = "fileName="+file_name;
 					loadXMLValuesCookie(y);
@@ -81,7 +81,7 @@
 					
 					if(node[i].childNodes[0].hasChildNodes()){
 						loadXMLValuesCookie(node[i].childNodes);
-						i++;
+						//i++; 
 					}
 				}
 			}
@@ -90,19 +90,15 @@
 		<script>
 			function loadXMLValuesTOC(node, counter){
 				var table = document.getElementById("tableInput");
-				
-				//alert(node.length);
-				
+								
 				for (var i = 0; i < node.length; i++) {
 					table.innerHTML += ("<a href='edit.hta'; onclick='checkCookie("+counter+")';>" + node[i].nodeName + "</a> <br>");
 					counter ++;
-					//alert(node[i].childNodes[0].nodeValue);
 					
 					if(node[i].childNodes[0].hasChildNodes()) {	
-						
 						loadXMLValuesTOC(node[i].childNodes, counter);
 						counter++;
-						i++;
+						//i++; 
 					} 
 				}
 			}
