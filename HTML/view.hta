@@ -76,7 +76,7 @@
 		
 		<script>
 			function loadXMLValuesCookie(node){
-				for (i = 0; i < node.length; i++) {
+				for (var i = 0; i < node.length; i++) {
 					document.cookie = node[i].nodeName + "=" + node[i].childNodes[0].nodeValue;
 					
 					if(node[i].childNodes[0].hasChildNodes()){
@@ -93,10 +93,10 @@
 				
 				//alert(node.length);
 				
-				for (i = 0; i < node.length; i++) {
+				for (var i = 0; i < node.length; i++) {
 					table.innerHTML += ("<a href='edit.hta'; onclick='checkCookie("+counter+")';>" + node[i].nodeName + "</a> <br>");
 					counter ++;
-					alert(node[i].childNodes[0].nodeValue);
+					//alert(node[i].childNodes[0].nodeValue);
 					
 					if(node[i].childNodes[0].hasChildNodes()) {	
 						
