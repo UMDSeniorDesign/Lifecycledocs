@@ -77,9 +77,9 @@
 		<script>
 			function loadXMLValuesCookie(node){
 				for (var i = 0; i < node.length; i++) {
-					//document.cookie = node[i].nodeName + "=" + node[i].childNodes[0].nodeValue;
+					document.cookie = node[i].nodeName + "=" + node[i].nodeValue;
 					for(var j = 0; j < node[i].childNodes.length; j++){
-						document.cookie = node[i].nodeName + "=" + node[i].childNodes[j].nodeValue;
+						document.cookie = node[i].childNodes[j].nodeName + "=" + node[i].childNodes[j].nodeValue;
 						if(node[i].childNodes[j].hasChildNodes()){
 							loadXMLValuesCookie(node[i].childNodes[j].childNodes);
 						//i++; 
@@ -100,7 +100,10 @@
 					counter ++;
 					//alert(node[i].childNodes.length);
 					for(var j = 0; j < node[i].childNodes.length; j++){
-						if(node[i].childNodes[j].hasChildNodes()) {	
+						if(node[i].childNodes[j].nodeType != 3){
+						table.innerHTML += ("<a href='edit.hta'; onclick='checkCookie("+counter+")';>" + node[i].childNodes[j].nodeName + "</a> <br>");
+					}
+					if(node[i].childNodes[j].hasChildNodes()) {	
 							//alert (node[i].childNodes[j].nodeName);
 							loadXMLValuesTOC(node[i].childNodes[j].childNodes, counter);
 							counter++;
