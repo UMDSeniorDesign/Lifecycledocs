@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="NotionalSRS12.xsl"?>
+
+<UseCaseDocument projectName="Lifecycle Documents with Requirements Tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="NotionalSRS12.xsd">
+    <Introduction>
+        <Section>
+        </Section>
+    </Introduction>
+    
+    <Section name="ActivityDiagram" id="UC1.0">
+        <Image></Image>
+    </Section>
+    
+</UseCaseDocument>
