@@ -37,9 +37,10 @@
 		
 		<script>
 		    function getTableOfContents(file_name) {
-				var counter = 1;
+				var counter = 0;
 			
 				var cookieFile = getFromCookie("fileName");
+								
 				if(file_name == "current" && cookieFile != ""){
 					//set filename to the one stored in cookie so page loads Table of Contents
 					file_name = cookieFile;
@@ -60,8 +61,7 @@
 								
 				if(cookieFile != file_name){
 					document.cookie = "fileName="+file_name;
-					loadXMLValuesCookie(y);
-					alert(document.cookie);
+					loadXMLValuesCookie(y, 1);
 				}
 				
 				var table = document.getElementById("tableInput");
@@ -72,27 +72,40 @@
 	       
 				loadXMLValuesTOC(y, counter);
 	           	getValues();
+				alert(document.cookie);
+				loadXMLValuesCookie(y, -1); 			// This deletes the cookie but will give you error if you click on link since empty cookie
+				alert(document.cookie);
+				
 	        }		
 		</script>
 		
 		<script>
-			function loadXMLValuesCookie(node){
+			function getExpires(days) {
+				if (days) {
+					var date = new Date();
+					date.setTime( date.getTime() + (days*24*60*60*1000) );
+					return "; expires=" + date.toGMTString();
+					
+				}
+					
+				else return "";
+			}
+			</script>
+			
+			<script>
+				function loadXMLValuesCookie(node, num){
 				for (var i = 0; i < node.length; i++) {
-					if(node[i].nodeType != 3){
-						alert(node[i].nodeName + "=" + node[i].childNodes[0].nodeValue);
-						document.cookie = node[i].nodeName + "=" + node[i].childNodes[0].nodeValue;
-					}
+					if(node[i].nodeType != 3)
+						document.cookie = node[i].nodeName + "=" + node[i].childNodes[0].nodeValue + getExpires(num);
+					
 					for(var j = 0; j < node[i].childNodes.length; j++){
-						if(node[i].childNodes[j].nodeType != 3){
-						alert(node[i].childNodes[j].nodeName + "=" + node[i].childNodes[j].childNodes[0].nodeValue);
-						document.cookie = node[i].childNodes[j].nodeName + "=" + node[i].childNodes[j].childNodes[0].nodeValue;
-						if(node[i].childNodes[j].hasChildNodes()){
-							loadXMLValuesCookie(node[i].childNodes[j].childNodes);
-						}
-						}
+						if(node[i].childNodes[j].nodeType != 3)
+							document.cookie = node[i].childNodes[j].nodeName + "=" + node[i].childNodes[j].childNodes[0].nodeValue + getExpires(num);
+							
+						if(node[i].childNodes[j].hasChildNodes())
+							loadXMLValuesCookie(node[i].childNodes[j].childNodes, num);
 						
 					}
-					
 				}
 			}
 		</script>
@@ -102,20 +115,21 @@
 				var table = document.getElementById("tableInput");
 								
 				for (var i = 0; i < node.length; i++) {
-					if(node[i].nodeType != 3){
+					if(node[i].nodeType != 3) { 
+						counter++;
 						table.innerHTML += ("<a href='edit.hta'; onclick='checkCookie("+counter+")';>" + node[i].nodeName + "</a> <br>");
-					}
-					counter ++;
-					//alert(node[i].childNodes.length);
-					for(var j = 0; j < node[i].childNodes.length; j++){
-						if(node[i].childNodes[j].nodeType != 3){
-						table.innerHTML += ("<a href='edit.hta'; onclick='checkCookie("+counter+")';>" + node[i].childNodes[j].nodeName + "</a> <br>");
-						if(node[i].childNodes[j].hasChildNodes()) {
-							loadXMLValuesTOC(node[i].childNodes[j].childNodes, counter);
-							counter++;
+					}	
 						
-					}
-					} 
+					for(var j = 0; j < node[i].childNodes.length; j++){
+						if(node[i].childNodes[j].nodeType != 3) {
+							counter++;
+							table.innerHTML += ("<a href='edit.hta'; onclick='checkCookie("+counter+")';>" + node[i].childNodes[j].nodeName + "</a> <br>");
+						}
+						
+						if(node[i].childNodes[j].hasChildNodes()) {
+							counter++;
+							loadXMLValuesTOC(node[i].childNodes[j].childNodes, counter);
+						}	
 					}
 				}
 			}
