@@ -34,6 +34,7 @@
 		<script src="../JS/saveXML.js"></script>
 		<script src="../JS/store.js"></script>
 		<script src="../JS/getFromCookie.js"></script>
+		<script src="../JS/sessionvars.js"></script>
 		
 		<script>
 		    function getTableOfContents(file_name) {
@@ -58,7 +59,9 @@
 				*/
 				
 				var y = XML.documentElement.childNodes;
-								
+				
+				sessvars.xml = "";
+				
 				if(cookieFile != file_name){
 					document.cookie = "fileName="+file_name;
 					loadXMLValuesCookie(y, 1);
@@ -72,9 +75,11 @@
 	       
 				loadXMLValuesTOC(y, counter);
 	           	getValues();
-				alert(document.cookie);
-				loadXMLValuesCookie(y, -1); 			// This deletes the cookie but will give you error if you click on link since empty cookie
-				alert(document.cookie);
+				//alert(document.cookie);
+				//alert("SESSVARS = "+sessvars.xml);
+				//var cookieString = "";
+				//document.cookie = loadXMLValuesCookie(y, -1); 			// This deletes the cookie but will give you error if you click on link since empty cookie
+				//alert(document.cookie);
 				
 	        }		
 		</script>
@@ -93,15 +98,15 @@
 			</script>
 			
 			<script>
-				function loadXMLValuesCookie(node, num){
+			function loadXMLValuesCookie(node, num){
 				for (var i = 0; i < node.length; i++) {
-					if(node[i].nodeType != 3)
-						document.cookie = node[i].nodeName + "=" + node[i].childNodes[0].nodeValue + getExpires(num);
-					
+					if(node[i].nodeType != 3){
+						sessvars.xml += node[i].nodeName + "=" + node[i].childNodes[0].nodeValue + ";";
+					}
 					for(var j = 0; j < node[i].childNodes.length; j++){
-						if(node[i].childNodes[j].nodeType != 3)
-							document.cookie = node[i].childNodes[j].nodeName + "=" + node[i].childNodes[j].childNodes[0].nodeValue + getExpires(num);
-							
+						if(node[i].childNodes[j].nodeType != 3){
+							sessvars.xml += node[i].childNodes[j].nodeName + "=" + node[i].childNodes[j].childNodes[0].nodeValue +";";
+						}
 						if(node[i].childNodes[j].hasChildNodes())
 							loadXMLValuesCookie(node[i].childNodes[j].childNodes, num);
 						
@@ -138,12 +143,20 @@
 		<script>
 			function getValues() {
 				cookiearray = document.cookie.split(';');
+				xmlArray = sessvars.xml.split(';');
 				
 				var text = document.getElementById("textInput");
 
-				for(var i = 1; i < cookiearray.length; i++) {
+				/*for(var i = 1; i < cookiearray.length; i++) {
 					text.value += cookiearray[i].split('=')[1];
 					text.value += "\n";
+				}*/
+				for(var i = 1; i < xmlArray.length; i++) {
+					var newText = xmlArray[i].split('=')[1];
+					if (newText != "null"){
+						text.value += newText;
+						text.value += "\n";
+					}
 				}
 			}
 		</script>
@@ -154,6 +167,7 @@
 		<div id="wrapper">
 		    <div="head">
 				<button onclick="getTableOfContents('NotionalSRSTEST');">NotionalSRS</button>
+				<button onclick="getTableOfContents('NotionalSRSTest2');">NotionalSRSTest</button>
 		        <button onclick="getTableOfContents('SoftwareRequirements');">Software Requirements</button>
 		        <button onclick="getTableOfContents('TestCases');">Test Case</button>
 		        <button onclick="getTableOfContents('UseCases');">Use Case</button>
