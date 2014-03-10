@@ -44,6 +44,7 @@
 		<script>
 		    function getTableOfContents(file_name) {
 				var counter = 0;
+				sessvars.counter = 0;
 			
 				var cookieFile = getFromCookie("fileName");
 								
@@ -65,7 +66,7 @@
 				
 				var y = XML.documentElement.childNodes;
 				
-				sessvars.xml = "";
+				//sessvars.xml = "";
 				
 				if(cookieFile != file_name){
 					document.cookie = "fileName="+file_name;
@@ -126,19 +127,21 @@
 								
 				for (var i = 0; i < node.length; i++) {
 					if(node[i].nodeType != 3) { 
-						counter++;
-						table.innerHTML += ("<a href='edit.hta'; onclick='checkCookie("+counter+")';>" + node[i].nodeName + "</a> <br>");
+						table.innerHTML += ("<a href='edit.hta'; onclick='checkCookie("+sessvars.counter+")';>" + node[i].nodeName + "</a> <br>");
+						sessvars.counter += 1;
+						//counter++;
 					}	
 						
 					for(var j = 0; j < node[i].childNodes.length; j++){
 						if(node[i].childNodes[j].nodeType != 3) {
-							counter++;
-							table.innerHTML += ("<a href='edit.hta'; onclick='checkCookie("+counter+")';>" + node[i].childNodes[j].nodeName + "</a> <br>");
+							table.innerHTML += ("<a href='edit.hta'; onclick='checkCookie("+sessvars.counter+")';>" + node[i].childNodes[j].nodeName + "</a> <br>");
+							sessvars.counter += 1;
+							//counter++;
 						}
 						
 						if(node[i].childNodes[j].hasChildNodes()) {
-							counter++;
-							loadXMLValuesTOC(node[i].childNodes[j].childNodes, counter);
+							loadXMLValuesTOC(node[i].childNodes[j].childNodes, sessvars.counter);
+							//counter++;
 						}	
 					}
 				}

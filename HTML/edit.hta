@@ -9,6 +9,7 @@
 		
 		<script>
 			function loadPage() {
+				
 				var text = document.getElementById("text");
 				var name = document.getElementById("value");
 				
@@ -17,6 +18,8 @@
 
 				var index = sessvars.value;
 				var i = parseInt(index);									/* Changes index from 'string' to 'int' */
+				
+				alert(index);
 				
 				var n = xmlArray[i].split('=')[0];
 				var v = xmlArray[i].split('=')[1];

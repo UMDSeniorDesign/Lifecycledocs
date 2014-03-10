@@ -55,10 +55,10 @@
                 <Maintainability>5</Maintainability>
                 <Portability>6</Portability>
             </Non-FunctionalRequirements>
-				<InverseRequirements>6</InverseRequirements>
-            	<DesignConstraints>7</DesignConstraints>
-            	<LogicalDatabaseRequirements>8</LogicalDatabaseRequirements>
-            	<OtherRequirements>9</OtherRequirements>
+			<InverseRequirements>6</InverseRequirements>
+            <DesignConstraints>7</DesignConstraints>
+            <LogicalDatabaseRequirements>8</LogicalDatabaseRequirements>
+            <OtherRequirements>9</OtherRequirements>
         </SpecificRequirements>
         <GeneralDescription>4
             <SequenceDiagrams>1</SequenceDiagrams>
