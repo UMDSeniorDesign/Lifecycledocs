@@ -3,6 +3,8 @@
 		<script src="../JS/loadXML.js"></script>
 		<script src="../JS/saveXML.js"></script>
 		<script src="../JS/store.js"></script>
+		<script src="../JS/sessionvars.js"></script>
+
 
 		
 		<script>
@@ -10,12 +12,18 @@
 				var text = document.getElementById("text");
 				var name = document.getElementById("value");
 				
-				var cookiearray = document.cookie.split(';');
+				alert(sessvars.xml);
+				//var cookiearray = document.cookie.split(';');
+				var xmlArray = sessvars.xml.split(';');
 
-				var index = cookiearray[(cookiearray.length)-1];
+				alert(xmlArray);
+				var index = xmlArray[(xmlArray.length)-1];
+				alert(index);
 				var i = parseInt(index);									/* Changes index from 'string' to 'int' */
-				var n = cookiearray[i].split('=')[0];
-				var v = cookiearray[i].split('=')[1];
+				alert(i);
+				var n = xmlArray[i].split('=')[0];
+				var v = xmlArray[i].split('=')[1];
+				
 				
 				name.innerHTML = n;
 				text.value = v;
@@ -27,7 +35,7 @@
 				var text = document.getElementById("text");
 				var name = document.getElementById("value");
 				
-				var cookiearray = document.cookie.split(';');
+				//var cookiearray = document.cookie.split(';');
 				var index = parseInt(cookiearray[(cookiearray.length)-1]);
 				
 				var value = cookiearray[index].split('=');
