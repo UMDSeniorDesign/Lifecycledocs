@@ -12,15 +12,12 @@
 				var text = document.getElementById("text");
 				var name = document.getElementById("value");
 				
-				alert(sessvars.xml);
 				//var cookiearray = document.cookie.split(';');
 				var xmlArray = sessvars.xml.split(';');
 
-				alert(xmlArray);
-				var index = xmlArray[(xmlArray.length)-1];
-				alert(index);
+				var index = sessvars.value;
 				var i = parseInt(index);									/* Changes index from 'string' to 'int' */
-				alert(i);
+				
 				var n = xmlArray[i].split('=')[0];
 				var v = xmlArray[i].split('=')[1];
 				

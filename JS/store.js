@@ -1,6 +1,6 @@
 
 function checkCookie(value) {
-	document.cookie = value;
+	sessvars.value = value;
 	//alert(document.cookie);
 	/*var val = value + "=";
 	var y = document.cookie.split(';');
