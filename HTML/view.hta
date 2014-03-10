@@ -43,8 +43,9 @@
 		
 		<script>
 		    function getTableOfContents(file_name) {
+				alert("file_name = " +file_name+ " sessvars FileName = " + getFromCookie("fileName"));
 				var counter = 0;
-				sessvars.counter = 0;
+				sessvars.counter = 1;
 			
 				var cookieFile = getFromCookie("fileName");
 								
@@ -69,7 +70,7 @@
 				//sessvars.xml = "";
 				
 				if(cookieFile != file_name){
-					document.cookie = "fileName="+file_name;
+					sessvars.xml = "fileName="+file_name+";";
 					loadXMLValuesCookie(y, 1);
 				}
 				
