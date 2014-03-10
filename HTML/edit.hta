@@ -35,14 +35,14 @@
 				var text = document.getElementById("text");
 				var name = document.getElementById("value");
 				
-				//var cookiearray = document.cookie.split(';');
-				var index = parseInt(cookiearray[(cookiearray.length)-1]);
+				var xmlArray = sessvars.xml.split(';');
+				var index = sessvars.value;
 				
-				var value = cookiearray[index].split('=');
+				var value = xmlArray[index].split('=');
 				value[1] = text.value;
-				cookiearray[index] = value.join('=');
-				//document.cookie = cookiearray.join(';');
-				document.cookie = cookiearray[index]; 
+				xmlArray[index] = value.join('=');
+				sessvars.xml = xmlArray.join(';');
+				//sessvars.xml = xmlArray[index]; 
 			}
 		</script>
 	</head>
