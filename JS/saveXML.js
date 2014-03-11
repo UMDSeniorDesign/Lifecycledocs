@@ -1,5 +1,4 @@
 function saveXML() {
-	var file_location = "../XML/"+getFromCookie("fileName")+"TestSave.xml";
 	var fs = new ActiveXObject("Scripting.FileSystemObject");
 	var xmlArray = sessvars.xml.split(';');
 	var newFile = "<?xml version='1.0' encoding='UTF-8'?>\n";
@@ -10,7 +9,12 @@ function saveXML() {
 		newFile += value[1];
 		newFile += "</"+value[0]+">\n";
 	}
-	file = fs.CreateTextFile(file_location, true);
+	//If windows 7, use this line
+	var f = fs.GetFolder("../XML");
+	//If windows 8, use this line
+	//var f = fs.GetFolder("\XML");
+	file = f.CreateTextFile(getFromCookie("fileName")+"TestSave.xml", true, true);
 	file.write(newFile);
 	file.close();
+	alert("File saved");
 }
