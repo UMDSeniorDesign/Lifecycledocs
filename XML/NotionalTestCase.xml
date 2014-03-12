@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="NotionalSRS12.xsl"?>
+
+<TestCaseDocument projectName="Lifecycle Documents with Requirements Tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="NotionalSRS13_no_errors_but_unfinished.xsd">
+    
+    <Section id="TC1.0">
+        <Title>Lifecycle Document Project Manager with Requirements Tracking</Title>
+        <Para> The goal of this project is to create a protoype application capable of allowing a user to productively manage lifecycle documentation in XML without a previous XML experience. </Para>
+    </Section>
+    <Section id="TC1.1">
+        <Title>Create Lifecycle Project</Title>
+        <Requirement id="TC1.1.1">
+            <Title>Input Project Name</Title>
+            <Para>Expected Output: </Para>
+        </Requirement>
+    </Section>
+    
+</TestCaseDocument>
