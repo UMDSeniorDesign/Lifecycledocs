@@ -59,6 +59,7 @@
     </xsd:complexType>
     <xsd:element name="Para" type="xsd:string"/>
     <xsd:simpleType name="ParaType">
+
         <xsd:restriction base="xsd:string"/>
     </xsd:simpleType>
 
@@ -76,21 +77,20 @@
     <xsd:element name="SpecificRequirements" type="SpecificRequirementsType"/>
     <xsd:element name="Section" type="SectionType"/>
     <xsd:complexType name="SectionType">
-        <xsd:sequence>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
 
-            <xsd:element ref="Title" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element ref="Para" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element ref="Requirement" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element ref="Image" minOccurs="0" maxOccurs="unbounded"/>
-        </xsd:sequence>
+            <xsd:element ref="Title" minOccurs="0"/>
+            <xsd:element ref="Para" minOccurs="0"/>
+            <xsd:element ref="Requirement" minOccurs="0"/>
+            <xsd:element ref="Image" minOccurs="0"/>
+            <xsd:element ref="Section" minOccurs="0"/>
+        </xsd:choice>
         <xsd:attribute name="id" use="optional" type="xsd:ID"/>
         <xsd:attribute name="name" use="optional" type="xsd:string"/>
     </xsd:complexType>
     <xsd:element name="Image" type="ImageType"/>
     <xsd:complexType name="ImageType">
-        <xsd:sequence>
-            <!--Learn how to deal with images--> </xsd:sequence>
-
+        <xsd:attribute name="id"/>
     </xsd:complexType>
     <xsd:complexType name="SpecificRequirementsType">
         <!-- This is just an example. It may be more complex than this... -->
@@ -108,37 +108,19 @@
         <xsd:sequence>
             <xsd:element ref="Title" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element ref="Para" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element ref="subReq" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="Requirement" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
         <xsd:attribute name="id" use="optional" type="xsd:ID"/>
         <!-- <xsd:attribute name="name" use="optional" type="xsd:string"/>-->
     </xsd:complexType>
-
-    <xsd:element name="subReq" type="subReqType"/>
-    <xsd:element name="subTitle" type="xsd:string"/>
-
-    <xsd:complexType name="subTitleType">
-        <xsd:simpleContent>
-            <xsd:extension base="xsd:string"> </xsd:extension>
-        </xsd:simpleContent>
-    </xsd:complexType>
-    <xsd:complexType name="subReqType">
-        <xsd:sequence>
-            <xsd:element ref="subTitle" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element ref="Para" minOccurs="0" maxOccurs="unbounded"/>
-        </xsd:sequence>
-        <xsd:attribute name="id" type="xsd:ID"/>
-    </xsd:complexType>
-
-
-    <xsd:complexType name="AnalysisModelType"/>
     <xsd:element name="UseCaseDocument" type="UseCaseDocumentType"/>
     <xsd:complexType name="UseCaseDocumentType">
+
         <xsd:sequence>
-            <xsd:element ref="Introduction"/>
-            <xsd:element ref="Section"/>
+            <xsd:element ref="Section" minOccurs="0" maxOccurs="unbounded"/>
             <!-- Other global elements to be referenced here. -->
         </xsd:sequence>
+
         <xsd:attribute name="id" use="optional" type="xsd:ID"/>
         <xsd:attribute name="projectName" use="required" type="xsd:string"/>
     </xsd:complexType>
@@ -163,9 +145,10 @@
     <xsd:element name="TestCaseDocument" type="TestCaseDocumentType"/>
     <xsd:complexType name="TestCaseDocumentType">
         <xsd:sequence>
-            <xsd:element ref="Introduction"/>
+            <xsd:element ref="Section" minOccurs="1" maxOccurs="unbounded"/>
             <!-- Other global elements to be referenced here. -->
         </xsd:sequence>
-        <xsd:attribute name="id" use="required" type="xsd:ID"/>
+        <!--<xsd:attribute name="id" use="required" type="xsd:ID"/>-->
+        <xsd:attribute name="projectName" use="required" type="xsd:string"/>
     </xsd:complexType>
 </xsd:schema>
