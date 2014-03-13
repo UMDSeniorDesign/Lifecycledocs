@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="NotionalSRS12.xsl"?>
 
-<UseCaseDocument projectName="Lifecycle Documents with Requirements Tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="NotionalSRS13_no_errors_but_unfinished.xsd">
+<UseCaseDocument projectName="Lifecycle Documents with Requirements Tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="NotionalSchema14.xsd">
 
     <Section name="Introduction" id="UC1.0">
         <Title>Lifecycle Document Project Manager with Requirements Tracking</Title>

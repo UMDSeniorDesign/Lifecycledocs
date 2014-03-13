@@ -1,18 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="NotionalSRS12.xsl"?>
 
-<TestCaseDocument projectName="Lifecycle Documents with Requirements Tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="NotionalSRS13_no_errors_but_unfinished.xsd">
-    
+<TestCaseDocument projectName="Lifecycle Documents with Requirements Tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="NotionalSchema14.xsd">
+    <xi:include href="NotionalSRS13_no_errors_but_unfinished.xml"/>
+    <xi:include href="NotionalUseCase.xml"/>
     <Section id="TC1.0">
         <Title>Lifecycle Document Project Manager with Requirements Tracking</Title>
         <Para> The goal of this project is to create a protoype application capable of allowing a user to productively manage lifecycle documentation in XML without a previous XML experience. </Para>
-    </Section>
-    <Section id="TC1.1">
-        <Title>Create Lifecycle Project</Title>
-        <Requirement id="TC1.1.1">
-            <Title>Input Project Name</Title>
-            <Para>Expected Output: </Para>
-        </Requirement>
+        <Section id="TC1.1">
+            <Title>Create Lifecycle Project</Title>
+            <Section id="TC1.1.1">
+                <Title>Form is displayed to user</Title>
+                <Para>Form is displayed properly to user with appropriate textboxes and buttons.</Para>
+                <TestResult>false</TestResult>
+                <ApprovedBy>
+                    <Name>Kevin</Name>
+                    <Para>Comment</Para>
+                </ApprovedBy>
+                <Ref>RQ3.1.1</Ref>
+            </Section>
+            <Section id="TC1.1.2">
+                <Title>Input project name</Title>
+                <Para>Project name is an accepted string in textbox.  No special characters.</Para>
+                <TestResult>false</TestResult>
+                <ApprovedBy>
+                    <Name>Pete</Name>
+                </ApprovedBy>
+                <Ref>RQ3.2.1</Ref>
+                <Ref>RQ3.2.3</Ref>
+            </Section>
+            
+            <Section id="TC1.1.3">
+                <Title>Input template file location</Title>
+                <Para>Template selected is a valid file type or is left blank.</Para>
+                <TestResult>false</TestResult>
+                <ApprovedBy>
+                    <Name>Pete</Name>
+                </ApprovedBy>
+                <Ref>RQ3.1.4</Ref>
+            </Section>
+            
+            <Section id="TC1.1.4">
+                <Title>Template file is not of correct file type or does not exist</Title>
+                <Para>Program prompts user with error message.</Para>
+                <TestResult>false</TestResult>
+                <ApprovedBy>
+                    <Name>Jeremiah</Name>
+                </ApprovedBy>
+                <Ref>RQ3.2.1.2</Ref>
+                <Ref>RQ3.2.1.5</Ref>
+            </Section>
+            
+            <Section id="TC1.1.5">
+                <Title>Select destination file location</Title>
+                <Para>User is unable to input a destination and must use Browse button to select a folder to save the project in.</Para>
+                <TestResult>false</TestResult>
+                <ApprovedBy>
+                    <Name>Ari</Name>
+                </ApprovedBy>
+                <Ref>RQ3.1.2</Ref>
+                <Ref>RQ3.1.4</Ref>
+                <Ref>RQ3.2.1.2</Ref>
+                <Ref>RQ3.2.2.5</Ref>
+            </Section>
+            
+            <Section id="TC1.1.6">
+                <Title>Click cancel button or close window</Title>
+                <Para> Create window is close and user is brought back to previous menu.</Para>
+                <TestResult>false</TestResult>
+                <ApprovedBy>
+                    <Name>Ari</Name>
+                </ApprovedBy>
+                <Ref>RQ3.1.4</Ref>
+            </Section>
+            
+            <Section id="TC1.1.7">
+                <Title>Close Browse button</Title>
+                <Para>user is prompted to select file destination and display destiniation in the textbox.</Para>
+                <TestResult>false</TestResult>
+                <ApprovedBy>
+                    <Name>Kevin</Name>
+                </ApprovedBy>
+                <Ref>RQ3.1.1</Ref>
+                <Ref>RQ3.1.4</Ref>
+            </Section>
+            
+            <Section id="TC1.1.8">
+                <Title>Click Create Button</Title>
+                <Para>A blank document opens using Template selected.  The files saves in the destination selected with the name "Project Name"</Para>
+                <TestResult>false</TestResult>
+                <ApprovedBy>
+                    <Name>Pete</Name>
+                </ApprovedBy>
+                <Ref>RQ3.1.1</Ref>
+                <Ref>RQ3.1.4</Ref>
+                <Ref>RQ3.2.1</Ref>
+            </Section>
+            
+          </Section>
     </Section>
     
 </TestCaseDocument>
