@@ -11,7 +11,19 @@
 		innerBorder="yes"
 		navigable="yes"
 		scroll="auto"
-		scrollFlat="yes" />  
+		scrollFlat="yes" /> 
+
+		<script src="../JS/loadXML.js"></script>
+		<script src="../JS/sessionvars.js"></script>
+
+		<script>
+			function openProject() {
+				sessvars.projectName = prompt("Name of file: ");
+						
+				document.location.href = 'view.hta'
+			}
+		</script>
+		
     </head>
         
 <title>Lifecycle Documents</title>
@@ -23,7 +35,7 @@
                 <div id="siteControl">
                     <!-- <a href="#">Click Me</a> <br> -->
                     <button id="create" onclick=location.href='new.hta'>New Project</button>
-                    <button id="open" onclick=location.href='view.hta'>Open Project</button>
+                    <button id="open" onclick=openProject()>Open Project</button>
 
                 </div>
             </div>
