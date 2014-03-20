@@ -47,20 +47,21 @@
 				
 				var name = y.getElementsByTagName("file_name")[0];
 				var x = name.childNodes[0];
-				//var loc = y.getElementbyTagName("file_location")[0];
+				
 				//alert(x.nodeValue);
+				
 				var div = document.getElementById("head1");
 				
-				div.innerHTML += ("<button onclick='getTableOfContents('"+x.nodeValue+"');'>"+x.nodeValue+"</button>");
-			
+				div.innerHTML += ("<button onclick=getTableOfContents('"+x.nodeValue+"');>"+x.nodeValue+"</button>");	// Quotes needed to be in right place
+				//alert(div.innerHTML);
 			}
 		</script>
 		
 		<script>
 		    function getTableOfContents(file_name) {
-			
-				if(sessvars.projectName != undefined) {
+				if(sessvars.projectName != undefined && sessvars.projectName != "") {
 					getTabs();
+					sessvars.projectName = "";
 				}
 				
 				var counter = 0;
