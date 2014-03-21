@@ -45,15 +45,12 @@
 			function getTabs() {
 				var y = loadXML(sessvars.projectName);
 				
-				var name = y.getElementsByTagName("file_name")[0];
-				var x = name.childNodes[0];
-				
-				//alert(x.nodeValue);
-				
+				var name = y.documentElement.childNodes;
 				var div = document.getElementById("head1");
-				
-				div.innerHTML += ("<button onclick=getTableOfContents('"+x.nodeValue+"');>"+x.nodeValue+"</button>");	// Quotes needed to be in right place
-				//alert(div.innerHTML);
+												
+				for(var i = 0; i < name.length; i++) {
+					div.innerHTML += ("<button onclick=getTableOfContents('"+name[i].childNodes[0].nodeValue+"');>"+name[i].childNodes[0].nodeValue+"</button>");	// Quotes needed to be in right place
+				}
 			}
 		</script>
 		
