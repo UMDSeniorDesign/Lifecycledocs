@@ -24,7 +24,7 @@
 		        height 80%;
 		    }
 		    #head {
-		        width:100%%; 
+		        width:100%; 
 		        height:20%
 		    }
 	    </style>
@@ -83,9 +83,7 @@
 				*/
 				
 				var y = XML.documentElement.childNodes;
-				
-				//sessvars.xml = "";
-				
+								
 				if(cookieFile != file_name){
 					sessvars.xml = "fileName="+file_name+";";
 					loadXMLValuesCookie(y, 1);
@@ -98,30 +96,11 @@
                 document.getElementById("textInput").value = '';
 	       
 				loadXMLValuesTOC(y, counter);
-	           	getValues();
-				//alert(document.cookie);
-				//alert("SESSVARS = "+sessvars.xml);
-				//var cookieString = "";
-				//document.cookie = loadXMLValuesCookie(y, -1); 			// This deletes the cookie but will give you error if you click on link since empty cookie
-				//alert(document.cookie);
-				
+	           	getValues();				
 	        }		
 		</script>
-		
+					
 		<script>
-			function getExpires(days) {
-				if (days) {
-					var date = new Date();
-					date.setTime( date.getTime() + (days*24*60*60*1000) );
-					return "; expires=" + date.toGMTString();
-					
-				}
-					
-				else return "";
-			}
-		</script>
-			
-			<script>
 			function loadXMLValuesCookie(node, num){
 				for (var i = 0; i < node.length; i++) {
 					if(node[i].nodeType != 3){
@@ -168,15 +147,10 @@
 		
 		<script>
 			function getValues() {
-				//cookiearray = document.cookie.split(';');
 				xmlArray = sessvars.xml.split(';');
 				
 				var text = document.getElementById("textInput");
 
-				/*for(var i = 1; i < cookiearray.length; i++) {
-					text.value += cookiearray[i].split('=')[1];
-					text.value += "\n";
-				}*/
 				for(var i = 1; i < xmlArray.length; i++) {
 					var newText = xmlArray[i].split('=')[1];
 					if (newText != "null"){
