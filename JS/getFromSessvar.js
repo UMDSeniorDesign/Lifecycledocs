@@ -1,4 +1,4 @@
-function getFromCookie(element){
+function getFromSessvar(element){
 	var name = element + "=";
 	if(sessvars.xml == null) 
 		return "";

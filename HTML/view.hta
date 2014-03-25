@@ -27,7 +27,7 @@
 		<script src="../JS/loadXML.js"></script>
 		<script src="../JS/updateXML.js"></script>
 		<script src="../JS/saveXML.js"></script>
-		<script src="../JS/getFromCookie.js"></script>
+		<script src="../JS/getFromSessvar.js"></script>
 		<script src="../JS/sessionvars.js"></script>
 		
 		<script>
@@ -59,13 +59,13 @@
 				var counter = 0;
 				sessvars.counter = 1;
 			
-				var cookieFile = getFromCookie("fileName");
+				var sessvarFilename = getFromSessvar("fileName");
 								
-				if(file_name == "current" && cookieFile != ""){
+				if(file_name == "current" && sessvarFilename != ""){
 					//set filename to the one stored in cookie so page loads Table of Contents
-					file_name = cookieFile;
+					file_name = sessvarFilename;
 				}
-				if(file_name == "current" && cookieFile == ""){
+				if(file_name == "current" && sessvarFilename == ""){
 					//Initial Load, used to avoid null pointer error
 					return;
 				}
@@ -79,9 +79,9 @@
 				
 				var y = XML.documentElement.childNodes;
 								
-				if(cookieFile != file_name){
+				if(sessvarFilename != file_name){
 					sessvars.xml = "fileName="+file_name+";";
-					loadXMLValuesCookie(y, 1);
+					loadXMLValuesSessvar(y, 1);
 				}
 				
 				var table = document.getElementById("tableInput");
@@ -96,7 +96,7 @@
 		</script>
 					
 		<script>
-			function loadXMLValuesCookie(node, num){
+			function loadXMLValuesSessvar(node, num){
 				for (var i = 0; i < node.length; i++) {
 					if(node[i].nodeType != 3){
 						sessvars.xml += node[i].nodeName + "=" + node[i].childNodes[0].nodeValue + ";";
@@ -106,7 +106,7 @@
 							sessvars.xml += node[i].childNodes[j].nodeName + "=" + node[i].childNodes[j].childNodes[0].nodeValue +";";
 						}
 						if(node[i].childNodes[j].hasChildNodes())
-							loadXMLValuesCookie(node[i].childNodes[j].childNodes, num);
+							loadXMLValuesSessvar(node[i].childNodes[j].childNodes, num);
 						
 					}
 				}
@@ -176,7 +176,7 @@
 			</div>
 			<div id="preview">
 			    <h1>Preview</h1>
-			    <textarea rows="50" id="textInput" style="width: 100%;"></textarea>
+			    <textarea rows="50" id="textInput" style="width: 100%"></textarea>
 			    <button onclick="saveXML()">Save</button>
 			</div>
 		</div>
