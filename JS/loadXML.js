@@ -5,3 +5,12 @@ function loadXML(file_name) {
 				
 	return XML;
 }
+
+function loadProject(file_name) {
+	var project = new ActiveXObject("Msxml2.DOMDocument.6.0");
+	project.async = false;
+	
+	project.load("../Projects/" + file_name);
+				
+	return project;
+}

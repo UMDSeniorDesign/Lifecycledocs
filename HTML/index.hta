@@ -17,9 +17,14 @@
 		<script src="../JS/sessionvars.js"></script>
 
 		<script>
-			function openProject() {
-				sessvars.projectName = prompt("Name of file: ", "test");
-						
+			function openProject() {	
+				
+				var v = document.getElementById("browse").value;
+				
+				var varray = v.split("\\");
+				
+				//alert(varray[varray.length-1]);
+				sessvars.projectName = varray[varray.length-1];
 				document.location.href = 'view.hta'
 			}
 		</script>
@@ -36,6 +41,7 @@
                     <!-- <a href="#">Click Me</a> <br> -->
                     <button id="create" onclick=location.href='new.hta'>New Project</button>
                     <button id="open" onclick=openProject()>Open Project</button>
+					<input id="browse" type="file">
 
                 </div>
             </div>
