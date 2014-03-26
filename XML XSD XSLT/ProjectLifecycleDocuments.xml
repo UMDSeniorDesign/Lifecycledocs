@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="NotionalSRS12.xsl"?>
+<ProjectLifecycleDocuments id="PL1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="NotionalSchema2.xsd">
+    <xi:include href="NotionalSRS2.xml"/>
+    <xi:include href="NotionalTestCase.xml"/>
+    <xi:include href="NotionalUseCase.xml"/>
+</ProjectLifecycleDocuments>
