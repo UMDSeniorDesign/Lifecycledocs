@@ -6,14 +6,10 @@
             <head>
                 <script>
                     function test(ID, title){
-                    //alert(ID);
-					//alert(title);
-					//alert(para);
 					var para = document.getElementById(ID).innerHTML;
-					//alert(para);
-					var text = ID;
+					var text = "<u>"+ID;
 					text += " - ";
-					text += title;
+					text += "<i>"+title+"</i></u>";
 					text += "<p>";
 					text += para;
 					text += "</p>";
@@ -49,30 +45,30 @@
 
     <xsl:template match="Section">
        <br/>
+	   <xsl:variable name="vID">
+			<xsl:value-of select="@id"/>
+		</xsl:variable>
+		<xsl:variable name="vTitle">
+			<xsl:value-of select="Title"/>
+		</xsl:variable>
+		<xsl:variable name="vPara">
+			<!--<xsl:apply-templates select="Para"/>-->
+			<xsl:for-each select="Para">
+			<xsl:value-of select="."/>
+			</xsl:for-each>
+		</xsl:variable>
         <h1>
-            <xsl:variable name="vID">
-				<xsl:value-of select="@id"/>
-			</xsl:variable>
-			<xsl:variable name="vTitle">
-				<xsl:value-of select="Title"/>
-			</xsl:variable>
-			<xsl:variable name="vPara">
-				<!--<xsl:apply-templates select="Para"/>-->
-				<xsl:for-each select="Para">
-				<xsl:value-of select="."/>
-				</xsl:for-each>
-			</xsl:variable>
-            <a onclick="test('{$vID}','{$vTitle}')">
+            <!--<a onclick="test('{$vID}','{$vTitle}')">
                 <xsl:attribute name="href"/>
                 <xsl:value-of select="$vID"/>
 			</a> -
+			-->
+			<button type="button" onclick="test('{$vID}','{$vTitle}')">
+			<xsl:value-of select="$vID"/></button> - 
         <xsl:value-of select="$vTitle"/>
         </h1>
         <h2>
 			<div id="preview">
-			<!--<hi3> <xsl:value-of select="@id"/></hi3> - 
-            <i><b> <xsl:value-of select="Title"/> </b></i>
-			<br/>-->
 			<div id="{@id}" style="display: none;">
             <xsl:apply-templates select="Para"/>
 			</div>
@@ -86,30 +82,30 @@
     </xsl:template>
     <xsl:template match="Requirement">
 		<br/>
+		<xsl:variable name="vID">
+			<xsl:value-of select="@id"/>
+		</xsl:variable>
+		<xsl:variable name="vTitle">
+			<xsl:value-of select="Title"/>
+		</xsl:variable>
+		<xsl:variable name="vPara">
+			<!--<xsl:apply-templates select="Para"/>-->
+			<xsl:for-each select="Para">
+			<xsl:value-of select="."/>
+			</xsl:for-each>
+		</xsl:variable>
 		<h1>
-            <xsl:variable name="vID">
-				<xsl:value-of select="@id"/>
-			</xsl:variable>
-			<xsl:variable name="vTitle">
-				<xsl:value-of select="Title"/>
-			</xsl:variable>
-			<xsl:variable name="vPara">
-				<!--<xsl:apply-templates select="Para"/>-->
-				<xsl:for-each select="Para">
-				<xsl:value-of select="."/>
-				</xsl:for-each>
-			</xsl:variable>
-            <a onclick="test('{$vID}','{$vTitle}','{$vPara}')">
+            <!--<a onclick="test('{$vID}','{$vTitle}')">
                 <xsl:attribute name="href"/>
                 <xsl:value-of select="$vID"/>
 			</a> -
+			-->
+			<button type="button" onclick="test('{$vID}','{$vTitle}')">
+			<xsl:value-of select="$vID"/></button> - 
         <xsl:value-of select="$vTitle"/>
         </h1>
         <h2>
 			<div id="preview"> 
-            <!--<hi3> <xsl:value-of select="@id"/></hi3> - 
-            <i><b> <xsl:value-of select="Title"/> </b></i>
-			<br/>-->
 			<div id="{@id}" style="display: none;">
             <xsl:apply-templates select="Para"/>
 			</div>
