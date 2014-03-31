@@ -1,0 +1,1053 @@
+
+
+	
+	<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script>
+                    function test(ID, title){
+					var para = document.getElementById(ID).innerHTML;
+					var text = "<u>"+ID;
+					text += " - ";
+					text += "<i>"+title+"</i></u>";
+					text += "<p>";
+					text += para;
+					text += "</p>";
+					var preview = document.getElementById("preview");
+					preview.innerHTML = text;
+                    }
+                </script><title>Lifecycle Documents</title><style type="text/css">
+                    h1 {
+                    float: left;
+                    width: 40%;
+                    font-size: 12pt;
+                    }
+                    h2 {
+                    float: right;
+                    width: 60%;
+                    font-size: 12pt;
+                    font-style: normal;
+                    font-weight: normal;
+                    }
+                    h3 {
+                    font-style: bold;
+                    font-weight: normal;
+                    }
+                </style></head>
+   <body><br><h1><button type="button" onclick="test('RQ1.0','Introduction')">RQ1.0</button> - 
+         Introduction
+      </h1>
+      <h2>
+         <div id="preview">
+            <div id="RQ1.0" style="display: none;">The Software Requirements Specification details the extent of NUWC’s Lifecycle Project
+               Manager. The product’s main feature is it’s ability to create and manage lifecycle
+               documents using a graphical user interface. The lifecycle documents will be organized
+               and exported using an XML Schema. This can be accomplished by a user who has no knowledge
+               of the XML language. This document will review all the basic functionality required
+               for a user to edit, create, and manage lifecycle projects.
+               	  <br></div>
+         </div>
+      </h2>
+      <h1></h1><br><h1><button type="button" onclick="test('RQ1.1','Purpose')">RQ1.1</button> - 
+         Purpose
+      </h1>
+      <h2>
+         <div id="preview">
+            <div id="RQ1.1" style="display: none;"> To provide a detailed description of how the product will produce it’s lifecycle
+               documents as well as edit and export them. It also overviews the basic functional
+               requirements requested by the customer.
+               			<br></div>
+         </div>
+      </h2>
+      <h1></h1><br><h1><button type="button" onclick="test('RQ1.2','Scope')">RQ1.2</button> - 
+         Scope
+      </h1>
+      <h2>
+         <div id="preview">
+            <div id="RQ1.2" style="display: none;">The Lifecycle Project Manager will create and edit projects and lifecycle documents.
+               It will serve as a cheap but easy to use software that allows users to input their
+               own data and organize based on an XML schema. The product will export the lifecycle
+               documents as PDF and HTML, as well as print out a requirements traceability matrix.
+               		<br></div>
+         </div>
+      </h2>
+      <h1></h1><br><h1><button type="button" onclick="test('RQ1.3','Definitions ')">RQ1.3</button> - 
+         Definitions 
+      </h1>
+      <h2>
+         <div id="preview">
+            <div id="RQ1.3" style="display: none;">API - Application Programming Interface<br>CSS - Cascading Style Sheet<br>CSV - Comma Separated Value<br>GUI - Graphical User Interface<br>HTML - HyperText Markup Language<br>JS - Javascript<br>LC - Lifecycle<br>NUWC - Naval Undersea Warfare Center Division Newport<br>PDF - Portable Document Format<br>RTM - Requirements Traceability Matrix<br>UMASSD - University of Massachusetts: Dartmouth<br>XML - Extensible Markup Language<br></div>
+         </div>
+      </h2>
+      <h1></h1><br><h1><button type="button" onclick="test('RQ1.4','Overview')">RQ1.4</button> - 
+         Overview
+      </h1>
+      <h2>
+         <div id="preview">
+            <div id="RQ1.4" style="display: none;">The SRS contains explicit details describing how the product is designed and implemented.
+               It is organized in a top-down layered approach. The goal of this project is to create
+               a protoype application capable of allowing a user to productively manage lifecycle
+               documentation in XML without an previous XML experience. 
+               		<br></div>
+         </div>
+      </h2>
+      <h1></h1><br><h1><button type="button" onclick="test('RQ2.0','General Description')">RQ2.0</button> - 
+         General Description
+      </h1>
+      <h2>
+         <div id="preview">
+            <div id="RQ2.0" style="display: none;"></div>
+         </div>
+      </h2>
+      <h1><br><h1><button type="button" onclick="test('RQ2.1','Product Perspective ')">RQ2.1</button> - 
+            Product Perspective 
+         </h1>
+         <h2>
+            <div id="preview">
+               <div id="RQ2.1" style="display: none;">Our project team design goal is to develop a software solution to the proposal offered
+                  by NUWC. The design will accommodate for previous user complaints and shortcoming.
+                  It will also replace manual spreadsheet entries into a database. The software will
+                  also automate the process of generating a RTM. It will be a new, self-contained, web-based
+                  solution that requires minimal constraints. The design goal is to provide a tabular
+                  method of viewing multiple documents simultaneously to promote user productivity.
+                  	<br></div>
+            </div>
+         </h2>
+         <h1></h1><br><h1><button type="button" onclick="test('RQ2.2','Product Functions ')">RQ2.2</button> - 
+            Product Functions 
+         </h1>
+         <h2>
+            <div id="preview">
+               <div id="RQ2.2" style="display: none;">The software will prompt the user to open a new project or create a new one. When
+                  the user selects new project it presents the user with a set default templates which
+                  have been checked against a defined XML schema. These templates will be saved with
+                  the filename specified by the user. The user can then edit these templates with their
+                  information. The user can define requirements which will be traced throughout other
+                  documents in the project. After the documents have been saved, the user can select
+                  to create a RTM (Requirement Traceability Matrix) from the XML templates which the
+                  user has created and modified. 
+                  	<br></div>
+            </div>
+         </h2>
+         <h1></h1><br><h1><button type="button" onclick="test('RQ2.3','User Characteristics')">RQ2.3</button> - 
+            User Characteristics
+         </h1>
+         <h2>
+            <div id="preview">
+               <div id="RQ2.3" style="display: none;">This product is intended to be used by a non-technical user who may have no knowledge
+                  of the XML language. There will be no user groups, or administrator authentications.
+                  The user will be assumed to have access once the user is able to log into the computer
+                  where the software is stored.
+                  <br></div>
+            </div>
+         </h2>
+         <h1></h1><br><h1><button type="button" onclick="test('RQ2.4','General Constraints')">RQ2.4</button> - 
+            General Constraints
+         </h1>
+         <h2>
+            <div id="preview">
+               <div id="RQ2.4" style="display: none;">The software will run on a Microsoft Windows 7 platform within Microsoft Internet
+                  Explorer browser. <br>The use of a database is prohibited and there is also no Internet connection available.<br>The software must implement an XML schema developed by the team. The schema helps
+                  keep the document structured and search-able. <br>By using an XML schema and an XLST processor, the user will have the ability to export
+                  documents as either an HTML or PDF.<br></div>
+            </div>
+         </h2>
+         <h1></h1><br><h1><button type="button" onclick="test('RQ2.5','Assumptions')">RQ2.5</button> - 
+            Assumptions
+         </h1>
+         <h2>
+            <div id="preview">
+               <div id="RQ2.5" style="display: none;">One dependency would be the available browser. If this were to change our application
+                  may break or provide an unintended appearance or functionality to the user.<br> product will create a directory for all of the created/edited LC documents, and the
+                  user will have permission on the local machine for the software to function as intended.<br>The team must also assume the user is capable of creating and editing technical documentation.
+                  <br>Lastly, one major assumption is user has no knowledge of XML and the user should have
+                  not have to see what is happening behind the scenes while creating the project and
+                  exporting the documents.
+                  	  <br></div>
+            </div>
+         </h2>
+         <h1></h1>
+      </h1><br><h1><button type="button" onclick="test('RQ3.0','Specific Requirements')">RQ3.0</button> - 
+         Specific Requirements
+      </h1>
+      <h2>
+         <div id="preview">
+            <div id="RQ3.0" style="display: none;"></div>
+         </div>
+      </h2>
+      <h1><br><h1><button type="button" onclick="test('RQ3.1','External Interface Requirements')">RQ3.1</button> - 
+            External Interface Requirements
+         </h1>
+         <h2>
+            <div id="preview">
+               <div id="RQ3.1" style="display: none;"></div>
+            </div>
+         </h2>
+         <h1><br><h1><button type="button" onclick="test('RQ3.1.1',' User Interfaces ')">RQ3.1.1</button> - 
+                User Interfaces 
+            </h1>
+            <h2>
+               <div id="preview">
+                  <div id="RQ3.1.1" style="display: none;">The user interface should be easy to use and have simple text boxes and an active
+                     table of contents menu, and a preview of the document selected in a preview pane.
+                     Since the user is unaware of the XML back end implementation, a GUI must be driven
+                     from XML to allow for easy adaptation.
+                     		<br></div>
+               </div>
+            </h2>
+            <h1><br><h1><button type="button" onclick="test('RQ3.1.1.1','')">RQ3.1.1.1</button> - 
+                  
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.1.1.1" style="display: none;">User is unaware of XML back end implementation.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.1.1.2','')">RQ3.1.1.2</button> - 
+                  
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.1.1.2" style="display: none;">System shall present a GUI to users that allow them to develop and edit lifecycle
+                        documents (i.e Requirements, Design, and Test)<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.1.1.3','')">RQ3.1.1.3</button> - 
+                  
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.1.1.3" style="display: none;">Ability to view existing requirements, design elements and test cases shall be available
+                        at all times. <br></div>
+                  </div>
+               </h2>
+               <h1></h1>
+            </h1><br><h1><button type="button" onclick="test('RQ3.1.2','HardwareInterfaces')">RQ3.1.2</button> - 
+               HardwareInterfaces
+            </h1>
+            <h2>
+               <div id="preview">
+                  <div id="RQ3.1.2" style="display: none;"> The application will be able to operate on a modern Microsoft Windows operating computer,
+                     that has an active installation of Microsoft Internet Explorer. Since there will be
+                     no network connection available, there is no requirement to interface to a network,
+                     however, the software solution will be web-based and address some scalability issues.
+                     All other hardware interfacing will be handled by the operating system, or the browser.
+                     
+                     		<br></div>
+               </div>
+            </h2>
+            <h1><br><h1><button type="button" onclick="test('RQ3.1.2.1','')">RQ3.1.2.1</button> - 
+                  
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.1.2.1" style="display: none;"> All hardware interfacing is handled by the browser.<br></div>
+                  </div>
+               </h2>
+               <h1></h1>
+            </h1><br><h1><button type="button" onclick="test('RQ3.1.3','Software Interfaces')">RQ3.1.3</button> - 
+               Software Interfaces
+            </h1>
+            <h2>
+               <div id="preview">
+                  <div id="RQ3.1.3" style="display: none;">The XML Schema will be developed by the team, and the RTM will be auto-generated upon
+                     request. The XSLT processor will be used to convert the XML lifecycle documentation
+                     into HTML or PDF documents. The software will also use Internet Explorer as the main
+                     software interface.<br></div>
+               </div>
+            </h2>
+            <h1><br><h1><button type="button" onclick="test('RQ3.1.3.1','')">RQ3.1.3.1</button> - 
+                  
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.1.3.1" style="display: none;">Must work with Internet Explorer 10.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.1.3.2','')">RQ3.1.3.2</button> - 
+                  
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.1.3.2" style="display: none;">Program should be capable of running XSLT processing for HTML and PDF output. An XML
+                        instance shall be transformed, via XSLT designed and developed by the team into an
+                        HTML-based interactive document.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.1.3.3','')">RQ3.1.3.3</button> - 
+                  
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.1.3.3" style="display: none;">System shall provide a mechanism to associate related parts of each document. (e.g.
+                        Requirement x is associated with design element y and test case z).<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.1.3.4','')">RQ3.1.3.4</button> - 
+                  
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.1.3.4" style="display: none;">System shall produce XML instances conformant with an XML schema designed and developed
+                        by the team.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.1.3.5','')">RQ3.1.3.5</button> - 
+                  
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.1.3.5" style="display: none;">System shall be able to auto-generate a Requirements Traceability Matrix at any point
+                        during development.<br></div>
+                  </div>
+               </h2>
+               <h1></h1>
+            </h1><br><h1><button type="button" onclick="test('RQ3.1.4','Communication Interfaces')">RQ3.1.4</button> - 
+               Communication Interfaces
+            </h1>
+            <h2>
+               <div id="preview">
+                  <div id="RQ3.1.4" style="display: none;">The software solution will not need to communicate outside the local machine, since
+                     there will may be no network available. <br></div>
+               </div>
+            </h2>
+            <h1><br><h1><button type="button" onclick="test('RQ3.1.4.1','')">RQ3.1.4.1</button> - 
+                  
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.1.4.1" style="display: none;">Must communicate with local file system to create and edit XML files<br></div>
+                  </div>
+               </h2>
+               <h1></h1>
+            </h1>
+         </h1><br><h1><button type="button" onclick="test('RQ3.2','Functional Requirements')">RQ3.2</button> - 
+            Functional Requirements
+         </h1>
+         <h2>
+            <div id="preview">
+               <div id="RQ3.2" style="display: none;">Important features of the software project include creation of a Requirement Traceability
+                  Matrix (RTM) with the option as exporting as a ‘.csv’ file. Other functionality include
+                  user being able to add and implement their own templates for use.<br></div>
+            </div>
+         </h2>
+         <h1><br><h1><button type="button" onclick="test('RQ3.2.1',' Create Lifecycle Project ')">RQ3.2.1</button> - 
+                Create Lifecycle Project 
+            </h1>
+            <h2>
+               <div id="preview">
+                  <div id="RQ3.2.1" style="display: none;"></div>
+               </div>
+            </h2>
+            <h1><br><h1><button type="button" onclick="test('RQ3.2.1.1','Introduction')">RQ3.2.1.1</button> - 
+                  Introduction
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.1.1" style="display: none;">Option to create a new LC project.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.2.1.2','Inputs')">RQ3.2.1.2</button> - 
+                  Inputs
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.1.2" style="display: none;">Input project name and template selection.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.2.1.3','Processing')">RQ3.2.1.3</button> - 
+                  Processing
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.1.3" style="display: none;">Create project directory.  Existing files may be added to project if needed.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.2.1.4','Outputs')">RQ3.2.1.4</button> - 
+                  Outputs
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.1.4" style="display: none;"> Project directory created. XML template is selected. <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.2.1.5','Error Handling')">RQ3.2.1.5</button> - 
+                  Error Handling
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.1.5" style="display: none;">JScript form checking. <br></div>
+                  </div>
+               </h2>
+               <h1></h1>
+            </h1><br><h1><button type="button" onclick="test('RQ3.2.2','Read Lifecycle Document ')">RQ3.2.2</button> - 
+               Read Lifecycle Document 
+            </h1>
+            <h2>
+               <div id="preview">
+                  <div id="RQ3.2.2" style="display: none;"></div>
+               </div>
+            </h2>
+            <h1><br><h1><button type="button" onclick="test('RQ3.2.2.1','Introduction ')">RQ3.2.2.1</button> - 
+                  Introduction 
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.2.1" style="display: none;">Option to open an LC project.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.2.2.2','Inputs')">RQ3.2.2.2</button> - 
+                  Inputs
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.2.2" style="display: none;">Browse for a project name. <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.2.2.3','Processing')">RQ3.2.2.3</button> - 
+                  Processing
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.2.3" style="display: none;">Open project directory.  Parse XML for requirements, create array of sections for
+                        Table of Contents and preview. <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.2.2.4','Outputs')">RQ3.2.2.4</button> - 
+                  Outputs
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.2.4" style="display: none;">Display Table of Contents and preview. <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.2.2.5','Error Handling')">RQ3.2.2.5</button> - 
+                  Error Handling
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.2.5" style="display: none;">Browsing keeps user from entering invalid file location. XML schema ensures documents
+                        can be handled by our system.<br></div>
+                  </div>
+               </h2>
+               <h1></h1>
+            </h1><br><h1><button type="button" onclick="test('RQ3.2.3','Read Lifecycle Document')">RQ3.2.3</button> - 
+               Read Lifecycle Document
+            </h1>
+            <h2>
+               <div id="preview">
+                  <div id="RQ3.2.3" style="display: none;"></div>
+               </div>
+            </h2>
+            <h1><br><h1><button type="button" onclick="test('RQ3.2.3.1','Introduction ')">RQ3.2.3.1</button> - 
+                  Introduction 
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.3.1" style="display: none;">Option to edit an open an LC project. <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.2.3.2','Inputs')">RQ3.2.3.2</button> - 
+                  Inputs
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.3.2" style="display: none;">Mouse click on section within Table of Contents. <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.2.3.3','Processing')">RQ3.2.3.3</button> - 
+                  Processing
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.3.3" style="display: none;">Selected section is put into editable text area. <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.2.3.4','Outputs')">RQ3.2.3.4</button> - 
+                  Outputs
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.3.4" style="display: none;">Section is focused within preview and the given area is visibly now editable. <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.2.3.5','Error Handling ')">RQ3.2.3.5</button> - 
+                  Error Handling 
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.3.5" style="display: none;">If an error occurs during this processing, the user will be alerted and checked against
+                        the schema again.<br></div>
+                  </div>
+               </h2>
+               <h1></h1>
+            </h1><br><h1><button type="button" onclick="test('RQ3.2.4','Read Lifecycle Document')">RQ3.2.4</button> - 
+               Read Lifecycle Document
+            </h1>
+            <h2>
+               <div id="preview">
+                  <div id="RQ3.2.4" style="display: none;"></div>
+               </div>
+            </h2>
+            <h1><br><h1><button type="button" onclick="test('RQ3.2.4.1','Introduction ')">RQ3.2.4.1</button> - 
+                  Introduction 
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.4.1" style="display: none;">Existing LC documents are able to be exported as HTML or PDF file. <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.2.4.2','Inputs')">RQ3.2.4.2</button> - 
+                  Inputs
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.4.2" style="display: none;">Project where export button is selected will be input, user will select which document
+                        they wish to export. <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.2.4.3','Processing')">RQ3.2.4.3</button> - 
+                  Processing
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.4.3" style="display: none;">XSLT processor uses XML and XSLT stylesheet to process HTML or PDF export. <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.2.4.4','Outputs ')">RQ3.2.4.4</button> - 
+                  Outputs 
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.4.4" style="display: none;">HTML file is exported based on LC document chosen.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.2.4.5','Error Handling ')">RQ3.2.4.5</button> - 
+                  Error Handling 
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.4.5" style="display: none;">Javascript form checking, user will be alerted to any errors in processing.<br></div>
+                  </div>
+               </h2>
+               <h1></h1>
+            </h1><br><h1><button type="button" onclick="test('RQ3.2.5',' Generate RTM ')">RQ3.2.5</button> - 
+                Generate RTM 
+            </h1>
+            <h2>
+               <div id="preview">
+                  <div id="RQ3.2.5" style="display: none;"></div>
+               </div>
+            </h2>
+            <h1><br><h1><button type="button" onclick="test('RQ3.2.5.1','Introduction ')">RQ3.2.5.1</button> - 
+                  Introduction 
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.5.1" style="display: none;">Requirements Traceability Matrix is generated based off XML requirements. <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.2.5.2','Inputs')">RQ3.2.5.2</button> - 
+                  Inputs
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.5.2" style="display: none;">Project selection from user.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.2.5.3','Processing')">RQ3.2.5.3</button> - 
+                  Processing
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.5.3" style="display: none;">Find LC documents from locations in project file. Parse requirements to create a HTML
+                        table. <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.2.5.4','Outputs')">RQ3.2.5.4</button> - 
+                  Outputs
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.5.4" style="display: none;">HTML table with down-loadable CSV.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.2.5.5','Error Handling ')">RQ3.2.5.5</button> - 
+                  Error Handling 
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.2.5.5" style="display: none;">JUser will be alerted to error, document will be rechecked against schema.<br></div>
+                  </div>
+               </h2>
+               <h1></h1>
+            </h1>
+         </h1><br><h1><button type="button" onclick="test('RQ3.3','Use Case')">RQ3.3</button> - 
+            Use Case
+         </h1>
+         <h2>
+            <div id="preview">
+               <div id="RQ3.3" style="display: none;"></div>
+            </div>
+         </h2>
+         <h1><br><h1><button type="button" onclick="test('RQ3.3.1','Create Lifecycle Document ')">RQ3.3.1</button> - 
+               Create Lifecycle Document 
+            </h1>
+            <h2>
+               <div id="preview">
+                  <div id="RQ3.3.1" style="display: none;"></div>
+               </div>
+            </h2>
+            <h1><br><h1><button type="button" onclick="test('RQ3.3.1.1',' Brief Description ')">RQ3.3.1.1</button> - 
+                   Brief Description 
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.1.1" style="display: none;"> 	User is presented with the option to create a Lifecycle project, or new document
+                        within an existing project. The user only needs to input a name, location, and template
+                        selection.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.1.2','Preconditions')">RQ3.3.1.2</button> - 
+                  Preconditions
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.1.2" style="display: none;">The user has started the program.<br>A valid template has been selected.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.1.3',' Basic Flow of Events ')">RQ3.3.1.3</button> - 
+                   Basic Flow of Events 
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.1.3" style="display: none;">User selects create. <br>Name, location, and template are input. <br>Templates are copied to the given location using the name specified. <br>Read method is called <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.1.4',' Alternate Flows')">RQ3.3.1.4</button> - 
+                   Alternate Flows
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.1.4" style="display: none;"> If creating a document within an existing project, location is already specified.
+                        <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.1.5','Sub Flows')">RQ3.3.1.5</button> - 
+                  Sub Flows
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.1.5" style="display: none;">Documents are checked against schema for initial integrity.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.1.6','Post Conditions ')">RQ3.3.1.6</button> - 
+                  Post Conditions 
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.1.6" style="display: none;"> Project directory is created.<br> Project file is created containing meta-data and additional project file locations.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.1.7',' Specific Requirements')">RQ3.3.1.7</button> - 
+                   Specific Requirements
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.1.7" style="display: none;"> User is unaware of XML back end implementation<br> All hardware interfacing is handled by the browser<br> Must work with Internet Explorer 10<br>Must communicate with local file system to create and edit XML files <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.1.8','Additional Information')">RQ3.3.1.8</button> - 
+                  Additional Information
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.1.8" style="display: none;"></div>
+                  </div>
+               </h2>
+               <h1></h1>
+            </h1><br><h1><button type="button" onclick="test('RQ3.3.2','Read Lifecycle Document')">RQ3.3.2</button> - 
+               Read Lifecycle Document
+            </h1>
+            <h2>
+               <div id="preview">
+                  <div id="RQ3.3.2" style="display: none;"></div>
+               </div>
+            </h2>
+            <h1><br><h1><button type="button" onclick="test('RQ3.3.2.1','Brief Description')">RQ3.3.2.1</button> - 
+                  Brief Description
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.2.1" style="display: none;">	User selects to open a LC document in a read-only format.  A file system search is
+                        opened.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.2.2','Preconditions')">RQ3.3.2.2</button> - 
+                  Preconditions
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.2.2" style="display: none;">	The document to be opened must already exist and match the XML schema. <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.2.3','Basic Flow of Events')">RQ3.3.2.3</button> - 
+                  Basic Flow of Events
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.2.3" style="display: none;"> Open LC document is clicked.  <br>User is prompted with search of file system.<br>User selects LC project<br>LC document is opened in a read-only mode.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.2.4',' Alternate Flows')">RQ3.3.2.4</button> - 
+                   Alternate Flows
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.2.4" style="display: none;"> User could open file which does not match XML schema →prompted with error.<br> User can click on the read-only document and enable an editing mode.<br>User can switch tabs which will open a different document within the project. <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.2.5',' Sub Flows')">RQ3.3.2.5</button> - 
+                   Sub Flows
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.2.5" style="display: none;">Documents are checked against schema for integrity<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.2.6','Post Conditions')">RQ3.3.2.6</button> - 
+                  Post Conditions
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.2.6" style="display: none;">Document is opened in read-only mode until user clicks on section to be edited.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.2.7','Specific Requirements')">RQ3.3.2.7</button> - 
+                  Specific Requirements
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.2.7" style="display: none;"> User is unaware of XML back end implementation<br> System shall present a GUI to users that allow them to develop and edit lifecycle
+                        documents (i.e Requirements, Design, and Test)<br>Must work with Internet Explorer 10 <br>System shall produce XML instances conformant with an XML schema designed and developed
+                        by the team. <br> Must communicate with local file system to create and edit XML files<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.2.8','Additional Information')">RQ3.3.2.8</button> - 
+                  Additional Information
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.2.8" style="display: none;">Not applicable at this time. <br></div>
+                  </div>
+               </h2>
+               <h1></h1>
+            </h1><br><h1><button type="button" onclick="test('RQ3.3.3','Edit Lifecycle Document')">RQ3.3.3</button> - 
+               Edit Lifecycle Document
+            </h1>
+            <h2>
+               <div id="preview">
+                  <div id="RQ3.3.3" style="display: none;"></div>
+               </div>
+            </h2>
+            <h1><br><h1><button type="button" onclick="test('RQ3.3.3.1','Brief Description')">RQ3.3.3.1</button> - 
+                  Brief Description
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.3.1" style="display: none;">User selects a section from the Table of Contents. This section is focused in the
+                        preview and put into an editable text area. <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.3.2','Preconditions')">RQ3.3.3.2</button> - 
+                  Preconditions
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.3.2" style="display: none;">A LC project has been opened and checked against the given schema. <br>	Table of Contents and preview have been generated and displayed. <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.3.3','Basic Flow of Events')">RQ3.3.3.3</button> - 
+                  Basic Flow of Events
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.3.3" style="display: none;">User selects a section from the Table of Contents <br> This section is focused and made editable<br>User makes changes and selects another section or exits <br> User is prompted to save any changes.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.3.4',' Alternate Flows')">RQ3.3.3.4</button> - 
+                   Alternate Flows
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.3.4" style="display: none;">No changes are made <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.3.5','Sub Flows')">RQ3.3.3.5</button> - 
+                  Sub Flows
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.3.5" style="display: none;">Changes are committed to local file <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.3.6','Post Conditions')">RQ3.3.3.6</button> - 
+                  Post Conditions
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.3.6" style="display: none;"> If files are changed, they still match schema<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.3.7','Specific Requirements')">RQ3.3.3.7</button> - 
+                  Specific Requirements
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.3.7" style="display: none;"> User is unaware of XML back end implementation<br>System shall present a GUI to users that allow them to develop and edit lifecycle
+                        documents (i.e Requirements, Design, and Test) <br>Ability to view existing requirements, design elements and test cases shall be available
+                        at all times <br> All hardware interfacing is handled by the browser<br>Must work with Internet Explorer 10<br>Must communicate with local file system to create and edit XML files <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.3.8','Additional Information')">RQ3.3.3.8</button> - 
+                  Additional Information
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.3.8" style="display: none;">Not applicable at this time. <br></div>
+                  </div>
+               </h2>
+               <h1></h1>
+            </h1><br><h1><button type="button" onclick="test('RQ3.3.4','Export Lifecycle Document')">RQ3.3.4</button> - 
+               Export Lifecycle Document
+            </h1>
+            <h2>
+               <div id="preview">
+                  <div id="RQ3.3.4" style="display: none;"></div>
+               </div>
+            </h2>
+            <h1><br><h1><button type="button" onclick="test('RQ3.3.4.1','Brief Description')">RQ3.3.4.1</button> - 
+                  Brief Description
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.4.1" style="display: none;"> LC Document will be exported as an HTML file using the XSLT processor based on the
+                        defined XML schema.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.4.2','Preconditions')">RQ3.3.4.2</button> - 
+                  Preconditions
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.4.2" style="display: none;">XML Schema is defined. <br> LC Document contains text.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.4.3','Basic Flow of Events')">RQ3.3.4.3</button> - 
+                  Basic Flow of Events
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.4.3" style="display: none;"> XML Schema is defined.<br> LC Document is opened and being viewed/edited.<br>User clicks Export LC Document.<br> User is prompted for name of file to be exported.<br> XSLT processor uses XML schema to create HTML file.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.4.4','Alternate Flows')">RQ3.3.4.4</button> - 
+                  Alternate Flows
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.4.4" style="display: none;"> User can be asked which export file format is appropriate.<br>User can choose between HTML and PDF. <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.4.5','Sub Flows')">RQ3.3.4.5</button> - 
+                  Sub Flows
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.4.5" style="display: none;"> Documents are checked against schema for integrity.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.4.6','Post Conditions')">RQ3.3.4.6</button> - 
+                  Post Conditions
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.4.6" style="display: none;">HTML file is exported and viewable in browser. <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.4.7','Specific Requirements')">RQ3.3.4.7</button> - 
+                  Specific Requirements
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.4.7" style="display: none;"> System shall present a GUI to users that allow them to develop and edit lifecycle
+                        documents (i.e Requirements, Design, and Test)<br> All hardware interfacing is handled by the browser<br>Must work with Internet Explorer 10 <br>Program should be capable of running XSLT processing for HTML and PDF output. <br>An XML instance shall be transformed, via XSLT designed and developed by the team
+                        into an HTML-based interactive document <br>Must communicate with local file system to create and edit XML files<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.4.8','Additional Information')">RQ3.3.4.8</button> - 
+                  Additional Information
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.4.8" style="display: none;"> Not applicable at this time. <br></div>
+                  </div>
+               </h2>
+               <h1></h1>
+            </h1><br><h1><button type="button" onclick="test('RQ3.3.5','Generate RTM')">RQ3.3.5</button> - 
+               Generate RTM
+            </h1>
+            <h2>
+               <div id="preview">
+                  <div id="RQ3.3.5" style="display: none;"></div>
+               </div>
+            </h2>
+            <h1><br><h1><button type="button" onclick="test('RQ3.3.5.1','Brief Description')">RQ3.3.5.1</button> - 
+                  Brief Description
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.5.1" style="display: none;"> A RTM should be generated from the requirements, use cases, and test cases within
+                        a project. This will be displayed as an HTML table while giving the user the ability
+                        to download it as a CSV.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.5.2','Preconditions')">RQ3.3.5.2</button> - 
+                  Preconditions
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.5.2" style="display: none;">An project is open and the documents follow a given schema<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.5.3','Basic Flow of Events')">RQ3.3.5.3</button> - 
+                  Basic Flow of Events
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.5.3" style="display: none;"> User clicks generate RTM<br> Requirements document is scanned, assigning an ID to each requirement for easy navigation<br>Use and test case documents are scanned for these requirements<br> Found instances are noted on table<br>HTML and CSV are generated and displayed <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.5.4','Alternate Flows')">RQ3.3.5.4</button> - 
+                  Alternate Flows
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.5.4" style="display: none;"> If the desired document does not exist, those cells will be left blank<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.5.5','Sub Flows')">RQ3.3.5.5</button> - 
+                  Sub Flows
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.5.5" style="display: none;">CSV is generated from table <br>If button is pressed, download is presented to user <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.5.6','Post Conditions')">RQ3.3.5.6</button> - 
+                  Post Conditions
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.5.6" style="display: none;"> None<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.5.7','Specific Requirements')">RQ3.3.5.7</button> - 
+                  Specific Requirements
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.5.7" style="display: none;"> User is unaware of XML back end implementation<br>System shall present a GUI to users that allow them to develop and edit lifecycle
+                        documents (i.e Requirements, Design, and Test) <br>Must work with Internet Explorer 10<br>System shall produce XML instances conformant with an XML schema designed and developed
+                        by the team. <br>  System shall be able to auto-generate a Requirements Traceability Matrix at any
+                        point during development<br>Must communicate with local file system to create and edit XML files<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.5.8','Additional Information')">RQ3.3.5.8</button> - 
+                  Additional Information
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.5.8" style="display: none;">Not applicable at this time. <br></div>
+                  </div>
+               </h2>
+               <h1></h1>
+            </h1><br><h1><button type="button" onclick="test('RQ3.3.6','Quit Program')">RQ3.3.6</button> - 
+               Quit Program
+            </h1>
+            <h2>
+               <div id="preview">
+                  <div id="RQ3.3.6" style="display: none;"></div>
+               </div>
+            </h2>
+            <h1><br><h1><button type="button" onclick="test('RQ3.3.6.1','Brief Description')">RQ3.3.6.1</button> - 
+                  Brief Description
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.6.1" style="display: none;">Browser close button will exit the LC Project Manager. <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.6.2','Preconditions')">RQ3.3.6.2</button> - 
+                  Preconditions
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.6.2" style="display: none;">Software is open.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.6.3','Basic Flow of Events')">RQ3.3.6.3</button> - 
+                  Basic Flow of Events
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.6.3" style="display: none;"> User decides they wants to exit program<br> User clicks close browser.<br>Browser unload prompts user to save<br>Program is terminated.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.6.4','Alternate Flows')">RQ3.3.6.4</button> - 
+                  Alternate Flows
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.6.4" style="display: none;">Not applicable.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.6.5','Sub Flows')">RQ3.3.6.5</button> - 
+                  Sub Flows
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.6.5" style="display: none;">Not applicable.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.6.6','Post Conditions')">RQ3.3.6.6</button> - 
+                  Post Conditions
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.6.6" style="display: none;"> Program is terminated.<br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.6.7','Specific Requirements')">RQ3.3.6.7</button> - 
+                  Specific Requirements
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.6.7" style="display: none;">All hardware interfacing is handled by the browser<br>Must work with Internet Explorer 10 <br></div>
+                  </div>
+               </h2>
+               <h1></h1><br><h1><button type="button" onclick="test('RQ3.3.6.8','Additional Information')">RQ3.3.6.8</button> - 
+                  Additional Information
+               </h1>
+               <h2>
+                  <div id="preview">
+                     <div id="RQ3.3.6.8" style="display: none;"> Not applicable at this time. <br></div>
+                  </div>
+               </h2>
+               <h1></h1>
+            </h1>
+         </h1>
+      </h1>
+   </body>
+</html>
+
+
