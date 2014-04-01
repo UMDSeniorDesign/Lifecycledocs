@@ -19,31 +19,32 @@
                 </script>
                 <title>Lifecycle Documents</title>
                 <style type="text/css">
-                    h1 {
+					#page{
+					}
+                    #toc {
                     float: left;
                     width: 40%;
                     font-size: 12pt;
                     }
-                    h2 {
+                    #view {
                     float: right;
                     width: 60%;
                     font-size: 12pt;
-                    font-style: normal;
-                    font-weight: normal;
-                    }
-                    h3 {
-                    font-style: bold;
-                    font-weight: normal;
                     }
                 </style>  
             </head>
             <body>
-				<xsl:apply-templates select="Section"/>
+				<div id="toc">
+					<xsl:apply-templates select="Section" mode="section"/>
+				</div>
+				<div id="view">
+					<xsl:apply-templates select="Section" mode="para"/>
+				</div>
             </body>
         </html>
     </xsl:template>
 
-    <xsl:template match="Section">
+    <xsl:template match="Section" mode="section">
        <br/>
 	   <xsl:variable name="vID">
 			<xsl:value-of select="@id"/>
@@ -51,72 +52,47 @@
 		<xsl:variable name="vTitle">
 			<xsl:value-of select="Title"/>
 		</xsl:variable>
-		<xsl:variable name="vPara">
-			<!--<xsl:apply-templates select="Para"/>-->
-			<xsl:for-each select="Para">
-			<xsl:value-of select="."/>
-			</xsl:for-each>
-		</xsl:variable>
-        <h1>
-            <!--<a onclick="test('{$vID}','{$vTitle}')">
-                <xsl:attribute name="href"/>
-                <xsl:value-of select="$vID"/>
-			</a> -
-			-->
 			<button type="button" onclick="test('{$vID}','{$vTitle}')">
 			<xsl:value-of select="$vID"/></button> - 
         <xsl:value-of select="$vTitle"/>
-        </h1>
-        <h2>
-			<div id="preview">
-			<div id="{@id}" style="display: none;">
-            <xsl:apply-templates select="Para"/>
-			</div>
-			<!--<xsl:value-of select="$vPara"/>-->
-			</div>
-        </h2>
-		<h1>
-        <xsl:apply-templates select="Section"/>
-        <xsl:apply-templates select="Requirement"/>
-		</h1>
+		<xsl:apply-templates select="Section" mode="section"/>
+        <xsl:apply-templates select="Requirement" mode="section"/>
     </xsl:template>
-    <xsl:template match="Requirement">
-		<br/>
-		<xsl:variable name="vID">
+	<xsl:template match="Requirement" mode="section">
+       <br/>
+	   <xsl:variable name="vID">
 			<xsl:value-of select="@id"/>
 		</xsl:variable>
 		<xsl:variable name="vTitle">
 			<xsl:value-of select="Title"/>
 		</xsl:variable>
-		<xsl:variable name="vPara">
-			<!--<xsl:apply-templates select="Para"/>-->
-			<xsl:for-each select="Para">
-			<xsl:value-of select="."/>
-			</xsl:for-each>
-		</xsl:variable>
-		<h1>
-            <!--<a onclick="test('{$vID}','{$vTitle}')">
-                <xsl:attribute name="href"/>
-                <xsl:value-of select="$vID"/>
-			</a> -
-			-->
 			<button type="button" onclick="test('{$vID}','{$vTitle}')">
 			<xsl:value-of select="$vID"/></button> - 
         <xsl:value-of select="$vTitle"/>
-        </h1>
-        <h2>
-			<div id="preview"> 
-			<div id="{@id}" style="display: none;">
-            <xsl:apply-templates select="Para"/>
-			</div>
-            </div>
-        </h2>
-		<h1>
-        <xsl:apply-templates select="Section"/>
-        <xsl:apply-templates select="Requirement"/>
-		</h1>
+		<xsl:apply-templates select="Section" mode="section"/>
+        <xsl:apply-templates select="Requirement" mode="section"/>
     </xsl:template>
-    <xsl:template match="Para">
+    <xsl:template match="Requirement" mode="para">
+		<div id="preview">
+			<div id="{@id}" style="display: none;">
+				<xsl:apply-templates select="Para"/>
+				<br/>
+			</div>
+		</div>
+        <xsl:apply-templates select="Section" mode="para"/>
+        <xsl:apply-templates select="Requirement" mode="para"/>
+    </xsl:template>
+	<xsl:template match="Section" mode="para">
+        <div id="preview">
+			<div id="{@id}" style="display: none;">
+				<xsl:apply-templates select="Para"/>
+				<br/>
+			</div>
+		</div>
+		<xsl:apply-templates select="Section" mode="para"/>
+        <xsl:apply-templates select="Requirement" mode="para"/>
+    </xsl:template>
+	<xsl:template match="Para">
         <xsl:value-of select="."/>
         <br/>
     </xsl:template>

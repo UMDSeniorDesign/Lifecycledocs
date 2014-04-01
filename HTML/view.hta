@@ -49,8 +49,8 @@
 			getTabs();
 			
 			//Load XML and XSL
-			xml = loadXML("NotionalSRS2.xml");
-			xsl = loadXML("NotionalXSL.xsl");
+			var xml = loadXML("NotionalSRS2.xml");
+			var xsl = loadXML("NotionalXSL.xsl");
 			
 			//Transform XML to HTML
 			value = xml.transformNode(xsl);
