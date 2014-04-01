@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <XMLProject>
-	<file_name>SoftwareRequirements</file_name>
-	<file_name>UseCases</file_name>
-	<file_name>TestCases</file_name>
-	<file_name>NotionalSRSTest2</file_name>
-	<file_name>NotionalSRSTEST</file_name>
+	<file_name>SoftwareRequirements.xml</file_name>
+	<file_name>UseCases.xml</file_name>
+	<file_name>TestCases.xml</file_name>
+	<file_name>NotionalSRSTest2.xml</file_name>
+	<file_name>NotionalSRSTEST.xml</file_name>
 </XMLProject>
