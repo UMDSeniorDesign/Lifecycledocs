@@ -49,12 +49,11 @@
 			getTabs();
 			
 			//Load XML and XSL
-			var xml = loadXML("NotionalSRS2.xml");
-			var xsl = loadXML("NotionalXSL.xsl");
+			xml = loadXML("NotionalSRS2.xml");
+			xsl = loadXML("NotionalXSL.xsl");
 			
 			//Transform XML to HTML
 			value = xml.transformNode(xsl);
-			//alert(value);
 			
 			//Search for script in generated HTML, this should be put into a loop in case of multiple scripts
 			var scriptStart = value.search("<script>");
@@ -85,14 +84,15 @@
 			var styleSpot = head.getElementsByTagName('style')[0];
 			var sheet = document.styleSheets[0];
 			
-			var oldStyle = styleSpot.innerHTML.substring(0, 12);
-			var newStyle = (oldStyle + xsltStyle + '}');
-			sheet.cssText = newStyle;
+			//var oldStyle = styleSpot.innerHTML.substring(0, 12);
+			//var newStyle = (oldStyle + xsltStyle + '}');
+			sheet.cssText += xsltStyle;
 			//alert(newStyle);
 			//alert(styleSpot.innerHTML);
 			
 			//Append our generated HTML to the newly formatted page
-			document.getElementById("xsltDiv").innerHTML = value;
+			document.getElementById("xsltDiv").innerHTML += value;
+			document.getElementById("xsltDiv").innerHTML += "<button onclick='saveXML()'>Save</button>";
 			}
 		</script>
 		
@@ -112,8 +112,8 @@
 		        <button onclick=location.href='rtm.hta'>Create Matrix</button>
 		    </div>
 			<div id="xsltDiv">
-			    <h4>Preview</h4>
-			    <button onclick="saveXML()">Save</button>
+			    <h1>Preview</h1>
+			    <!--<button onclick="saveXML()">Save</button>-->
 			</div>
 		</div>
 	</body>

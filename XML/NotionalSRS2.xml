@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="NotionalXSL.xsl"?>
 
 
-<SoftwareRequirementsDocument xml:base='ProjectLifecycleDocuments.xml' projectName="Lifecycle Documents with Requirements Tracking"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:SchemaLocation="NotionalSchema2.xsd">
+<SoftwareRequirementsDocument xml:base='ProjectLifecycleDocuments.xml' projectName="Lifecycle Documents with Requirements Tracking"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="NotionalSchema2.xsd">
 
 		
 		<Section isNewest="true" id="RQ1.0">
