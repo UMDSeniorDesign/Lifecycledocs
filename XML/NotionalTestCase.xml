@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="NotionalXSL.xsl"?>
+<?xml-stylesheet type="text/xsl" href="NotionalTestCaseXSL.xsl"?>
 
-<TestCaseDocument projectName="Lifecycle Documents with Requirements Tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:SchemaLocation="NotionalSchema2.xsd">
+<TestCaseDocument xml:base='ProjectLifecycleDocuments.xml' 
+    projectName="Lifecycle Documents with Requirements Tracking"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:SchemaLocation="NotionalSchema2.xsd">
+    
     <Section isNewest="true" id="TC1.0">
         <Title isNewest="true">Lifecycle Document Project Manager with Requirements Tracking</Title>
         <Para isNewest="true"> The goal of this project is to create a protoype application capable of allowing a user to productively manage lifecycle documentation in XML without a previous XML experience. </Para>
+        
         <Section isNewest="true" id="TC1.1">
             <Title isNewest="true">Create Lifecycle Project</Title>
+            
             <Section isNewest="true" id="TC1.1.1">
                 <Title isNewest="true">Form is displayed to user</Title>
                 <Para isNewest="true">Form is displayed properly to user with appropriate textboxes and buttons.</Para>
@@ -17,6 +23,7 @@
                 </ApprovedBy>
                 <Ref isNewest="true">RQ3.1.1</Ref>
             </Section>
+            
             <Section isNewest="true" id="TC1.1.2">
                 <Title isNewest="true">Input project name</Title>
                 <Para isNewest="true">Project name is an accepted string in textbox.  No special characters.</Para>
