@@ -35,9 +35,13 @@
 				var projectName = prompt("New Project Name: ", "");
 						
 				var fso = new ActiveXObject("Scripting.FileSystemObject");
-				//fso.CopyFile("\Lifecycledocs\Projects\test.xml", "\Lifecycledocs\Projects\\"+projectName+".xml", 1);
-				var f = fso.GetFile("C:\\*\\Lifecycledocs\\Projects\\test.xml");
-				alert(f);
+				//Windows 8 function
+				fso.CopyFile("../Lifecycledocs/Projects/test.xml", "../Lifecycledocs/Projects/"+projectName+".xml", 1);
+				//Windows 7 function
+				//fso.CopyFile("../Projects/test.xml", "../Projects/"+projectName+".xml", 1);
+				//var f = fso.GetFolder("../Projects");
+				//var f = fso.GetFolder("../XML");
+				//alert(f);
 				sessvars.projectName = projectName+".xml";
 				document.location.href = 'view.hta';
 			}
