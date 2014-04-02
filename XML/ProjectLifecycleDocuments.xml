@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="ProjectXSL.xsl"?>
 
 <!-- <root:ProjectLifeCycleDocuments -->
-<ProjectLifecycleDocuments projectName="PLCD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:SchemaLocation="NotionalSchema2ns.xsd">
+<ProjectLifecycleDocuments projectName="PLCD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="NotionalSchema2ns.xsd">
     <Team> 
         <TeamMember>
             <Name isNewest="true">Jeremiah Butler</Name>
@@ -19,27 +19,31 @@
         <TeamMember>
             <Name isNewest="true">Kevin Palmer</Name>
             <Role isNewest="true">Team Member</Role>
-        </TeamMember>
+        </TeamMember> 
     </Team>
-    
-    <xi:include href="NotionalSRS2ns.xml" parse="xml">
+    <file_location>    
+        <xi:include href="NotionalSRS2ns.xml" parse="xml">
            <xi:fallback>
             <p>The included document was not found!</p>
             
         </xi:fallback>
     </xi:include>
-    <!--
+    </file_location>
+    <file_location>
+    
     <xi:include href="NotionalTestCase.xml">
         <xi:fallback>
             <p>The included document was not found!</p>
         </xi:fallback>
     </xi:include>
+    </file_location>
+    <file_location>
     <xi:include href="NotionalUseCase.xml">
         <xi:fallback>
             <p>The included document was not found!</p>
         </xi:fallback>
     </xi:include>
-    -->
+    </file_location>
    
     
     

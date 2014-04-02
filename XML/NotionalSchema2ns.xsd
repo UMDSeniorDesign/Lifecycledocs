@@ -8,6 +8,7 @@
     <xsd:complexType name="ProjectLifecycleDocumentsType">
         <xsd:choice minOccurs="0" maxOccurs="unbounded">
             <xsd:element ref="Team"/>
+            <xsd:element name="file_location" maxOccurs="3"/>
             <xsd:element ref="SoftwareRequirementsDocument"/>
             <xsd:element ref="UseCaseDocument"/>
             <xsd:element ref="TestCaseDocument"/>
@@ -141,8 +142,7 @@
             <xsd:element ref="Section" minOccurs="0" maxOccurs="unbounded"/>
             <!-- Other global elements to be referenced here. -->
         </xsd:sequence>
-
-        <xsd:attribute name="id" use="optional" type="xsd:ID"/>
+        <xsd:attribute ref="xml:base"/>
         <xsd:attribute name="projectName" use="required" type="xsd:string"/>
     </xsd:complexType>
 
@@ -153,6 +153,7 @@
             <!-- Other global elements to be referenced here. -->
         </xsd:sequence>
         <!--<xsd:attribute name="id" use="required" type="xsd:ID"/>-->
+        <xsd:attribute ref="xml:base"/>
         <xsd:attribute name="projectName" use="required" type="xsd:string"/>
     </xsd:complexType>
 </xsd:schema>
