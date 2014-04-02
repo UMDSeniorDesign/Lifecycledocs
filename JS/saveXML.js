@@ -29,9 +29,9 @@ function saveXML() {
 		newFile += "</"+value[0]+">\n";
 	}
 	//If windows 7, use this line
-	var f = fs.GetFolder("../XML");
+	//var f = fs.GetFolder("../XML");
 	//If windows 8, use this line
-	//var f = fs.GetFolder("\XML");
+	var f = fs.GetFolder("\XML");
 	file = f.CreateTextFile(getFromSessvar("fileName")+"TestSave.xml", true, true);
 	file.write(newFile);
 	file.close();
