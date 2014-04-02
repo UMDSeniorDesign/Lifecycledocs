@@ -35,8 +35,9 @@
 				var projectName = prompt("New Project Name: ", "");
 						
 				var fso = new ActiveXObject("Scripting.FileSystemObject");
-				fso.CopyFile("../Lifecycledocs/Projects/test.xml", "../Lifecycledocs/Projects/"+projectName+".xml", 1);
-				
+				//fso.CopyFile("\Lifecycledocs\Projects\test.xml", "\Lifecycledocs\Projects\\"+projectName+".xml", 1);
+				var f = fso.GetFile("C:\\*\\Lifecycledocs\\Projects\\test.xml");
+				alert(f);
 				sessvars.projectName = projectName+".xml";
 				document.location.href = 'view.hta';
 			}
