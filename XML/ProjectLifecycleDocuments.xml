@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="NotionalXSL.xsl"?>
+<?xml-stylesheet type="text/xsl" href="ProjectXSL.xsl"?>
 
 <!-- <root:ProjectLifeCycleDocuments -->
-<ProjectLifecycleDocuments projectName="PLCD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:SchemaLocation="NotionalSchema2.xsd">
-    <xi:include href='NotionalSRS2.xml'/>
-    <xi:include href='NotionalUseCase.xml'/>
-    <xi:include href='NotionalTestCase.xml'/>
-   <Team> 
+<ProjectLifecycleDocuments projectName="PLCD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:SchemaLocation="NotionalSchema2ns.xsd">
+    <Team> 
         <TeamMember>
             <Name isNewest="true">Jeremiah Butler</Name>
             <Role isNewest="true">Team Lead</Role> 
@@ -24,7 +21,26 @@
             <Role isNewest="true">Team Member</Role>
         </TeamMember>
     </Team>
-
+    
+    <xi:include href="NotionalSRS2ns.xml" parse="xml">
+           <xi:fallback>
+            <p>The included document was not found!</p>
+            
+        </xi:fallback>
+    </xi:include>
+    <!--
+    <xi:include href="NotionalTestCase.xml">
+        <xi:fallback>
+            <p>The included document was not found!</p>
+        </xi:fallback>
+    </xi:include>
+    <xi:include href="NotionalUseCase.xml">
+        <xi:fallback>
+            <p>The included document was not found!</p>
+        </xi:fallback>
+    </xi:include>
+    -->
+   
     
     
     
