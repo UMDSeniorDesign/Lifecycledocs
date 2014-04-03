@@ -14,8 +14,8 @@
 		scrollFlat="yes" />
 	    <style type="text/css">
 		    #xsltDiv {
-				
-		    }
+		    
+			}
 	    </style>
 		
 		<script src="../JS/loadXML.js"></script>
@@ -61,6 +61,8 @@
 			
 			//Create substring that is the script, offset start because script tag is inserted with createElement method
 			var xsltScript = value.substring(scriptStart+8, scriptEnd);
+			var editScript = xsltScript.replace("edit = 0", "edit=1");
+			//alert(editScript);
 			
 			//Find the head so we know where to append
 			var head = document.getElementsByTagName('head')[0];
@@ -68,7 +70,7 @@
 			//Create our new script object
 			var script = document.createElement('script');
 			script.type = 'text/javascript';
-			script.text = xsltScript;
+			script.text = editScript;
 			
 			//Append it to the head
 			head.appendChild(script);
@@ -102,18 +104,14 @@
 	<body onload="loadXSLT()">
 		<div id="wrapper">
 		    <div id="head1">
-				<!--
-				<button onclick="getTableOfContents('NotionalSRSTEST');">NotionalSRS</button>
-				<button onclick="getTableOfContents('NotionalSRSTest2');">NotionalSRSTest</button>
-		        <button onclick="getTableOfContents('SoftwareRequirements');">Software Requirements</button>
-		        <button onclick="getTableOfContents('TestCases');">Test Case</button>
-		        <button onclick="getTableOfContents('UseCases');">Use Case</button>
-				-->
 		        <button onclick=location.href='rtm.hta'>Create Matrix</button>
 		    </div>
 			<div id="xsltDiv">
+				<!--<div id="preview">-->
 			    <h1>Preview</h1>
-			    <!--<button onclick="saveXML()">Save</button>-->
+			    <!--<textarea rows="50" id="textInput" style="width: 100%"></textarea>
+			    <button onclick="saveXML()">Save</button>
+			</div>-->
 			</div>
 		</div>
 	</body>

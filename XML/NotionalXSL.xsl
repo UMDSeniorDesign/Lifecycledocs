@@ -5,6 +5,7 @@
             <head>
                 <script>
                     function test(ID, title){
+					var edit = 0;
 					var para = document.getElementById(ID).innerHTML;
 					var text = "<u>"+ID;
 					text += " - ";
@@ -13,7 +14,15 @@
 					text += para;
 					text += "</p>";
 					var preview = document.getElementById("preview");
-					preview.innerHTML = text;
+					//preview.innerHTML = text;
+					if(edit == 0){
+						preview.innerHTML = text;
+						}
+					if(edit > 0){
+						var editLocation = document.getElementById("edit");
+						editLocation.innerHTML = text;
+						editLocation.style.display = 'block';
+						}
                     }
                 </script>
                 <title>Lifecycle Documents</title>
@@ -38,6 +47,8 @@
 				</div>
 				<div id="view">
 					<xsl:apply-templates select="Section" mode="para"/>
+				</div>
+				<div id="edit" contenteditable="true" style="display: none;">
 				</div>
             </body>
         </html>

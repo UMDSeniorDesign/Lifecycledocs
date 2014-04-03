@@ -1,5 +1,7 @@
 function saveXML() {
-	var fs = new ActiveXObject("Scripting.FileSystemObject");
+	var saveInfo = document.getElementById("edit").innerHTML;
+	alert(saveInfo);
+	/*var fs = new ActiveXObject("Scripting.FileSystemObject");
 	var xmlArray = sessvars.xml.split(';');
 	var newFile = "<?xml version='1.0' encoding='UTF-8'?>\n";
 	function writeChild(index){
@@ -35,5 +37,5 @@ function saveXML() {
 	file = f.CreateTextFile(getFromSessvar("fileName")+"TestSave.xml", true, true);
 	file.write(newFile);
 	file.close();
-	alert("File saved");
+	alert("File saved");*/
 }
