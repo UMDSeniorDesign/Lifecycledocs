@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:template match="TestCaseDocument">
         <html>
             <head>
@@ -73,6 +73,9 @@
         <xsl:apply-templates select="Requirement" mode="section"/>
     </xsl:template>
     
+    <xsl:template match="Ref" mode="para">
+        <xsl:apply-templates select="Para"/>     
+    </xsl:template>
     
     <xsl:template match="Requirement" mode="para">
         <div id="preview">
@@ -121,8 +124,35 @@
         <br/>
     </xsl:template>
     <xsl:template match="Ref">
-        <xsl:value-of select="."/>
-        <xsl:apply-templates select="Ref" mode="section"/>
+        <xsl:variable name="vID">
+         <xsl:value-of select="."/>
+        </xsl:variable>
+        <xsl:variable name="vTitle">
+            <xsl:for-each select="document('NotionalSRS2ns.xml')//SoftwareRequirementsDocument//Section//Requirement[@id=$vID]">
+                <xsl:value-of select="Title"/>  
+        <!--      <xsl:for-each select="Para">
+                  <xsl:apply-templates select="Para"/>
+                    <xsl:value-of select="."/> 
+                </xsl:for-each>  -->
+                
+            </xsl:for-each>
+           
+        </xsl:variable>
+        
+        <xsl:variable name="vPara">
+            <xsl:for-each select="document('NotionalSRS2ns.xml')//SoftwareRequirementsDocument//Section//Requirement[@id=$vID]">  
+                <xsl:for-each select="Para">
+                    <xsl:value-of select="."/> . 
+                </xsl:for-each> 
+            </xsl:for-each>
+        </xsl:variable>
+        
+        
+        <button type="button" onclick="test('{$vID}','{$vTitle}')">
+         <xsl:value-of select="$vID"/></button> - 
+      <xsl:value-of select="$vTitle"/> 
+        <!--    <xsl:value-of select="."/> -->
+        <xsl:apply-templates select="Ref" mode="para"/>
         <br/>
     </xsl:template>
     <xsl:template match="TestResult">
