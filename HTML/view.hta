@@ -93,8 +93,8 @@
 			//alert(styleSpot.innerHTML);
 			
 			//Append our generated HTML to the newly formatted page
-			document.getElementById("xsltDiv").innerHTML += value;
-			document.getElementById("xsltDiv").innerHTML += "<button onclick='saveXML()'>Save</button>";
+			document.getElementById("xsltDiv").innerHTML = value;
+			document.getElementById("xsltDiv").innerHTML += "<button onclick='saveXML(xml)'>Save</button>";
 			}
 		</script>
 		

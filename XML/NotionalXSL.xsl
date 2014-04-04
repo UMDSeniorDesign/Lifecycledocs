@@ -103,7 +103,9 @@
         <xsl:apply-templates select="Requirement" mode="para"/>
     </xsl:template>
 	<xsl:template match="Para">
-        <xsl:value-of select="."/>
-        <br/>
+		<div id="Para">
+			<xsl:value-of select="."/>
+			<br/>
+		</div>
     </xsl:template>
 </xsl:stylesheet>
