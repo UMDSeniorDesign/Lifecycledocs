@@ -16,6 +16,13 @@
                     preview.innerHTML = text;
                     }
                 </script>
+				<script>
+					function showRef(ID){
+						var refSpot = document.getElementById("ref");
+						var infoSpot = document.getElementById(ID);
+						infoSpot.style.display = "block";
+					}
+				</script>
                 <title>Lifecycle Documents - Test Cases</title>
                 <style type="text/css">
                     #page{
@@ -129,11 +136,11 @@
         </xsl:variable>
         <xsl:variable name="vTitle">
             <xsl:for-each select="document('NotionalSRS2ns.xml')//SoftwareRequirementsDocument//Section//Requirement[@id=$vID]">
-                <xsl:value-of select="Title"/>  
-        <!--      <xsl:for-each select="Para">
+                <xsl:value-of select="Title"/>
+              <xsl:for-each select="Para">
                   <xsl:apply-templates select="Para"/>
                     <xsl:value-of select="."/> 
-                </xsl:for-each>  -->
+                </xsl:for-each>
                 
             </xsl:for-each>
            
@@ -146,12 +153,14 @@
                 </xsl:for-each> 
             </xsl:for-each>
         </xsl:variable>
-        
-        
-        <button type="button" onclick="test('{$vID}','{$vTitle}')">
-         <xsl:value-of select="$vID"/></button> - 
-      <xsl:value-of select="$vTitle"/> 
-        <!--    <xsl:value-of select="."/> -->
+		
+        <button type="button" onclick="showRef('{$vID}')">
+			<xsl:value-of select="$vID"/></button>
+		<div id="ref">
+            <div id="{.}" style="display: none;">
+				<xsl:value-of select="$vTitle"/>
+			</div>
+		</div>
         <xsl:apply-templates select="Ref" mode="para"/>
         <br/>
     </xsl:template>
