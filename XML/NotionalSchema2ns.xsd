@@ -126,11 +126,20 @@
     <xsd:element name="Requirement" type="RequirementType"> </xsd:element>
     <xsd:complexType name="RequirementType">
         <!-- This is just an example. It may be more complex than this... -->
-        <xsd:sequence>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
             <xsd:element ref="Title" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element ref="Para" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element ref="Requirement" minOccurs="0" maxOccurs="unbounded"/>
-        </xsd:sequence>
+            <xsd:element name="Ref" minOccurs="0" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:string">
+                            <xsd:attribute name="isNewest" type="xsd:boolean"/>
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:choice>
         <xsd:attribute name="id" use="optional" type="xsd:ID"/>
         <!-- <xsd:attribute name="name" use="optional" type="xsd:string"/>-->
         <xsd:attribute name="isNewest" type="xsd:boolean"/>
