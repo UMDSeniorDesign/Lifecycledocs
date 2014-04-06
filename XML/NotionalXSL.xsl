@@ -56,6 +56,7 @@
 
     <xsl:template match="Section" mode="section">
        <br/>
+	   
 	   <xsl:variable name="vID">
 			<xsl:value-of select="@id"/>
 		</xsl:variable>
@@ -103,9 +104,11 @@
         <xsl:apply-templates select="Requirement" mode="para"/>
     </xsl:template>
 	<xsl:template match="Para">
-		<div id="Para">
-			<xsl:value-of select="."/>
-			<br/>
-		</div>
+		<xsl:if test="@isNewest = 'true'">
+			<div id="Para">
+				<xsl:value-of select="."/>
+				<br/>
+			</div>
+		</xsl:if>
     </xsl:template>
 </xsl:stylesheet>

@@ -38,22 +38,41 @@
 				var div = document.getElementById("head1");
 												
 				for(var i = 0; i < name.length; i++) {
-					div.innerHTML += ("<button onclick=getTableOfContents('"+name[i].childNodes[0].nodeValue+"');>"+name[i].childNodes[0].nodeValue+"</button>");	// Quotes needed to be in right place
+					div.innerHTML += ("<button onclick=loadXSLT(0,0,'"+name[i].childNodes[0].nodeValue+"')>"+name[i].childNodes[0].nodeValue+"</button>");
 				}
+				sessvars.first = name[0].childNodes[0].nodeValue;
 			}
 		</script>
 		
 		<script>
-			function loadXSLT(){
+			function loadXSLT(withTabs, withCurrent, xmlToLoad){
 			//Load tabs from project file
-			getTabs();
+			if(withTabs == 1){
+				getTabs();
+				xmlToLoad = sessvars.first;
+			}
 			
-			//Load XML and XSL
-			xml = loadXML("NotionalSRS2ns.xml");
-			xsl = loadXML("NotionalXSL.xsl");
+			//Load XML and XSL '0' = loadnew '1' = reload with current
+			if(withCurrent == 0){
+				sessvars.xml = xmlToLoad;
+				xml = loadXML(sessvars.xml);
+				var textVersion = xml.xml;
+				var styleStringStart = textVersion.search("href=");
+				var styleStringPart = textVersion.substring(styleStringStart);
+				var styleStringEnd = styleStringPart.search(">");
+				var styleName = styleStringPart.substring(6, styleStringEnd-2);
+				sessvars.xsl = styleName;
+				xsl = loadXML(sessvars.xsl);
+			}
+			
+			if(withCurrent == 1){
+				xml = loadXML(sessvars.xml);
+				xsl = loadXML(sessvars.xsl);
+			}
 			
 			//Transform XML to HTML
-			value = xml.transformNode(xsl);
+			var value = xml.transformNode(xsl);
+			alert(value);
 			
 			//Search for script in generated HTML, this should be put into a loop in case of multiple scripts
 			var scriptStart = value.search("<script>");
@@ -62,8 +81,7 @@
 			//Create substring that is the script, offset start because script tag is inserted with createElement method
 			var xsltScript = value.substring(scriptStart+8, scriptEnd);
 			var editScript = xsltScript.replace("edit = 0", "edit=1");
-			//alert(editScript);
-			
+			alert(editScript);
 			//Find the head so we know where to append
 			var head = document.getElementsByTagName('head')[0];
 			
@@ -74,7 +92,6 @@
 			
 			//Append it to the head
 			head.appendChild(script);
-			//alert(head.innerHTML);
 			
 			//Search for the style in generated HTML
 			var styleStart = value.search('<style type="text'+'/'+'css">');
@@ -85,12 +102,8 @@
 			//Find Style insert location
 			var styleSpot = head.getElementsByTagName('style')[0];
 			var sheet = document.styleSheets[0];
-			
-			//var oldStyle = styleSpot.innerHTML.substring(0, 12);
-			//var newStyle = (oldStyle + xsltStyle + '}');
+			//Append new styling
 			sheet.cssText += xsltStyle;
-			//alert(newStyle);
-			//alert(styleSpot.innerHTML);
 			
 			//Append our generated HTML to the newly formatted page
 			document.getElementById("xsltDiv").innerHTML = value;
@@ -101,17 +114,13 @@
 		
 	</head>
 	
-	<body onload="loadXSLT()">
+	<body onload="loadXSLT(1,0)">
 		<div id="wrapper">
 		    <div id="head1">
 		        <button onclick=location.href='rtm.hta'>Create Matrix</button>
 		    </div>
 			<div id="xsltDiv">
-				<!--<div id="preview">-->
 			    <h1>Preview</h1>
-			    <!--<textarea rows="50" id="textInput" style="width: 100%"></textarea>
-			    <button onclick="saveXML()">Save</button>
-			</div>-->
 			</div>
 		</div>
 	</body>
