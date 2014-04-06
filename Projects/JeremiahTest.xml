@@ -3,4 +3,5 @@
 	<file_name>NotionalSRS2ns.xml</file_name>
 	<file_name>NotionalUseCase.xml</file_name>
 	<file_name>NotionalTestCase.xml</file_name>
+	<file_name>TestSave.xml</file_name>
 </XMLProject>

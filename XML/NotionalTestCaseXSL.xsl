@@ -15,15 +15,12 @@
                     var preview = document.getElementById("preview");
                     preview.innerHTML = text;
                     }
-                </script>
-				<script>
 					function showRef(ID){
 						var refSpot = document.getElementById("ref");
 						var infoSpot = document.getElementById(ID);
 						infoSpot.style.display = "block";
 					}
 				</script>
-                <title>Lifecycle Documents - Test Cases</title>
                 <style type="text/css">
                     #page{
                     }
@@ -135,7 +132,7 @@
          <xsl:value-of select="."/>
         </xsl:variable>
         <xsl:variable name="vTitle">
-            <xsl:for-each select="document('NotionalSRS2ns.xml')//SoftwareRequirementsDocument//Section//Requirement[@id=$vID]">
+            <!--<xsl:for-each select="document('NotionalSRS2ns.xml')//SoftwareRequirementsDocument//Section//Requirement[@id=$vID]">
                 <xsl:value-of select="Title"/>
               <xsl:for-each select="Para">
                   <xsl:apply-templates select="Para"/>
@@ -143,15 +140,15 @@
                 </xsl:for-each>
                 
             </xsl:for-each>
-           
+           -->
         </xsl:variable>
         
         <xsl:variable name="vPara">
-            <xsl:for-each select="document('NotionalSRS2ns.xml')//SoftwareRequirementsDocument//Section//Requirement[@id=$vID]">  
+           <!-- <xsl:for-each select="document('NotionalSRS2ns.xml')//SoftwareRequirementsDocument//Section//Requirement[@id=$vID]">  
                 <xsl:for-each select="Para">
                     <xsl:value-of select="."/> . 
                 </xsl:for-each> 
-            </xsl:for-each>
+            </xsl:for-each>-->
         </xsl:variable>
 		
         <button type="button" onclick="showRef('{$vID}')">

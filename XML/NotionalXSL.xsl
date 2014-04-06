@@ -55,51 +55,58 @@
     </xsl:template>
 
     <xsl:template match="Section" mode="section">
-       <br/>
-	   
-	   <xsl:variable name="vID">
-			<xsl:value-of select="@id"/>
-		</xsl:variable>
-		<xsl:variable name="vTitle">
-			<xsl:value-of select="Title"/>
-		</xsl:variable>
+		<xsl:if test="@isNewest = 'true'">
+			<br/>
+			<xsl:variable name="vID">
+				<xsl:value-of select="@id"/>
+			</xsl:variable>
+			<xsl:variable name="vTitle">
+				<xsl:value-of select="Title"/>
+			</xsl:variable>
 			<button type="button" onclick="test('{$vID}','{$vTitle}')">
 			<xsl:value-of select="$vID"/></button> - 
-        <xsl:value-of select="$vTitle"/>
+			<xsl:value-of select="$vTitle"/>
+		</xsl:if>
 		<xsl:apply-templates select="Section" mode="section"/>
         <xsl:apply-templates select="Requirement" mode="section"/>
     </xsl:template>
 	<xsl:template match="Requirement" mode="section">
-       <br/>
-	   <xsl:variable name="vID">
-			<xsl:value-of select="@id"/>
-		</xsl:variable>
-		<xsl:variable name="vTitle">
-			<xsl:value-of select="Title"/>
-		</xsl:variable>
+		<xsl:if test="@isNewest = 'true'">
+			<br/>
+			<xsl:variable name="vID">
+				<xsl:value-of select="@id"/>
+			</xsl:variable>
+			<xsl:variable name="vTitle">
+				<xsl:value-of select="Title"/>
+			</xsl:variable>
 			<button type="button" onclick="test('{$vID}','{$vTitle}')">
 			<xsl:value-of select="$vID"/></button> - 
-        <xsl:value-of select="$vTitle"/>
+			<xsl:value-of select="$vTitle"/>
+		</xsl:if>
 		<xsl:apply-templates select="Section" mode="section"/>
-        <xsl:apply-templates select="Requirement" mode="section"/>
+		<xsl:apply-templates select="Requirement" mode="section"/>
     </xsl:template>
     <xsl:template match="Requirement" mode="para">
-		<div id="preview">
-			<div id="{@id}" style="display: none;">
-				<xsl:apply-templates select="Para"/>
-				<br/>
+		<xsl:if test="@isNewest = 'true'">
+			<div id="preview">
+				<div id="{@id}" style="display: none;">
+					<xsl:apply-templates select="Para"/>
+					<br/>
+				</div>
 			</div>
-		</div>
+		</xsl:if>
         <xsl:apply-templates select="Section" mode="para"/>
         <xsl:apply-templates select="Requirement" mode="para"/>
     </xsl:template>
 	<xsl:template match="Section" mode="para">
-        <div id="preview">
-			<div id="{@id}" style="display: none;">
-				<xsl:apply-templates select="Para"/>
-				<br/>
+		<xsl:if test="@isNewest = 'true'">
+			<div id="preview">
+				<div id="{@id}" style="display: none;">
+					<xsl:apply-templates select="Para"/>
+					<br/>
+				</div>
 			</div>
-		</div>
+		</xsl:if>
 		<xsl:apply-templates select="Section" mode="para"/>
         <xsl:apply-templates select="Requirement" mode="para"/>
     </xsl:template>
