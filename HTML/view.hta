@@ -25,27 +25,24 @@
 		<script src="../JS/sessionvars.js"></script>
 		
 		<script>
-			function checkCookie(value) {
-				sessvars.value = value;
-			}
-		</script>
-		
-		<script>
 			function getTabs() {
-				var y = loadProject(sessvars.projectName);
-				
-				var name = y.documentElement.childNodes;
+				var project = loadProject(sessvars.projectName);
+				var filesToLoad = project.getElementsByTagName("file_location");
 				var div = document.getElementById("head1");
-												
-				for(var i = 0; i < name.length; i++) {
-					div.innerHTML += ("<button onclick=loadXSLT(0,0,'"+name[i].childNodes[0].nodeValue+"')>"+name[i].childNodes[0].nodeValue+"</button>");
+				for(var i = 0; i < filesToLoad.length; i++) {
+					var filename = filesToLoad[i].childNodes[0].getAttribute("href");
+					if(i == 0){
+						sessvars.first = filename;
+					}
+					div.innerHTML += ("<button onclick=loadXSLT(0,0,'"+filename+"')>"+filename+"</button>");
 				}
-				sessvars.first = name[0].childNodes[0].nodeValue;
 			}
 		</script>
 		
 		<script>
 			function loadXSLT(withTabs, withCurrent, xmlToLoad){
+			var xml;
+			var xsl;
 			//Load tabs from project file
 			if(withTabs == 1){
 				getTabs();
@@ -55,20 +52,19 @@
 			//Load XML and XSL '0' = loadnew '1' = reload with current
 			if(withCurrent == 0){
 				sessvars.xml = xmlToLoad;
-				var xml = loadXML(sessvars.xml);
+				xml = loadXML(sessvars.xml);
 				var textVersion = xml.xml;
 				var styleStringStart = textVersion.search("href=");
 				var styleStringPart = textVersion.substring(styleStringStart);
 				var styleStringEnd = styleStringPart.search(">");
 				var styleName = styleStringPart.substring(6, styleStringEnd-2);
 				sessvars.xsl = styleName;
-				var xsl = loadXML(sessvars.xsl);
-				alert(sessvars.xsl);
+				xsl = loadXML(sessvars.xsl);
 			}
 			
 			if(withCurrent == 1){
-				var xml = loadXML(sessvars.xml);
-				var xsl = loadXML(sessvars.xsl);
+				xml = loadXML(sessvars.xml);
+				xsl = loadXML(sessvars.xsl);
 			}
 			
 			//Transform XML to HTML
@@ -82,7 +78,6 @@
 			//Create substring that is the script, offset start because script tag is inserted with createElement method
 			var xsltScript = value.substring(scriptStart+8, scriptEnd);
 			var editScript = xsltScript.replace("edit = 0", "edit=1");
-			alert(editScript);
 			//Find the head so we know where to append
 			var head = document.getElementsByTagName('head')[0];
 			
@@ -108,8 +103,33 @@
 			
 			//Append our generated HTML to the newly formatted page
 			document.getElementById("xsltDiv").innerHTML = value;
-			document.getElementById("xsltDiv").innerHTML += "<button onclick='saveXML(xml)'>Save</button>";
+			document.getElementById("xsltDiv").innerHTML += "<button onclick='saveXML(sessvars.xml)'>Save</button>";
 			}
+		</script>
+		
+		<script>
+		function downloadAsHTML(){
+			xml = loadXML(sessvars.xml);
+			var textVersion = xml.xml;
+			var styleStringStart = textVersion.search("href=");
+			var styleStringPart = textVersion.substring(styleStringStart);
+			var styleStringEnd = styleStringPart.search(">");
+			var styleName = styleStringPart.substring(6, styleStringEnd-2);
+			sessvars.xsl = styleName;
+			xsl = loadXML(sessvars.xsl);
+			var value = xml.transformNode(xsl);
+			
+			filename = sessvars.xml.substring(-1,sessvars.xml.length-4);
+			var fs = new ActiveXObject("Scripting.FileSystemObject");
+			//If windows 7, use this line
+			var f = fs.GetFolder("../Saves");
+			//If windows 8, use this line
+			//var f = fs.GetFolder("\XML");
+			file = f.CreateTextFile(filename+".html", true, true);
+			file.write(value);
+			file.close();
+			alert("File saved");
+		}
 		</script>
 		
 		
@@ -119,6 +139,7 @@
 		<div id="wrapper">
 		    <div id="head1">
 		        <button onclick=location.href='rtm.hta'>Create Matrix</button>
+				<button onclick=downloadAsHTML()>Download as HTML</button>
 		    </div>
 			<div id="xsltDiv">
 			    <h1>Preview</h1>

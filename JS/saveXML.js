@@ -1,6 +1,13 @@
 function saveXML(xml) {
-	var saveInfo = document.getElementById("edit").innerHTML;
-	//alert(saveInfo);
+	var xml = loadXML(xml);
+	var editInfo = document.getElementById("preview").innerHTML;
+	var refStop = editInfo.search("<DIV id=refs>");
+	if(refStop != -1){
+		editInfo = editInfo.substring(-1, refStop);
+		alert(editInfo);
+	}
+	var saveInfo = editInfo;
+	//var saveInfo = document.getElementById("preview").innerHTML;
 	var editedIdStart = saveInfo.search("<U>");
 	var editedIdEnd = saveInfo.search(" - ");
 	var editedId = saveInfo.substring(editedIdStart+3, editedIdEnd);
@@ -15,6 +22,7 @@ function saveXML(xml) {
 				var originalCheck = originalParas[j].childNodes[0].nodeValue;
 				var editedEnd = editedParas[k].search("<BR>");
 				var editedCheck = editedParas[k].substring(0, editedEnd);
+				editedCheck = editedCheck.replace("&nbsp;", "");
 				if(originalCheck != editedCheck){
 					alert("You changed: "+originalCheck+"\nTo : "+editedCheck);
 					originalParas[j].setAttribute("isNewest","false");
@@ -23,6 +31,13 @@ function saveXML(xml) {
 					editedPara.appendChild(editedText);
 					editedPara.setAttribute("isNewest","true");
 					sections[i].appendChild(editedPara);
+					if(k == editedParas.length-1){
+						while(j < originalParas.length){
+							originalParas[j].setAttribute("isNewest","false");
+							j++;
+						}
+					}
+					break;
 					}
 			}
 			
@@ -35,8 +50,9 @@ function saveXML(xml) {
 			file.write(xml.xml);
 			file.close();
 			alert("File saved");
+			break;
 		}
 	}
 	//Calling loadXSLT() at the end should refresh to show changes. Currently calls getTabs() again though.
-	loadXSLT(0);
+	loadXSLT(0,1);
 }
