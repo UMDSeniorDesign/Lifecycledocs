@@ -1,8 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<XMLProject>
-	<file_name>SoftwareRequirements.xml</file_name>
-	<file_name>UseCases.xml</file_name>
-	<file_name>TestCases.xml</file_name>
-	<file_name>NotionalSRSTest2.xml</file_name>
-	<file_name>NotionalSRSTEST.xml</file_name>
-</XMLProject>
+<?xml-stylesheet type="text/xsl" href="ProjectXSL.xsl"?>
+
+<ProjectLifecycleDocuments projectName="PLCD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="NotionalSchema2ns.xsd">
+    <Team> 
+        <TeamMember>
+            <Name isNewest="true">Jeremiah Butler</Name>
+            <Role isNewest="true">Team Lead</Role> 
+        </TeamMember>
+        <TeamMember>
+            <Name isNewest="true">Peter Magalhaes</Name>
+            <Role isNewest="true">Team Member</Role>
+        </TeamMember>
+        <TeamMember>
+            <Name isNewest="true">Aria Ushani</Name>
+            <Role isNewest="true">Team Member</Role>
+        </TeamMember>
+        <TeamMember>
+            <Name isNewest="true">Kevin Palmer</Name>
+            <Role isNewest="true">Team Member</Role>
+        </TeamMember> 
+    </Team>
+	
+    <file_location>    
+        <xi:include href="defaultTemplate.xml" parse="xml">
+           <xi:fallback>
+            <p>The included document was not found!</p> 
+        </xi:fallback>
+    </xi:include>
+    </file_location>
+	
+    <file_location>
+    <xi:include href="defaultTemplateTestCase.xml">
+        <xi:fallback>
+            <p>The included document was not found!</p>
+        </xi:fallback>
+    </xi:include>
+    </file_location>
+	
+    <file_location>
+    <xi:include href="defaultTemplateUseCase.xml">
+        <xi:fallback>
+            <p>The included document was not found!</p>
+        </xi:fallback>
+    </xi:include>
+    </file_location>
+</ProjectLifecycleDocuments>

@@ -2,7 +2,7 @@
 	<head>
 		<HTA:APPLICATION
 		border="thin"
-		borderStyle="normal"
+		borderStyle="normal" 
 		caption="yes"
 		maximizeButton="yes"
 		minimizeButton="yes"
@@ -13,8 +13,7 @@
 		scroll="auto"
 		scrollFlat="yes" />
 	    <style type="text/css">
-		    #xsltDiv {
-		    
+		    #xsltDiv { 
 			}
 	    </style>
 		
@@ -41,6 +40,7 @@
 		
 		<script>
 			function loadXSLT(withTabs, withCurrent, xmlToLoad){
+
 			var xml;
 			var xsl;
 			//Load tabs from project file
@@ -69,7 +69,6 @@
 			
 			//Transform XML to HTML
 			var value = xml.transformNode(xsl);
-			//alert(value);
 			
 			//Search for script in generated HTML, this should be put into a loop in case of multiple scripts
 			var scriptStart = value.search("<script>");
