@@ -22,10 +22,14 @@
 			function openProject() {	
 				var v = document.getElementById("browse").value;
 				
-				var varray = v.split("\\");
-				
-				sessvars.projectName = varray[varray.length-1];
-				document.location.href = 'view.hta';
+				if(v == "") {
+					alert("Please select a project to open!");	
+				}
+				else {
+					var varray = v.split("\\");
+					sessvars.projectName = varray[varray.length-1];
+					document.location.href = 'view.hta';
+				}
 			}
 		</script>
 		
