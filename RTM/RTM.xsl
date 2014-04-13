@@ -50,14 +50,19 @@
         <button type="button" onclick="showRef('{$vID}')">
             <xsl:value-of select="$vID"/>
         </button>
-        
         <xsl:value-of select="$vTitle"/>
+        
         <xsl:for-each select="Ref">
+            <br/>
             <button type="button" onclick="showRef('{$vID}')">
                 <xsl:value-of select="."/>
             </button>
+            <xsl:copy-of select="document('NotionalUseCase.xml')/UseCaseDocument/*/Requirement[@id=$vID]/Title"/>
+            <xsl:value-of select="document('NotionalTestCase.xml')/TestCaseDocument/*/Requirement/Title"/>
+            
+            <xsl:text>doggy</xsl:text>
         </xsl:for-each>
-        <br/>
+        <br/><br/>
 
         <xsl:apply-templates select="Requirement"/>        
     </xsl:template>
