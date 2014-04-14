@@ -4,7 +4,7 @@ function saveXML(xml) {
 	var refStop = editInfo.search("<DIV id=refs>");
 	if(refStop != -1){
 		editInfo = editInfo.substring(-1, refStop);
-		alert(editInfo);
+		//alert(editInfo);
 	}
 	var saveInfo = editInfo;
 	//var saveInfo = document.getElementById("preview").innerHTML;
@@ -24,7 +24,7 @@ function saveXML(xml) {
 				var editedCheck = editedParas[k].substring(0, editedEnd);
 				editedCheck = editedCheck.replace("&nbsp;", "");
 				if(originalCheck != editedCheck){
-					alert("You changed: "+originalCheck+"\nTo : "+editedCheck);
+					//alert("You changed: "+originalCheck+"\nTo : "+editedCheck);
 					originalParas[j].setAttribute("isNewest","false");
 					editedPara = xml.createElement("Para");
 					editedText=xml.createTextNode(editedCheck);

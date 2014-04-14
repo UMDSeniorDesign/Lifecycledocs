@@ -173,7 +173,7 @@
         <xsl:variable name="vPara">
             <xsl:for-each select="document('NotionalUseCase.xml')//UseCaseDocument//Section//Requirement[@id=$vID]//Requirement">  
                 <xsl:for-each select="Para">
-                    <xsl:value-of select="."/> . 
+                    <xsl:value-of select="."/>
                 </xsl:for-each> 
             </xsl:for-each>
         </xsl:variable>
