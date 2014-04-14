@@ -7,12 +7,23 @@
                     function test(ID, title){
 						var edit = 0;
 						var para = document.getElementById(ID).innerHTML;
+						var subReqs = document.getElementById("sub"+ID).innerHTML;
+						var subReqSpot = document.getElementById("sub"+ID);
+						var subReqStyle = subReqSpot.style.display;
 						var text = "<u>"+ID;
 						text += " - ";
 						text += "<i>"+title+"</i></u>";
 						text += "<p>";
 						text += para;
 						text += "</p>";
+						if(subReqs.length > 1){
+							if(subReqStyle == 'none'){
+								text += "<p>";
+								text += "<u>Sub Requirements</u><br/>"
+								text += subReqs;
+								text += "</p>";
+							}
+						}
 						var preview = document.getElementById("preview");
 						preview.innerHTML = text;
 						if(edit > 0){
@@ -72,8 +83,10 @@
 			<xsl:value-of select="$vID"/></button> - 
 			<xsl:value-of select="$vTitle"/>
 		</xsl:if>
-		<xsl:apply-templates select="Section" mode="section"/>
-        <xsl:apply-templates select="Requirement" mode="section"/>
+		<div id="sub{@id}">
+			<xsl:apply-templates select="Section" mode="section"/>
+			<xsl:apply-templates select="Requirement" mode="section"/>
+		</div>
     </xsl:template>
 	
 	<xsl:template match="Requirement" mode="section">
@@ -90,8 +103,10 @@
 			<xsl:value-of select="$vID"/></button>
 			</li>
 		</xsl:if>
-		<xsl:apply-templates select="Section" mode="section"/>
-		<xsl:apply-templates select="Requirement" mode="section"/>
+		<div id="sub{@id}" style="display: none;">
+			<xsl:apply-templates select="Section" mode="section"/>
+			<xsl:apply-templates select="Requirement" mode="section"/>
+		</div>
     </xsl:template>
 	
     <xsl:template match="Requirement" mode="para">
