@@ -16,10 +16,10 @@
 						text += "<p>";
 						text += para;
 						text += "</p>";
-						if(subReqs.length > 1){
+						if(subReqs.length > 33){
 							if(subReqStyle == 'none'){
 								text += "<p>";
-								text += "<u>Sub Requirements</u><br/>"
+								text += "<u>Sub Requirements</u><br/>";
 								text += subReqs;
 								text += "</p>";
 							}
@@ -83,9 +83,11 @@
 			<xsl:value-of select="$vID"/></button> - 
 			<xsl:value-of select="$vTitle"/>
 		</xsl:if>
-		<div id="sub{@id}">
+		<div id="sub{@id}" contenteditable="false">
+		<div contenteditable="false">
 			<xsl:apply-templates select="Section" mode="section"/>
 			<xsl:apply-templates select="Requirement" mode="section"/>
+		</div>	
 		</div>
     </xsl:template>
 	
@@ -104,8 +106,10 @@
 			</li>
 		</xsl:if>
 		<div id="sub{@id}" style="display: none;">
+		<div contenteditable="false">
 			<xsl:apply-templates select="Section" mode="section"/>
 			<xsl:apply-templates select="Requirement" mode="section"/>
+		</div>
 		</div>
     </xsl:template>
 	
