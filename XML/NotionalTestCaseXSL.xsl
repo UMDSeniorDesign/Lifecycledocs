@@ -8,20 +8,15 @@
 						var edit = 0;
 						var para = document.getElementById(ID).innerHTML;
 						var text = "<u>"+ID;
-                        text += " - ";
-                        text += "<i>"+title+"</i></u>";
+						text += " - ";
+						text += "<i>"+title+"</i></u>";
 						text += "<p>";
-                        text += para;
-                        text += "</p>";
+						text += para;
+						text += "</p>";
 						var preview = document.getElementById("preview");
-						//preview.innerHTML = text;
-						if(edit == 0){
-							preview.innerHTML = text;
-						}
+						preview.innerHTML = text;
 						if(edit > 0){
-							var editLocation = document.getElementById("edit");
-							editLocation.innerHTML = text;
-							editLocation.style.display = 'block';
+							preview.contentEditable = 'true';
 						}
                     }
 					function showRef(ID){
@@ -47,12 +42,12 @@
             </head>
             <body>
                 <div id="toc">
-                    <xsl:apply-templates select="Section" mode="section"/>
-                </div>
-                <div id="view">
-                    <xsl:apply-templates select="Section" mode="para"/>
-                </div>
-				<div id="edit" contenteditable="true" style="display: none;">
+					<xsl:apply-templates select="Section" mode="section"/>
+				</div>
+				<div id="view">
+					<xsl:apply-templates select="Section" mode="para"/>
+				</div>
+				<div id="refLocation">
 				</div>
             </body>
         </html>
@@ -84,8 +79,11 @@
 					<xsl:apply-templates select="TestResult"/>
 					<xsl:text>Approved by: </xsl:text>                
 					<xsl:apply-templates select="ApprovedBy"/>
+					<br/>
+					<div id="refs">
 					<xsl:apply-templates select="Ref"/>                
 					<br/>
+					</div>
 				</div>
 			</div>
 		</xsl:if>
@@ -131,30 +129,46 @@
          <xsl:value-of select="."/>
         </xsl:variable>
         <xsl:variable name="vTitle">
-            <!--<xsl:for-each select="document('NotionalSRS2ns.xml')//SoftwareRequirementsDocument//Section//Requirement[@id=$vID]">
+			<xsl:for-each select="document('NotionalSRS2ns.xml')//SoftwareRequirementsDocument//Section//Requirement[@id=$vID]">
+                <xsl:value-of select="Title"/>
+				<br/>
+              <xsl:for-each select="Para">
+                  <xsl:apply-templates select="Para"/>
+                    <xsl:value-of select="."/> 
+                </xsl:for-each>
+            </xsl:for-each>
+            <xsl:for-each select="document('NotionalUseCase.xml')//UseCaseDocument//Section//Requirement[@id=$vID]">
                 <xsl:value-of select="Title"/>
               <xsl:for-each select="Para">
                   <xsl:apply-templates select="Para"/>
                     <xsl:value-of select="."/> 
                 </xsl:for-each>
             </xsl:for-each>
-           -->
         </xsl:variable>
         <xsl:variable name="vPara">
-           <!-- <xsl:for-each select="document('NotionalSRS2ns.xml')//SoftwareRequirementsDocument//Section//Requirement[@id=$vID]">  
+			<xsl:for-each select="document('NotionalSRS2ns.xml')//SoftwareRequirementsDocument//Section//Requirement[@id=$vID]//Requirement">  
                 <xsl:for-each select="Para">
                     <xsl:value-of select="."/> . 
                 </xsl:for-each> 
-            </xsl:for-each>-->
+            </xsl:for-each>
+            <xsl:for-each select="document('NotionalUseCase.xml')//UseCaseDocument//Section//Requirement[@id=$vID]//Requirement">  
+                <xsl:for-each select="Para">
+                    <xsl:value-of select="."/> . 
+                </xsl:for-each> 
+            </xsl:for-each>
         </xsl:variable>
-        <button type="button" onclick="showRef('{$vID}')">
-			<xsl:value-of select="$vID"/></button>
-		<div id="ref">
-            <div id="{.}" style="display: none;">
-				<xsl:value-of select="$vTitle"/>
+		<div contenteditable="false">
+			<button type="button" onclick="showRef('{$vID}')">
+				<xsl:value-of select="$vID"/></button>
+			<div id="ref">
+				<div id="{.}" style="display: none;">
+					<xsl:value-of select="$vTitle"/>
+					<br/>
+					<xsl:value-of select="$vPara"/>
+				</div>
 			</div>
 		</div>
-        <xsl:apply-templates select="Ref" mode="para"/>
-        <br/>
+		<xsl:apply-templates select="Ref" mode="para"/>
+		<br/>
     </xsl:template>
 </xsl:stylesheet>
