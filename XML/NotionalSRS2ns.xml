@@ -103,9 +103,7 @@
   		<Title isNewest="true">External Interface Requirements</Title>
   	<Requirement isNewest="true" id="RQ3.1.1"> 
   		<Title isNewest="true"> User Interfaces </Title>
-		<Para isNewest="true">The user interface should be easy to use and have simple text boxes and an active table of contents menu, and a preview of the document selected in a preview pane. Since the user is unaware of the XML back end implementation, a GUI must be driven from XML to allow for easy adaptation.
-		</Para>
-  		<Ref isNewest="true">UC1.1.1</Ref>
+		<Para isNewest="true">The user interface should be easy to use and have simple text boxes and an active table of contents menu, and a preview of the document selected in a preview pane. Since the user is unaware of the XML back end implementation, a GUI must be driven from XML to allow for easy adaptation.</Para>
 		<Requirement isNewest="true" id="RQ3.1.1.1">
 			<Para isNewest="true">User is unaware of XML back end implementation.</Para>
 			<Ref isNewest="true">UC1.1.1</Ref>
