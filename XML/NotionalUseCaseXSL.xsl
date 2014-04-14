@@ -15,6 +15,15 @@
                     var preview = document.getElementById("preview");
                     preview.innerHTML = text;
                     }
+					function showRef(ID){
+						var refSpot = document.getElementById("ref");
+						var infoSpot = document.getElementById(ID);
+						var openOrClose = infoSpot.style.display;
+						if(openOrClose == 'block')
+							infoSpot.style.display = 'none';
+						else
+							infoSpot.style.display = 'block';
+					}
                 </script>
                 <title>Lifecycle Documents - Use Cases</title>
                 <style type="text/css">

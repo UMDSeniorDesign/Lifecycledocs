@@ -22,7 +22,11 @@
 					function showRef(ID){
 						var refSpot = document.getElementById("ref");
 						var infoSpot = document.getElementById(ID);
-						infoSpot.style.display = 'block';
+						var openOrClose = infoSpot.style.display;
+						if(openOrClose == 'block')
+							infoSpot.style.display = 'none';
+						else
+							infoSpot.style.display = 'block';
 					}
                 </script>
                 <title>Lifecycle Documents</title>
