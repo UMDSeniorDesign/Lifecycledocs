@@ -80,7 +80,9 @@
 				<div id="{@id}" style="display: none;">
 					<xsl:apply-templates select="Para"/>
 					<xsl:text>Test Result: </xsl:text>
+					
 					<xsl:apply-templates select="TestResult"/>
+					<br/>
 					<xsl:text>Approved by: </xsl:text>                
 					<xsl:apply-templates select="ApprovedBy"/>
 					<br/>
@@ -136,34 +138,34 @@
 			<xsl:for-each select="document('NotionalSRS2ns.xml')//SoftwareRequirementsDocument//Section//Requirement[@id=$vID]">
                 <xsl:value-of select="Title"/>
 				<br/>
-              <xsl:for-each select="Para">
+             <!-- <xsl:for-each select="Para">
                   <xsl:apply-templates select="Para"/>
                     <xsl:value-of select="."/> 
-                </xsl:for-each>
+                </xsl:for-each> -->
             </xsl:for-each>
             <xsl:for-each select="document('NotionalUseCase.xml')//UseCaseDocument//Section//Requirement[@id=$vID]">
                 <xsl:value-of select="Title"/>
-              <xsl:for-each select="Para">
+          <!--    <xsl:for-each select="Para">
                   <xsl:apply-templates select="Para"/>
                     <xsl:value-of select="."/> 
-                </xsl:for-each>
+                </xsl:for-each> -->
             </xsl:for-each>
         </xsl:variable>
         <xsl:variable name="vPara">
 			<xsl:for-each select="document('NotionalSRS2ns.xml')//SoftwareRequirementsDocument//Section//Requirement[@id=$vID]//Requirement">  
                 <xsl:for-each select="Para">
-                    <xsl:value-of select="."/> . 
+                    <xsl:value-of select="."/> 
                 </xsl:for-each> 
             </xsl:for-each>
             <xsl:for-each select="document('NotionalUseCase.xml')//UseCaseDocument//Section//Requirement[@id=$vID]//Requirement">  
                 <xsl:for-each select="Para">
-                    <xsl:value-of select="."/> . 
+                    <xsl:value-of select="."/>
                 </xsl:for-each> 
             </xsl:for-each>
         </xsl:variable>
 		<div contenteditable="false">
 			<button type="button" onclick="showRef('{$vID}')">
-				<xsl:value-of select="$vID"/></button>
+				<xsl:value-of select="$vID"/></button>  - <xsl:value-of select="$vTitle"/>
 			<div id="ref">
 				<div id="{.}" style="display: none;">
 					<xsl:value-of select="$vTitle"/>

@@ -102,7 +102,7 @@
 			</xsl:variable>
 			<li>
 			<button type="button" onclick="test('{$vID}','{$vTitle}')">
-			<xsl:value-of select="$vID"/></button>
+				<xsl:value-of select="$vID"/></button> - <xsl:value-of select="$vTitle"/>
 			</li>
 		</xsl:if>
 		<div id="sub{@id}" style="display: none;">
@@ -158,28 +158,41 @@
     </xsl:template>
 	
 	<xsl:template match="Ref">
-        <xsl:variable name="vID">
-         <xsl:value-of select="."/>
-        </xsl:variable>
-        <xsl:variable name="vTitle">
-            <xsl:for-each select="document('NotionalUseCase.xml')//UseCaseDocument//Section//Requirement[@id=$vID]">
-                <xsl:value-of select="Title"/>
-              <xsl:for-each select="Para">
+		<xsl:variable name="vID">
+			<xsl:value-of select="."/>
+		</xsl:variable>
+		<xsl:variable name="vTitle">
+			<xsl:for-each select="document('NotionalUseCase.xml')//UseCaseDocument//Section//Requirement[@id=$vID]">
+				<xsl:value-of select="Title"/>
+				<br/>
+				<!-- <xsl:for-each select="Para">
                   <xsl:apply-templates select="Para"/>
                     <xsl:value-of select="."/> 
-                </xsl:for-each>
-            </xsl:for-each>
-        </xsl:variable>
-        <xsl:variable name="vPara">
-            <xsl:for-each select="document('NotionalUseCase.xml')//UseCaseDocument//Section//Requirement[@id=$vID]//Requirement">  
-                <xsl:for-each select="Para">
-                    <xsl:value-of select="."/>
-                </xsl:for-each> 
-            </xsl:for-each>
-        </xsl:variable>
+                </xsl:for-each> -->
+			</xsl:for-each>
+			<xsl:for-each select="document('NotionalTestCase.xml')//TestCaseDocument//Section//Requirement[@id=$vID]">
+				<xsl:value-of select="Title"/>
+				<!--    <xsl:for-each select="Para">
+                  <xsl:apply-templates select="Para"/>
+                    <xsl:value-of select="."/> 
+                </xsl:for-each> -->
+			</xsl:for-each>
+		</xsl:variable>
+		<xsl:variable name="vPara">
+			<xsl:for-each select="document('NotionalUseCase.xml')//UseCaseDocument//Section//Requirement[@id=$vID]//Requirement">  
+				<xsl:for-each select="Para">
+					<xsl:value-of select="."/> 
+				</xsl:for-each> 
+			</xsl:for-each>
+			<xsl:for-each select="document('NotionalTestCase.xml')//TestCaseDocument//Section//Requirement[@id=$vID]//Requirement">  
+				<xsl:for-each select="Para">
+					<xsl:value-of select="."/>
+				</xsl:for-each> 
+			</xsl:for-each>
+		</xsl:variable>
 		<div contenteditable="false">
 			<button type="button" onclick="showRef('{$vID}')">
-				<xsl:value-of select="$vID"/></button>
+				<xsl:value-of select="$vID"/></button>  - <xsl:value-of select="$vTitle"/>
 			<div id="ref">
 				<div id="{.}" style="display: none;">
 					<xsl:value-of select="$vTitle"/>
@@ -190,5 +203,5 @@
 		</div>
 		<xsl:apply-templates select="Ref" mode="para"/>
 		<br/>
-    </xsl:template>
+	</xsl:template>
 </xsl:stylesheet>
