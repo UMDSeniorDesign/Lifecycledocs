@@ -28,19 +28,12 @@
                 var infoSpot = document.getElementById(ID);
                 infoSpot.style.display = 'block';
                 }
-                function showTitle(ID){
-                var refSpot = document.getElementById("ref");
-                var infoSpot = document.getElementById(ID);
-                alert(Title);
-                alert(infoSpot);
-                infoSpot.style.display = 'block';
-                }
             </script>
             <title>Lifecycle Documents</title>
             <xsl:apply-templates select="/*/*/*/Requirement"/>
             
 
-
+<!-- these are external doc links 
             <br></br>
             <xsl:value-of select="document('NotionalUseCase.xml')/*/*/Requirement/@id"/>
             <xsl:value-of select="document('NotionalUseCase.xml')/UseCaseDocument/Section/Requirement/Title"/>
@@ -51,51 +44,52 @@
             <xsl:value-of select="document('NotionalUseCase.xml')/*/*/Requirement/@id"/>
             <xsl:value-of select="document('NotionalUseCase.xml')/UseCaseDocument/Section/Requirement/Title"/>
             <br></br>
-
+-->
         </head>
     </html>
     </xsl:template>
     
-    <xsl:template match="Requirement">
-        <xsl:variable name="vID2">
-            <xsl:value-of select="@id"/>
-        </xsl:variable>
+    <xsl:template match="Requirement[@isNewest='true']">
+        <xsl:variable name="vID2" select="@id"/>
         <xsl:variable name="vTitle2">
-            <xsl:text> Title: </xsl:text>
-            <xsl:value-of select="Title"/>
-            <xsl:text> Description: </xsl:text>
-            <xsl:value-of select="Para"/>
-        </xsl:variable>
-        <xsl:variable name="vID">
-            <xsl:value-of select="@id"/>
-        </xsl:variable>
-        <xsl:variable name="vTitle">
-            <xsl:if test="@isNewest=true">
+            <xsl:if test="Title != ''">
+                <xsl:text> Title: </xsl:text>
                 <xsl:value-of select="Title"/>
+            </xsl:if>      
+            <xsl:if test="Para != ''">
+                <xsl:text> Paragraph: </xsl:text>
+                <xsl:value-of select="Para"/>
             </xsl:if>
-        </xsl:variable>
-        
+        </xsl:variable>        
+        <xsl:variable name="vID" select="@id"/>
+        <xsl:variable name="vDocumentUC" select="document('NotionalUseCase.xml')"/>
+        <xsl:variable name="vDocumentTC" select="document('NotionalTestCase.xml')"/>
         
         <button type="button" onclick="showRef('{$vID2}')">
             <xsl:value-of select="$vID2"/>
         </button>
         <xsl:value-of select="$vTitle2"/>
         
-        <xsl:for-each select="Ref">
+        <xsl:for-each select="Ref[@isNewest='true']">
             <br/>
-            <button type="button" onclick="showRef('{$vID2}')">
+            <xsl:variable name="myRef" select="."/>
+            <button type="button" onclick="showRef('{$vID}')">
                 <xsl:value-of select="."/>
             </button>
             
-            <xsl:value-of select="document('NotionalUseCase.xml')/UseCaseDocument/Section/Requirement/Title"/>
+            <xsl:value-of select="$vDocumentUC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"/>
+            <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"/>
+            <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult"/>
+            <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Name"/>
+            <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Para[@isNewest='true']"/>
             
+           
+            <xsl:value-of select="$vDocumentUC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"/>
+            <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"/>
+            <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult"/>
+            <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Name"/>
+            <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Para[@isNewest='true']"/>
             
-            
-<!--            
-            <xsl:copy-of select="document('NotionalUseCase.xml')/UseCaseDocument/*/Requirement[@id=$vID2]/Title"/>
-            <xsl:value-of select="document('NotionalTestCase.xml')/TestCaseDocument/*/Requirement/Title"/>
--->            
-            <xsl:text>doggy</xsl:text>
         </xsl:for-each>
         <br/><br/>
 
