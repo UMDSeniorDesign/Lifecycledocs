@@ -4,7 +4,7 @@
         <html>
             <head>
                 <script>
-                    function test(ID, title){
+                    function showSection(ID, title){
 						var edit = 0;
 						var para = document.getElementById(ID).innerHTML;
 						var subReqs = document.getElementById("sub"+ID).innerHTML;
@@ -30,6 +30,10 @@
 							preview.contentEditable = 'true';
 						}
                     }
+					function addSection(ID){
+						//alert("Right Clicked"+ID);
+						window.open('addSection.hta','AddSection');
+					}
 					function showRef(ID){
 						var refSpot = document.getElementById("ref");
 						var infoSpot = document.getElementById(ID);
@@ -79,7 +83,7 @@
 				<xsl:value-of select="Title"/>
 			</xsl:variable>
 			
-			<button type="button" onclick="test('{$vID}','{$vTitle}')">
+			<button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="addSection('{$vID}');return false;">
 			<xsl:value-of select="$vID"/></button> - 
 			<xsl:value-of select="$vTitle"/>
 		</xsl:if>
@@ -101,7 +105,7 @@
 				<xsl:value-of select="Title"/>
 			</xsl:variable>
 			<li>
-			<button type="button" onclick="test('{$vID}','{$vTitle}')">
+			<button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="addSection('{$vID}');return false;">
 			<xsl:value-of select="$vID"/></button>
 			</li>
 		</xsl:if>
