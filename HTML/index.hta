@@ -44,6 +44,7 @@
 			
 				var fso = new ActiveXObject("Scripting.FileSystemObject");
 				
+				//windows 8
 				if(fso.FileExists("../Lifecycledocs/Projects/"+projectName+".xml")) {
 					var r = confirm("file already exists! overwrite?")
 					
@@ -52,6 +53,19 @@
 					else
 						createProject();
 				}
+				
+				
+				//windows 7 
+				/*
+				if(fso.FileExists("../Projects/"+projectName+".xml")) {
+					var r = confirm("file already exists! overwrite?")
+					
+					if(r == true) 
+						alert("file overwriten");
+					else
+						createProject();
+				}
+				*/
 				
 				//Windows 8 function
 				//fso.CopyFile("../Lifecycledocs/Projects/test.xml", "../Lifecycledocs/Projects/"+projectName+".xml", 1);
