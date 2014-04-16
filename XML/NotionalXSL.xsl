@@ -31,7 +31,6 @@
 						}
                     }
 					function addSection(ID){
-						//alert("Right Clicked"+ID);
 						window.open('addSection.hta','AddSection');
 					}
 					function showRef(ID){
@@ -105,13 +104,10 @@
 				<xsl:value-of select="Title"/>
 			</xsl:variable>
 			<li>
-<<<<<<< HEAD
 			<button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="addSection('{$vID}');return false;">
 			<xsl:value-of select="$vID"/></button>
-=======
 			<button type="button" onclick="test('{$vID}','{$vTitle}')">
 				<xsl:value-of select="$vID"/></button> - <xsl:value-of select="$vTitle"/>
->>>>>>> a0e5a162de30edeee0713eae9ae0bba1a54f8c63
 			</li>
 		</xsl:if>
 		<div id="sub{@id}" style="display: none;">
