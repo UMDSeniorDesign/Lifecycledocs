@@ -105,9 +105,7 @@
 			</xsl:variable>
 			<li>
 			<button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="addSection('{$vID}');return false;">
-			<xsl:value-of select="$vID"/></button>
-			<button type="button" onclick="test('{$vID}','{$vTitle}')">
-				<xsl:value-of select="$vID"/></button> - <xsl:value-of select="$vTitle"/>
+			<xsl:value-of select="$vID"/></button> - <xsl:value-of select="$vTitle"/>
 			</li>
 		</xsl:if>
 		<div id="sub{@id}" style="display: none;">
