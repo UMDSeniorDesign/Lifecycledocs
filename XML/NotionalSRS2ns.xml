@@ -262,7 +262,7 @@
   		</Requirement>
 	
 	<Requirement isNewest="true" id="RQ3.2.3">
-  <Title isNewest="true">Read Lifecycle Document</Title>
+  <Title isNewest="true">Edit Lifecycle Document</Title>
 		<Ref isNewest="true">UC1.1.2</Ref>
 		<Ref isNewest="true">UC1.1.3</Ref>
 	<Requirement isNewest="true" id="RQ3.2.3.1">

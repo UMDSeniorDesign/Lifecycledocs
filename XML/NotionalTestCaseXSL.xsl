@@ -138,14 +138,14 @@
 			<xsl:for-each select="document('NotionalSRS2ns.xml')//SoftwareRequirementsDocument//Section//Requirement[@id=$vID]">
                 <xsl:value-of select="Title"/>
 				<br/>
-             <!-- <xsl:for-each select="Para">
+           <!--   <xsl:for-each select="Para">
                   <xsl:apply-templates select="Para"/>
                     <xsl:value-of select="."/> 
                 </xsl:for-each> -->
             </xsl:for-each>
             <xsl:for-each select="document('NotionalUseCase.xml')//UseCaseDocument//Section//Requirement[@id=$vID]">
                 <xsl:value-of select="Title"/>
-          <!--    <xsl:for-each select="Para">
+            <!-- <xsl:for-each select="Para">
                   <xsl:apply-templates select="Para"/>
                     <xsl:value-of select="."/> 
                 </xsl:for-each> -->
@@ -161,15 +161,24 @@
                 <xsl:for-each select="Para">
                     <xsl:value-of select="."/>
                 </xsl:for-each> 
-            </xsl:for-each>
+            </xsl:for-each> 
+        	<xsl:for-each select="document('NotionalSRS2ns.xml')//SoftwareRequirementsDocument//Section//Requirement[@id=$vID]">  
+        		<xsl:for-each select="Para">
+        			<xsl:value-of select="."/>
+        		</xsl:for-each> 
+        	</xsl:for-each>
+        	<xsl:for-each select="document('NotionalUseCase.xml')//UseCaseDocument//Section//Requirement[@id=$vID]">  
+        		<xsl:for-each select="Para">
+        			<xsl:value-of select="."/>
+        		</xsl:for-each> 
+        	</xsl:for-each>
         </xsl:variable>
 		<div contenteditable="false">
 			<button type="button" onclick="showRef('{$vID}')">
 				<xsl:value-of select="$vID"/></button>  - <xsl:value-of select="$vTitle"/>
 			<div id="ref">
 				<div id="{.}" style="display: none;">
-					<xsl:value-of select="$vTitle"/>
-					<br/>
+					
 					<xsl:value-of select="$vPara"/>
 				</div>
 			</div>
