@@ -23,6 +23,24 @@
 		<script src="../JS/getFromSessvar.js"></script>
 		<script src="../JS/sessionvars.js"></script>
 		
+		
+		<script>
+			function toggleEdit() {
+				var preview = document.getElementById("preview");
+				if(sessvars.toggle == "1") {
+					sessvars.toggle = "0";
+					preview.style.border = "none";
+					preview.contentEditable = false;
+				}
+				else if(sessvars.toggle == "0") {
+					sessvars.toggle = "1";
+					preview.style.border = "dashed";
+					preview.contentEditable = true;
+				}
+				
+			}
+		</script>
+		
 		<script>
 			function getTabs() {
 				var project = loadProject(sessvars.projectName);
@@ -40,7 +58,7 @@
 		
 		<script>
 			function loadXSLT(withTabs, withCurrent, xmlToLoad){
-
+			
 			var xml;
 			var xsl;
 			//Load tabs from project file
@@ -103,6 +121,19 @@
 			//Append our generated HTML to the newly formatted page
 			document.getElementById("xsltDiv").innerHTML = value;
 			document.getElementById("xsltDiv").innerHTML += "<button onclick='saveXML(sessvars.xml)'>Save</button>";
+			
+			document.getElementById("xsltDiv").innerHTML += "<button onclick=toggleEdit()>Edit On/Off</button>";
+			
+			var preview = document.getElementById("preview");
+			
+			if(preview.isContentEditable == true) {
+				preview.style.border = "dashed";
+				sessvars.toggle = "1";
+			}
+			if(preview.isContentEditable == false) { 
+				preview.style.border = "none";
+				sessvars.toggle = "0";
+			}
 			}
 		</script>
 		
