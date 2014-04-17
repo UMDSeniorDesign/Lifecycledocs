@@ -30,9 +30,52 @@
 							preview.contentEditable = 'true';
 						}
                     }
-					function addSection(ID){
-						window.open('addSection.hta','AddSection');
-					}
+					function showMenu(ID) {
+                    var rightClickMenu = document.getElementById(ID+"Menu");
+                        rightClickMenu.style.display = 'block';
+                    }
+                    function hideMenu(ID) {
+                    var rightClickMenu = document.getElementById(ID+"Menu");
+                    rightClickMenu.style.display = 'none';
+                    }
+                    function addAbove(ID){
+                        //alert("Add Above: "+ID);
+                        if(sessvars.xml.length > 0){
+                            var xml = loadXML(sessvars.xml);
+                            var sections = xml.getElementsByTagName("Section");
+                            for(var i = 0; i &lt; sections.length; i++){
+                                if(ID == sections[i].getAttribute("id"))
+                                    alert("Add Section Above: "+sections[i].getAttribute("id"));
+                            }
+                            var reqs = xml.getElementsByTagName("Requirement");
+                            for(var i = 0; i &lt; reqs.length; i++){
+                                if(ID == reqs[i].getAttribute("id"))
+                                    alert("Add Requirement Above: "+reqs[i].getAttribute("id"));
+                            }
+                        }
+                        else{
+                            alert("Please open in Lifecycle Document Editor to enable this functionality");
+                            }
+                    }
+                    function addBelow(ID){
+                        //alert("Add Below: "+ID);
+                        if(sessvars.xml.length > 0){
+                            var xml = loadXML(sessvars.xml);
+                            var sections = xml.getElementsByTagName("Section");
+                            for(var i = 0; i &lt; sections.length; i++){
+                                if(ID == sections[i].getAttribute("id"))
+                                    alert("Add Section Below: "+sections[i].getAttribute("id"));
+                            }
+                            var reqs = xml.getElementsByTagName("Requirement");
+                            for(var i = 0; i &lt; reqs.length; i++){
+                                if(ID == reqs[i].getAttribute("id"))
+                                    alert("Add Requirement Below: "+reqs[i].getAttribute("id"));
+                            }
+                        }
+                        else{
+                        alert("Please open in Lifecycle Document Editor to enable this functionality");
+                        }
+                    }
 					function showRef(ID){
 						var refSpot = document.getElementById("ref");
 						var infoSpot = document.getElementById(ID);
@@ -81,10 +124,17 @@
 			<xsl:variable name="vTitle">
 				<xsl:value-of select="Title"/>
 			</xsl:variable>
-			
-			<button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="addSection('{$vID}');return false;">
+            
+			<button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="showMenu('{$vID}');return false;">
 			<xsl:value-of select="$vID"/></button> - 
 			<xsl:value-of select="$vTitle"/>
+            <div id="{@id}Menu" style="display: none;">
+                <button onclick="addAbove('{$vID}')">Add Section Above</button>
+                <br/>
+                <button onclick="addBelow('{$vID}')">Add Section Below</button>
+                <br/>
+                <button onclick="hideMenu('{$vID}')">Cancel</button>
+            </div>
 		</xsl:if>
 		<div id="sub{@id}" contenteditable="false">
 		<div contenteditable="false">
@@ -103,9 +153,17 @@
 			<xsl:variable name="vTitle">
 				<xsl:value-of select="Title"/>
 			</xsl:variable>
+            
 			<li>
-			<button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="addSection('{$vID}');return false;">
+            <button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="showMenu('{$vID}');return false;">
 			<xsl:value-of select="$vID"/></button> - <xsl:value-of select="$vTitle"/>
+            <div id="{@id}Menu" style="display: none;">
+                <button onclick="addAbove('{$vID}')">Add Requirement Above</button>
+                <br/>
+                <button onclick="addBelow('{$vID}')">Add Requirement Below</button>
+                <br/>
+                <button onclick="hideMenu('{$vID}')">Cancel</button>
+            </div>
 			</li>
 		</xsl:if>
 		<div id="sub{@id}" style="display: none;">
