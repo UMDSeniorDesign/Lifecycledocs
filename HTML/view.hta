@@ -34,7 +34,7 @@
 				}
 				else if(sessvars.toggle == "0") {
 					sessvars.toggle = "1";
-					preview.style.border = "dashed";
+					preview.style.border = "dashed thin";
 					preview.contentEditable = true;
 				}
 				
@@ -94,7 +94,7 @@
 			
 			//Create substring that is the script, offset start because script tag is inserted with createElement method
 			var xsltScript = value.substring(scriptStart+8, scriptEnd);
-			var editScript = xsltScript.replace("edit = 0", "edit=1");
+			var editScript = xsltScript;//.replace("edit = 0", "edit=1");
 			//Find the head so we know where to append
 			var head = document.getElementsByTagName('head')[0];
 			
