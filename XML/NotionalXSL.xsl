@@ -198,8 +198,6 @@
 				<xsl:value-of select="$vID"/></button>  - <xsl:value-of select="$vTitle"/>
 			<div id="ref">
 				<div id="{.}" style="display: none;">
-					<xsl:value-of select="$vTitle"/>
-					<br/>
 					<xsl:value-of select="$vPara"/>
 				</div>
 			</div>
