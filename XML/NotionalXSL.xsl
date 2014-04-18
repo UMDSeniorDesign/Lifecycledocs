@@ -49,9 +49,14 @@
                             var xml = loadXML(sessvars.xml);
                             var xmlDocument = xml.documentElement;
                             var sections = xml.getElementsByTagName("Section");
+                            var sectionForReqFirst = ID.indexOf('.');
+                            var sectionForReqStop = ID.indexOf('.', sectionForReqFirst+1);
+                            var sectionForReq = ID.substring(-1, sectionForReqStop);
+                            var found = 0;
                             for(var i = 0; i &lt; sections.length; i++){
                                 if(ID == sections[i].getAttribute("id")){
                                     //alert("Add Section Above: "+sections[i].getAttribute("id"));
+                                    found = 1;
                                     newNode=xml.createElement("Section");
                                     newNode.setAttribute("isNewest","true");
                                     newNode.setAttribute("id", sections[i].getAttribute("id"));
@@ -67,6 +72,9 @@
                                     newNode.appendChild(newSectionParaElement);
                                     xmlDocument.insertBefore(newNode, sections[i]);
                                     alert("Section Added");
+                                }
+                                if(found == 0 &#38;&#38; sectionForReq == sections[i].getAttribute("id")){
+                                    sectionForReq = sections[i];
                                 }
                             }
                             var reqs = xml.getElementsByTagName("Requirement");
@@ -86,7 +94,7 @@
                                     newReqParaElement.appendChild(newReqParaText);
                                     newReqParaElement.setAttribute("isNewest","true");
                                     newNode.appendChild(newReqParaElement);
-                                    xml.insertBefore(newNode, reqs[i]);
+                                    sectionForReq.insertBefore(newNode, reqs[i]);
                                     alert("Requirement Added");
                                 }
                             }
@@ -133,7 +141,7 @@
                             var reqs = xml.getElementsByTagName("Requirement");
                             for(var i = 0; i &lt; reqs.length; i++){
                                 if(ID == reqs[i].getAttribute("id")){
-                                    //alert("Add Requirement Above: "+reqs[i].getAttribute("id"));
+                                    //alert("Add Requirement Below: "+reqs[i].getAttribute("id"));
                                     newNode=xml.createElement("Requirement");
                                     newNode.setAttribute("isNewest","true");
                                     newNode.setAttribute("id", reqs[i].getAttribute("id"));
@@ -147,7 +155,7 @@
                                     newReqParaElement.appendChild(newReqParaText);
                                     newReqParaElement.setAttribute("isNewest","true");
                                     newNode.appendChild(newReqParaElement);
-                                    xml.insertBefore(newNode, reqs[i+1]);
+                                    xmlDocument.insertBefore(newNode, reqs[i+1]);
                                     alert("Requirement Added");
                                 }
                             }
