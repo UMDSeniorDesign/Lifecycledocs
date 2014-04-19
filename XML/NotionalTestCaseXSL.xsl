@@ -79,16 +79,25 @@
 			<div id="preview">
 				<div id="{@id}" style="display: none;">
 					<xsl:apply-templates select="Para"/>
-					<xsl:text>Test Result: </xsl:text>
-					
-					<xsl:apply-templates select="TestResult"/>
 					<br/>
-					<xsl:text>Approved by: </xsl:text>                
-					<xsl:apply-templates select="ApprovedBy"/>
-					<br/>
+					<xsl:if test="TestResult != ''">
+						<xsl:text>Test Result: </xsl:text>
+						<xsl:apply-templates select="TestResult"/>
+						<br/>
+					</xsl:if>
+					<xsl:for-each select="ApprovedBy[@isNewest='true']">
+						<xsl:text>Approved By: </xsl:text>
+						<xsl:value-of select="Name"/>
+						<br/>
+						<xsl:value-of select="Name"/>
+						<xsl:text>'s Comment: </xsl:text>
+						<xsl:apply-templates select="Para"/>
+						<xsl:apply-templates select="ApprovedBy"/>
+					</xsl:for-each>
+					<br/><br/>
 					<div id="refs">
-					<xsl:apply-templates select="Ref"/>                
-					<br/>
+						<xsl:apply-templates select="Ref"/>                
+						<br/>
 					</div>
 				</div>
 			</div>
@@ -100,6 +109,7 @@
     <xsl:template match="Para">
 		<xsl:if test="@isNewest = 'true'">
 			<div id="Para">
+				<xsl:text>.     </xsl:text>
 				<xsl:value-of select="."/>
 				<br/>
 			</div>
@@ -107,26 +117,19 @@
     </xsl:template>
 	
     <xsl:template match="TestResult">
-		<xsl:if test="@isNewest = 'true'">
-			<div id="Para">
 				<xsl:value-of select="."/>
-				<br/>
-			</div>
-		</xsl:if>
     </xsl:template>
 	
-    <xsl:template match="ApprovedBy" mode="section">
-        <xsl:apply-templates select="Name"/>
-        <xsl:apply-templates select="Para"/>
-        <xsl:apply-templates select="ApprovedBy" mode="section"/>        
+    <xsl:template match="ApprovedBy">
+    	<xsl:text>im here</xsl:text>
+    	<xsl:value-of select="."/>
+<!--        <xsl:apply-templates select="Name"/>-->
+                
     </xsl:template>
 	
     <xsl:template match="Name">
 		<xsl:if test="@isNewest = 'true'">
-			<div id="Para">
-				<xsl:value-of select="."/>
-				<br/>
-			</div>
+			
 		</xsl:if>
     </xsl:template>
 	
