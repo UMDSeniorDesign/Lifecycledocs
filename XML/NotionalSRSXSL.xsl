@@ -47,16 +47,10 @@
                         //alert("Add Above: "+ID);
                         if(sessvars.xml.length > 0){
                             var xml = loadXML(sessvars.xml);
-                            var xmlDocument = xml.documentElement;
                             var sections = xml.getElementsByTagName("Section");
-                            var sectionForReqFirst = ID.indexOf('.');
-                            var sectionForReqStop = ID.indexOf('.', sectionForReqFirst+1);
-                            var sectionForReq = ID.substring(-1, sectionForReqStop);
-                            var found = 0;
                             for(var i = 0; i &lt; sections.length; i++){
                                 if(ID == sections[i].getAttribute("id")){
                                     //alert("Add Section Above: "+sections[i].getAttribute("id"));
-                                    found = 1;
                                     newNode=xml.createElement("Section");
                                     newNode.setAttribute("isNewest","true");
                                     newNode.setAttribute("id", sections[i].getAttribute("id"));
@@ -73,9 +67,6 @@
 									var parentNode = sections[i].parentNode;
                                     parentNode.insertBefore(newNode, sections[i]);
                                     alert("Section Added");
-                                }
-                                if(found == 0 &#38;&#38; sectionForReq == sections[i].getAttribute("id")){
-                                    sectionForReq = sections[i];
                                 }
                             }
                             var reqs = xml.getElementsByTagName("Requirement");
@@ -96,7 +87,7 @@
                                     newReqParaElement.setAttribute("isNewest","true");
                                     newNode.appendChild(newReqParaElement);
 									var parentNode = reqs[i].parentNode;
-                                    sectionForReq.insertBefore(newNode, reqs[i]);
+                                    parentNode.insertBefore(newNode, reqs[i]);
                                     alert("Requirement Added");
                                 }
                             }
@@ -118,16 +109,10 @@
                         //alert("Add Below: "+ID);
                         if(sessvars.xml.length > 0){
                             var xml = loadXML(sessvars.xml);
-                            var xmlDocument = xml.documentElement;
                             var sections = xml.getElementsByTagName("Section");
-                            var sectionForReqFirst = ID.indexOf('.');
-                            var sectionForReqStop = ID.indexOf('.', sectionForReqFirst+1);
-                            var sectionForReq = ID.substring(-1, sectionForReqStop);
-                            var found = 0;
                             for(var i = 0; i &lt; sections.length; i++){
                                 if(ID == sections[i].getAttribute("id")){
                                     //alert("Add Section Below: "+sections[i].getAttribute("id"));
-                                    found = 1;
                                     newNode=xml.createElement("Section");
                                     newNode.setAttribute("isNewest","true");
                                     newNode.setAttribute("id", sections[i].getAttribute("id"));
@@ -151,9 +136,6 @@
 										parentNode.insertBefore(newNode, nextSibling);
 									}
                                     alert("Section Added");
-                                }
-                                if(found == 0 &#38;&#38; sectionForReq == sections[i].getAttribute("id")){
-                                    sectionForReq = sections[i];
                                 }
                             }
                             var reqs = xml.getElementsByTagName("Requirement");
@@ -199,6 +181,63 @@
                             alert("Please open in Lifecycle Document Editor to enable this functionality");
                         }
                     }
+					function changeTitle(ID){
+						var xml = loadXML(sessvars.xml);
+						var newTitle = document.getElementById(ID+"Title").value;
+                        var sections = xml.getElementsByTagName("Section");
+                        for(var i = 0; i &lt; sections.length; i++){
+							if(ID == sections[i].getAttribute("id")){
+								var titles = sections[i].getElementsByTagName("Title");
+								for(var j = 0; j &lt; titles.length; j++){
+									if(titles[j].getAttribute("isNewest") == 'true'){
+										if(titles[j].childNodes[0].nodeValue == newTitle){
+											alert("Title not changed!");
+											return;
+										}
+										var parentNode = titles[j].parentNode;
+										titles[j].setAttribute("isNewest", "false");
+										newTitleElement = xml.createElement("Title");
+										newTitleText = xml.createTextNode(newTitle);
+										newTitleElement.appendChild(newTitleText);
+										newTitleElement.setAttribute("isNewest","true");
+										parentNode.insertBefore(newTitleElement, titles[j]);
+										alert(titles[j].childNodes[0].nodeValue+" Changed to: "+newTitle);
+									}
+								}
+							}
+						}
+						var reqs = xml.getElementsByTagName("Requirement");
+                        for(var i = 0; i &lt; reqs.length; i++){
+							if(ID == reqs[i].getAttribute("id")){
+								var titles = reqs[i].getElementsByTagName("Title");
+								for(var j = 0; j &lt; titles.length; j++){
+									if(titles[j].getAttribute("isNewest") == 'true'){
+										if(titles[j].childNodes[0].nodeValue == newTitle){
+											alert("Title not changed!");
+											return;
+										}
+										var parentNode = titles[j].parentNode;
+										titles[j].setAttribute("isNewest", "false");
+										newTitleElement = xml.createElement("Title");
+										newTitleText = xml.createTextNode(newTitle);
+										newTitleElement.appendChild(newTitleText);
+										newTitleElement.setAttribute("isNewest","true");
+										parentNode.insertBefore(newTitleElement, titles[j]);
+										alert(titles[j].childNodes[0].nodeValue+" Changed to: "+newTitle);
+									}
+								}
+							}
+						}
+						var fs = new ActiveXObject("Scripting.FileSystemObject");
+                        //If windows 7, use this line
+                        var f = fs.GetFolder("../XML");
+                        //If windows 8, use this line
+                        //var f = fs.GetFolder("\XML");
+                        file = f.CreateTextFile("TestSave.xml", true, true);
+                        file.write(xml.xml);
+                        file.close();
+                        alert("File saved");
+					}
 					function showRef(ID){
 						var refSpot = document.getElementById("ref");
 						var infoSpot = document.getElementById(ID);
@@ -256,6 +295,9 @@
                 <br/>
                 <button onclick="addBelow('{$vID}')">Add Section Below</button>
                 <br/>
+				<button onclick="changeTitle('{$vID}')">Change Title to: </button>
+				<textarea id="{@id}Title" rows="1"><xsl:value-of select="$vTitle"/></textarea>
+				<br/>
                 <button onclick="hideMenu('{$vID}')">Cancel</button>
             </div>
 		</xsl:if>
@@ -285,6 +327,9 @@
                 <br/>
                 <button onclick="addBelow('{$vID}')">Add Requirement Below</button>
                 <br/>
+				<button onclick="changeTitle('{$vID}')">Change Title to: </button>
+				<textarea id="{@id}Title" rows="1"><xsl:value-of select="$vTitle"/></textarea>
+				<br/>
                 <button onclick="hideMenu('{$vID}')">Cancel</button>
             </div>
 			</li>
