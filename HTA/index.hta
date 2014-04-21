@@ -14,14 +14,11 @@
 		scrollFlat="yes" /> 
 
 		<script src="../JS/loadXML.js"></script>
-		<script src="../JS/saveXML.js"></script>
 		<script src="../JS/sessionvars.js"></script>
-		<script src="../JS/jQuery.js"></script>
 				
 		<script>
 			function openProject() {	
 				var v = document.getElementById("browse").value;
-				
 				if(v == "") {
 					alert("Please select a project to open!");	
 				}
@@ -36,7 +33,6 @@
 		<script>
 			function createProject() {
 				var projectName = prompt("New Project Name: ", "");
-						
 				
 				if(projectName.substr(projectName.length - 4) == ".xml") {
 						projectName = projectName.substring(0, projectName.length - 4);
@@ -46,20 +42,17 @@
 				
 				//windows 8
 				if(fso.FileExists("../Lifecycledocs/Projects/"+projectName+".xml")) {
-					var r = confirm("file already exists! overwrite?")
-					
+					var r = confirm("file already exists! overwrite?")	
 					if(r == true) 
 						alert("file overwriten");
 					else
 						createProject();
 				}
 				
-				
 				//windows 7 
 				/*
 				if(fso.FileExists("../Projects/"+projectName+".xml")) {
 					var r = confirm("file already exists! overwrite?")
-					
 					if(r == true) 
 						alert("file overwriten");
 					else
@@ -68,27 +61,22 @@
 				*/
 				
 				//Windows 8 function
-				fso.CopyFile("../Lifecycledocs/Projects/test.xml", "../Lifecycledocs/Projects/"+projectName+".xml", 1);
+				fso.CopyFile("../Lifecycledocs/Projects/template.xml", "../Lifecycledocs/Projects/"+projectName+".xml", 1);
+				
 				//Windows 7 function
-				//fso.CopyFile("../Projects/test.xml", "../Projects/"+projectName+".xml", 1);
-				//var f = fso.GetFolder("../Projects");
-				//var f = fso.GetFolder("../XML");
-				//alert(f);
+				//fso.CopyFile("../Projects/template.xml", "../Projects/"+projectName+".xml", 1);
+				
 				sessvars.projectName = projectName+".xml";
-				//alert(sessvars.projectName);
 				document.location.href = 'view.hta';
 			}
 		</script>
-		
     </head>
-        
 <title>Lifecycle Documents</title>
     <body>
     <center>
         <div id="wrapper">
             <div id ="head">
                 <div id="siteControl">
-                    <!-- <a href="#">Click Me</a> <br> -->
                     <button id="create" onclick=createProject()>New Project</button>
                     <button id="open" onclick=openProject()>Open Project</button>
 					<input id="browse" type="file">
@@ -101,13 +89,12 @@
 					<br/><br/>
 					<h1>Welcome to the Lifecycle Documentation Development System!</h1>
 					<a href="http://www.navsea.navy.mil/nuwc/default.aspx" target="_blank">
-                    <img src="nuwc_logo.jpg" alt="nuwc_logo" width="400" height="400"></a>
+                    <img src="ProjectImages/nuwc_logo.jpg" alt="nuwc_logo" width="400" height="400"></a>
 					<br/><br/>
-					<body background="water_texture2375.jpg">
+					<body background="ProjectImages/water_texture2375.jpg">
 				</div>
             </div>
         </div>
-		
-        </center>
+	</center>
     </body>
 </html>

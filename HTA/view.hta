@@ -19,11 +19,9 @@
 	    </style>
 		
 		<script src="../JS/loadXML.js"></script>
-		<script src="../JS/updateXML.js"></script>
 		<script src="../JS/saveXML.js"></script>
 		<script src="../JS/getFromSessvar.js"></script>
 		<script src="../JS/sessionvars.js"></script>
-		
 		
 		<script>
 			function toggleEdit() {
@@ -59,7 +57,6 @@
 		
 		<script>
 			function loadXSLT(withTabs, withCurrent, xmlToLoad){
-			
 			var xml;
 			var xsl;
 			//Load tabs from project file
@@ -135,7 +132,7 @@
 				preview.style.border = "none";
 				sessvars.toggle = "0";
 			}
-			}
+		}
 		</script>
 		
 		<script>
@@ -168,7 +165,7 @@
 	
 	<body onload="loadXSLT(1,0)">
 		<div id="wrapper">
-			<body background="bg1.jpg">
+			<body background="ProjectImages/bg1.jpg">
 		    <div id="head1">
 		        <button onclick=location.href='rtm.hta'>Create Matrix</button>
 				<button onclick=downloadAsHTML()>Download as HTML</button>
