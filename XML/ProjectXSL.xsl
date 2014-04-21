@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/css" href="Stylesheets\NotionalCSS.css"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:include href='xipr.xsl'/>
-    <xsl:include href='NotionalXSL.xsl'/>
+    <xsl:include href='NotionalSRSXSL.xsl'/>
     <xsl:template match="SoftwareRequirementsDocument" mode="xipr">
         <html>
             <head>

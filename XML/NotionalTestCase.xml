@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="NotionalTestCaseXSL.xsl"?>
  
-<TestCaseDocument xml:base="ProjectLifecycleDocuments.xml" projectName="Lifecycle Documents with Requirements Tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="NotionalSchema2ns.xsd" >
+<TestCaseDocument xml:base="ProjectLifecycleDocuments.xml" projectName="Lifecycle Documents with Requirements Tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="NotionalSchema.xsd" >
     <Section isNewest="true" id="TC1.0">
         <Title isNewest="true">Lifecycle Document Project Manager with Requirements Tracking</Title>
         <Para isNewest="true"> The goal of this project is to create a protoype application capable of allowing a user to productively manage lifecycle documentation in XML without a previous XML experience. </Para>
