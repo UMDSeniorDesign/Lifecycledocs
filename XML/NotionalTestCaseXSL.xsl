@@ -138,7 +138,7 @@
          <xsl:value-of select="."/>
         </xsl:variable>
         <xsl:variable name="vTitle">
-			<xsl:for-each select="document('NotionalSRS2ns.xml')//SoftwareRequirementsDocument//Section//Requirement[@id=$vID]">
+			<xsl:for-each select="document('NotionalSRS.xml')//SoftwareRequirementsDocument//Section//Requirement[@id=$vID]">
                 <xsl:value-of select="Title"/>
 				<br/>
            <!--   <xsl:for-each select="Para">
@@ -155,7 +155,7 @@
             </xsl:for-each>
         </xsl:variable>
         <xsl:variable name="vPara">
-			<xsl:for-each select="document('NotionalSRS2ns.xml')//SoftwareRequirementsDocument//Section//Requirement[@id=$vID]//Requirement">  
+			<xsl:for-each select="document('NotionalSRS.xml')//SoftwareRequirementsDocument//Section//Requirement[@id=$vID]//Requirement">  
                 <xsl:for-each select="Para">
                     <xsl:value-of select="."/> 
                 </xsl:for-each> 
@@ -165,7 +165,7 @@
                     <xsl:value-of select="."/>
                 </xsl:for-each> 
             </xsl:for-each> 
-        	<xsl:for-each select="document('NotionalSRS2ns.xml')//SoftwareRequirementsDocument//Section//Requirement[@id=$vID]">  
+        	<xsl:for-each select="document('NotionalSRS.xml')//SoftwareRequirementsDocument//Section//Requirement[@id=$vID]">  
         		<xsl:for-each select="Para">
         			<xsl:value-of select="."/>
         		</xsl:for-each> 
