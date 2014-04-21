@@ -111,7 +111,27 @@
                 <Ref isNewest="true">UC1.1.2</Ref>
             </Section>
             
-          </Section>
+            <TestResult>false</TestResult>
+            <ApprovedBy isNewest="true">
+                <Name>Pete</Name>
+                <Para isNewest="true">myPara</Para>
+            </ApprovedBy>
+            <Ref isNewest="true">RQ3.1.1</Ref>
+            <Ref isNewest="true">RQ3.1.4</Ref>
+            <Ref isNewest="true">RQ3.2.1</Ref>
+            <Ref isNewest="true">UC1.1.1</Ref>
+            <Ref isNewest="true">UC1.1.2</Ref>
+        </Section>
+        <TestResult>false</TestResult>
+        <ApprovedBy isNewest="true">
+            <Name>Pete</Name>
+            <Para isNewest="true">Last Section is Here</Para>
+        </ApprovedBy>
+        <Ref isNewest="true">RQ3.1.1</Ref>
+        <Ref isNewest="true">RQ3.1.4</Ref>
+        <Ref isNewest="true">RQ3.2.1</Ref>
+        <Ref isNewest="true">UC1.1.1</Ref>
+        <Ref isNewest="true">UC1.1.2</Ref>
     </Section>
     
 </TestCaseDocument>
