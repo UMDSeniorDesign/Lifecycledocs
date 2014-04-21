@@ -110,8 +110,12 @@
                 <Ref isNewest="true">UC1.1.1</Ref>
                 <Ref isNewest="true">UC1.1.2</Ref>
             </Section>
-            
             <TestResult>false</TestResult>
+            
+            <ApprovedBy isNewest="true">
+                <Name>Jeremiah</Name>
+                <Para isNewest="true">jeremiah's para</Para>
+            </ApprovedBy>
             <ApprovedBy isNewest="true">
                 <Name>Pete</Name>
                 <Para isNewest="true">myPara</Para>
