@@ -70,7 +70,8 @@
                                     newSectionParaElement.appendChild(newSectionParaText);
                                     newSectionParaElement.setAttribute("isNewest","true");
                                     newNode.appendChild(newSectionParaElement);
-                                    xmlDocument.insertBefore(newNode, sections[i]);
+									var parentNode = sections[i].parentNode;
+                                    parentNode.insertBefore(newNode, sections[i]);
                                     alert("Section Added");
                                 }
                                 if(found == 0 &#38;&#38; sectionForReq == sections[i].getAttribute("id")){
@@ -94,6 +95,7 @@
                                     newReqParaElement.appendChild(newReqParaText);
                                     newReqParaElement.setAttribute("isNewest","true");
                                     newNode.appendChild(newReqParaElement);
+									var parentNode = reqs[i].parentNode;
                                     sectionForReq.insertBefore(newNode, reqs[i]);
                                     alert("Requirement Added");
                                 }
@@ -139,7 +141,15 @@
                                     newSectionParaElement.appendChild(newSectionParaText);
                                     newSectionParaElement.setAttribute("isNewest","true");
                                     newNode.appendChild(newSectionParaElement);
-                                    xmlDocument.insertBefore(newNode, sections[i+1]);
+									var nextSibling = sections[i].nextSibling;
+									if(nextSibling == null){
+										var parentNode = sections[i].parentNode;
+										parentNode.appendChild(newNode);
+									}
+									else{
+										var parentNode = nextSibling.parentNode;
+										parentNode.insertBefore(newNode, nextSibling);
+									}
                                     alert("Section Added");
                                 }
                                 if(found == 0 &#38;&#38; sectionForReq == sections[i].getAttribute("id")){
@@ -163,7 +173,15 @@
                                     newReqParaElement.appendChild(newReqParaText);
                                     newReqParaElement.setAttribute("isNewest","true");
                                     newNode.appendChild(newReqParaElement);
-                                    sectionForReq.insertBefore(newNode, reqs[i+1]);
+									var nextSibling = reqs[i].nextSibling;
+									if(nextSibling == null){
+										var parentNode = reqs[i].parentNode;
+										parentNode.appendChild(newNode);
+									}
+									else{
+										var parentNode = nextSibling.parentNode;
+										parentNode.insertBefore(newNode, nextSibling);
+									}
                                     alert("Requirement Added");
                                 }
                             }
