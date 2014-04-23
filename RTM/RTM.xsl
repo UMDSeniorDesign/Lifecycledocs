@@ -3,6 +3,8 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="xs"
     version="2.0">
+    <xsl:output method="html" indent="yes"/>
+    <xsl:strip-space elements="*"/>
     
     <xsl:template match="SoftwareRequirementsDocument">
     <html>
@@ -70,89 +72,117 @@
             <xsl:variable name="vID" select="@id"/>
             <xsl:variable name="vDocumentUC" select="document('NotionalUseCase.xml')"/>
             <xsl:variable name="vDocumentTC" select="document('NotionalTestCase.xml')"/>
+            <xsl:variable name="UCCount" select="count(Ref[substring(.,1,2) = 'UC'][@isNewest='true'])"/>
+            <xsl:variable name="TCCount" select="count(Ref[substring(.,1,2) = 'TC'][@isNewest='true'])"/>
+            <xsl:variable name="spanRow">
+                <xsl:choose>
+                    <xsl:when test="number($TCCount) &gt; number($UCCount)">
+                        <xsl:value-of select="number($TCCount)"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="number($UCCount)"></xsl:value-of>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:variable>
             
-            <td>
+            <td rowspan="{$spanRow + 1}">
                 <button type="button" onclick="showRef('{$vID2}')">
                     <xsl:value-of select="$vID2"/>
                 </button>
             </td>
-            <td>
+            <td rowspan="{$spanRow + 1}">
                 <xsl:value-of select="$vTitle2"/>
             </td>
-            <td>               
+            <td rowspan="{$spanRow + 1}">
+                <table>
                 <xsl:for-each select="Ref[@isNewest='true']">
-                    <table>                    
-                        <xsl:variable name="myRef" select="."/>
+                    <xsl:variable name="myRef" select="."/>
                     <xsl:if test="contains(., 'UC')">
                         <button type="button" onclick="showRef('{$vID}')">
                             <xsl:value-of select="."/>
                         </button>
                     </xsl:if>
                     <xsl:value-of select="$vDocumentUC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"/>
+                   
                     <xsl:value-of select="$vDocumentUC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"/>
-                    </table>
-                    
-                </xsl:for-each>
-            </td>
-            <td>
-                <xsl:for-each select="Ref[@isNewest='true']">
-                    <table>
-                    <xsl:variable name="myRef" select="."/>
-                    <xsl:if test="contains(., 'TC')">
-                        <button type="button" onclick="showRef('{$vID}')">
-                            <xsl:value-of select="."/>
-                        </button>
+                    <xsl:if test="position() != last()">
+                        <br/>    
                     </xsl:if>
-                    <xsl:value-of select="$vDocumentTC/*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"/>
-                    <xsl:value-of select="$vDocumentTC/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"/>
-                    <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"/>
-                    <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"/>
-                    </table>
                 </xsl:for-each>
+                </table>
             </td>
-            <td>
-                <xsl:for-each select="Ref[@isNewest='true']">
-                    <table>
-                        <td rowspan="6">
-                    <xsl:variable name="myRef" select="."/>
-                    <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult"/>
-                    <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult"/>
-                        </td>
-                    </table>
-                </xsl:for-each>
-            </td>                    
-            <td>
-                <xsl:for-each select="Ref[@isNewest='true']">
-                    <xsl:variable name="myRef" select="."/>
-                    <table>
-                        <td rowspan="6">
-                    <xsl:value-of select="$vDocumentTC/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Name"/>
-                    <xsl:value-of select="$vDocumentTC/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Name"/>
-                    <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Name"/>
-                    <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Name"/>
-                        </td>
-                    </table>
-                </xsl:for-each>
-            </td>
-            <td>
-                
-<!-- DATE GOES HERE! -->    <xsl:text>the date</xsl:text>        
             
-            </td>
-            <td>
-                <xsl:for-each select="Ref[@isNewest='true']">
-                    <xsl:variable name="myRef" select="."/>
-                    <table>
-                        <td rowspan="6">
-                    <xsl:value-of select="$vDocumentTC/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Para[@isNewest='true']"/>
-                    <xsl:value-of select="$vDocumentTC/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Para[@isNewest='true']"/>
-                    <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Para[@isNewest='true']"/>
-                    <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Para[@isNewest='true']"/>
-                        </td>
-                    </table>
-                </xsl:for-each>
-            </td>
+            <xsl:choose>
+                <xsl:when test="$TCCount = 0">
+                    
+                    <td rowspan="{$spanRow + 1}" colspan="5"><xsl:text>No Test Cases</xsl:text></td>
+                    
+               </xsl:when>
+                <xsl:otherwise>
+                    <xsl:call-template name="testCase">
+                        <xsl:with-param name="i">2</xsl:with-param>
+                        <xsl:with-param name="rows">3</xsl:with-param>
+                    </xsl:call-template> 
+                </xsl:otherwise>
+            </xsl:choose>
+               
         </tr>
         <xsl:apply-templates select="Requirement"/>
+    </xsl:template>
+    
+    <xsl:template name="testCase">
+        <xsl:param name="i"/>
+        <xsl:param name="rows"/>
+        <xsl:variable name="vDocumentUC" select="document('NotionalUseCase.xml')"/>
+        <xsl:variable name="vDocumentTC" select="document('NotionalTestCase.xml')"/>
+        
+        <xsl:if test="$i &lt; $rows">
+            <xsl:for-each select="Ref[@isNewest='true'][substring(.,1,2) = 'TC']">
+                <xsl:variable name="myRef" select="."/>
+                <tr>
+                    <td>
+                        <button type="button" onclick="">
+                            <xsl:value-of select="."/>
+                        </button>
+                        <xsl:value-of select="$vDocumentTC/*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"/>
+                        <xsl:value-of select="$vDocumentTC/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"/>
+                        <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"/>
+                        <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"/>
+                    </td>
+                    <td>
+                        <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult"/>
+                        <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult"/>
+                    </td>
+                    <td>
+                        <xsl:value-of select="$vDocumentTC/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Name"/>
+                        <xsl:value-of select="$vDocumentTC/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Name"/>
+                        <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Name"/>
+                        <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Name"/>
+                    </td>
+                    <td>
+                        
+                        <xsl:text>the date</xsl:text>        
+                        
+                    </td>
+                    <td>
+                        <xsl:value-of select="$vDocumentTC/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Para[@isNewest='true']"/>
+                        <xsl:value-of select="$vDocumentTC/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Para[@isNewest='true']"/>
+                        <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Para[@isNewest='true']"/>
+                        <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Para[@isNewest='true']"/>
+                    </td>
+                </tr>
+            </xsl:for-each>
+        </xsl:if>
+        
+        <xsl:if test="$i &lt; $rows">
+            <xsl:call-template name="testCase">
+                <xsl:with-param name="i">
+                    <xsl:value-of select="$i + 1"></xsl:value-of>
+                </xsl:with-param>
+                <xsl:with-param name="rows">
+                    <xsl:value-of select="$rows"></xsl:value-of>
+                </xsl:with-param>
+            </xsl:call-template>
+        </xsl:if>
     </xsl:template>
 </xsl:stylesheet>
