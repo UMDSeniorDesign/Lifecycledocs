@@ -114,20 +114,42 @@
             
             <xsl:choose>
                 <xsl:when test="$TCCount = 0">
-                    
-                    <td rowspan="{$spanRow + 1}" colspan="5"><xsl:text>No Test Cases</xsl:text></td>
-                    
-               </xsl:when>
+                    <td rowspan="{$spanRow + 1}" colspan="5"><xsl:text>Not Yet Tested</xsl:text></td>
+                    <xsl:call-template name="addRow">
+                        <xsl:with-param name="num" select="$spanRow"/>
+                    </xsl:call-template>
+                </xsl:when>
+                <xsl:when test="$TCCount = 1">
+                    <xsl:call-template name="testCase">
+                        <xsl:with-param name="i">0</xsl:with-param>
+                        <xsl:with-param name="rows" select="$spanRow"/>
+                    </xsl:call-template> 
+                </xsl:when>
                 <xsl:otherwise>
                     <xsl:call-template name="testCase">
                         <xsl:with-param name="i">2</xsl:with-param>
-                        <xsl:with-param name="rows">3</xsl:with-param>
+                        <xsl:with-param name="rows" select="$spanRow"/>
                     </xsl:call-template> 
                 </xsl:otherwise>
             </xsl:choose>
                
         </tr>
         <xsl:apply-templates select="Requirement"/>
+    </xsl:template>
+    
+    <xsl:template name="addRow">
+        <xsl:param name="num"/>
+        
+        <xsl:if test="$num &gt; 0">
+            <tr></tr>
+        </xsl:if>
+        <xsl:if test="$num &gt; 0">
+            <xsl:call-template name="addRow">
+                <xsl:with-param name="num">
+                    <xsl:value-of select="$num - 1"/>
+                </xsl:with-param>
+            </xsl:call-template>
+        </xsl:if>
     </xsl:template>
     
     <xsl:template name="testCase">
