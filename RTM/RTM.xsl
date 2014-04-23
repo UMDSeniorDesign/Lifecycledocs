@@ -39,7 +39,7 @@
                         <th style="width:200px">Requirement Title</th>
                         <th style="width:300px">Use Case Locations</th>
                         <th style="width:300px">Test Case Locations</th>
-                        <th style="width:100px">Result</th>
+                        <th style="width:100px">Last Result</th>
                         <th style="width:100px">Tested By</th>
                         <th style="width:100px">Date</th>
                         <th style="width:200px">Comment</th>
@@ -173,18 +173,28 @@
         
         <td>
             <xsl:choose>
-                <xsl:when test="($vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) != ''">
-                    <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult"/>
+                <xsl:when test="($vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) = 'false'">
+                    <font color="red">
+                        <xsl:text>Failed</xsl:text>
+                    </font>
                 </xsl:when>
-                <xsl:when test="($vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) != ''">
-                    <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult"/>
+                <xsl:when test="($vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) = 'false'">
+                    <font color="red">
+                        <xsl:text>Failed</xsl:text>
+                    </font>
+                </xsl:when>
+                <xsl:when test="($vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) = 'true'">
+                    <font color="green">
+                        <xsl:text>Passed</xsl:text>
+                    </font>
+                </xsl:when>
+                <xsl:when test="($vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) = 'true'">
+                    <font color="green">
+                        <xsl:text>Passed</xsl:text>
+                    </font>
                 </xsl:when>
                 <xsl:otherwise>
-                    <b>
-                        <font color="red">
-                            <xsl:text>Not Yet Tested</xsl:text>
-                        </font>
-                    </b>
+                    <xsl:text>Invalid/Missing Data</xsl:text>
                 </xsl:otherwise>
             </xsl:choose>
         </td>
@@ -228,26 +238,23 @@
                     </td>
                     <xsl:choose>
                         <xsl:when test="(($vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) != '')
-                            and (($vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) != '')">
+                                    or (($vDocumentTC/*/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) != '')">
                             <xsl:call-template name="testResults">
                                 <xsl:with-param name="myRef">
-                                    <xsl:value-of select="."/>
+                                    <xsl:value-of select="$myRef"/>
                                 </xsl:with-param>
                             </xsl:call-template>
                         </xsl:when>
-                        
                         <xsl:otherwise>
                             <td colspan="4">
                                 <b>
                                     <font color="red">
-                                        <xsl:text>Not Yet Tested</xsl:text>
+                                        <xsl:text>Not Tested</xsl:text>
                                     </font>
                                 </b>
                             </td>
-                            
                         </xsl:otherwise>
                     </xsl:choose>
-                    
                 </tr>
             </xsl:for-each>
         </xsl:if>
