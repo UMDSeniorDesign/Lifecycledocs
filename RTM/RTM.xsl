@@ -113,8 +113,7 @@
                                         <xsl:value-of select="."/>
                                     </button>
                                 </xsl:if>
-                                <xsl:value-of select="$vDocumentUC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"/>
-                                <xsl:value-of select="$vDocumentUC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"/>
+                                <xsl:value-of select="$vDocumentUC/descendant-or-self::*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"/>
                                 <xsl:if test="position() != last()">
                                     <br/>    
                                 </xsl:if>
@@ -174,16 +173,12 @@
         
         <td>
             <xsl:choose>
-                <xsl:when test="(($vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) = 'false') 
-                    or (($vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) = 'false')
-                    or (($vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) = 'false')">
+                <xsl:when test="$vDocumentTC/descendant-or-self::*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult = 'false'">
                     <font color="red">
                         <xsl:text>Failed</xsl:text>
                     </font>
                 </xsl:when>
-                <xsl:when test="(($vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) = 'true')
-                    or (($vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) = 'true')
-                    or (($vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) = 'true')">
+                <xsl:when test="$vDocumentTC/descendant-or-self::*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult = 'true'">
                     <font color="green">
                         <xsl:text>Passed</xsl:text>
                     </font>
@@ -194,10 +189,7 @@
             </xsl:choose>
         </td>
         <td>
-            <xsl:value-of select="$vDocumentTC/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Name"/>
-            <xsl:value-of select="$vDocumentTC/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Name"/>
-            <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Name"/>
-            <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Name"/>
+            <xsl:value-of select="$vDocumentTC/descendant-or-self::*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Name"/>
         </td>
         <td>
             
@@ -205,10 +197,7 @@
             
         </td>
         <td>
-            <xsl:value-of select="$vDocumentTC/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Para[@isNewest='true']"/>
-            <xsl:value-of select="$vDocumentTC/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Para[@isNewest='true']"/>
-            <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Para[@isNewest='true']"/>
-            <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Para[@isNewest='true']"/>
+            <xsl:value-of select="$vDocumentTC/descendant-or-self::*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Para[@isNewest='true']"></xsl:value-of>
         </td>
     </xsl:template>
     
@@ -226,14 +215,10 @@
                         <button type="button" onclick="">
                             <xsl:value-of select="."/>
                         </button>
-                        <xsl:value-of select="$vDocumentTC/*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"/>
-                        <xsl:value-of select="$vDocumentTC/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"/>
-                        <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"/>
-                        <xsl:value-of select="$vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"/>
+                        <xsl:value-of select="$vDocumentTC/descendant-or-self::*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"></xsl:value-of>
                     </td>
                     <xsl:choose>
-                        <xsl:when test="(($vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) != '')
-                                    or (($vDocumentTC/*/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) != '')">
+                        <xsl:when test="$vDocumentTC/descendant-or-self::*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult != ''">                            
                             <xsl:call-template name="testResults">
                                 <xsl:with-param name="myRef">
                                     <xsl:value-of select="$myRef"/>
