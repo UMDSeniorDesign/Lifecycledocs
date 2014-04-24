@@ -141,8 +141,9 @@
 						</select>
 						<br/>
 					</xsl:if>
-					<xsl:variable name="vDocumentBase" select="."/>
-					<xsl:variable name="vDocumentProj" select="document('..//Projects//TestProject.xml')"/>
+					<xsl:variable name="vDocumentBase" select="/*/@xml:base"/>
+					<xsl:variable name="vDocumentPath" select="string(concat('..//Projects//',$vDocumentBase))"/>
+					<xsl:variable name="vDocumentProj" select="document($vDocumentPath)"/>
 					<xsl:for-each select="ApprovedBy[@isNewest='true']">
 						<xsl:text>Approved By: </xsl:text>
 						<select id="ApprovedBy" onchange="if (this.selectedIndex) selectBoxChange('{$vID}', '1', this.value);">
