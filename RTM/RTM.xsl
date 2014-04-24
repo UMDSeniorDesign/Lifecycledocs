@@ -65,7 +65,9 @@
                         <xsl:value-of select="Para"/>    
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:text>DNE</xsl:text>
+                        <font color="red">
+                            <xsl:text>DNE</xsl:text>
+                        </font>
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:variable>        
@@ -80,7 +82,7 @@
                         <xsl:value-of select="number($TCCount)"/>
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:value-of select="number($UCCount)"></xsl:value-of>
+                        <xsl:value-of select="number($UCCount)"/>
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:variable>
@@ -120,7 +122,6 @@
                         </table>
                     </xsl:otherwise>
                 </xsl:choose>
-
             </td>
             <xsl:choose>
                 <xsl:when test="$TCCount = 0">
@@ -173,22 +174,16 @@
         
         <td>
             <xsl:choose>
-                <xsl:when test="($vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) = 'false'">
+                <xsl:when test="(($vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) = 'false') 
+                    or (($vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) = 'false')
+                    or (($vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) = 'false')">
                     <font color="red">
                         <xsl:text>Failed</xsl:text>
                     </font>
                 </xsl:when>
-                <xsl:when test="($vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) = 'false'">
-                    <font color="red">
-                        <xsl:text>Failed</xsl:text>
-                    </font>
-                </xsl:when>
-                <xsl:when test="($vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) = 'true'">
-                    <font color="green">
-                        <xsl:text>Passed</xsl:text>
-                    </font>
-                </xsl:when>
-                <xsl:when test="($vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) = 'true'">
+                <xsl:when test="(($vDocumentTC/*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) = 'true')
+                    or (($vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) = 'true')
+                    or (($vDocumentTC/*/*[@isNewest='true']/*[@isNewest='true']/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult) = 'true')">
                     <font color="green">
                         <xsl:text>Passed</xsl:text>
                     </font>

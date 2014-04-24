@@ -10,10 +10,10 @@
             <Section isNewest="true" id="TC1.1.1">
                 <Title isNewest="true">Form is displayed to user</Title>
                 <Para isNewest="true">Form is displayed properly to user with appropriate textboxes and buttons.</Para>
-                <TestResult>false</TestResult>
+                <TestResult>true</TestResult>
                 <ApprovedBy isNewest="true">
                     <Name>Kevin</Name>
-                    <Para isNewest="true">Comment</Para>
+                    <Para isNewest="true">Comment-Passed</Para>
                 </ApprovedBy>
                 <Ref isNewest="true">RQ3.1.1</Ref>
                 <Ref isNewest="true">UC1.1.2</Ref>
