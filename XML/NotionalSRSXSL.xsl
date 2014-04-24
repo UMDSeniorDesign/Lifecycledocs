@@ -254,7 +254,8 @@
 					}
                     #toc {
                     float: left;
-                    width: 40%;
+                    width: 30%;
+                    
                     font-size: 12pt;
                     }
                     #view {
@@ -265,12 +266,13 @@
                 </style>  
             </head>
             <body>
-				<div id="toc">
+            	<div id="toc" class="scroll" style="overflow:scroll;height:1000px;">
 					<xsl:apply-templates select="Section" mode="section"/>
 				</div>
 				<div id="view">
 					<xsl:apply-templates select="Section" mode="para"/>
 				</div>
+            
 				<div id="refLocation">
 				</div>
             </body>
