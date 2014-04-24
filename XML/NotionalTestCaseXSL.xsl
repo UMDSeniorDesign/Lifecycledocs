@@ -75,6 +75,9 @@
     </xsl:template>
 	
     <xsl:template match="Section" mode="para">
+		<xsl:variable name="vID">
+         <xsl:value-of select="."/>
+        </xsl:variable>
 		<xsl:if test="@isNewest = 'true'">
 			<div id="preview">
 				<div id="{@id}" style="display: none;">
@@ -82,12 +85,29 @@
 					<br/>
 					<xsl:if test="TestResult != ''">
 						<xsl:text>Test Result: </xsl:text>
-						<xsl:apply-templates select="TestResult"/>
+						
+						<select>
+							<xsl:for-each select="document('NotionalTestCase.xml')//TestCaseDocument//Section//TestResult">
+								<option>
+									<xsl:apply-templates select="."/>
+								</option>
+							</xsl:for-each>
+						</select>
+						
+							<!-- <xsl:apply-templates select="TestResult"/> -->
 						<br/>
 					</xsl:if>
 					<xsl:for-each select="ApprovedBy[@isNewest='true']">
 						<xsl:text>Approved By: </xsl:text>
-						<xsl:value-of select="Name"/>
+						
+						<select>
+							<xsl:for-each select="document('NotionalTestCase.xml')//TestCaseDocument//Section//ApprovedBy//Name">
+								<option>
+									<xsl:value-of select="."/>
+								</option>
+							</xsl:for-each>
+						</select>
+						
 						<br/>
 						<xsl:value-of select="Name"/>
 						<xsl:text>'s Comment: </xsl:text>
