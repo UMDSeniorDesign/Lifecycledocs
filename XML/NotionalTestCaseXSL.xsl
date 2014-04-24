@@ -247,6 +247,22 @@
 						else
 							infoSpot.style.display = 'block';
 					}
+                    function selectBoxChange(ID, type, value) {
+                        if(type == 0)
+                            alert("TestResult "+ID+" Changed to: "+value);
+                        else if(type == 1){
+                            if(value == '999'){
+                                var otherSpot = document.getElementById("Other");
+                                otherSpot.style.display = "block";
+                            }
+                            alert("ApprovedBy "+ID+" Changed to: "+value);
+                        }
+					}
+					function changeApprovedBy(ID){
+                        var otherBox = document.getElementById("OtherText");
+                        if(otherBox.innerHTML != "Other")
+                            alert("Other changed to: "+otherBox.innerHTML);
+					}
                 </script>
                 <title>Lifecycle Documents</title>
                 <style type="text/css">
@@ -309,71 +325,68 @@
 		</div>
     </xsl:template>
 	
-	<xsl:template match="Requirement" mode="section">
-		<xsl:if test="@isNewest = 'true'">
-			<br/>
-			<xsl:variable name="vID">
-				<xsl:value-of select="@id"/>
-			</xsl:variable>
-			<xsl:variable name="vTitle">
-				<xsl:value-of select="Title"/>
-			</xsl:variable>
-            
-			<li>
-            <button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="showMenu('{$vID}');return false;">
-			<xsl:value-of select="$vID"/></button> - <xsl:value-of select="$vTitle"/>
-            <div id="{@id}Menu" style="display: none;">
-                <button onclick="addAbove('{$vID}')">Add Requirement Above</button>
-                <br/>
-                <button onclick="addBelow('{$vID}')">Add Requirement Below</button>
-                <br/>
-				<button onclick="changeTitle('{$vID}')">Change Title to: </button>
-				<textarea id="{@id}Title" rows="1"><xsl:value-of select="$vTitle"/></textarea>
-				<br/>
-                <button onclick="hideMenu('{$vID}')">Cancel</button>
-            </div>
-			</li>
-		</xsl:if>
-		<div id="sub{@id}" style="display: none;">
-		<div contenteditable="false">
-			<xsl:apply-templates select="Section" mode="section"/>
-			<xsl:apply-templates select="Requirement" mode="section"/>
-		</div>
-		</div>
-    </xsl:template>
-	
-    <xsl:template match="Requirement" mode="para">
+	<xsl:template match="Section" mode="para">
+		<xsl:variable name="vID">
+            <xsl:value-of select="@id"/>
+        </xsl:variable>
 		<xsl:if test="@isNewest = 'true'">
 			<div id="preview">
 				<div id="{@id}" style="display: none;">
 					<xsl:apply-templates select="Para"/>
 					<br/>
+					<xsl:if test="TestResult != ''">
+						<xsl:text>Test Result: </xsl:text>
+						<select id="TestResult" onchange="if (this.selectedIndex) selectBoxChange('{$vID}', '0', this.value);">
+							<option value="-1" selected="selected">
+								<xsl:value-of select="TestResult"/>
+							</option>
+							<option value="Pass">
+								Pass
+							</option>
+							<option value="Fail">
+								Fail
+							</option>
+						</select>
+						<br/>
+					</xsl:if>
+					<xsl:variable name="vDocumentBase" select="."/>
+					<xsl:variable name="vDocumentProj" select="document('..//Projects//TestProject.xml')"/>
+					<xsl:for-each select="ApprovedBy[@isNewest='true']">
+						<xsl:text>Approved By: </xsl:text>
+						<select id="ApprovedBy" onchange="if (this.selectedIndex) selectBoxChange('{$vID}', '1', this.value);">
+							<option value="-1" selected="selected">
+								<xsl:value-of select="Name"/>
+							</option>
+							<xsl:for-each select="$vDocumentProj//*//*//TeamMember">
+								<xsl:variable name="vTeamMember" select="Name"/>
+								<option value="{$vTeamMember}">
+									<xsl:value-of select="$vTeamMember"/>
+								</option>
+							</xsl:for-each>
+							<option value="999">
+								Other
+							</option>
+						</select>
+						<br/>
+						<div id="{@id}Other" style="display: none;">
+							<button onclick="changeTitle('{$vID}')">Approved By: </button>
+							<textarea id="{@id}OtherText" rows="1">Other</textarea>
+							<br/>
+						</div>
+						<xsl:value-of select="Name"/>
+						<xsl:text>'s Comment: </xsl:text>
+						<xsl:apply-templates select="Para"/>
+						<xsl:apply-templates select="ApprovedBy"/>
+					</xsl:for-each>
+					<br/><br/>
 					<div id="refs">
-					<xsl:apply-templates select="Ref"/>
-					<br/>
+						<xsl:apply-templates select="Ref"/>
+						<br/>
 					</div>
 				</div>
 			</div>
-			
 		</xsl:if>
         <xsl:apply-templates select="Section" mode="para"/>
-        <xsl:apply-templates select="Requirement" mode="para"/>
-    </xsl:template>
-	
-	<xsl:template match="Section" mode="para">
-		<xsl:if test="@isNewest = 'true'">
-			<div id="preview">
-				<div id="{@id}" style="display: none;">
-					<xsl:apply-templates select="Para"/>
-					<br/>
-					<div id="refs">
-					<xsl:apply-templates select="Ref"/>
-					<br/>
-					</div>
-				</div>
-			</div>
-		</xsl:if>
-		<xsl:apply-templates select="Section" mode="para"/>
         <xsl:apply-templates select="Requirement" mode="para"/>
     </xsl:template>
 	
