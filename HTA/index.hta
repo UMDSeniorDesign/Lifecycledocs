@@ -70,6 +70,26 @@
 				document.location.href = 'view.hta';
 			}
 		</script>
+		
+		<script>
+			function getProjectInfo() {
+				var image = document.getElementById("images");
+				var b = document.getElementById("browse").value;
+				
+				image.innerHTML = "";	
+				
+				var varray = b.split("\\");
+				var file = varray[varray.length-1];
+				
+				var y = loadXML(file);
+				var z = loadXML("peteProjectXSL.xsl");
+				
+				var x = y.transformNode(z);
+				
+				image.innerHTML = x;
+			}
+	</script>
+	
     </head>
 <title>Lifecycle Documents</title>
     <body>
@@ -79,7 +99,7 @@
                 <div id="siteControl">
                     <button id="create" onclick=createProject()>New Project</button>
                     <button id="open" onclick=openProject()>Open Project</button>
-					<input id="browse" type="file">
+					<input id="browse" type="file" onchange=getProjectInfo()>
                 </div>
             </div>
         </div>
