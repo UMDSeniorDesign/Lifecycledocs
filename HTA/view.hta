@@ -37,10 +37,8 @@
 					preview.style.border = "dashed thin";
 					preview.contentEditable = true;
 				}
-				
 			}
 		</script>
-		
 		<script>
 			function getTabs() {
 				var project = loadProject(sessvars.projectName);
@@ -58,82 +56,82 @@
 		
 		<script>
 			function loadXSLT(withTabs, withCurrent, xmlToLoad){
-			var xml;
-			var xsl;
-			//Load tabs from project file
-			if(withTabs == 1){
-				getTabs();
-				xmlToLoad = sessvars.first;
+				var xml;
+				var xsl;
+				//Load tabs from project file
+				if(withTabs == 1){
+					getTabs();
+					xmlToLoad = sessvars.first;
+				}
+				
+				//Load XML and XSL '0' = loadnew '1' = reload with current
+				if(withCurrent == 0){
+					sessvars.xml = xmlToLoad;
+					xml = loadXML(sessvars.xml);
+					var textVersion = xml.xml;
+					var styleStringStart = textVersion.search("href=");
+					var styleStringPart = textVersion.substring(styleStringStart);
+					var styleStringEnd = styleStringPart.search(">");
+					var styleName = styleStringPart.substring(6, styleStringEnd-2);
+					sessvars.xsl = styleName;
+					xsl = loadXML(sessvars.xsl);
+				}
+				
+				if(withCurrent == 1){
+					xml = loadXML(sessvars.xml);
+					xsl = loadXML(sessvars.xsl);
+				}
+				
+				//Transform XML to HTML
+				var value = xml.transformNode(xsl);
+				
+				//Search for script in generated HTML, this should be put into a loop in case of multiple scripts
+				var scriptStart = value.search("<script>");
+				var scriptEnd = value.search("<"+'/'+"script>");
+				
+				//Create substring that is the script, offset start because script tag is inserted with createElement method
+				var xsltScript = value.substring(scriptStart+8, scriptEnd);
+				var editScript = xsltScript;//.replace("edit = 0", "edit=1");
+				//Find the head so we know where to append
+				var head = document.getElementsByTagName('head')[0];
+				
+				//Create our new script object
+				var script = document.createElement('script');
+				script.type = 'text/javascript';
+				script.text = editScript;
+				
+				//Append it to the head
+				head.appendChild(script);
+				
+				//Search for the style in generated HTML
+				var styleStart = value.search('<style type="text'+'/'+'css">');
+				var styleEnd = value.search("<"+'/'+"style>");
+				//Create substring that is the style
+				var xsltStyle = value.substring(styleStart+23, styleEnd);
+				
+				//Find Style insert location
+				var styleSpot = head.getElementsByTagName('style')[0];
+				var sheet = document.styleSheets[0];
+				//Append new styling
+				sheet.cssText += xsltStyle;
+				
+				//Append our generated HTML to the newly formatted page
+				document.getElementById("xsltDiv").innerHTML = value;
+				document.getElementById("xsltDiv").innerHTML += "<button onclick='saveXML(sessvars.xml)'>Save</button>";
+				
+				document.getElementById("xsltDiv").innerHTML += "<button onclick=toggleEdit()>Edit On/Off</button>";
+				
+				var preview = document.getElementById("preview");
+				
+				if(preview.isContentEditable == true) {
+					preview.style.border = "dashed";
+					sessvars.toggle = "1";
+				}
+				if(preview.isContentEditable == false) { 
+					preview.style.border = "none";
+					sessvars.toggle = "0";
+				}
 			}
-			
-			//Load XML and XSL '0' = loadnew '1' = reload with current
-			if(withCurrent == 0){
-				sessvars.xml = xmlToLoad;
-				xml = loadXML(sessvars.xml);
-				var textVersion = xml.xml;
-				var styleStringStart = textVersion.search("href=");
-				var styleStringPart = textVersion.substring(styleStringStart);
-				var styleStringEnd = styleStringPart.search(">");
-				var styleName = styleStringPart.substring(6, styleStringEnd-2);
-				sessvars.xsl = styleName;
-				xsl = loadXML(sessvars.xsl);
-			}
-			
-			if(withCurrent == 1){
-				xml = loadXML(sessvars.xml);
-				xsl = loadXML(sessvars.xsl);
-			}
-			
-			//Transform XML to HTML
-			var value = xml.transformNode(xsl);
-			
-			//Search for script in generated HTML, this should be put into a loop in case of multiple scripts
-			var scriptStart = value.search("<script>");
-			var scriptEnd = value.search("<"+'/'+"script>");
-			
-			//Create substring that is the script, offset start because script tag is inserted with createElement method
-			var xsltScript = value.substring(scriptStart+8, scriptEnd);
-			var editScript = xsltScript;//.replace("edit = 0", "edit=1");
-			//Find the head so we know where to append
-			var head = document.getElementsByTagName('head')[0];
-			
-			//Create our new script object
-			var script = document.createElement('script');
-			script.type = 'text/javascript';
-			script.text = editScript;
-			
-			//Append it to the head
-			head.appendChild(script);
-			
-			//Search for the style in generated HTML
-			var styleStart = value.search('<style type="text'+'/'+'css">');
-			var styleEnd = value.search("<"+'/'+"style>");
-			//Create substring that is the style
-			var xsltStyle = value.substring(styleStart+23, styleEnd);
-			
-			//Find Style insert location
-			var styleSpot = head.getElementsByTagName('style')[0];
-			var sheet = document.styleSheets[0];
-			//Append new styling
-			sheet.cssText += xsltStyle;
-			
-			//Append our generated HTML to the newly formatted page
-			document.getElementById("xsltDiv").innerHTML = value;
-			document.getElementById("xsltDiv").innerHTML += "<button onclick='saveXML(sessvars.xml)'>Save</button>";
-			
-			document.getElementById("xsltDiv").innerHTML += "<button onclick=toggleEdit()>Edit On/Off</button>";
-			
-			var preview = document.getElementById("preview");
-			
-			if(preview.isContentEditable == true) {
-				preview.style.border = "dashed";
-				sessvars.toggle = "1";
-			}
-			if(preview.isContentEditable == false) { 
-				preview.style.border = "none";
-				sessvars.toggle = "0";
-			}
-		}
 		</script>
 		
 		<script>
@@ -160,8 +158,6 @@
 			alert("File saved");
 		}
 		</script>
-		
-		
 	</head>
 	
 	<body onload="loadXSLT(1,0)">

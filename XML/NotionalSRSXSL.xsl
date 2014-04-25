@@ -184,27 +184,31 @@
 		<xsl:variable name="vID">
 			<xsl:value-of select="."/>
 		</xsl:variable>
+		<xsl:variable name="vDocumentBase" select="/*/@xml:base"/>
+		<xsl:variable name="vDocumentPath" select="string(concat('..//Projects//',$vDocumentBase))"/>
+		<xsl:variable name="vDocumentProj" select="document($vDocumentPath)"/>
 		<xsl:variable name="vTitle">
-			<xsl:for-each select="document('NotionalUseCase.xml')//UseCaseDocument//Section//Requirement[@id=$vID]">
-				<xsl:value-of select="Title"/>
-				<br/>
-			</xsl:for-each>
-			<xsl:for-each select="document('NotionalTestCase.xml')//TestCaseDocument//Section//Requirement[@id=$vID]">
-				<xsl:value-of select="Title"/>
+			<xsl:for-each select="$vDocumentProj//*//file_location">
+				<xsl:variable name="vLocations" select="*/@href"/>
+				<xsl:variable name="vDocumentNewPath" select="string(concat('..//XML//',$vLocations))"/>
+				<xsl:for-each select="document($vDocumentNewPath)/descendant-or-self::*/*[@id=$vID]">
+					<xsl:value-of select="Title"/>
+					<br/>
+				</xsl:for-each>
 			</xsl:for-each>
 		</xsl:variable>
 		<xsl:variable name="vPara">
-			<xsl:for-each select="document('NotionalUseCase.xml')//UseCaseDocument//Section//Requirement[@id=$vID]//Requirement">  
-				<xsl:for-each select="Para">
-					<xsl:value-of select="."/> 
-				</xsl:for-each> 
-			</xsl:for-each>
-			<xsl:for-each select="document('NotionalTestCase.xml')//TestCaseDocument//Section//Requirement[@id=$vID]//Requirement">  
-				<xsl:for-each select="Para">
-					<xsl:value-of select="."/>
-				</xsl:for-each> 
+			<xsl:for-each select="$vDocumentProj//*//file_location">
+				<xsl:variable name="vLocations" select="*/@href"/>
+				<xsl:variable name="vDocumentNewPath" select="string(concat('..//XML//',$vLocations))"/>
+				<xsl:for-each select="document($vDocumentNewPath)/descendant-or-self::*/*[@id=$vID]/Requirement">
+					<xsl:for-each select="Para">
+						<xsl:value-of select="."/> 
+					</xsl:for-each>
+				</xsl:for-each>
 			</xsl:for-each>
 		</xsl:variable>
+		
 		<div contenteditable="false">
 			<button type="button" onclick="showRef('{$vID}')">
 				<xsl:value-of select="$vID"/></button>  - <xsl:value-of select="$vTitle"/>

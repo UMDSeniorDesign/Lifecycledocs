@@ -30,7 +30,6 @@
     </xi:include>
     </file_location>
     <file_location>
-    
     <xi:include href="NotionalTestCase.xml">
         <xi:fallback>
             <p>The included document was not found!</p>

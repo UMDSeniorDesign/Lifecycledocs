@@ -5,7 +5,6 @@
             <head>
                 <script>
                     function showSection(ID, title){
-						var edit = 0;
 						var para = document.getElementById(ID).innerHTML;
 						var subReqs = document.getElementById("sub"+ID).innerHTML;
 						var subReqSpot = document.getElementById("sub"+ID);
@@ -24,11 +23,10 @@
 								text += "</p>";
 							}
 						}
-						var preview = document.getElementById("preview");
-						preview.innerHTML = text;
-						if(edit > 0){
-							preview.contentEditable = 'true';
-						}
+						var section = document.getElementById("section");
+						section.innerHTML = text;
+						if(sessvars.toggle = "1")
+							sessvars.toggle = "0";
                     }
 					function showRef(ID){
 						var refSpot = document.getElementById("ref");
@@ -38,6 +36,36 @@
 							infoSpot.style.display = 'none';
 						else
 							infoSpot.style.display = 'block';
+					}
+					function addEditValues(ID){
+						if(sessvars.toggle == "1"){
+							var selectSpot = document.getElementById("ApprovedBy");
+								if(selectSpot.length &lt; 2){
+									var options = document.getElementById("options").innerHTML;
+									options = options.split(',');
+									for(var i = 0; i &lt; options.length-1; i++){
+										var name = document.createElement("option");
+										name.text = options[i];
+										name.value = options[i];
+										selectSpot.add(name);
+									}
+									var other = document.createElement("option");
+									other.text = "Other";
+									other.value = "999";
+									selectSpot.add(other);
+								}
+							var resultSpot = document.getElementById("TestResult");
+							if(resultSpot.length &lt; 2){
+								var pass = document.createElement("option");
+								pass.text = "Pass";
+								pass.value = "Pass";
+								var fail = document.createElement("option");
+								fail.text = "Fail";
+								fail.value = "Fail";
+								resultSpot.add(pass);
+								resultSpot.add(fail);
+							}
+						}
 					}
                     function selectBoxChange(ID, type, value) {
                         if(type == 0)
@@ -122,60 +150,54 @@
             <xsl:value-of select="@id"/>
         </xsl:variable>
 		<xsl:if test="@isNewest = 'true'">
-			<div id="preview">
+			<div id="section">
 				<div id="{@id}" style="display: none;">
-					<xsl:apply-templates select="Para"/>
-					<br/>
-					<xsl:if test="TestResult != ''">
-						<xsl:text>Test Result: </xsl:text>
-						<select id="TestResult" onchange="if (this.selectedIndex) selectBoxChange('{$vID}', '0', this.value);">
-							<option value="-1" selected="selected">
-								<xsl:value-of select="TestResult"/>
-							</option>
-							<option value="Pass">
-								Pass
-							</option>
-							<option value="Fail">
-								Fail
-							</option>
-						</select>
-						<br/>
-					</xsl:if>
-					<xsl:variable name="vDocumentBase" select="/*/@xml:base"/>
-					<xsl:variable name="vDocumentPath" select="string(concat('..//Projects//',$vDocumentBase))"/>
-					<xsl:variable name="vDocumentProj" select="document($vDocumentPath)"/>
-					<xsl:for-each select="ApprovedBy[@isNewest='true']">
-						<xsl:text>Approved By: </xsl:text>
-						<select id="ApprovedBy" onchange="if (this.selectedIndex) selectBoxChange('{$vID}', '1', this.value);">
-							<option value="-1" selected="selected">
-								<xsl:value-of select="Name"/>
-							</option>
-							<xsl:for-each select="$vDocumentProj//*//*//TeamMember">
-								<xsl:variable name="vTeamMember" select="Name"/>
-								<option value="{$vTeamMember}">
-									<xsl:value-of select="$vTeamMember"/>
-								</option>
-							</xsl:for-each>
-							<option value="999">
-								Other
-							</option>
-						</select>
-						<br/>
-						<div id="{@id}Other" style="display: none;">
-							<button onclick="changeApprovedBy('{$vID}')">Approved By: </button>
-							<textarea id="{@id}OtherText" rows="1">Other</textarea>
-							<br/>
-						</div>
-						<xsl:value-of select="Name"/>
-						<xsl:text>'s Comment: </xsl:text>
+					<div id="preview">
 						<xsl:apply-templates select="Para"/>
-						<xsl:apply-templates select="ApprovedBy"/>
-					</xsl:for-each>
-					<br/><br/>
-					<div id="refs">
-						<xsl:apply-templates select="Ref"/>
 						<br/>
 					</div>
+						<xsl:if test="TestResult != ''">
+							<xsl:text>Test Result: </xsl:text>
+							<select id="TestResult" onmouseover="addEditValues('{$vID}')" onchange="if (this.selectedIndex) selectBoxChange('{$vID}', '0', this.value);">
+								<option value="-1" selected="selected">
+									<xsl:value-of select="TestResult"/>
+								</option>
+							</select>
+							<br/>
+						</xsl:if>
+						<xsl:variable name="vDocumentBase" select="/*/@xml:base"/>
+						<xsl:variable name="vDocumentPath" select="string(concat('..//Projects//',$vDocumentBase))"/>
+						<xsl:variable name="vDocumentProj" select="document($vDocumentPath)"/>
+						<xsl:for-each select="ApprovedBy[@isNewest='true']">
+							<xsl:text>Approved By: </xsl:text>
+							<select id="ApprovedBy" onmouseover="addEditValues('{$vID}')" onchange="if (this.selectedIndex) selectBoxChange('{$vID}', '1', this.value);">
+									<option value="-1" selected="selected">
+										<xsl:value-of select="Name"/>
+									</option>
+							</select>
+							<br/>
+							<div id="options" style="display: none;">
+								<xsl:for-each select="$vDocumentProj//*//*//TeamMember">
+									<xsl:variable name="vTeamMember" select="Name"/>
+										<xsl:value-of select="$vTeamMember"/>,
+								</xsl:for-each>
+							</div>
+							<div id="Other" style="display: none;">
+								<button onclick="changeApprovedBy('{$vID}')">Approved By: </button>
+								<textarea id="OtherText" rows="1">Other</textarea>
+								<br/>
+							</div>
+							<xsl:value-of select="Name"/>
+							<xsl:text>'s Comment: </xsl:text>
+							<xsl:apply-templates select="Para"/>
+							<xsl:apply-templates select="ApprovedBy"/>
+						</xsl:for-each>
+						<br/><br/>
+						<div id="refs">
+							<xsl:apply-templates select="Ref"/>
+							<br/>
+						</div>
+					
 				</div>
 			</div>
 		</xsl:if>
@@ -196,27 +218,31 @@
 		<xsl:variable name="vID">
 			<xsl:value-of select="."/>
 		</xsl:variable>
+		<xsl:variable name="vDocumentBase" select="/*/@xml:base"/>
+		<xsl:variable name="vDocumentPath" select="string(concat('..//Projects//',$vDocumentBase))"/>
+		<xsl:variable name="vDocumentProj" select="document($vDocumentPath)"/>
 		<xsl:variable name="vTitle">
-			<xsl:for-each select="document('NotionalUseCase.xml')//UseCaseDocument//Section//Requirement[@id=$vID]">
-				<xsl:value-of select="Title"/>
-				<br/>
-			</xsl:for-each>
-			<xsl:for-each select="document('NotionalSRS.xml')//SoftwareRequirementsDocument//Section//Requirement[@id=$vID]">
-				<xsl:value-of select="Title"/>
+			<xsl:for-each select="$vDocumentProj//*//file_location">
+				<xsl:variable name="vLocations" select="*/@href"/>
+				<xsl:variable name="vDocumentNewPath" select="string(concat('..//XML//',$vLocations))"/>
+				<xsl:for-each select="document($vDocumentNewPath)/descendant-or-self::*/*[@id=$vID]">
+					<xsl:value-of select="Title"/>
+					<br/>
+				</xsl:for-each>
 			</xsl:for-each>
 		</xsl:variable>
 		<xsl:variable name="vPara">
-			<xsl:for-each select="document('NotionalUseCase.xml')//UseCaseDocument//Section//Requirement[@id=$vID]//Requirement">  
-				<xsl:for-each select="Para">
-					<xsl:value-of select="."/> 
-				</xsl:for-each> 
-			</xsl:for-each>
-			<xsl:for-each select="document('NotionalSRS.xml')//SoftwareRequirementsDocument//Section//Requirement[@id=$vID]//Requirement">  
-				<xsl:for-each select="Para">
-					<xsl:value-of select="."/>
-				</xsl:for-each> 
+			<xsl:for-each select="$vDocumentProj//*//file_location">
+				<xsl:variable name="vLocations" select="*/@href"/>
+				<xsl:variable name="vDocumentNewPath" select="string(concat('..//XML//',$vLocations))"/>
+				<xsl:for-each select="document($vDocumentNewPath)/descendant-or-self::*/*[@id=$vID]/Requirement">
+					<xsl:for-each select="Para">
+						<xsl:value-of select="."/> 
+					</xsl:for-each>
+				</xsl:for-each>
 			</xsl:for-each>
 		</xsl:variable>
+		
 		<div contenteditable="false">
 			<button type="button" onclick="showRef('{$vID}')">
 				<xsl:value-of select="$vID"/></button>  - <xsl:value-of select="$vTitle"/>
