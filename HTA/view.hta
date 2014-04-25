@@ -23,6 +23,7 @@
 		<script src="../JS/getFromSessvar.js"></script>
 		<script src="../JS/sessionvars.js"></script>
 		<script src="../JS/contextMenu.js"></script>
+		<script src="../JS/dropdowns.js"></script>
 		
 		<script>
 			function toggleEdit() {
@@ -119,10 +120,6 @@
 				value += "<br><button onclick='saveXML(sessvars.xml)'>Save</button>";
 				value += "<button onclick=toggleEdit()>Edit On/Off</button>";
 				document.getElementById("xsltDiv").innerHTML = value;
-				//document.getElementById("xsltDiv").innerHTML += "<button onclick='saveXML(sessvars.xml)'>Save</button>";
-				
-				//document.getElementById("xsltDiv").innerHTML += "<button onclick=toggleEdit()>Edit On/Off</button>";
-				
 				var edit = document.getElementById("edit");
 				
 				if(edit.isContentEditable == true) {
