@@ -29,7 +29,6 @@
 							sessvars.toggle = "0";
                     }
 					function showRef(ID){
-						var refSpot = document.getElementById("ref");
 						var infoSpot = document.getElementById(ID);
 						var openOrClose = infoSpot.style.display;
 						if(openOrClose == 'block')
@@ -137,11 +136,9 @@
                 <button onclick="hideMenu('{$vID}')">Cancel</button>
             </div>
 		</xsl:if>
-		<div id="sub{@id}" contenteditable="false">
-		<div contenteditable="false">
+		<div id="sub{@id}">
 			<xsl:apply-templates select="Section" mode="section"/>
 			<xsl:apply-templates select="Requirement" mode="section"/>
-		</div>	
 		</div>
     </xsl:template>
 	
@@ -152,7 +149,7 @@
 		<xsl:if test="@isNewest = 'true'">
 			<div id="section">
 				<div id="{@id}" style="display: none;">
-					<div id="preview">
+					<div id="edit">
 						<xsl:apply-templates select="Para"/>
 						<br/>
 					</div>
@@ -243,13 +240,11 @@
 			</xsl:for-each>
 		</xsl:variable>
 		
-		<div contenteditable="false">
-			<button type="button" onclick="showRef('{$vID}')">
-				<xsl:value-of select="$vID"/></button>  - <xsl:value-of select="$vTitle"/>
-			<div id="ref">
-				<div id="{.}" style="display: none;">
-					<xsl:value-of select="$vPara"/>
-				</div>
+		<button type="button" onclick="showRef('{$vID}')">
+			<xsl:value-of select="$vID"/></button>  - <xsl:value-of select="$vTitle"/>
+		<div id="ref">
+			<div id="{.}" style="display: none;">
+				<xsl:value-of select="$vPara"/>
 			</div>
 		</div>
 		<xsl:apply-templates select="Ref" mode="para"/>
