@@ -38,6 +38,7 @@
                         <th style="width:120px">Requirement ID</th>
                         <th style="width:200px">Requirement Title</th>
                         <th style="width:300px">Use Case Locations</th>
+                        <th style="width:50px">% Test Pass</th>
                         <th style="width:300px">Test Case Locations</th>
                         <th style="width:100px">Last Result</th>
                         <th style="width:100px">Tested By</th>
@@ -52,40 +53,57 @@
     </xsl:template>
     
     <xsl:template match="Requirement[@isNewest='true']">
-        
-            <xsl:variable name="vID2" select="@id"/>
-            <xsl:variable name="vTitle2">
-                <xsl:choose>
-                    <xsl:when test="Title != ''">
-                        <xsl:text> Title: </xsl:text>
-                        <xsl:value-of select="Title"/>    
-                    </xsl:when>
-                    <xsl:when test="Para != ''">
-                        <xsl:text> Paragraph: </xsl:text>
-                        <xsl:value-of select="Para"/>    
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <font color="red">
-                            <xsl:text>DNE</xsl:text>
-                        </font>
-                    </xsl:otherwise>
-                </xsl:choose>
-            </xsl:variable>        
-            <xsl:variable name="vID" select="@id"/>
-            <xsl:variable name="vDocumentUC" select="document('NotionalUseCase.xml')"/>
-            <xsl:variable name="vDocumentTC" select="document('NotionalTestCase.xml')"/>
-            <xsl:variable name="UCCount" select="count(Ref[substring(.,1,2) = 'UC'][@isNewest='true'])"/>
-            <xsl:variable name="TCCount" select="count(Ref[substring(.,1,2) = 'TC'][@isNewest='true'])"/>
-            <xsl:variable name="spanRow">
-                <xsl:choose>
-                    <xsl:when test="$TCCount &lt; 1">
-                        <xsl:value-of select="number(1)"/>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:value-of select="number($TCCount)"/>
-                    </xsl:otherwise>
-                </xsl:choose>
-            </xsl:variable>
+        <xsl:variable name="vID2" select="@id"/>
+        <xsl:variable name="vTitle2">
+            <xsl:choose>
+                <xsl:when test="Title != ''">
+                    <xsl:text> Title: </xsl:text>
+                    <xsl:value-of select="Title"/>    
+                </xsl:when>
+                <xsl:when test="Para != ''">
+                    <xsl:text> Paragraph: </xsl:text>
+                    <xsl:value-of select="Para"/>    
+                </xsl:when>
+                <xsl:otherwise>
+                    <font color="red">
+                        <xsl:text>DNE</xsl:text>
+                    </font>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>        
+        <xsl:variable name="vID" select="@id"/>
+        <xsl:variable name="vDocumentUC" select="document('NotionalUseCase.xml')"/>
+        <xsl:variable name="vDocumentTC" select="document('NotionalTestCase.xml')"/>
+        <xsl:variable name="UCCount" select="count(Ref[substring(.,1,2) = 'UC'][@isNewest='true'])"/>
+        <xsl:variable name="TCCount" select="count(Ref[substring(.,1,2) = 'TC'][@isNewest='true'])"/>
+        <xsl:variable name="testsPassed" select="count(
+            (count(Ref[substring(.,1,2) = 'TC'][@isNewest='true'] = 'true')) +
+            (count(Ref[substring(.,1,2) = 'TC'][@isNewest='true'] = 'Pass'))
+            )"/>
+        <xsl:variable name="testPasses">
+            <xsl:choose>
+                <xsl:when test="$TCCount &lt; 1">
+                    <xsl:text>0%</xsl:text>
+                </xsl:when>
+                <xsl:otherwise>
+                    
+                    
+                    
+                    
+                </xsl:otherwise>
+            </xsl:choose>
+            
+        </xsl:variable>
+        <xsl:variable name="spanRow">
+            <xsl:choose>
+                <xsl:when test="$TCCount &lt; 1">
+                    <xsl:value-of select="number(1)"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="number($TCCount)"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
         
         <tr>
             <td rowspan="{$spanRow * 2}">
@@ -122,6 +140,9 @@
                         </table>
                     </xsl:otherwise>
                 </xsl:choose>
+            </td>
+            <td rowspan="{$spanRow * 2}">
+                <xsl:value-of select="$testsPassed"/>
             </td>
             <xsl:choose>
                 <xsl:when test="$TCCount = 0">
@@ -221,6 +242,8 @@
             <xsl:value-of select="$vDocumentTC/descendant-or-self::*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Name"/>
         </td>
         <td>
+<!--
+DATE HERE                <xsl:value-of select="$vDocumentTC/descendant-or-self::*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Date"/>-->
             
             <xsl:text>the date</xsl:text>        
             
