@@ -52,7 +52,7 @@
     </xsl:template>
     
     <xsl:template match="Requirement[@isNewest='true']">
-        <tr>
+        
             <xsl:variable name="vID2" select="@id"/>
             <xsl:variable name="vTitle2">
                 <xsl:choose>
@@ -78,24 +78,25 @@
             <xsl:variable name="TCCount" select="count(Ref[substring(.,1,2) = 'TC'][@isNewest='true'])"/>
             <xsl:variable name="spanRow">
                 <xsl:choose>
-                    <xsl:when test="number($TCCount) &gt; number($UCCount)">
-                        <xsl:value-of select="number($TCCount)"/>
+                    <xsl:when test="$TCCount &lt; 1">
+                        <xsl:value-of select="number(1)"/>
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:value-of select="number($UCCount)"/>
+                        <xsl:value-of select="number($TCCount)"/>
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:variable>
-            
-            <td rowspan="{$spanRow + 1}">
+        
+        <tr>
+            <td rowspan="{$spanRow * 2}">
                 <button type="button" onclick="showRef('{$vID2}')">
                     <xsl:value-of select="$vID2"/>
                 </button>
             </td>
-            <td rowspan="{$spanRow + 1}">
+            <td rowspan="{$spanRow * 2}">
                 <xsl:value-of select="$vTitle2"/>
             </td>
-            <td rowspan="{$spanRow + 1}">
+            <td rowspan="{$spanRow * 2}">
                 <xsl:choose>
                     <xsl:when test="$UCCount &lt; 1">
                         <b>
@@ -124,45 +125,73 @@
             </td>
             <xsl:choose>
                 <xsl:when test="$TCCount = 0">
-                    <td rowspan="{$spanRow + 1}" colspan="5">
+                    <td rowspan="{$spanRow * 2}" colspan="5">
                         <b>
                             <font color="blue">
                                 <xsl:text>No Test Cases</xsl:text>
                             </font>
                         </b>
                     </td>
-                    <xsl:call-template name="addRow">
-                        <xsl:with-param name="num" select="$spanRow"/>
-                    </xsl:call-template>
-                </xsl:when>
-                <xsl:when test="$TCCount = 1">
-                    <xsl:call-template name="testCase">
-                        <xsl:with-param name="i">0</xsl:with-param>
-                        <xsl:with-param name="rows" select="$spanRow"/>
-                    </xsl:call-template> 
+                    <tr></tr>
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:call-template name="testCase">
-                        <xsl:with-param name="i">2</xsl:with-param>
+                    <xsl:call-template name="testCaseRow">
+                        <xsl:with-param name="i">0</xsl:with-param>
                         <xsl:with-param name="rows" select="$spanRow"/>
-                    </xsl:call-template> 
+                    </xsl:call-template>
                 </xsl:otherwise>
             </xsl:choose>
         </tr>
         <xsl:apply-templates select="Requirement"/>
     </xsl:template>
     
-    <xsl:template name="addRow">
-        <xsl:param name="num"/>
-        <xsl:if test="$num &gt; 0">
-            <tr></tr>
-        </xsl:if>
-        <xsl:if test="$num &gt; 0">
-            <xsl:call-template name="addRow">
-                <xsl:with-param name="num">
-                    <xsl:value-of select="$num - 1"/>
-                </xsl:with-param>
-            </xsl:call-template>
+    <xsl:template name="testCaseRow">
+        <xsl:param name="i"/>
+        <xsl:param name="rows"/>
+        <xsl:variable name="vDocumentUC" select="document('NotionalUseCase.xml')"/>
+        <xsl:variable name="vDocumentTC" select="document('NotionalTestCase.xml')"/>
+        
+        <xsl:if test="$i &lt; $rows">
+            <xsl:for-each select="Ref[@isNewest='true'][substring(.,1,2) = 'TC']">
+                <xsl:variable name="myRef" select="."/>
+                <td>
+                    <button type="button" onclick="">
+                        <xsl:value-of select="."/>
+                    </button>
+                    <xsl:value-of select="$vDocumentTC/descendant-or-self::*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"></xsl:value-of>
+                </td>
+                <xsl:choose>
+                    <xsl:when test="$vDocumentTC/descendant-or-self::*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult != ''">                            
+                        <xsl:call-template name="testResults">
+                            <xsl:with-param name="myRef">
+                                <xsl:value-of select="$myRef"/>
+                            </xsl:with-param>
+                        </xsl:call-template>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <td colspan="4">
+                            <b>
+                                <font color="red">
+                                    <xsl:text>Not Tested</xsl:text>
+                                </font>
+                            </b>
+                        </td>
+                    </xsl:otherwise>
+                </xsl:choose>
+                
+                <xsl:if test="$i &lt; $rows">
+                    <tr>
+                        <xsl:call-template name="testCaseRow">
+                            <xsl:with-param name="i">
+                                <xsl:value-of select="$i + 1"/>
+                            </xsl:with-param>
+                            <xsl:with-param name="rows">
+                                <xsl:value-of select="$rows"/>
+                            </xsl:with-param>
+                        </xsl:call-template>
+                    </tr>
+                </xsl:if>
+            </xsl:for-each>
         </xsl:if>
     </xsl:template>
     
@@ -199,55 +228,5 @@
         <td>
             <xsl:value-of select="$vDocumentTC/descendant-or-self::*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Para[@isNewest='true']"></xsl:value-of>
         </td>
-    </xsl:template>
-    
-    <xsl:template name="testCase">
-        <xsl:param name="i"/>
-        <xsl:param name="rows"/>
-        <xsl:variable name="vDocumentUC" select="document('NotionalUseCase.xml')"/>
-        <xsl:variable name="vDocumentTC" select="document('NotionalTestCase.xml')"/>
-        
-        <xsl:if test="$i &lt; $rows">
-            <xsl:for-each select="Ref[@isNewest='true'][substring(.,1,2) = 'TC']">
-                <xsl:variable name="myRef" select="."/>
-                <tr>
-                    <td>
-                        <button type="button" onclick="">
-                            <xsl:value-of select="."/>
-                        </button>
-                        <xsl:value-of select="$vDocumentTC/descendant-or-self::*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"></xsl:value-of>
-                    </td>
-                    <xsl:choose>
-                        <xsl:when test="$vDocumentTC/descendant-or-self::*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult != ''">                            
-                            <xsl:call-template name="testResults">
-                                <xsl:with-param name="myRef">
-                                    <xsl:value-of select="$myRef"/>
-                                </xsl:with-param>
-                            </xsl:call-template>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <td colspan="4">
-                                <b>
-                                    <font color="red">
-                                        <xsl:text>Not Tested</xsl:text>
-                                    </font>
-                                </b>
-                            </td>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </tr>
-            </xsl:for-each>
-        </xsl:if>
-        
-        <xsl:if test="$i &lt; $rows">
-            <xsl:call-template name="testCase">
-                <xsl:with-param name="i">
-                    <xsl:value-of select="$i + 1"></xsl:value-of>
-                </xsl:with-param>
-                <xsl:with-param name="rows">
-                    <xsl:value-of select="$rows"></xsl:value-of>
-                </xsl:with-param>
-            </xsl:call-template>
-        </xsl:if>
     </xsl:template>
 </xsl:stylesheet>
