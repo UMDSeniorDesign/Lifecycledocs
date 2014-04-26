@@ -17,8 +17,6 @@
                         <tr style="height:25px">
                             <th style="width:100px">Name</th>
                             <th style="width:100px">Role</th>
-                            <th style="width:100px">Remove</th>
-                            
                         </tr>
                         <xsl:for-each select="Team/TeamMember">
                             <tr style="height:100px">
@@ -46,15 +44,10 @@
                                         </xsl:otherwise>
                                     </xsl:choose>
                                 </td>
-                                <td>
-                                    <button type="button">
-                                        <xsl:text>Remove</xsl:text>
-                                    </button>
-                                </td>
                             </tr>
                         </xsl:for-each>
                         <tr>
-                            <td></td><td></td><td></td>
+                            <td></td><td></td>
                         </tr>
                         <tr>
                             <td>
@@ -62,9 +55,6 @@
                             </td>
                             <td>
                                 <xsl:value-of select="$fileCount"/>
-                            </td>
-                            <td rowspan="{$fileCount + 1}">
-                                
                             </td>
                         </tr>
                         <xsl:for-each select="file_location">
