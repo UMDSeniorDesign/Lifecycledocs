@@ -19,6 +19,16 @@
     <xsd:element name="SoftwareRequirementsDocument" type="SoftwareRequirementsDocumentType"/>
     <xsd:complexType name="SoftwareRequirementsDocumentType">
         <xsd:sequence>
+            <xsd:element name="StyleSheet" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:string">
+                            <!--<xsd:attribute name="isNewest" type="xsd:boolean" use="required"/>
+                                maybe incorporate isNewest here-->
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
             <xsd:element ref="Section" maxOccurs="unbounded"/>
 
             <!-- Other global elements to be referenced here. -->
@@ -45,6 +55,15 @@
                 </xsd:complexType>
             </xsd:element>
             <xsd:element name="Role" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:string">
+                            <xsd:attribute name="isNewest" type="xsd:boolean" use="required"/>
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="UIC" maxOccurs="1">
                 <xsd:complexType>
                     <xsd:simpleContent>
                         <xsd:extension base="xsd:string">
@@ -118,7 +137,15 @@
     <xsd:element name="ApprovedBy" type="ApprovedByType"/>
     <xsd:complexType name="ApprovedByType">
         <xsd:sequence>
-            <xsd:element name="Name" type="xsd:string"/>
+            <xsd:element name="Name" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:string">
+                            <xsd:attribute name="isNewest" type="xsd:boolean" use="required"/>
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
             <xsd:element ref="Para" minOccurs="0"/>
         </xsd:sequence>
         <xsd:attribute name="isNewest" type="xsd:boolean"/>
@@ -148,6 +175,16 @@
     <xsd:complexType name="UseCaseDocumentType">
 
         <xsd:sequence>
+            <xsd:element name="StyleSheet" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:string">
+                            <!--<xsd:attribute name="isNewest" type="xsd:boolean" use="required"/>
+                                maybe incorporate isNewest here-->
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
             <xsd:element ref="Section" minOccurs="0" maxOccurs="unbounded"/>
             <!-- Other global elements to be referenced here. -->
         </xsd:sequence>
@@ -158,6 +195,16 @@
     <xsd:element name="TestCaseDocument" type="TestCaseDocumentType"/>
     <xsd:complexType name="TestCaseDocumentType">
         <xsd:sequence>
+            <xsd:element name="StyleSheet" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:string">
+                            <!--<xsd:attribute name="isNewest" type="xsd:boolean" use="required"/>
+                                maybe incorporate isNewest here-->
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
             <xsd:element ref="Section" minOccurs="1" maxOccurs="unbounded"/>
             <!-- Other global elements to be referenced here. -->
         </xsd:sequence>
