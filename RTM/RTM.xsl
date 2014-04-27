@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    exclude-result-prefixes="xs"
+    xmlns:msxsl="urn:schemas-microsoft-com:xslt"
+    xmlns:ext="http://exslt.org/common"
+    exclude-result-prefixes="xs ext msxsl"
     version="2.0">
     <xsl:output method="html" indent="yes"/>
     <xsl:strip-space elements="*"/>
@@ -38,6 +40,7 @@
                         <th style="width:120px">Requirement ID</th>
                         <th style="width:200px">Requirement Title</th>
                         <th style="width:300px">Use Case Locations</th>
+                        <th style="width:50px">Testing Completion</th>
                         <th style="width:300px">Test Case Locations</th>
                         <th style="width:100px">Last Result</th>
                         <th style="width:100px">Tested By</th>
@@ -53,40 +56,59 @@
     
     <xsl:template match="Requirement[@isNewest='true']">
         
-            <xsl:variable name="vID2" select="@id"/>
-            <xsl:variable name="vTitle2">
+        <xsl:variable name="vID2" select="@id"/>
+        <xsl:variable name="vTitle2">
+            <xsl:choose>
+                <xsl:when test="Title != ''">
+                    <xsl:text> Title: </xsl:text>
+                    <xsl:value-of select="Title"/>    
+                </xsl:when>
+                <xsl:when test="Para != ''">
+                    <xsl:text> Paragraph: </xsl:text>
+                    <xsl:value-of select="Para"/>    
+                </xsl:when>
+                <xsl:otherwise>
+                    <font color="red">
+                        <xsl:text>DNE</xsl:text>
+                    </font>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>        
+        <xsl:variable name="vID" select="@id"/>
+        <xsl:variable name="vDocumentUC" select="document('NotionalUseCase.xml')"/>
+        <xsl:variable name="vDocumentTC" select="document('NotionalTestCase.xml')"/>
+        <xsl:variable name="UCCount" select="count(Ref[substring(.,1,2) = 'UC'][@isNewest='true'])"/>
+        <xsl:variable name="TCCount" select="count(Ref[substring(.,1,2) = 'TC'][@isNewest='true'])"/>
+        <xsl:variable name="TCPass">
+            <xsl:for-each select="Ref[substring(.,1,2) = 'TC'][@isNewest='true']">
                 <xsl:choose>
-                    <xsl:when test="Title != ''">
-                        <xsl:text> Title: </xsl:text>
-                        <xsl:value-of select="Title"/>    
+                    <xsl:when test="TestResult = 'true'">
+                        <count>1</count>
                     </xsl:when>
-                    <xsl:when test="Para != ''">
-                        <xsl:text> Paragraph: </xsl:text>
-                        <xsl:value-of select="Para"/>    
+                    <xsl:when test="TestResult = 'Pass'">
+                        <count>1</count>
                     </xsl:when>
                     <xsl:otherwise>
-                        <font color="red">
-                            <xsl:text>DNE</xsl:text>
-                        </font>
+                        <count>0</count>
                     </xsl:otherwise>
                 </xsl:choose>
-            </xsl:variable>        
-            <xsl:variable name="vID" select="@id"/>
-            <xsl:variable name="vDocumentUC" select="document('NotionalUseCase.xml')"/>
-            <xsl:variable name="vDocumentTC" select="document('NotionalTestCase.xml')"/>
-            <xsl:variable name="UCCount" select="count(Ref[substring(.,1,2) = 'UC'][@isNewest='true'])"/>
-            <xsl:variable name="TCCount" select="count(Ref[substring(.,1,2) = 'TC'][@isNewest='true'])"/>
-            <xsl:variable name="spanRow">
-                <xsl:choose>
-                    <xsl:when test="$TCCount &lt; 1">
-                        <xsl:value-of select="number(1)"/>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:value-of select="number($TCCount)"/>
-                    </xsl:otherwise>
-                </xsl:choose>
-            </xsl:variable>
+            </xsl:for-each>
+        </xsl:variable>
         
+        
+        
+        
+        <xsl:variable name="spanRow">
+            <xsl:choose>
+                <xsl:when test="$TCCount &lt; 1">
+                    <xsl:value-of select="number(1)"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="number($TCCount)"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+    
         <tr>
             <td rowspan="{$spanRow * 2}">
                 <button type="button" onclick="showRef('{$vID2}')">
@@ -122,6 +144,9 @@
                         </table>
                     </xsl:otherwise>
                 </xsl:choose>
+            </td>
+            <td rowspan="{$spanRow * 2}">
+                <xsl:value-of select="sum(msxsl:node-set($TCPass)/count)"/>
             </td>
             <xsl:choose>
                 <xsl:when test="$TCCount = 0">
