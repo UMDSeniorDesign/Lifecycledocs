@@ -12,11 +12,12 @@
                 <Para isNewest="true">Form is displayed properly to user with appropriate textboxes and buttons.</Para>
                 <TestResult>false</TestResult>
                 <ApprovedBy isNewest="true">
-                    <Name>Kevin</Name>
+                    <Name isNewest="true">Kevin</Name>
+                    
                     <Para isNewest="true">Comment</Para>
                 </ApprovedBy>
                 <ApprovedBy isNewest="false">
-                    <Name>Peter</Name>
+                    <Name isNewest="true">Peter</Name>
                     <Para isNewest="true">no comment here!</Para>
                 </ApprovedBy>
                 <Ref isNewest="true">RQ3.1.1</Ref>
@@ -28,7 +29,7 @@
                 <Para isNewest="true">Project name is an accepted string in textbox.  No special characters.</Para>
                 <TestResult>false</TestResult>
                 <ApprovedBy isNewest="true">
-                    <Name>Pete</Name>
+                    <Name isNewest="true">Pete</Name>
                 </ApprovedBy>
                 <Ref isNewest="true">RQ3.2.1</Ref>
                 <Ref isNewest="true">RQ3.2.3</Ref>
@@ -41,7 +42,7 @@
                 <Para isNewest="true">Template selected is a valid file type or is left blank.</Para>
                 <TestResult>false</TestResult>
                 <ApprovedBy isNewest="true">
-                    <Name>Pete</Name>
+                    <Name isNewest="true">Pete</Name>
                 </ApprovedBy>
                 <Ref isNewest="true">RQ3.1.4</Ref>
                 <Ref isNewest="true">UC1.1.1</Ref>
@@ -53,7 +54,7 @@
                 <Para isNewest="true">Program prompts user with error message.</Para>
                 <TestResult>false</TestResult>
                 <ApprovedBy isNewest="true">
-                    <Name>Jeremiah</Name>
+                    <Name isNewest="true">Jeremiah</Name>
                 </ApprovedBy>
                 <Ref isNewest="true">RQ3.2.1.2</Ref>
                 <Ref isNewest="true">RQ3.2.1.5</Ref>
@@ -66,7 +67,7 @@
                 <Para isNewest="true">User is unable to input a destination and must use Browse button to select a folder to save the project in.</Para>
                 <TestResult>false</TestResult>
                 <ApprovedBy isNewest="true">
-                    <Name>Ari</Name>
+                    <Name isNewest="true">Ari</Name>
                 </ApprovedBy>
                 <Ref isNewest="true">RQ3.1.2</Ref>
                 <Ref isNewest="true">RQ3.1.4</Ref>
@@ -81,7 +82,7 @@
                 <Para isNewest="true"> Create window is close and user is brought back to previous menu.</Para>
                 <TestResult>false</TestResult>
                 <ApprovedBy isNewest="true">
-                    <Name>Ari</Name>
+                    <Name isNewest="true">Ari</Name>
                 </ApprovedBy>
                 <Ref isNewest="true">RQ3.1.4</Ref>
                 <Ref isNewest="true">UC1.1.1</Ref>
@@ -93,7 +94,7 @@
                 <Para isNewest="true">user is prompted to select file destination and display destiniation in the textbox.</Para>
                 <TestResult>false</TestResult>
                 <ApprovedBy isNewest="true">
-                    <Name>Kevin</Name>
+                    <Name isNewest="true">Kevin</Name>
                 </ApprovedBy>
                 <Ref isNewest="true">RQ3.1.1</Ref>
                 <Ref isNewest="true">RQ3.1.4</Ref>
@@ -106,7 +107,7 @@
                 <Para isNewest="true">A blank document opens using Template selected.  The files saves in the destination selected with the name "Project Name"</Para>
                 <TestResult>false</TestResult>
                 <ApprovedBy isNewest="true">
-                    <Name>Pete</Name>
+                    <Name isNewest="true">Pete</Name>
                 </ApprovedBy>
                 <Ref isNewest="true">RQ3.1.1</Ref>
                 <Ref isNewest="true">RQ3.1.4</Ref>

@@ -81,11 +81,12 @@
         <xsl:variable name="TCCount" select="count(Ref[substring(.,1,2) = 'TC'][@isNewest='true'])"/>
         <xsl:variable name="TCPass">
             <xsl:for-each select="Ref[substring(.,1,2) = 'TC'][@isNewest='true']">
+                <xsl:variable name="myRef" select="."></xsl:variable>
                 <xsl:choose>
-                    <xsl:when test="TestResult = 'true'">
+                    <xsl:when test="$vDocumentTC/descendant-or-self::*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult = 'true'">
                         <count>1</count>
                     </xsl:when>
-                    <xsl:when test="TestResult = 'Pass'">
+                    <xsl:when test="$vDocumentTC/descendant-or-self::*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult = 'true'">
                         <count>1</count>
                     </xsl:when>
                     <xsl:otherwise>
@@ -94,8 +95,7 @@
                 </xsl:choose>
             </xsl:for-each>
         </xsl:variable>
-        
-        
+        <xsl:variable name="sumTCPass" select="sum(msxsl:node-set($TCPass)/count)"/>
         
         
         <xsl:variable name="spanRow">
@@ -146,7 +146,29 @@
                 </xsl:choose>
             </td>
             <td rowspan="{$spanRow * 2}">
-                <xsl:value-of select="sum(msxsl:node-set($TCPass)/count)"/>
+                <xsl:choose>
+                    <xsl:when test="$TCCount = 0">
+                        <b>
+                            <font color="blue">
+                                <xsl:text>0%</xsl:text>
+                            </font>
+                        </b>
+                    </xsl:when>
+                    <xsl:when test="$sumTCPass = $TCCount">
+                        <b>
+                            <font color="green">
+                                <xsl:value-of select="format-number(number($sumTCPass div $TCCount), '0%')"/>
+                            </font>
+                        </b>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <b>
+                            <font color="red">
+                                <xsl:value-of select="format-number(number($sumTCPass div $TCCount), '0%')"/>
+                            </font>
+                        </b>
+                    </xsl:otherwise>
+                </xsl:choose>
             </td>
             <xsl:choose>
                 <xsl:when test="$TCCount = 0">

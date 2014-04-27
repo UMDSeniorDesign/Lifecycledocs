@@ -19,7 +19,7 @@
     <xsd:element name="SoftwareRequirementsDocument" type="SoftwareRequirementsDocumentType"/>
     <xsd:complexType name="SoftwareRequirementsDocumentType">
         <xsd:sequence>
-            <xsd:element name="StyleSheet" maxOccurs="1">
+            <xsd:element name="StyleSheet" minOccurs="0" maxOccurs="unbounded">
                 <xsd:complexType>
                     <xsd:simpleContent>
                         <xsd:extension base="xsd:string">
@@ -146,6 +146,15 @@
                     </xsd:simpleContent>
                 </xsd:complexType>
             </xsd:element>
+            <xsd:element name="Date" minOccurs="0" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:dateTime">
+                            <xsd:attribute name="isNewest" type="xsd:boolean" use="required"/>
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
             <xsd:element ref="Para" minOccurs="0"/>
         </xsd:sequence>
         <xsd:attribute name="isNewest" type="xsd:boolean"/>
@@ -175,7 +184,7 @@
     <xsd:complexType name="UseCaseDocumentType">
 
         <xsd:sequence>
-            <xsd:element name="StyleSheet" maxOccurs="1">
+            <xsd:element name="StyleSheet" minOccurs="0" maxOccurs="unbounded">
                 <xsd:complexType>
                     <xsd:simpleContent>
                         <xsd:extension base="xsd:string">
@@ -195,7 +204,7 @@
     <xsd:element name="TestCaseDocument" type="TestCaseDocumentType"/>
     <xsd:complexType name="TestCaseDocumentType">
         <xsd:sequence>
-            <xsd:element name="StyleSheet" maxOccurs="1">
+            <xsd:element name="StyleSheet" minOccurs="0" maxOccurs="unbounded">
                 <xsd:complexType>
                     <xsd:simpleContent>
                         <xsd:extension base="xsd:string">
