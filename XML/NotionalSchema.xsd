@@ -146,6 +146,15 @@
                     </xsd:simpleContent>
                 </xsd:complexType>
             </xsd:element>
+            <xsd:element name="Date" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:dateTime">
+                            <xsd:attribute name="isNewest" type="xsd:boolean" use="required"/>
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
             <xsd:element ref="Para" minOccurs="0"/>
         </xsd:sequence>
         <xsd:attribute name="isNewest" type="xsd:boolean"/>
