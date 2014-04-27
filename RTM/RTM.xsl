@@ -122,7 +122,7 @@
                 <xsl:choose>
                     <xsl:when test="$UCCount &lt; 1">
                         <b>
-                            <font color="green">
+                            <font color="purple">
                                 <xsl:text>No Use Cases</xsl:text>
                             </font>
                         </b>

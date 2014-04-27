@@ -136,6 +136,8 @@
   		<Title isNewest="true">HardwareInterfaces</Title>
   		<Para isNewest="true"> The application will be able to operate on a modern Microsoft Windows operating computer, that has an active installation of Microsoft Internet Explorer. Since there will be no network connection available, there is no requirement to interface to a network, however, the software solution will be web-based and address some scalability issues. All other hardware interfacing will be handled by the operating system, or the browser. 
   		</Para>
+		<Ref isNewest="true">TC1.1</Ref>
+		<Ref isNewest="true">TC1.1.1</Ref>
 		<Requirement isNewest="true" id="RQ3.1.2.1"> 
 			<Para isNewest="true"> All hardware interfacing is handled by the browser.</Para>
 		</Requirement>
