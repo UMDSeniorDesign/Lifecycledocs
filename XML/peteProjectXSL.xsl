@@ -44,6 +44,9 @@
                                         </xsl:otherwise>
                                     </xsl:choose>
                                 </td>
+								<td>
+									<button onclick="removeMember()">Remove Member</button>
+								</td>
                             </tr>
                         </xsl:for-each>
                         <tr>
@@ -69,6 +72,7 @@
                         </xsl:for-each>
                     </tbody>
                 </table>
+				<button onclick="addMember()">Add Member</button>
             </head>
         </html>
     </xsl:template>

@@ -14,6 +14,7 @@
 		scrollFlat="yes" /> 
 
 		<script src="../JS/loadXML.js"></script>
+		<script src="../JS/saveXML.js"></script>
 		<script src="../JS/sessionvars.js"></script>
 				
 		<script>
@@ -88,6 +89,52 @@
 				
 				image.innerHTML = x;
 			}
+	</script>
+	
+	<script>
+		function removeMember() {
+			var b = document.getElementById("browse").value;
+			var varray = b.split("\\");
+			var file = varray[varray.length-1];
+			
+			var xmlDoc = loadXML(file);
+			
+			var n=xmlDoc.getElementsByTagName("TeamMember")[0];
+			//alert(xmlDoc.getElementsByTagName("TeamMember").length);
+			n.parentNode.removeChild(n);
+			//alert(xmlDoc.getElementsByTagName("TeamMember").length);
+			
+			getProjectInfo();
+		}
+		
+		function addMember() {
+			var b = document.getElementById("browse").value;
+			var varray = b.split("\\");
+			var file = varray[varray.length-1];
+			
+			var xmlDoc = loadXML(file);
+			
+			var n=xmlDoc.getElementsByTagName("Team")[0];
+			var length = xmlDoc.getElementsByTagName("Team").length;
+			
+			var newel=xmlDoc.createElement("TeamMember");
+			n.appendChild(newel);
+			
+			n=xmlDoc.getElementsByTagName("Team")[length-1];
+			alert(n.value);
+						
+			/*var newM = prompt("New Member Name: ", "");
+			var newR = prompt("New Member Role: ", "");
+			
+			txt="<TeamMember>";
+            txt+="<Name>"+newM+"</Name>";
+            txt+="<Role>"+newR+"</Role>";
+			txt+="</TeamMember>";*/
+			
+			
+			var parser = new DOMParser();
+			
+		}
 	</script>
 	
     </head>
