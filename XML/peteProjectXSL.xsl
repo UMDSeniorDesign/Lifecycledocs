@@ -48,7 +48,7 @@
 								    <xsl:variable name="memberName">
 								        <xsl:value-of select="Name[@isNewest='true']"/>
 								    </xsl:variable>
-									<button onclick="removeMember(memberName)">Remove Member</button>
+									<button type="button" onclick="removeMember('{$memberName}')">Remove Member</button>
 								</td>
                             </tr>
                         </xsl:for-each>
