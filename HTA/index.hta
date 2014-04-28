@@ -73,17 +73,20 @@
 		</script>
 		
 		<script>
-			function getProjectInfo() {
+			function getProjectInfo(i, project) {
 				var image = document.getElementById("images");
-				var b = document.getElementById("browse").value;
+				
+				if(i==0) {
+					var b = document.getElementById("browse").value;
+					var varray = b.split("\\");
+					var projectName = varray[varray.length-1];
+				} else 
+					var projectName = project;
 				
 				image.innerHTML = "";	
 				
-				var varray = b.split("\\");
-				var projectName = varray[varray.length-1];
-				
-				var y = loadXML(projectName);
-				var z = loadXML("peteProjectXSL.xsl");
+				var y = loadProject(projectName);
+				var z = loadXML("peteProjectXSL.xsl");		
 				
 				alert(y.xml);
 				
@@ -99,7 +102,7 @@
 			var varray = b.split("\\");
 			var projectName = varray[varray.length-1];
 			
-			var xmlDoc = loadXML(projectName);
+			var xmlDoc = loadProject(projectName);
 
 						
 			for(var i = 0; i < xmlDoc.getElementsByTagName("TeamMember").length; i++) {
@@ -113,6 +116,7 @@
 			//If windows 7, use this line
 			//var f = fs.GetFolder("../XML");
 			//If windows 8, use this line
+			projectName = "test.xml";
 			var f = fs.GetFolder("\Projects");
 
 			file = f.CreateTextFile(projectName, true);
@@ -123,7 +127,7 @@
 					alert(projectName);
 					alert(xmlDoc.xml);
 					
-			getProjectInfo();
+			getProjectInfo(1, projectName);
 		}
 		
 		function addMember() {
@@ -165,7 +169,7 @@
                 <div id="siteControl">
                     <button id="create" onclick=createProject()>New Project</button>
                     <button id="open" onclick=openProject()>Open Project</button>
-					<input id="browse" type="file" onchange=getProjectInfo()>
+					<input id="browse" type="file" onchange="getProjectInfo(0, '')">
                 </div>
             </div>
         </div>
