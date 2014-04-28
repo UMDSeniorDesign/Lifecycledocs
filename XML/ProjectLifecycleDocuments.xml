@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="peteProjectXSL.xsl"?>
+<?xml-stylesheet type="text/xsl" href="ProjectXSL.xsl"?>
 
 <!-- <root:ProjectLifeCycleDocuments -->
-<ProjectLifecycleDocuments projectName="PLCD" 
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:xi="http://www.w3.org/2001/XInclude"
-    xsi:noNamespaceSchemaLocation="NotionalSchema.xsd">
+<ProjectLifecycleDocuments projectName="Lifecycle Document Project Manager" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="NotionalSchema.xsd">
     <Team> 
         <TeamMember isNewest="true">
             <Name isNewest="true">Jeremiah Butler</Name>

@@ -1,0 +1,218 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script>
+                    function showSection(ID, title){
+						var para = document.getElementById(ID).innerHTML;
+						var subReqs = document.getElementById("sub"+ID).innerHTML;
+						var subReqSpot = document.getElementById("sub"+ID);
+						var subReqStyle = subReqSpot.style.display;
+						var text = "<u>"+ID;
+						text += " - ";
+						text += "<i>"+title+"</i></u>";
+						text += "<p>";
+						text += para;
+						text += "</p>";
+						if(subReqs.length > 33){
+							if(subReqStyle == 'none'){
+								text += "<p>";
+								text += "<u>Sub Requirements</u><br>";
+								text += subReqs;
+								text += "</p>";
+							}
+						}
+						var section = document.getElementById("section");
+						section.innerHTML = text;
+						if(sessvars.toggle = "1")
+							sessvars.toggle = "0";
+                    }
+					function showRef(ID){
+						var infoSpot = document.getElementById(ID);
+						var openOrClose = infoSpot.style.display;
+						if(openOrClose == 'block')
+							infoSpot.style.display = 'none';
+						else
+							infoSpot.style.display = 'block';
+					}
+                </script><title>Lifecycle Documents</title><style type="text/css">
+					#page{
+					}
+                    #toc {
+                    float: left;
+                    width: 40%;
+                    font-size: 12pt;
+                    }
+                    #view {
+                    float: right;
+                    width: 60%;
+                    font-size: 12pt;
+                    }
+                </style></head>
+   <body>
+      <div id="toc"><br><button type="button" onclick="showSection('TC1.0','Lifecycle Document Project Manager with Requirements Tracking')" oncontextmenu="showMenu('TC1.0', '0');return false;">TC1.0</button> - 
+         			Lifecycle Document Project Manager with Requirements Tracking
+         <div id="TC1.0Menu" style="display: none;"><button onclick="addAbove('TC1.0')">Add Test Case Above</button><br><button onclick="addBelow('TC1.0')">Add Test Case Below</button><br><button onclick="changeTitle('TC1.0')">Change Title to: </button><textarea id="TC1.0Title" rows="1">Lifecycle Document Project Manager with Requirements Tracking</textarea><br><button onclick="hideMenu('TC1.0')">Cancel</button></div>
+         <div id="subTC1.0"><br><button type="button" onclick="showSection('TC1.1','Display splash screen.')" oncontextmenu="showMenu('TC1.1', '0');return false;">TC1.1</button> - 
+            			Display splash screen.
+            <div id="TC1.1Menu" style="display: none;"><button onclick="addAbove('TC1.1')">Add Test Case Above</button><br><button onclick="addBelow('TC1.1')">Add Test Case Below</button><br><button onclick="changeTitle('TC1.1')">Change Title to: </button><textarea id="TC1.1Title" rows="1">Display splash screen.</textarea><br><button onclick="hideMenu('TC1.1')">Cancel</button></div>
+            <div id="subTC1.1"><br><button type="button" onclick="showSection('TC1.1.1','Buttons and textbox are displayed')" oncontextmenu="showMenu('TC1.1.1', '0');return false;">TC1.1.1</button> - 
+               			Buttons and textbox are displayed
+               <div id="TC1.1.1Menu" style="display: none;"><button onclick="addAbove('TC1.1.1')">Add Test Case Above</button><br><button onclick="addBelow('TC1.1.1')">Add Test Case Below</button><br><button onclick="changeTitle('TC1.1.1')">Change Title to: </button><textarea id="TC1.1.1Title" rows="1">Buttons and textbox are displayed</textarea><br><button onclick="hideMenu('TC1.1.1')">Cancel</button></div>
+               <div id="subTC1.1.1"></div><br><button type="button" onclick="showSection('TC1.1.2','Title and sponsor image are displayed')" oncontextmenu="showMenu('TC1.1.2', '0');return false;">TC1.1.2</button> - 
+               			Title and sponsor image are displayed
+               <div id="TC1.1.2Menu" style="display: none;"><button onclick="addAbove('TC1.1.2')">Add Test Case Above</button><br><button onclick="addBelow('TC1.1.2')">Add Test Case Below</button><br><button onclick="changeTitle('TC1.1.2')">Change Title to: </button><textarea id="TC1.1.2Title" rows="1">Title and sponsor image are displayed</textarea><br><button onclick="hideMenu('TC1.1.2')">Cancel</button></div>
+               <div id="subTC1.1.2"></div>
+            </div><br><button type="button" onclick="showSection('TC1.2','Click browse button')" oncontextmenu="showMenu('TC1.2', '0');return false;">TC1.2</button> - 
+            			Click browse button
+            <div id="TC1.2Menu" style="display: none;"><button onclick="addAbove('TC1.2')">Add Test Case Above</button><br><button onclick="addBelow('TC1.2')">Add Test Case Below</button><br><button onclick="changeTitle('TC1.2')">Change Title to: </button><textarea id="TC1.2Title" rows="1">Click browse button</textarea><br><button onclick="hideMenu('TC1.2')">Cancel</button></div>
+            <div id="subTC1.2"><br><button type="button" onclick="showSection('TC1.2.1','User selects valid Project file')" oncontextmenu="showMenu('TC1.2.1', '0');return false;">TC1.2.1</button> - 
+               			User selects valid Project file
+               <div id="TC1.2.1Menu" style="display: none;"><button onclick="addAbove('TC1.2.1')">Add Test Case Above</button><br><button onclick="addBelow('TC1.2.1')">Add Test Case Below</button><br><button onclick="changeTitle('TC1.2.1')">Change Title to: </button><textarea id="TC1.2.1Title" rows="1">User selects valid Project file</textarea><br><button onclick="hideMenu('TC1.2.1')">Cancel</button></div>
+               <div id="subTC1.2.1"></div><br><button type="button" onclick="showSection('TC1.2.2','Textbox contains file location')" oncontextmenu="showMenu('TC1.2.2', '0');return false;">TC1.2.2</button> - 
+               			Textbox contains file location
+               <div id="TC1.2.2Menu" style="display: none;"><button onclick="addAbove('TC1.2.2')">Add Test Case Above</button><br><button onclick="addBelow('TC1.2.2')">Add Test Case Below</button><br><button onclick="changeTitle('TC1.2.2')">Change Title to: </button><textarea id="TC1.2.2Title" rows="1">Textbox contains file location</textarea><br><button onclick="hideMenu('TC1.2.2')">Cancel</button></div>
+               <div id="subTC1.2.2"></div><br><button type="button" onclick="showSection('TC1.2.3','Team member information is displayed')" oncontextmenu="showMenu('TC1.2.3', '0');return false;">TC1.2.3</button> - 
+               			Team member information is displayed
+               <div id="TC1.2.3Menu" style="display: none;"><button onclick="addAbove('TC1.2.3')">Add Test Case Above</button><br><button onclick="addBelow('TC1.2.3')">Add Test Case Below</button><br><button onclick="changeTitle('TC1.2.3')">Change Title to: </button><textarea id="TC1.2.3Title" rows="1">Team member information is displayed</textarea><br><button onclick="hideMenu('TC1.2.3')">Cancel</button></div>
+               <div id="subTC1.2.3"></div><br><button type="button" onclick="showSection('TC1.2.4','Open project is clicked')" oncontextmenu="showMenu('TC1.2.4', '0');return false;">TC1.2.4</button> - 
+               			Open project is clicked
+               <div id="TC1.2.4Menu" style="display: none;"><button onclick="addAbove('TC1.2.4')">Add Test Case Above</button><br><button onclick="addBelow('TC1.2.4')">Add Test Case Below</button><br><button onclick="changeTitle('TC1.2.4')">Change Title to: </button><textarea id="TC1.2.4Title" rows="1">Open project is clicked</textarea><br><button onclick="hideMenu('TC1.2.4')">Cancel</button></div>
+               <div id="subTC1.2.4"></div>
+            </div><br><button type="button" onclick="showSection('TC1.3','Open project is clicked with empty textbox')" oncontextmenu="showMenu('TC1.3', '0');return false;">TC1.3</button> - 
+            			Open project is clicked with empty textbox
+            <div id="TC1.3Menu" style="display: none;"><button onclick="addAbove('TC1.3')">Add Test Case Above</button><br><button onclick="addBelow('TC1.3')">Add Test Case Below</button><br><button onclick="changeTitle('TC1.3')">Change Title to: </button><textarea id="TC1.3Title" rows="1">Open project is clicked with empty textbox</textarea><br><button onclick="hideMenu('TC1.3')">Cancel</button></div>
+            <div id="subTC1.3"></div><br><button type="button" onclick="showSection('TC1.4','New Project is clicked')" oncontextmenu="showMenu('TC1.4', '0');return false;">TC1.4</button> - 
+            			New Project is clicked
+            <div id="TC1.4Menu" style="display: none;"><button onclick="addAbove('TC1.4')">Add Test Case Above</button><br><button onclick="addBelow('TC1.4')">Add Test Case Below</button><br><button onclick="changeTitle('TC1.4')">Change Title to: </button><textarea id="TC1.4Title" rows="1">New Project is clicked</textarea><br><button onclick="hideMenu('TC1.4')">Cancel</button></div>
+            <div id="subTC1.4"><br><button type="button" onclick="showSection('TC1.4.1','User clicks cancel')" oncontextmenu="showMenu('TC1.4.1', '0');return false;">TC1.4.1</button> - 
+               			User clicks cancel
+               <div id="TC1.4.1Menu" style="display: none;"><button onclick="addAbove('TC1.4.1')">Add Test Case Above</button><br><button onclick="addBelow('TC1.4.1')">Add Test Case Below</button><br><button onclick="changeTitle('TC1.4.1')">Change Title to: </button><textarea id="TC1.4.1Title" rows="1">User clicks cancel</textarea><br><button onclick="hideMenu('TC1.4.1')">Cancel</button></div>
+               <div id="subTC1.4.1"></div><br><button type="button" onclick="showSection('TC1.4.2','User clicks OK')" oncontextmenu="showMenu('TC1.4.2', '0');return false;">TC1.4.2</button> - 
+               			User clicks OK
+               <div id="TC1.4.2Menu" style="display: none;"><button onclick="addAbove('TC1.4.2')">Add Test Case Above</button><br><button onclick="addBelow('TC1.4.2')">Add Test Case Below</button><br><button onclick="changeTitle('TC1.4.2')">Change Title to: </button><textarea id="TC1.4.2Title" rows="1">User clicks OK</textarea><br><button onclick="hideMenu('TC1.4.2')">Cancel</button></div>
+               <div id="subTC1.4.2"></div>
+            </div>
+         </div>
+      </div>
+      <div id="view">
+         <div id="section">
+            <div id="TC1.0" style="display: none;">
+               <div id="edit">
+                  <div id="Para"> The goal of this project is to create a protoype application capable of allowing
+                     a user to productively manage lifecycle documentation in XML without a previous XML
+                     experience. <br></div><br></div><br><br><div id="refs"><br></div>
+            </div>
+         </div>
+         <div id="section">
+            <div id="TC1.1" style="display: none;">
+               <div id="edit"><br></div><br><br><div id="refs"><br></div>
+            </div>
+         </div>
+         <div id="section">
+            <div id="TC1.1.1" style="display: none;">
+               <div id="edit"><br></div>Test Result: <select id="TestResult" onmouseover="addEditValues('TC1.1.1', '0')" onchange="if (this.selectedIndex) selectBoxChange('TC1.1.1', '0', this.value);">
+                  <option value="-1" selected>false</option></select><br>Approved By: <select id="ApprovedBy" onmouseover="addEditValues('TC1.1.1', '0')" onchange="if (this.selectedIndex) selectBoxChange('TC1.1.1', '1', this.value);">
+                  <option value="-1" selected></option></select><br><div id="options" style="display: none;"></div>
+               <div id="Other" style="display: none;"><button onclick="changeApprovedBy('TC1.1.1')">Approved By: </button><textarea id="OtherText" rows="1">Other</textarea><br></div>'s Comment: 
+               <div id="Para"><br></div><br><br><div id="refs"><button type="button" onclick="showRef('')" oncontextmenu="showMenu('', '1');return false;"></button> - 
+                  <div id="ref">
+                     <div id="" style="display: none;"></div>
+                     <div id="Menu" style="display: none;"><button onclick="removeRef('', 'TC1.1.1')">Remove this Reference</button><br>Add Reference To: <select id="References" onmouseover="addEditValues('', '1', 'TC1.1.1')" onchange="if (this.selectedIndex) selectBoxChange('TC1.1.1', '2', this.value);">
+                           <option value="-1" selected> - </option></select><br><button onclick="hideMenu('')">Cancel</button></div>
+                  </div><br><button type="button" onclick="showRef('')" oncontextmenu="showMenu('', '1');return false;"></button> - 
+                  <div id="ref">
+                     <div id="" style="display: none;"></div>
+                     <div id="Menu" style="display: none;"><button onclick="removeRef('', 'TC1.1.1')">Remove this Reference</button><br>Add Reference To: <select id="References" onmouseover="addEditValues('', '1', 'TC1.1.1')" onchange="if (this.selectedIndex) selectBoxChange('TC1.1.1', '2', this.value);">
+                           <option value="-1" selected> - </option></select><br><button onclick="hideMenu('')">Cancel</button></div>
+                  </div><br><br></div>
+            </div>
+         </div>
+         <div id="section">
+            <div id="TC1.1.2" style="display: none;">
+               <div id="edit"><br></div>Test Result: <select id="TestResult" onmouseover="addEditValues('TC1.1.2', '0')" onchange="if (this.selectedIndex) selectBoxChange('TC1.1.2', '0', this.value);">
+                  <option value="-1" selected>false</option></select><br>Approved By: <select id="ApprovedBy" onmouseover="addEditValues('TC1.1.2', '0')" onchange="if (this.selectedIndex) selectBoxChange('TC1.1.2', '1', this.value);">
+                  <option value="-1" selected></option></select><br><div id="options" style="display: none;"></div>
+               <div id="Other" style="display: none;"><button onclick="changeApprovedBy('TC1.1.2')">Approved By: </button><textarea id="OtherText" rows="1">Other</textarea><br></div>'s Comment: 
+               <div id="Para"><br></div><br><br><div id="refs"><button type="button" onclick="showRef('')" oncontextmenu="showMenu('', '1');return false;"></button> - 
+                  <div id="ref">
+                     <div id="" style="display: none;"></div>
+                     <div id="Menu" style="display: none;"><button onclick="removeRef('', 'TC1.1.2')">Remove this Reference</button><br>Add Reference To: <select id="References" onmouseover="addEditValues('', '1', 'TC1.1.2')" onchange="if (this.selectedIndex) selectBoxChange('TC1.1.2', '2', this.value);">
+                           <option value="-1" selected> - </option></select><br><button onclick="hideMenu('')">Cancel</button></div>
+                  </div><br><button type="button" onclick="showRef('')" oncontextmenu="showMenu('', '1');return false;"></button> - 
+                  <div id="ref">
+                     <div id="" style="display: none;"></div>
+                     <div id="Menu" style="display: none;"><button onclick="removeRef('', 'TC1.1.2')">Remove this Reference</button><br>Add Reference To: <select id="References" onmouseover="addEditValues('', '1', 'TC1.1.2')" onchange="if (this.selectedIndex) selectBoxChange('TC1.1.2', '2', this.value);">
+                           <option value="-1" selected> - </option></select><br><button onclick="hideMenu('')">Cancel</button></div>
+                  </div><br><br></div>
+            </div>
+         </div>
+         <div id="section">
+            <div id="TC1.2" style="display: none;">
+               <div id="edit"><br></div>Test Result: <select id="TestResult" onmouseover="addEditValues('TC1.2', '0')" onchange="if (this.selectedIndex) selectBoxChange('TC1.2', '0', this.value);">
+                  <option value="-1" selected>false</option></select><br>Approved By: <select id="ApprovedBy" onmouseover="addEditValues('TC1.2', '0')" onchange="if (this.selectedIndex) selectBoxChange('TC1.2', '1', this.value);">
+                  <option value="-1" selected></option></select><br><div id="options" style="display: none;"></div>
+               <div id="Other" style="display: none;"><button onclick="changeApprovedBy('TC1.2')">Approved By: </button><textarea id="OtherText" rows="1">Other</textarea><br></div>'s Comment: 
+               <div id="Para"><br></div><br><br><div id="refs"><button type="button" onclick="showRef('')" oncontextmenu="showMenu('', '1');return false;"></button> - 
+                  <div id="ref">
+                     <div id="" style="display: none;"></div>
+                     <div id="Menu" style="display: none;"><button onclick="removeRef('', 'TC1.2')">Remove this Reference</button><br>Add Reference To: <select id="References" onmouseover="addEditValues('', '1', 'TC1.2')" onchange="if (this.selectedIndex) selectBoxChange('TC1.2', '2', this.value);">
+                           <option value="-1" selected> - </option></select><br><button onclick="hideMenu('')">Cancel</button></div>
+                  </div><br><button type="button" onclick="showRef('')" oncontextmenu="showMenu('', '1');return false;"></button> - 
+                  <div id="ref">
+                     <div id="" style="display: none;"></div>
+                     <div id="Menu" style="display: none;"><button onclick="removeRef('', 'TC1.2')">Remove this Reference</button><br>Add Reference To: <select id="References" onmouseover="addEditValues('', '1', 'TC1.2')" onchange="if (this.selectedIndex) selectBoxChange('TC1.2', '2', this.value);">
+                           <option value="-1" selected> - </option></select><br><button onclick="hideMenu('')">Cancel</button></div>
+                  </div><br><br></div>
+            </div>
+         </div>
+         <div id="section">
+            <div id="TC1.2.1" style="display: none;">
+               <div id="edit"><br></div>Test Result: <select id="TestResult" onmouseover="addEditValues('TC1.2.1', '0')" onchange="if (this.selectedIndex) selectBoxChange('TC1.2.1', '0', this.value);">
+                  <option value="-1" selected>false</option></select><br><br><br><div id="refs"><br></div>
+            </div>
+         </div>
+         <div id="section">
+            <div id="TC1.2.2" style="display: none;">
+               <div id="edit"><br></div>Test Result: <select id="TestResult" onmouseover="addEditValues('TC1.2.2', '0')" onchange="if (this.selectedIndex) selectBoxChange('TC1.2.2', '0', this.value);">
+                  <option value="-1" selected>false</option></select><br><br><br><div id="refs"><br></div>
+            </div>
+         </div>
+         <div id="section">
+            <div id="TC1.2.3" style="display: none;">
+               <div id="edit"><br></div>Test Result: <select id="TestResult" onmouseover="addEditValues('TC1.2.3', '0')" onchange="if (this.selectedIndex) selectBoxChange('TC1.2.3', '0', this.value);">
+                  <option value="-1" selected>false</option></select><br><br><br><div id="refs"><br></div>
+            </div>
+         </div>
+         <div id="section">
+            <div id="TC1.2.4" style="display: none;">
+               <div id="edit"><br></div>Test Result: <select id="TestResult" onmouseover="addEditValues('TC1.2.4', '0')" onchange="if (this.selectedIndex) selectBoxChange('TC1.2.4', '0', this.value);">
+                  <option value="-1" selected>false</option></select><br><br><br><div id="refs"><br></div>
+            </div>
+         </div>
+         <div id="section">
+            <div id="TC1.3" style="display: none;">
+               <div id="edit"><br></div>Test Result: <select id="TestResult" onmouseover="addEditValues('TC1.3', '0')" onchange="if (this.selectedIndex) selectBoxChange('TC1.3', '0', this.value);">
+                  <option value="-1" selected>false</option></select><br><br><br><div id="refs"><br></div>
+            </div>
+         </div>
+         <div id="section">
+            <div id="TC1.4" style="display: none;">
+               <div id="edit"><br></div>Test Result: <select id="TestResult" onmouseover="addEditValues('TC1.4', '0')" onchange="if (this.selectedIndex) selectBoxChange('TC1.4', '0', this.value);">
+                  <option value="-1" selected>false</option></select><br><br><br><div id="refs"><br></div>
+            </div>
+         </div>
+         <div id="section">
+            <div id="TC1.4.1" style="display: none;">
+               <div id="edit"><br></div>Test Result: <select id="TestResult" onmouseover="addEditValues('TC1.4.1', '0')" onchange="if (this.selectedIndex) selectBoxChange('TC1.4.1', '0', this.value);">
+                  <option value="-1" selected>false</option></select><br><br><br><div id="refs"><br></div>
+            </div>
+         </div>
+         <div id="section">
+            <div id="TC1.4.2" style="display: none;">
+               <div id="edit"><br></div>Test Result: <select id="TestResult" onmouseover="addEditValues('TC1.4.2', '0')" onchange="if (this.selectedIndex) selectBoxChange('TC1.4.2', '0', this.value);">
+                  <option value="-1" selected>false</option></select><br><br><br><div id="refs"><br></div>
+            </div>
+         </div>
+      </div>
+      <div id="refLocation"></div>
+   </body>
+</html>
