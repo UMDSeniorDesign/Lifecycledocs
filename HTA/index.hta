@@ -14,7 +14,7 @@
 		scrollFlat="yes" /> 
 
 		<script src="../JS/loadXML.js"></script>
-		<script src="../JS/saveXML.js"></script>
+		<script src="../JS/contentMenu.js"></script>
 		<script src="../JS/sessionvars.js"></script>
 				
 		<script>
@@ -80,10 +80,12 @@
 				image.innerHTML = "";	
 				
 				var varray = b.split("\\");
-				var file = varray[varray.length-1];
+				var projectName = varray[varray.length-1];
 				
-				var y = loadXML(file);
+				var y = loadXML(projectName);
 				var z = loadXML("peteProjectXSL.xsl");
+				
+				alert(y.xml);
 				
 				var x = y.transformNode(z);
 				
@@ -92,18 +94,35 @@
 	</script>
 	
 	<script>
-		function removeMember() {
+		function removeMember(memberName) {
 			var b = document.getElementById("browse").value;
 			var varray = b.split("\\");
-			var file = varray[varray.length-1];
+			var projectName = varray[varray.length-1];
 			
-			var xmlDoc = loadXML(file);
+			var xmlDoc = loadXML(projectName);
+
+						
+			for(var i = 0; i < xmlDoc.getElementsByTagName("TeamMember").length; i++) {
+				if(xmlDoc.getElementsByTagName("Name")[i].childNodes[0].nodeValue == memberName)	
+					var n = xmlDoc.getElementsByTagName("TeamMember")[i];
+			}
 			
-			var n=xmlDoc.getElementsByTagName("TeamMember")[0];
-			//alert(xmlDoc.getElementsByTagName("TeamMember").length);
-			n.parentNode.removeChild(n);
-			//alert(xmlDoc.getElementsByTagName("TeamMember").length);
+			n.setAttribute("isNewest","false");
 			
+			var fs = new ActiveXObject("Scripting.FileSystemObject");
+			//If windows 7, use this line
+			//var f = fs.GetFolder("../XML");
+			//If windows 8, use this line
+			var f = fs.GetFolder("\Projects");
+
+			file = f.CreateTextFile(projectName, true);
+			
+			file.write(xmlDoc.xml);
+			file.close();
+			
+					alert(projectName);
+					alert(xmlDoc.xml);
+					
 			getProjectInfo();
 		}
 		

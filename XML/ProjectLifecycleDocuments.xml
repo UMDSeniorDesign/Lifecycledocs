@@ -15,7 +15,7 @@
             <Name isNewest="true">Peter Magalhaes</Name>
             <Role isNewest="true">Team Member</Role>
         </TeamMember>
-        <TeamMember isNewest="false">
+        <TeamMember isNewest="true">
             <Name isNewest="true">Aria Ushani</Name>
             <Role isNewest="true">Team Member</Role>
         </TeamMember>
