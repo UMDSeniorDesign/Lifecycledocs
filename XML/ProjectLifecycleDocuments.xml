@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="ProjectXSL.xsl"?>
+<?xml-stylesheet type="text/xsl" href="peteProjectXSL.xsl"?>
 
 <!-- <root:ProjectLifeCycleDocuments -->
 <ProjectLifecycleDocuments projectName="PLCD" 
@@ -7,19 +7,19 @@
     xmlns:xi="http://www.w3.org/2001/XInclude"
     xsi:noNamespaceSchemaLocation="NotionalSchema.xsd">
     <Team> 
-        <TeamMember>
+        <TeamMember isNewest="true">
             <Name isNewest="true">Jeremiah Butler</Name>
             <Role isNewest="true">Team Lead</Role> 
         </TeamMember>
-        <TeamMember>
+        <TeamMember isNewest="true">
             <Name isNewest="true">Peter Magalhaes</Name>
             <Role isNewest="true">Team Member</Role>
         </TeamMember>
-        <TeamMember>
+        <TeamMember isNewest="false">
             <Name isNewest="true">Aria Ushani</Name>
             <Role isNewest="true">Team Member</Role>
         </TeamMember>
-        <TeamMember>
+        <TeamMember isNewest="true">
             <Name isNewest="true">Kevin Palmer</Name>
             <Role isNewest="true">Team Member</Role>
         </TeamMember> 
