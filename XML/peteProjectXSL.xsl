@@ -45,7 +45,10 @@
                                     </xsl:choose>
                                 </td>
 								<td>
-									<button onclick="removeMember()">Remove Member</button>
+								    <xsl:variable name="memberName">
+								        <xsl:value-of select="Name[@isNewest='true']"/>
+								    </xsl:variable>
+									<button onclick="removeMember(memberName)">Remove Member</button>
 								</td>
                             </tr>
                         </xsl:for-each>

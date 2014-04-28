@@ -81,7 +81,7 @@
         <xsl:variable name="TCCount" select="count(Ref[substring(.,1,2) = 'TC'][@isNewest='true'])"/>
         <xsl:variable name="TCPass">
             <xsl:for-each select="Ref[substring(.,1,2) = 'TC'][@isNewest='true']">
-                <xsl:variable name="myRef" select="."></xsl:variable>
+                <xsl:variable name="myRef" select="."/>
                 <xsl:choose>
                     <xsl:when test="$vDocumentTC/descendant-or-self::*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult = 'true'">
                         <count>1</count>
@@ -96,8 +96,6 @@
             </xsl:for-each>
         </xsl:variable>
         <xsl:variable name="sumTCPass" select="sum(msxsl:node-set($TCPass)/count)"/>
-        
-        
         <xsl:variable name="spanRow">
             <xsl:choose>
                 <xsl:when test="$TCCount &lt; 1">
