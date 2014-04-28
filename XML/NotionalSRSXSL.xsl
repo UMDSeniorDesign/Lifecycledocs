@@ -78,7 +78,7 @@
 				<xsl:value-of select="Title"/>
 			</xsl:variable>
             
-			<button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="showMenu('{$vID}');return false;">
+			<button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="showMenu('{$vID}', '0');return false;">
 			<xsl:value-of select="$vID"/></button> - 
 			<xsl:value-of select="$vTitle"/>
             <div id="{@id}Menu" style="display: none;">
@@ -109,7 +109,7 @@
 			</xsl:variable>
             
 			<li>
-            <button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="showMenu('{$vID}');return false;">
+            <button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="showMenu('{$vID}', '0');return false;">
 			<xsl:value-of select="$vID"/></button> - <xsl:value-of select="$vTitle"/>
             <div id="{@id}Menu" style="display: none;">
                 <button onclick="addAbove('{$vID}')">Add Requirement Above</button><br/>
@@ -175,42 +175,59 @@
     </xsl:template>
 	
 	<xsl:template match="Ref">
-		<xsl:variable name="vID">
-			<xsl:value-of select="."/>
-		</xsl:variable>
-		<xsl:variable name="vDocumentBase" select="/*/@xml:base"/>
-		<xsl:variable name="vDocumentPath" select="string(concat('..//Projects//',$vDocumentBase))"/>
-		<xsl:variable name="vDocumentProj" select="document($vDocumentPath)"/>
-		<xsl:variable name="vTitle">
-			<xsl:for-each select="$vDocumentProj//*//file_location">
-				<xsl:variable name="vLocations" select="*/@href"/>
-				<xsl:variable name="vDocumentNewPath" select="string(concat('..//XML//',$vLocations))"/>
-				<xsl:for-each select="document($vDocumentNewPath)/descendant-or-self::*/*[@id=$vID]">
-					<xsl:value-of select="Title"/>
-					<br/>
-				</xsl:for-each>
-			</xsl:for-each>
-		</xsl:variable>
-		<xsl:variable name="vPara">
-			<xsl:for-each select="$vDocumentProj//*//file_location">
-				<xsl:variable name="vLocations" select="*/@href"/>
-				<xsl:variable name="vDocumentNewPath" select="string(concat('..//XML//',$vLocations))"/>
-				<xsl:for-each select="document($vDocumentNewPath)/descendant-or-self::*/*[@id=$vID]/Requirement">
-					<xsl:for-each select="Para">
-						<xsl:value-of select="."/> 
+		<xsl:if test="@isNewest = 'true'">
+			<xsl:variable name="vID">
+				<xsl:value-of select="."/>
+			</xsl:variable>
+			<xsl:variable name="vfromID">
+				<xsl:value-of select="../@id"/>
+			</xsl:variable>
+			<xsl:variable name="vDocumentBase" select="/*/@xml:base"/>
+			<xsl:variable name="vDocumentPath" select="string(concat('..//Projects//',$vDocumentBase))"/>
+			<xsl:variable name="vDocumentProj" select="document($vDocumentPath)"/>
+			<xsl:variable name="vTitle">
+				<xsl:for-each select="$vDocumentProj//*//file_location">
+					<xsl:variable name="vLocations" select="*/@href"/>
+					<xsl:variable name="vDocumentNewPath" select="string(concat('..//XML//',$vLocations))"/>
+					<xsl:for-each select="document($vDocumentNewPath)/descendant-or-self::*/*[@id=$vID]">
+						<xsl:value-of select="Title"/>
+						<br/>
 					</xsl:for-each>
 				</xsl:for-each>
-			</xsl:for-each>
-		</xsl:variable>
-		
-		<button type="button" onclick="showRef('{$vID}')">
-			<xsl:value-of select="$vID"/></button>  - <xsl:value-of select="$vTitle"/>
-		<div id="ref">
-			<div id="{.}" style="display: none;">
-				<xsl:value-of select="$vPara"/>
+			</xsl:variable>
+			<xsl:variable name="vPara">
+				<xsl:for-each select="$vDocumentProj//*//file_location">
+					<xsl:variable name="vLocations" select="*/@href"/>
+					<xsl:variable name="vDocumentNewPath" select="string(concat('..//XML//',$vLocations))"/>
+					<xsl:for-each select="document($vDocumentNewPath)/descendant-or-self::*/*[@id=$vID]/Requirement">
+						<xsl:for-each select="Para">
+							<xsl:value-of select="."/> 
+						</xsl:for-each>
+					</xsl:for-each>
+				</xsl:for-each>
+			</xsl:variable>
+			
+			<button type="button" onclick="showRef('{$vID}')" oncontextmenu="showMenu('{$vID}', '1');return false;">
+				<xsl:value-of select="$vID"/></button> - <xsl:value-of select="$vTitle"/>
+			<div id="ref">
+				<div id="{.}" style="display: none;">
+					<xsl:value-of select="$vPara"/>
+				</div>
+				<div id="{$vID}Menu" style="display: none;">
+					<button onclick="removeRef('{$vID}', '{$vfromID}')">Remove this Reference</button>
+					<br/>
+					<xsl:text>Add Reference To: </xsl:text>
+						<select id="{$vID}References" onmouseover="addEditValues('{$vID}', '1', '{$vfromID}')" onchange="if (this.selectedIndex) selectBoxChange('{$vfromID}', '2', this.value);">
+								<option value="-1" selected="selected">
+									<xsl:value-of select="$vID"/> - <xsl:value-of select="$vTitle"/>
+								</option>
+						</select>
+					<br/>
+					<button onclick="hideMenu('{$vID}')">Cancel</button>
+				</div>
 			</div>
-		</div>
-		<xsl:apply-templates select="Ref" mode="para"/>
-		<br/>
+			<xsl:apply-templates select="Ref" mode="para"/>
+			<br/>
+		</xsl:if>
 	</xsl:template>
 </xsl:stylesheet>

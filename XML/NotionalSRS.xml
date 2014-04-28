@@ -3,14 +3,12 @@
 
 
 <SoftwareRequirementsDocument xml:base="ProjectLifecycleDocuments.xml" projectName="Lifecycle Documents with Requirements Tracking"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="NotionalSchema.xsd">
-
-		
-		<Section isNewest="true" id="RQ1.0">
+	
+	<Section isNewest="true" id="RQ1.0">
 		<Title isNewest="true">Introduction</Title>
-			<Para isNewest="true">The Software Requirements Specification details the extent of NUWC’s Lifecycle Project Manager. The product’s main feature is it’s ability to create and manage lifecycle documents using a graphical user interface. The lifecycle documents will be organized and exported using an XML Schema. This can be accomplished by a user who has no knowledge of the XML language. This document will review all the basic functionality required for a user to edit, create, and manage lifecycle projects.
-	  </Para>    
-			
-		</Section>
+		<Para isNewest="true">The Software Requirements Specification details the extent of NUWC’s Lifecycle Project Manager. The product’s main feature is it’s ability to create and manage lifecycle documents using a graphical user interface. The lifecycle documents will be organized and exported using an XML Schema. This can be accomplished by a user who has no knowledge of the XML language. This document will review all the basic functionality required for a user to edit, create, and manage lifecycle projects.
+		</Para>		
+	</Section>
 		 
 	<Section isNewest="true" id="RQ1.1">
 		<Title isNewest="true">Purpose</Title>
@@ -136,7 +134,7 @@
   		</Requirement>
 		
 		<Requirement isNewest="true" id="RQ3.1.3">
-  		<Title isNewest="true">Software Interfaces</Title>
+			<Title isNewest="true">Software Interfaces</Title>
 			<Para isNewest="true">The XML Schema will be developed by the team, and the RTM will be auto-generated upon request. The XSLT processor will be used to convert the XML lifecycle documentation into HTML or PDF documents. The software will also use Internet Explorer as the main software interface.</Para>
 			<Ref isNewest="true">UC1.1.1</Ref>
 			<Ref isNewest="true">UC1.1.2</Ref>
