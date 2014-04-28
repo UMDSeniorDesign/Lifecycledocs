@@ -88,8 +88,6 @@
 				var y = loadProject(projectName);
 				var z = loadXML("peteProjectXSL.xsl");		
 				
-				alert(y.xml);
-				
 				var x = y.transformNode(z);
 				
 				image.innerHTML = x;
@@ -114,19 +112,14 @@
 			
 			var fs = new ActiveXObject("Scripting.FileSystemObject");
 			//If windows 7, use this line
-			//var f = fs.GetFolder("../XML");
+			var f = fs.GetFolder("../Projects");
 			//If windows 8, use this line
-			projectName = "test.xml";
-			var f = fs.GetFolder("\Projects");
+			//var f = fs.GetFolder("\Projects");
 
 			file = f.CreateTextFile(projectName, true);
 			
 			file.write(xmlDoc.xml);
-			file.close();
-			
-					alert(projectName);
-					alert(xmlDoc.xml);
-					
+			file.close();		
 			getProjectInfo(1, projectName);
 		}
 		
