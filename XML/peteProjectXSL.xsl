@@ -18,7 +18,7 @@
                             <th style="width:100px">Name</th>
                             <th style="width:100px">Role</th>
                         </tr>
-                        <xsl:for-each select="Team/TeamMember">
+                        <xsl:for-each select="Team/TeamMember[@isNewest='true']">
                             <tr style="height:100px">
                                 <td>
                                     <xsl:choose>
