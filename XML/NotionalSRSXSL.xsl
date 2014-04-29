@@ -56,7 +56,7 @@
                 </style>  
             </head>
             <body>
-            	<div id="toc" class="scroll" style="overflow:scroll;height:1000px;">
+            	<div id="toc">
 					<xsl:apply-templates select="Section" mode="section"/>
 				</div>
 				<div id="view">
