@@ -13,16 +13,15 @@
 	<Section isNewest="true" id="RQ1.1">
 		<Title isNewest="true">Purpose</Title>
 		<Para isNewest="true" count="1"> To provide a detailed description of how the product will produce it’s lifecycle documents as well as edit and export them. It also overviews the basic functional requirements requested by the customer.
-			</Para>
-		</Section>
+		</Para>
+	</Section>
 		
-		<Section isNewest="true" id="RQ1.2">
-			
+	<Section isNewest="true" id="RQ1.2">	
 		<Title isNewest="true">Scope</Title>
 		<Para isNewest="true" count="1">The Lifecycle Project Manager will create and edit projects and lifecycle documents. It will serve as a cheap but easy to use software that allows users to input their own data and organize based on an XML schema. The product will export the lifecycle documents as PDF and HTML, as well as print out a requirements traceability matrix.
 		</Para>
-		</Section>
-		<Section isNewest="true" id="RQ1.3">
+	</Section>
+	<Section isNewest="true" id="RQ1.3">
 		<Title isNewest="true">Definitions </Title>
 		<Para isNewest="true" count="1">API - Application Programming Interface</Para>
 		<Para isNewest="true" count="2">CSS - Cascading Style Sheet</Para>
@@ -36,16 +35,14 @@
 		<Para isNewest="true" count="10">RTM - Requirements Traceability Matrix</Para>
 		<Para isNewest="true" count="11">UMASSD - University of Massachusetts: Dartmouth</Para>
 		<Para isNewest="true" count="12">XML - Extensible Markup Language</Para>
-		</Section>
-		
-		<Section isNewest="true" id="RQ1.4">
-			
+	</Section>
+	
+	<Section isNewest="true" id="RQ1.4">		
 		<Title isNewest="true">Overview</Title>
 		<Para isNewest="true">The SRS contains explicit details describing how the product is designed and implemented. It is organized in a top-down layered approach. The goal of this project is to create a protoype application capable of allowing a user to productively manage lifecycle documentation in XML without an previous XML experience. 
 		</Para>
-		</Section>
-	
-   
+	</Section>
+	   
  <!--SECTION 2-->
  
   <Section isNewest="true" id="RQ2.0">
