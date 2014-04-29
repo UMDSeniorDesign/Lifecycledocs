@@ -88,6 +88,11 @@
 				var y = loadProject(projectName);
 				var z = loadXML("peteProjectXSL.xsl");		
 				
+<<<<<<< HEAD
+				//alert(y.xml);
+				
+=======
+>>>>>>> 377369bec0408f7a239005a78b64ddb5a2d607b2
 				var x = y.transformNode(z);
 				
 				image.innerHTML = x;
@@ -114,12 +119,24 @@
 			//If windows 7, use this line
 			var f = fs.GetFolder("../Projects");
 			//If windows 8, use this line
+<<<<<<< HEAD
+			var f = fs.GetFolder("\Projects");
+=======
 			//var f = fs.GetFolder("\Projects");
+>>>>>>> 377369bec0408f7a239005a78b64ddb5a2d607b2
 
 			file = f.CreateTextFile(projectName, true);
 			
 			file.write(xmlDoc.xml);
+<<<<<<< HEAD
+			file.close();
+			
+					//alert(projectName);
+					//alert(xmlDoc.xml);
+					
+=======
 			file.close();		
+>>>>>>> 377369bec0408f7a239005a78b64ddb5a2d607b2
 			getProjectInfo(1, projectName);
 		}
 		

@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-    <xsl:template match="UseCaseDocument">
+    <xsl:template match="TestCaseDocument">
         <html>
             <head>
                 <script>
@@ -29,7 +29,6 @@
 							sessvars.toggle = "0";
                     }
 					function showRef(ID){
-						var refSpot = document.getElementById("ref");
 						var infoSpot = document.getElementById(ID);
 						var openOrClose = infoSpot.style.display;
 						if(openOrClose == 'block')
@@ -58,10 +57,9 @@
 				<div id="toc">
 					<xsl:apply-templates select="Section" mode="section"/>
 				</div>
-				<div id="view" tabindex="0">
+				<div id="view">
 					<xsl:apply-templates select="Section" mode="para"/>
 				</div>
-
 				<div id="refLocation">
 				</div>
             </body>
@@ -82,9 +80,9 @@
 			<xsl:value-of select="$vID"/></button> - 
 			<xsl:value-of select="$vTitle"/>
             <div id="{@id}Menu" style="display: none;">
-                <button onclick="addAbove('{$vID}')">Add Section Above</button>
+                <button onclick="addAbove('{$vID}')">Add Test Case Above</button>
                 <br/>
-                <button onclick="addBelow('{$vID}')">Add Section Below</button>
+                <button onclick="addBelow('{$vID}')">Add Test Case Below</button>
                 <br/>
 				<button onclick="changeTitle('{$vID}')">Change Title to: </button>
 				<textarea id="{@id}Title" rows="1"><xsl:value-of select="$vTitle"/></textarea>
@@ -98,38 +96,10 @@
 		</div>
     </xsl:template>
 	
-	<xsl:template match="Requirement" mode="section">
-		<xsl:if test="@isNewest = 'true'">
-			<br/>
-			<xsl:variable name="vID">
-				<xsl:value-of select="@id"/>
-			</xsl:variable>
-			<xsl:variable name="vTitle">
-				<xsl:value-of select="Title"/>
-			</xsl:variable>
-            
-			<li>
-            <button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="showMenu('{$vID}', '0');return false;">
-			<xsl:value-of select="$vID"/></button> - <xsl:value-of select="$vTitle"/>
-            <div id="{@id}Menu" style="display: none;">
-                <button onclick="addAbove('{$vID}')">Add Requirement Above</button>
-                <br/>
-                <button onclick="addBelow('{$vID}')">Add Requirement Below</button>
-                <br/>
-				<button onclick="changeTitle('{$vID}')">Change Title to: </button>
-				<textarea id="{@id}Title" rows="1"><xsl:value-of select="$vTitle"/></textarea>
-				<br/>
-                <button onclick="hideMenu('{$vID}')">Cancel</button>
-            </div>
-			</li>
-		</xsl:if>
-		<div id="sub{@id}" style="display: none;">
-			<xsl:apply-templates select="Section" mode="section"/>
-			<xsl:apply-templates select="Requirement" mode="section"/>
-		</div>
-    </xsl:template>
-	
-    <xsl:template match="Requirement" mode="para">
+	<xsl:template match="Section" mode="para">
+		<xsl:variable name="vID">
+            <xsl:value-of select="@id"/>
+        </xsl:variable>
 		<xsl:if test="@isNewest = 'true'">
 			<div id="section">
 				<div id="{@id}" style="display: none;">
@@ -137,60 +107,58 @@
 						<xsl:apply-templates select="Para"/>
 						<br/>
 					</div>
+					<xsl:if test="TestResult != ''">
+						<xsl:text>Test Result: </xsl:text>
+						<select id="TestResult" onmouseover="addEditValues('{$vID}', '0')" onchange="if (this.selectedIndex) selectBoxChange('{$vID}', '0', this.value);">
+							<option value="-1" selected="selected">
+								<xsl:value-of select="TestResult"/>
+							</option>
+						</select>
+						<br/>
+					</xsl:if>
+					<xsl:variable name="vDocumentBase" select="/*/@xml:base"/>
+					<xsl:variable name="vDocumentPath" select="string(concat('..//Projects//',$vDocumentBase))"/>
+					<xsl:variable name="vDocumentProj" select="document($vDocumentPath)"/>
+					<xsl:for-each select="ApprovedBy[@isNewest='true']">
+						<xsl:text>Approved By: </xsl:text>
+						<select id="ApprovedBy" onmouseover="addEditValues('{$vID}', '0')" onchange="if (this.selectedIndex) selectBoxChange('{$vID}', '1', this.value);">
+								<option value="-1" selected="selected">
+									<xsl:value-of select="Name"/>
+								</option>
+						</select>
+						<br/>
+						<div id="options" style="display: none;">
+							<xsl:for-each select="$vDocumentProj//*//*//TeamMember">
+								<xsl:variable name="vTeamMember" select="Name"/>
+									<xsl:value-of select="$vTeamMember"/>,
+							</xsl:for-each>
+						</div>
+						<div id="Other" style="display: none;">
+							<button onclick="changeApprovedBy('{$vID}')">Approved By: </button>
+							<textarea id="OtherText" rows="1">Other</textarea>
+							<br/>
+						</div>
+						<xsl:value-of select="Name"/>
+						<xsl:text>'s Comment: </xsl:text>
+						<xsl:apply-templates select="Para"/>
+						<xsl:apply-templates select="ApprovedBy"/>
+					</xsl:for-each>
+					<br/><br/>
 					<div id="refs">
-					<xsl:apply-templates select="Ref"/>
-					<br/>
+						<xsl:apply-templates select="Ref"/>
+						<br/>
 					</div>
 				</div>
 			</div>
-			
 		</xsl:if>
         <xsl:apply-templates select="Section" mode="para"/>
         <xsl:apply-templates select="Requirement" mode="para"/>
     </xsl:template>
 	
-	<xsl:template match="Section" mode="para">
-		<xsl:if test="@isNewest = 'true'">
-			<div id="section">
-				<div id="{@id}" style="display: none;">
-					<div id="edit">
-						<xsl:apply-templates select="Para"/>
-						<br/>
-					</div>
-				</div>
-			</div>
-			<div id="refs">
-				<xsl:apply-templates select="Ref"/>
-				<br/>
-			</div>
-		</xsl:if>
-		<xsl:apply-templates select="Section" mode="para"/>
-        <xsl:apply-templates select="Requirement" mode="para"/>
-    </xsl:template>
-	
 	<xsl:template match="Para">
 		<xsl:if test="@isNewest = 'true'">
-			<xsl:variable name="vID">
-				<xsl:value-of select="../@id"/>
-			</xsl:variable>
-			<xsl:variable name="vCount">
-				<xsl:value-of select="@count"/>
-			</xsl:variable>
 			<div id="Para">
-				<button type="button" onclick="showMenu('{$vID}', '2', '{$vCount}')" oncontextmenu="showMenu('{$vID}', '2', '{$vCount}');return false;">
-				Para: </button>
-				<textarea id="{$vID}Para{$vCount}" cols="50" style='overflow-y:hidden;' onfocus='this.rows = (parseInt(this.value.length/this.cols)+2||1)' onkeyup='this.rows = (parseInt(this.value.length/this.cols)+2||1);'>
-				<xsl:value-of select="."/></textarea>
-				<br/>
-				<div id="{$vID}ParaMenu{$vCount}" style="display: none;">
-					<button onclick="addPara('{$vID}', '0', '{$vCount}')">Add Para Above</button>
-					<br/>
-					<button onclick="addPara('{$vID}', '1', '{$vCount}')">Add Para Below</button>
-					<br/>
-					<button onclick="removePara('{$vID}', '{$vCount}')">Remove Para</button>
-					<br/>
-					<button onclick="hideMenu('{$vID}', '1', '{$vCount}')">Cancel</button>
-				</div>
+				<xsl:value-of select="."/>
 				<br/>
 			</div>
 		</xsl:if>
@@ -238,8 +206,8 @@
 				<div id="{$vID}Menu" style="display: none;">
 					<button onclick="removeRef('{$vID}', '{$vfromID}')">Remove this Reference</button>
 					<br/>
-					<button onclick="addReference('{$vID}', '{$vfromID}')">Add Reference To: </button>
-						<select id="{$vID}References" onmouseover="addEditValues('{$vID}', '1', '{$vfromID}')">
+					<xsl:text>Add Reference To: </xsl:text>
+						<select id="{$vID}References" onmouseover="addEditValues('{$vID}', '1', '{$vfromID}')" onchange="if (this.selectedIndex) selectBoxChange('{$vfromID}', '2', this.value);">
 								<option value="-1" selected="selected">
 									<xsl:value-of select="$vID"/> - <xsl:value-of select="$vTitle"/>
 								</option>

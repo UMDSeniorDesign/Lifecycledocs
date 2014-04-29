@@ -3,15 +3,15 @@
 <!-- <root:ProjectLifeCycleDocuments -->
 <ProjectLifecycleDocuments projectName="PLCD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="NotionalSchema.xsd">
 	<Team>
-		<TeamMember isNewest="false">
+		<TeamMember isNewest="true">
 			<Name isNewest="true">Jeremiah Butler</Name>
 			<Role isNewest="true">Team Lead</Role>
 		</TeamMember>
-		<TeamMember isNewest="true">
+		<TeamMember isNewest="false">
 			<Name isNewest="true">Peter Magalhaes</Name>
 			<Role isNewest="true">Team Member</Role>
 		</TeamMember>
-		<TeamMember isNewest="true">
+		<TeamMember isNewest="false">
 			<Name isNewest="true">Aria Ushani</Name>
 			<Role isNewest="true">Team Member</Role>
 		</TeamMember>

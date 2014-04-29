@@ -12,7 +12,8 @@
 		navigable="yes"
 		scroll="auto"
 		scrollFlat="yes"
-        contextmenu = "yes"  />
+        contextmenu = "yes"  
+		/>
 	    <style type="text/css">
 		    #xsltDiv { 
 			}
@@ -24,6 +25,7 @@
 		<script src="../JS/sessionvars.js"></script>
 		<script src="../JS/contextMenu.js"></script>
 		<script src="../JS/dropdowns.js"></script>
+		<script src="../JS/paras.js"></script>
 		
 		<script>
 			function goBack(){
@@ -34,13 +36,19 @@
 				if(sessvars.toggle == "1") {
 					sessvars.toggle = "0";
 					edit.style.border = "none";
-					edit.contentEditable = false;
+					//edit.contentEditable = false;
 				}
 				else if(sessvars.toggle == "0") {
 					sessvars.toggle = "1";
 					edit.style.border = "dashed thin";
-					edit.contentEditable = true;
+					//edit.contentEditable = true;
 				}
+			}
+		</script>
+		<script>
+			function addReference(ID, fromID){
+				var selectBoxValue = document.getElementById(ID+"References").value;
+				addRef(selectBoxValue, fromID);
 			}
 		</script>
 		<script>

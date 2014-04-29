@@ -1,10 +1,14 @@
-function showMenu(ID, type) {
+function showMenu(ID, type, paraCount) {
 	if(sessvars.xml.length > 0){
 		if(type == 1 && sessvars.toggle == 1){//If Reference menu and in edit mode
 			var rightClickMenu = document.getElementById(ID+"Menu");
 			rightClickMenu.style.display = 'block';
 		}
-		else if(type != 1){//If other type of menu, doesn't need to be in edit mode
+		else if(type == 2 && sessvars.toggle == 1){//If Para and in edit mode
+			var rightClickMenu = document.getElementById(ID+"ParaMenu"+paraCount);
+			rightClickMenu.style.display = 'block';
+		}
+		else if(type < 1){//If other type of menu, doesn't need to be in edit mode
 			var rightClickMenu = document.getElementById(ID+"Menu");
 			rightClickMenu.style.display = 'block';
 		}
@@ -13,7 +17,12 @@ function showMenu(ID, type) {
 		alert("Please open in Lifecycle Document Editor to enable this functionality");
 	}
 }
-function hideMenu(ID) {
+function hideMenu(ID, type, paraCount) {
+	if(type == 1){
+		var rightClickMenu = document.getElementById(ID+"ParaMenu"+paraCount);
+		rightClickMenu.style.display = 'none';
+		return;
+	}
 	var rightClickMenu = document.getElementById(ID+"Menu");
 	rightClickMenu.style.display = 'none';
 }
@@ -247,15 +256,4 @@ function changeTitle(ID){
 		}
 	}
 	return saveFile(xml, "Title Changed");
-}
-function saveFile(xml, alertText){
-	var fs = new ActiveXObject("Scripting.FileSystemObject");
-	//If windows 7, use this line
-	var f = fs.GetFolder("../XML");
-	//If windows 8, use this line
-	//var f = fs.GetFolder("\XML");
-	file = f.CreateTextFile("TestSave.xml", true, true);
-	file.write(xml.xml);
-	file.close();
-	alert(alertText);
 }

@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="NotionalSRSXSL.xsl"?>
+<?xml-stylesheet type="text/xsl" href="RTM.xsl"?>
 
 
 <SoftwareRequirementsDocument xml:base="ProjectLifecycleDocuments.xml" projectName="Lifecycle Documents with Requirements Tracking"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="NotionalSchema.xsd">
 	
 	<Section isNewest="true" id="RQ1.0">
 		<Title isNewest="true">Introduction</Title>
-		<Para isNewest="true" count="1">The Software Requirements Specification details the extent of NUWC’s Lifecycle Project Manager. The product’s main feature is it’s ability to create and manage lifecycle documents using a graphical user interface. The lifecycle documents will be organized and exported using an XML Schema. This can be accomplished by a user who has no knowledge of the XML language. This document will review all the basic functionality required for a user to edit, create, and manage lifecycle projects.
+		<Para isNewest="true">The Software Requirements Specification details the extent of NUWC’s Lifecycle Project Manager. The product’s main feature is it’s ability to create and manage lifecycle documents using a graphical user interface. The lifecycle documents will be organized and exported using an XML Schema. This can be accomplished by a user who has no knowledge of the XML language. This document will review all the basic functionality required for a user to edit, create, and manage lifecycle projects.
 		</Para>		
 	</Section>
 		 
 	<Section isNewest="true" id="RQ1.1">
 		<Title isNewest="true">Purpose</Title>
-		<Para isNewest="true" count="1"> To provide a detailed description of how the product will produce it’s lifecycle documents as well as edit and export them. It also overviews the basic functional requirements requested by the customer.
+		<Para isNewest="true"> To provide a detailed description of how the product will produce it’s lifecycle documents as well as edit and export them. It also overviews the basic functional requirements requested by the customer.
 			</Para>
 		</Section>
 		
 		<Section isNewest="true" id="RQ1.2">
 			
 		<Title isNewest="true">Scope</Title>
-		<Para isNewest="true" count="1">The Lifecycle Project Manager will create and edit projects and lifecycle documents. It will serve as a cheap but easy to use software that allows users to input their own data and organize based on an XML schema. The product will export the lifecycle documents as PDF and HTML, as well as print out a requirements traceability matrix.
+		<Para isNewest="true">The Lifecycle Project Manager will create and edit projects and lifecycle documents. It will serve as a cheap but easy to use software that allows users to input their own data and organize based on an XML schema. The product will export the lifecycle documents as PDF and HTML, as well as print out a requirements traceability matrix.
 		</Para>
 		</Section>
 		<Section isNewest="true" id="RQ1.3">
 		<Title isNewest="true">Definitions </Title>
-		<Para isNewest="true" count="1">API - Application Programming Interface</Para>
-		<Para isNewest="true" count="2">CSS - Cascading Style Sheet</Para>
-		<Para isNewest="true" count="3">CSV - Comma Separated Value</Para>
-		<Para isNewest="true" count="4">GUI - Graphical User Interface</Para>
-		<Para isNewest="true" count="5">HTML - HyperText Markup Language</Para>
-		<Para isNewest="true" count="6">JS - Javascript</Para>
-		<Para isNewest="true" count="7">LC - Lifecycle</Para>
-		<Para isNewest="true" count="8">NUWC - Naval Undersea Warfare Center Division Newport</Para>
-		<Para isNewest="true" count="9">PDF - Portable Document Format</Para>
-		<Para isNewest="true" count="10">RTM - Requirements Traceability Matrix</Para>
-		<Para isNewest="true" count="11">UMASSD - University of Massachusetts: Dartmouth</Para>
-		<Para isNewest="true" count="12">XML - Extensible Markup Language</Para>
+		<Para isNewest="true">API - Application Programming Interface</Para>
+		<Para isNewest="true">CSS - Cascading Style Sheet</Para>
+		<Para isNewest="true">CSV - Comma Separated Value</Para>
+		<Para isNewest="true">GUI - Graphical User Interface</Para>
+		<Para isNewest="true">HTML - HyperText Markup Language</Para>
+		<Para isNewest="true">JS - Javascript</Para>
+		<Para isNewest="true">LC - Lifecycle</Para>
+		<Para isNewest="true">NUWC - Naval Undersea Warfare Center Division Newport</Para>
+		<Para isNewest="true">PDF - Portable Document Format</Para>
+		<Para isNewest="true">RTM - Requirements Traceability Matrix</Para>
+		<Para isNewest="true">UMASSD - University of Massachusetts: Dartmouth</Para>
+		<Para isNewest="true">XML - Extensible Markup Language</Para>
 		</Section>
 		
 		<Section isNewest="true" id="RQ1.4">
@@ -121,6 +121,7 @@
   		<Ref isNewest="true">UC1.1.1</Ref>
   		<Ref isNewest="true">UC1.1.2</Ref>
   		<Ref isNewest="true">UC1.1.3</Ref>
+  		<Ref isNewest="true">TC1.1.1</Ref>
   	</Requirement>
   		
   		

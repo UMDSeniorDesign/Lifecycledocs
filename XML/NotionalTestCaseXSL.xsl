@@ -157,8 +157,27 @@
 	
 	<xsl:template match="Para">
 		<xsl:if test="@isNewest = 'true'">
+			<xsl:variable name="vID">
+				<xsl:value-of select="../@id"/>
+			</xsl:variable>
+			<xsl:variable name="vCount">
+				<xsl:value-of select="@count"/>
+			</xsl:variable>
 			<div id="Para">
-				<xsl:value-of select="."/>
+				<button type="button" onclick="showMenu('{$vID}', '2', '{$vCount}')" oncontextmenu="showMenu('{$vID}', '2', '{$vCount}');return false;">
+				Para: </button>
+				<textarea id="{$vID}Para{$vCount}" cols="50" style='overflow-y:hidden;' onfocus='this.rows = (parseInt(this.value.length/this.cols)+2||1)' onkeyup='this.rows = (parseInt(this.value.length/this.cols)+2||1);'>
+				<xsl:value-of select="."/></textarea>
+				<br/>
+				<div id="{$vID}ParaMenu{$vCount}" style="display: none;">
+					<button onclick="addPara('{$vID}', '0', '{$vCount}')">Add Para Above</button>
+					<br/>
+					<button onclick="addPara('{$vID}', '1', '{$vCount}')">Add Para Below</button>
+					<br/>
+					<button onclick="removePara('{$vID}', '{$vCount}')">Remove Para</button>
+					<br/>
+					<button onclick="hideMenu('{$vID}', '1', '{$vCount}')">Cancel</button>
+				</div>
 				<br/>
 			</div>
 		</xsl:if>
@@ -206,8 +225,8 @@
 				<div id="{$vID}Menu" style="display: none;">
 					<button onclick="removeRef('{$vID}', '{$vfromID}')">Remove this Reference</button>
 					<br/>
-					<xsl:text>Add Reference To: </xsl:text>
-						<select id="{$vID}References" onmouseover="addEditValues('{$vID}', '1', '{$vfromID}')" onchange="if (this.selectedIndex) selectBoxChange('{$vfromID}', '2', this.value);">
+					<button onclick="addReference('{$vID}', '{$vfromID}')">Add Reference To: </button>
+						<select id="{$vID}References" onmouseover="addEditValues('{$vID}', '1', '{$vfromID}')">
 								<option value="-1" selected="selected">
 									<xsl:value-of select="$vID"/> - <xsl:value-of select="$vTitle"/>
 								</option>
