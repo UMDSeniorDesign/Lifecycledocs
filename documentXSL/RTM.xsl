@@ -261,7 +261,6 @@
                     </font>
                 </xsl:otherwise>
             </xsl:choose>
-            
         </td>
         <td>
             <xsl:value-of select="$vDocumentTC/descendant-or-self::*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Para[@isNewest='true']"/>
