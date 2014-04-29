@@ -33,14 +33,17 @@
 		
 		<script>
 			function changeBase(projectName) {
-				var file = loadProject(projectName);
+				var project = projectName+".xml";
+				var file = loadProject(project);
 				
+				for(var j = 0; file.getElementsByTagName("file_location").length > j; j++) {
+					var attr = file.getElementsByTagName("file_location")[j].childNodes[0].getAttribute("href");
+					var xmlFile = loadXML(attr);
 				
-				
-				alert(file.documentElement.childNodes.length);
-				
-				//get attribute 
-				//change attribute xml:base
+					var doc = xmlFile.documentElement;
+					var xmlattr = doc.setAttribute("xml:base",project);
+					alert(xmlFile.xml);
+				}				
 			}
 			
 			function createProject() {
