@@ -77,9 +77,11 @@
 			<button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="showMenu('{$vID}', '0');return false;">
 			<xsl:value-of select="$vID"/></button> - <xsl:value-of select="$vTitle"/>
             <div id="{@id}Menu" style="display: none;">
-                <button onclick="addAbove('{$vID}')">Add Section Above</button>
+                <button onclick="addAbove('{$vID}', '0')">Add Section Above</button><button onclick="addAbove('{$vID}', '1')">Add Requirement Above</button>
                 <br/>
-                <button onclick="addBelow('{$vID}')">Add Section Below</button>
+                <button onclick="addBelow('{$vID}', '0')">Add Section Below</button><button onclick="addBelow('{$vID}', '1')">Add Requirement Below</button>
+                <br/>
+				<button onclick="addSub('{$vID}', '0')">Add subSection</button><button onclick="addSub('{$vID}', '1')">Add subRequirement</button>
                 <br/>
 				<button onclick="changeTitle('{$vID}')">Change Title to: </button>
 				<textarea id="{@id}Title" rows="1"><xsl:value-of select="$vTitle"/></textarea>
@@ -107,10 +109,15 @@
             <button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="showMenu('{$vID}', '0');return false;">
 			<xsl:value-of select="$vID"/></button> - <xsl:value-of select="$vTitle"/>
             <div id="{@id}Menu" style="display: none;">
-                <button onclick="addAbove('{$vID}')">Add Requirement Above</button><br/>
-                <button onclick="addBelow('{$vID}')">Add Requirement Below</button><br/>
+                <button onclick="addAbove('{$vID}', '0')">Add Section Above</button><button onclick="addAbove('{$vID}', '1')">Add Requirement Above</button>
+                <br/>
+                <button onclick="addBelow('{$vID}', '0')">Add Section Below</button><button onclick="addBelow('{$vID}', '1')">Add Requirement Below</button>
+                <br/>
+				<button onclick="addSub('{$vID}', '0')">Add subSection</button><button onclick="addSub('{$vID}', '1')">Add subRequirement</button>
+                <br/>
 				<button onclick="changeTitle('{$vID}')">Change Title to: </button>
-				<textarea id="{@id}Title" rows="1"><xsl:value-of select="$vTitle"/></textarea><br/>
+				<textarea id="{@id}Title" rows="1"><xsl:value-of select="$vTitle"/></textarea>
+				<br/>
                 <button onclick="hideMenu('{$vID}')">Cancel</button>
             </div>
 			</li>
