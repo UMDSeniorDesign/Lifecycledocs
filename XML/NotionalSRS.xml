@@ -8,7 +8,7 @@
 		<Title isNewest="true">Introduction</Title>
 		<Para isNewest="true" count="1">The Software Requirements Specification details the extent of NUWC’s Lifecycle Project Manager. The product’s main feature is it’s ability to create and manage lifecycle documents using a graphical user interface. The lifecycle documents will be organized and exported using an XML Schema. This can be accomplished by a user who has no knowledge of the XML language. This document will review all the basic functionality required for a user to edit, create, and manage lifecycle projects.
 		</Para>		
-	</Section>
+	
 		 
 	<Section isNewest="true" id="RQ1.1">
 		<Title isNewest="true">Purpose</Title>
@@ -42,7 +42,7 @@
 		<Para isNewest="true">The SRS contains explicit details describing how the product is designed and implemented. It is organized in a top-down layered approach. The goal of this project is to create a protoype application capable of allowing a user to productively manage lifecycle documentation in XML without an previous XML experience. 
 		</Para>
 	</Section>
-	   
+	</Section>
  <!--SECTION 2-->
  
   <Section isNewest="true" id="RQ2.0">
