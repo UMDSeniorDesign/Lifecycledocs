@@ -5,7 +5,7 @@
 <SoftwareRequirementsDocument xml:base="ProjectLifecycleDocuments.xml" projectName="Lifecycle Documents with Requirements Tracking"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="NotionalSchema.xsd">
 	
 	<Section isNewest="true" id="RQ1.0">
-		<Title isNewest="true">fixME please</Title>
+		<Title isNewest="true">Introduction</Title>
 		<Para isNewest="true">The Software Requirements Specification details the extent of NUWC’s Lifecycle Project Manager. The product’s main feature is it’s ability to create and manage lifecycle documents using a graphical user interface. The lifecycle documents will be organized and exported using an XML Schema. This can be accomplished by a user who has no knowledge of the XML language. This document will review all the basic functionality required for a user to edit, create, and manage lifecycle projects.
 		</Para>		
 	

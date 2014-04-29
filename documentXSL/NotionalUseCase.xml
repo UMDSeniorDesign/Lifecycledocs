@@ -9,6 +9,7 @@
     
         <Section isNewest="true" id="UC1.1">
             <Title isNewest="true">Use Cases</Title>
+            <Para isNewest="true">this is the use case para</Para>
             <Requirement isNewest="true" id="UC1.1.1">
                 <Title isNewest="true">Create Lifecycle Document </Title>
                 <Requirement isNewest="true" id="UC1.1.1.1">
