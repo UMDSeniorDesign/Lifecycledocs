@@ -88,19 +88,24 @@ function addRef(ID, toID){
 		return alert("Error: Reference Could Not Be Added!");
 	}
 }
-function addAbove(ID){
-	//alert("Add Above: "+ID);
+function add(ID, aORb, type){
 	if(sessvars.xml.length > 0){
 		var xml = loadXML(sessvars.xml);
 		var sections = xml.getElementsByTagName("Section");
 		for(var i = 0; i < sections.length; i++){
 			if(ID == sections[i].getAttribute("id")){
 				//alert("Add Section Above: "+sections[i].getAttribute("id"));
-				newNode = xml.createElement("Section");
+				if(type == 0){//If add Section
+					newNode = xml.createElement("Section");
+					newSectionTitleText = xml.createTextNode("New Section");
+				}
+				else if(type == 1){//If add Requirement
+					newNode = xml.createElement("Requirement");
+					newSectionTitleText = xml.createTextNode("New Requirement");
+				}
 				newNode.setAttribute("isNewest","true");
 				newNode.setAttribute("id", sections[i].getAttribute("id"));
 				newSectionTitleElement = xml.createElement("Title");
-				newSectionTitleText = xml.createTextNode("New Section");
 				newSectionTitleElement.appendChild(newSectionTitleText);
 				newSectionTitleElement.setAttribute("isNewest","true");
 				newNode.appendChild(newSectionTitleElement);
@@ -110,19 +115,39 @@ function addAbove(ID){
 				newSectionParaElement.setAttribute("isNewest","true");
 				newNode.appendChild(newSectionParaElement);
 				var parentNode = sections[i].parentNode;
-				parentNode.insertBefore(newNode, sections[i]);
-				return saveFile(xml, "Section Added");
+				if(aORb == 0)//If add above
+					parentNode.insertBefore(newNode, sections[i]);
+				else if(aORb == 1){//If add below
+					var nextSibling = sections[i].nextSibling;
+					if(nextSibling == null){
+						var parentNode = sections[i].parentNode;
+						parentNode.appendChild(newNode);
+					}
+					else{
+						var parentNode = nextSibling.parentNode;
+						parentNode.insertBefore(newNode, nextSibling);
+					}
+				}
+				else if(aORb == 3){//If add sub
+					sections[i].appendChild(newNode);
+				}
+				return saveFile(xml, "Added to Section");
 			}
 		}
 		var reqs = xml.getElementsByTagName("Requirement");
 		for(var i = 0; i < reqs.length; i++){
 			if(ID == reqs[i].getAttribute("id")){
-				//alert("Add Requirement Above: "+reqs[i].getAttribute("id"));
-				newNode = xml.createElement("Requirement");
+				if(type == 0){//If add Section
+					newNode = xml.createElement("Section");
+					newReqTitleText = xml.createTextNode("New Section");
+				}
+				else if(type == 1){//If add Requirement
+					newNode = xml.createElement("Requirement");
+					newReqTitleText = xml.createTextNode("New Requirement");
+				}
 				newNode.setAttribute("isNewest","true");
 				newNode.setAttribute("id", reqs[i].getAttribute("id"));
 				newReqTitleElement = xml.createElement("Title");
-				newReqTitleText = xml.createTextNode("New Requirement");
 				newReqTitleElement.appendChild(newReqTitleText);
 				newReqTitleElement.setAttribute("isNewest","true");
 				newNode.appendChild(newReqTitleElement);
@@ -133,80 +158,29 @@ function addAbove(ID){
 				newNode.appendChild(newReqParaElement);
 				var parentNode = reqs[i].parentNode;
 				parentNode.insertBefore(newNode, reqs[i]);
-				return saveFile(xml, "Requirement Added");
+				if(aORb == 0)//If add above
+					parentNode.insertBefore(newNode, reqs[i]);
+				else if(aORb == 1){//If add below
+					var nextSibling = reqs[i].nextSibling;
+					if(nextSibling == null){
+						var parentNode = reqs[i].parentNode;
+						parentNode.appendChild(newNode);
+					}
+					else{
+						var parentNode = nextSibling.parentNode;
+						parentNode.insertBefore(newNode, nextSibling);
+					}
+				}
+				else if(aORb == 3){//If add sub
+					reqs[i].appendChild(newNode);
+				}
+				return saveFile(xml, "Added to Requirement");
 			}
 		}
 	}
 	else{
 		alert("Please open in Lifecycle Document Editor to enable this functionality");
 		}
-}
-function addBelow(ID){
-	//alert("Add Below: "+ID);
-	if(sessvars.xml.length > 0){
-		var xml = loadXML(sessvars.xml);
-		var sections = xml.getElementsByTagName("Section");
-		for(var i = 0; i < sections.length; i++){
-			if(ID == sections[i].getAttribute("id")){
-				//alert("Add Section Below: "+sections[i].getAttribute("id"));
-				newNode = xml.createElement("Section");
-				newNode.setAttribute("isNewest","true");
-				newNode.setAttribute("id", sections[i].getAttribute("id"));
-				newSectionTitleElement = xml.createElement("Title");
-				newSectionTitleText = xml.createTextNode("New Section");
-				newSectionTitleElement.appendChild(newSectionTitleText);
-				newSectionTitleElement.setAttribute("isNewest","true");
-				newNode.appendChild(newSectionTitleElement);
-				newSectionParaElement = xml.createElement("Para");
-				newSectionParaText = xml.createTextNode("New Para");
-				newSectionParaElement.appendChild(newSectionParaText);
-				newSectionParaElement.setAttribute("isNewest","true");
-				newNode.appendChild(newSectionParaElement);
-				var nextSibling = sections[i].nextSibling;
-				if(nextSibling == null){
-					var parentNode = sections[i].parentNode;
-					parentNode.appendChild(newNode);
-				}
-				else{
-					var parentNode = nextSibling.parentNode;
-					parentNode.insertBefore(newNode, nextSibling);
-				}
-				return saveFile(xml, "Section Added");
-			}
-		}
-		var reqs = xml.getElementsByTagName("Requirement");
-		for(var i = 0; i < reqs.length; i++){
-			if(ID == reqs[i].getAttribute("id")){
-				//alert("Add Requirement Below: "+reqs[i].getAttribute("id"));
-				newNode = xml.createElement("Requirement");
-				newNode.setAttribute("isNewest","true");
-				newNode.setAttribute("id", reqs[i].getAttribute("id"));
-				newReqTitleElement = xml.createElement("Title");
-				newReqTitleText = xml.createTextNode("New Requirement");
-				newReqTitleElement.appendChild(newReqTitleText);
-				newReqTitleElement.setAttribute("isNewest","true");
-				newNode.appendChild(newReqTitleElement);
-				newReqParaElement = xml.createElement("Para");
-				newReqParaText = xml.createTextNode("New Para");
-				newReqParaElement.appendChild(newReqParaText);
-				newReqParaElement.setAttribute("isNewest","true");
-				newNode.appendChild(newReqParaElement);
-				var nextSibling = reqs[i].nextSibling;
-				if(nextSibling == null){
-					var parentNode = reqs[i].parentNode;
-					parentNode.appendChild(newNode);
-				}
-				else{
-					var parentNode = nextSibling.parentNode;
-					parentNode.insertBefore(newNode, nextSibling);
-				}
-				return saveFile(xml, "Requirement Added");
-			}
-		}
-	}
-	else{
-		alert("Please open in Lifecycle Document Editor to enable this functionality");
-	}
 }
 function changeTitle(ID){
 	var xml = loadXML(sessvars.xml);

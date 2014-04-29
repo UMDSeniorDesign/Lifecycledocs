@@ -77,11 +77,11 @@
 			<button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="showMenu('{$vID}', '0');return false;">
 			<xsl:value-of select="$vID"/></button> - <xsl:value-of select="$vTitle"/>
             <div id="{@id}Menu" style="display: none;">
-                <button onclick="addAbove('{$vID}', '0')">Add Section Above</button><button onclick="addAbove('{$vID}', '1')">Add Requirement Above</button>
+                <button onclick="add('{$vID}', '0', '0')">Add Section Above</button><button onclick="add('{$vID}', '0', '1')">Add Requirement Above</button>
                 <br/>
-                <button onclick="addBelow('{$vID}', '0')">Add Section Below</button><button onclick="addBelow('{$vID}', '1')">Add Requirement Below</button>
+                <button onclick="add('{$vID}', '1', '0')">Add Section Below</button><button onclick="add('{$vID}', '1', '1')">Add Requirement Below</button>
                 <br/>
-				<button onclick="addSub('{$vID}', '0')">Add subSection</button><button onclick="addSub('{$vID}', '1')">Add subRequirement</button>
+				<button onclick="add('{$vID}', '3', '0')">Add subSection</button><button onclick="add('{$vID}', '3', '1')">Add subRequirement</button>
                 <br/>
 				<button onclick="changeTitle('{$vID}')">Change Title to: </button>
 				<textarea id="{@id}Title" rows="1"><xsl:value-of select="$vTitle"/></textarea>
@@ -109,11 +109,11 @@
             <button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="showMenu('{$vID}', '0');return false;">
 			<xsl:value-of select="$vID"/></button> - <xsl:value-of select="$vTitle"/>
             <div id="{@id}Menu" style="display: none;">
-                <button onclick="addAbove('{$vID}', '0')">Add Section Above</button><button onclick="addAbove('{$vID}', '1')">Add Requirement Above</button>
+                <button onclick="add('{$vID}', '0', '0')">Add Section Above</button><button onclick="add('{$vID}', '0', '1')">Add Requirement Above</button>
                 <br/>
-                <button onclick="addBelow('{$vID}', '0')">Add Section Below</button><button onclick="addBelow('{$vID}', '1')">Add Requirement Below</button>
+                <button onclick="add('{$vID}', '1', '0')">Add Section Below</button><button onclick="add('{$vID}', '1', '1')">Add Requirement Below</button>
                 <br/>
-				<button onclick="addSub('{$vID}', '0')">Add subSection</button><button onclick="addSub('{$vID}', '1')">Add subRequirement</button>
+				<button onclick="add('{$vID}', '3', '0')">Add subSection</button><button onclick="add('{$vID}', '3', '1')">Add subRequirement</button>
                 <br/>
 				<button onclick="changeTitle('{$vID}')">Change Title to: </button>
 				<textarea id="{@id}Title" rows="1"><xsl:value-of select="$vTitle"/></textarea>

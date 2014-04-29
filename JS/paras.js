@@ -69,14 +69,6 @@ function addPara(ID, aORb, count){
 		var xml = loadXML(sessvars.xml);
 		var newCount = count;
 		var added = 0;
-		/*if(aORb == 0){//Add Above
-			//alert("Add Para to section: "+ID+" Above Count: "+count);
-			newCount = count;
-		}
-		else{//Add Below
-			//alert("Add Para to section: "+ID+" Below Count: "+count);
-			newCount++;
-		}*/
 		var sections = xml.getElementsByTagName("Section");
 		for(var i = 0; i < sections.length; i++){
 			if(ID == sections[i].getAttribute("id")){
