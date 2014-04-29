@@ -88,7 +88,7 @@
 				var y = loadProject(projectName);
 				var z = loadXML("peteProjectXSL.xsl");		
 				
-				alert(y.xml);
+				//alert(y.xml);
 				
 				var x = y.transformNode(z);
 				
@@ -116,7 +116,6 @@
 			//If windows 7, use this line
 			//var f = fs.GetFolder("../XML");
 			//If windows 8, use this line
-			projectName = "test.xml";
 			var f = fs.GetFolder("\Projects");
 
 			file = f.CreateTextFile(projectName, true);
@@ -124,8 +123,8 @@
 			file.write(xmlDoc.xml);
 			file.close();
 			
-					alert(projectName);
-					alert(xmlDoc.xml);
+					//alert(projectName);
+					//alert(xmlDoc.xml);
 					
 			getProjectInfo(1, projectName);
 		}
