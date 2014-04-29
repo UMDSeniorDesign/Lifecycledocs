@@ -15,14 +15,10 @@
 						text += "<p>";
 						text += para;
 						text += "</p>";
-						if(subReqs.length > 33){
-							if(subReqStyle == 'none'){
-								text += "<p>";
-								text += "<u>Sub Requirements</u><br/>";
-								text += subReqs;
-								text += "</p>";
-							}
-						}
+						if(subReqStyle == 'none')
+							subReqSpot.style.display = 'block';
+						else if(subReqStyle == 'block')
+							subReqSpot.style.display = 'none';
 						var section = document.getElementById("section");
 						section.innerHTML = text;
 						if(sessvars.toggle = "1")
@@ -79,8 +75,7 @@
 			</xsl:variable>
             
 			<button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="showMenu('{$vID}', '0');return false;">
-			<xsl:value-of select="$vID"/></button> - 
-			<xsl:value-of select="$vTitle"/>
+			<xsl:value-of select="$vID"/></button> - <xsl:value-of select="$vTitle"/>
             <div id="{@id}Menu" style="display: none;">
                 <button onclick="addAbove('{$vID}')">Add Section Above</button>
                 <br/>
@@ -91,11 +86,11 @@
 				<br/>
                 <button onclick="hideMenu('{$vID}')">Cancel</button>
             </div>
+			<div id="sub{@id}" style="display: none;">
+				<xsl:apply-templates select="Section" mode="section"/>
+				<xsl:apply-templates select="Requirement" mode="section"/>
+			</div>
 		</xsl:if>
-		<div id="sub{@id}">
-			<xsl:apply-templates select="Section" mode="section"/>
-			<xsl:apply-templates select="Requirement" mode="section"/>
-		</div>
     </xsl:template>
 	
 	<xsl:template match="Requirement" mode="section">
@@ -112,21 +107,18 @@
             <button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="showMenu('{$vID}', '0');return false;">
 			<xsl:value-of select="$vID"/></button> - <xsl:value-of select="$vTitle"/>
             <div id="{@id}Menu" style="display: none;">
-                <button onclick="addAbove('{$vID}')">Add Requirement Above</button>
-                <br/>
-                <button onclick="addBelow('{$vID}')">Add Requirement Below</button>
-                <br/>
+                <button onclick="addAbove('{$vID}')">Add Requirement Above</button><br/>
+                <button onclick="addBelow('{$vID}')">Add Requirement Below</button><br/>
 				<button onclick="changeTitle('{$vID}')">Change Title to: </button>
-				<textarea id="{@id}Title" rows="1"><xsl:value-of select="$vTitle"/></textarea>
-				<br/>
+				<textarea id="{@id}Title" rows="1"><xsl:value-of select="$vTitle"/></textarea><br/>
                 <button onclick="hideMenu('{$vID}')">Cancel</button>
             </div>
 			</li>
+			<div id="sub{@id}" style="display: none;">
+				<xsl:apply-templates select="Section" mode="section"/>
+				<xsl:apply-templates select="Requirement" mode="section"/>
+			</div>
 		</xsl:if>
-		<div id="sub{@id}" style="display: none;">
-			<xsl:apply-templates select="Section" mode="section"/>
-			<xsl:apply-templates select="Requirement" mode="section"/>
-		</div>
     </xsl:template>
 	
     <xsl:template match="Requirement" mode="para">
@@ -177,9 +169,7 @@
 				<xsl:value-of select="@count"/>
 			</xsl:variable>
 			<div id="Para">
-				<button type="button" onclick="showMenu('{$vID}', '2', '{$vCount}')" oncontextmenu="showMenu('{$vID}', '2', '{$vCount}');return false;">
-				Para: </button>
-				<textarea id="{$vID}Para{$vCount}" cols="50" style='overflow-y:hidden;' onfocus='this.rows = (parseInt(this.value.length/this.cols)+2||1)' onkeyup='this.rows = (parseInt(this.value.length/this.cols)+2||1);'>
+				<textarea id="{$vID}Para{$vCount}" cols="50" style='overflow-y:hidden;' onfocus='this.rows = (parseInt(this.value.length/this.cols)+2||1)' onkeyup='this.rows = (parseInt(this.value.length/this.cols)+2||1);' oncontextmenu="showMenu('{$vID}', '2', '{$vCount}');return false;">
 				<xsl:value-of select="."/></textarea>
 				<br/>
 				<div id="{$vID}ParaMenu{$vCount}" style="display: none;">

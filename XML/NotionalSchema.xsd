@@ -98,6 +98,7 @@
             <xsd:simpleContent>
                 <xsd:extension base="xsd:string">
                     <xsd:attribute name="isNewest" type="xsd:boolean"/>
+                    <xsd:attribute name="count" type="xsd:string" use="optional"/>
                 </xsd:extension>
             </xsd:simpleContent>
         </xsd:complexType>
@@ -113,7 +114,7 @@
             <xsd:element ref="Section" minOccurs="0"/>
             <xsd:element name="TestResult" minOccurs="0" type="xsd:boolean"/>
             <xsd:element ref="ApprovedBy" minOccurs="0"/>
-            <xsd:element name="Ref" minOccurs="0">
+            <xsd:element name="Ref" minOccurs="1" default="Ref">
                 <xsd:complexType>
                     <xsd:simpleContent>
                         <xsd:extension base="xsd:string">
@@ -174,7 +175,7 @@
             <xsd:element ref="Title" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element ref="Para" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element ref="Requirement" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element name="Ref" minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="Ref" minOccurs="1" maxOccurs="unbounded" default="Ref">
                 <xsd:complexType>
                     <xsd:simpleContent>
                         <xsd:extension base="xsd:string">
