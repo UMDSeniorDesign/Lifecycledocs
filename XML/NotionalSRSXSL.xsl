@@ -180,13 +180,13 @@
 			<div id="Para">
 				<button type="button" onclick="showMenu('{$vID}', '2', '{$vCount}')" oncontextmenu="showMenu('{$vID}', '2', '{$vCount}');return false;">
 				Para: </button>
-				<textarea id="{$vID}Para{$vCount}" cols="50" style='overflow-y:hidden;' onfocus='this.rows = (parseInt(this.value.length/this.cols)+1||1)' onkeyup='this.rows = (parseInt(this.value.length/this.cols)+1||1);'>
+				<textarea id="{$vID}Para{$vCount}" cols="50" style='overflow-y:hidden;' onfocus='this.rows = (parseInt(this.value.length/this.cols)+2||1)' onkeyup='this.rows = (parseInt(this.value.length/this.cols)+2||1);'>
 				<xsl:value-of select="."/></textarea>
 				<br/>
 				<div id="{$vID}ParaMenu{$vCount}" style="display: none;">
-					<button onclick="addAbove('{$vID}', '{$vCount}')">Add Para Above</button>
+					<button onclick="addPara('{$vID}', '0', '{$vCount}')">Add Para Above</button>
 					<br/>
-					<button onclick="addBelow('{$vID}', '{$vCount}')">Add Para Below</button>
+					<button onclick="addPara('{$vID}', '1', '{$vCount}')">Add Para Below</button>
 					<br/>
 					<button onclick="removePara('{$vID}', '{$vCount}')">Remove Para</button>
 					<br/>

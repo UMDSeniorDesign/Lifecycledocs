@@ -88,40 +88,6 @@ function addRef(ID, toID){
 		return alert("Error: Reference Could Not Be Added!");
 	}
 }
-function removePara(ID, count){
-	if(sessvars.xml.length > 0){
-		var xml = loadXML(sessvars.xml);
-		var sections = xml.getElementsByTagName("Section");
-		for(var i = 0; i < sections.length; i++){
-			if(ID == sections[i].getAttribute("id")){
-				var paras = sections[i].childNodes;
-				for(var j = 0; j < paras.length; j++){
-					if(paras[j].nodeName == "Para"){
-						if(count == paras[j].getAttribute("count")){
-							paras[j].setAttribute("isNewest", "false");
-							return saveFile(xml, "Para Removed");
-						}
-					}
-				}
-			}
-		}
-		var reqs = xml.getElementsByTagName("Requirement");
-		for(var i = 0; i < reqs.length; i++){
-			if(ID == reqs[i].getAttribute("id")){
-				var paras = reqs[i].childNodes;
-				for(var j = 0; j < paras.length; j++){
-					if(paras[j].nodeName == "Para"){
-						if(count == paras[j].getAttribute("count")){
-							paras[j].setAttribute("isNewest", "false");
-							return saveFile(xml, "Para Removed");
-						}
-					}
-				}
-			}
-		}
-		return alert("Error: Para Not Found!");
-	}
-}
 function addAbove(ID){
 	//alert("Add Above: "+ID);
 	if(sessvars.xml.length > 0){
