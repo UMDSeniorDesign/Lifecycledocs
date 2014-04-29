@@ -12,7 +12,8 @@
 		navigable="yes"
 		scroll="auto"
 		scrollFlat="yes"
-        contextmenu = "yes"  />
+        contextmenu = "yes"  
+		/>
 	    <style type="text/css">
 		    #xsltDiv { 
 			}
@@ -24,20 +25,30 @@
 		<script src="../JS/sessionvars.js"></script>
 		<script src="../JS/contextMenu.js"></script>
 		<script src="../JS/dropdowns.js"></script>
+		<script src="../JS/paras.js"></script>
 		
 		<script>
-			function toggleEdit() {
+			function goBack(){
+			  window.history.back()
+			  }
+			  function toggleEdit() {
 				var edit = document.getElementById("edit");
 				if(sessvars.toggle == "1") {
 					sessvars.toggle = "0";
 					edit.style.border = "none";
-					edit.contentEditable = false;
+					//edit.contentEditable = false;
 				}
 				else if(sessvars.toggle == "0") {
 					sessvars.toggle = "1";
 					edit.style.border = "dashed thin";
-					edit.contentEditable = true;
+					//edit.contentEditable = true;
 				}
+			}
+		</script>
+		<script>
+			function addReference(ID, fromID){
+				var selectBoxValue = document.getElementById(ID+"References").value;
+				addRef(selectBoxValue, fromID);
 			}
 		</script>
 		<script>
@@ -133,37 +144,14 @@
 			}
 		</script>
 		
-		<script>
-		function downloadAsHTML(){
-			xml = loadXML(sessvars.xml);
-			var textVersion = xml.xml;
-			var styleStringStart = textVersion.search("href=");
-			var styleStringPart = textVersion.substring(styleStringStart);
-			var styleStringEnd = styleStringPart.search(">");
-			var styleName = styleStringPart.substring(6, styleStringEnd-2);
-			sessvars.xsl = styleName;
-			xsl = loadXML(sessvars.xsl);
-			var value = xml.transformNode(xsl);
-			
-			filename = sessvars.xml.substring(-1,sessvars.xml.length-4);
-			var fs = new ActiveXObject("Scripting.FileSystemObject");
-			//If windows 7, use this line
-			var f = fs.GetFolder("../Saves");
-			//If windows 8, use this line
-			//var f = fs.GetFolder("\XML");
-			file = f.CreateTextFile(filename+".html", true, true);
-			file.write(value);
-			file.close();
-			alert("File saved");
-		}
-		</script>
 	</head>
 	
 	<body onload="loadXSLT(1,0)">
 		<div id="wrapper">
 			<body background="ProjectImages/bg1.jpg">
 		    <div id="head1">
-		        <button onclick=location.href='rtm.hta'>Create Matrix</button>
+				<button onclick="goBack()">Go Back</button>
+		        <button onclick=location.href='RTM.hta'>Create Matrix</button>
 				<button onclick=downloadAsHTML()>Download as HTML</button>
 		    </div>
 			<div id="xsltDiv">

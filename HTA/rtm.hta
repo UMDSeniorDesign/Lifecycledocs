@@ -14,19 +14,19 @@
 		scroll="auto"
 		scrollFlat="yes" />
 	</head>
-		<script src="../JS/RTMforHTA.js"></script>
+		<script src="../JS/loadXML.js"></script>
 	<script>
-        // Handler to make sure Document is ready for Javascript
-		document.onreadystatechange = function () {
-			if (document.readyState == "complete") {
-			//Create table and append it to the Div
-            document.getElementById("RTM").innerHTML = (rtmHTMLtable());
-			}
+		function loadRTM(){
+			var rtmLocation = document.getElementById("RTM");
+			var xml = loadXML("NotionalSRS.xml");
+			var xsl = loadXML("RTM.xsl");
+			var rtm = xml.transformNode(xsl);
+			rtmLocation.innerHTML = rtm;
 		}
     </script>
     </head>
-    <body>
-    <center> 
+    <body onload="loadRTM()">
+	<center> 
      <div id="RTM"></div>
     <p>
     Save Requirements Traceability Matrix as: 

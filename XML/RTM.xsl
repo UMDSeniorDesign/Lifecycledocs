@@ -11,6 +11,28 @@
     <xsl:template match="SoftwareRequirementsDocument">
     <html>
         <head>
+            <script>
+                function test(ID, title){
+                var edit = 0;
+                var para = document.getElementById(ID).innerHTML;
+                var text = "<u>"+ID;
+                    text += " - ";
+                    text += "<i>"+title+"</i></u>";
+                text += "<p>";
+                    text += para;
+                    text += "</p>";
+                var preview = document.getElementById("preview");
+                preview.innerHTML = text;
+                if(edit > 0){
+                preview.contentEditable = 'true';
+                }
+                }
+                function showRef(ID){
+                var refSpot = document.getElementById("ref");
+                var infoSpot = document.getElementById(ID);
+                infoSpot.style.display = 'block';
+                }
+            </script>
             <title>Requirements Tracability Matrix</title>
             <table border="3">
                 <tbody>
@@ -33,6 +55,7 @@
     </xsl:template>
     
     <xsl:template match="Requirement[@isNewest='true']">
+        
         <xsl:variable name="vID2" select="@id"/>
         <xsl:variable name="vTitle2">
             <xsl:choose>
@@ -73,6 +96,8 @@
             </xsl:for-each>
         </xsl:variable>
         <xsl:variable name="sumTCPass" select="sum(msxsl:node-set($TCPass)/count)"/>
+        
+        
         <xsl:variable name="spanRow">
             <xsl:choose>
                 <xsl:when test="$TCCount &lt; 1">
@@ -86,7 +111,7 @@
     
         <tr>
             <td rowspan="{$spanRow * 2}">
-                <button type="button" >   <!--onclick="function('{$vID2}')">-->
+                <button type="button" onclick="showRef('{$vID2}')">
                     <xsl:value-of select="$vID2"/>
                 </button>
             </td>
@@ -107,7 +132,7 @@
                             <xsl:for-each select="Ref[@isNewest='true']">
                                 <xsl:variable name="myRef" select="."/>
                                 <xsl:if test="contains(., 'UC')">
-                                    <button type="button" >     <!--onclick="function('{$vID}')">-->
+                                    <button type="button" onclick="showRef('{$vID}')">
                                         <xsl:value-of select="."/>
                                     </button>
                                 </xsl:if>
@@ -173,12 +198,6 @@
         <xsl:variable name="vDocumentUC" select="document('NotionalUseCase.xml')"/>
         <xsl:variable name="vDocumentTC" select="document('NotionalTestCase.xml')"/>
         
-        <xsl:if test="($i = 'no_value') or ($i = 'no_value')">
-            <xsl:call-template name="testCaseRow">
-                <xsl:with-param name="i">0</xsl:with-param>
-                <xsl:with-param name="rows">0</xsl:with-param>
-            </xsl:call-template>
-        </xsl:if>
         <xsl:if test="$i &lt; $rows">
             <xsl:for-each select="Ref[@isNewest='true'][substring(.,1,2) = 'TC']">
                 <xsl:variable name="myRef" select="."/>
@@ -249,22 +268,12 @@
             <xsl:value-of select="$vDocumentTC/descendant-or-self::*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Name"/>
         </td>
         <td>
-            <xsl:choose>
-                <xsl:when test="$vDocumentTC/descendant-or-self::*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Date != ''">
-                    <xsl:value-of select="substring-before($vDocumentTC/descendant-or-self::*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Date, 'T')"/>
-                    <br/>
-                    <xsl:value-of select="substring-after($vDocumentTC/descendant-or-self::*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Date, 'T')"/>
-                </xsl:when>
-                <xsl:otherwise>
-                    <font color="blue">
-                        <xsl:text>dateTime Unavailable</xsl:text>
-                    </font>
-                </xsl:otherwise>
-            </xsl:choose>
+            
+            <xsl:text>the date</xsl:text>        
             
         </td>
         <td>
-            <xsl:value-of select="$vDocumentTC/descendant-or-self::*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Para[@isNewest='true']"/>
+            <xsl:value-of select="$vDocumentTC/descendant-or-self::*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Para[@isNewest='true']"></xsl:value-of>
         </td>
     </xsl:template>
 </xsl:stylesheet>
