@@ -93,6 +93,7 @@ function loadXSLT(withTabs, withCurrent, xmlToLoad){
 	//Append our generated HTML to the newly formatted page
 	value += "<br><button onclick='saveXML(sessvars.xml)'>Save</button>";
 	value += "<button onclick=toggleEdit()>Edit On/Off</button>";
+	value += "<button onclick=add(0)>Add Reference</button>";
 	document.getElementById("xsltDiv").innerHTML = value;
 	var edit = document.getElementById("edit");
 	

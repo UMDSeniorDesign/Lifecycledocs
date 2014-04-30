@@ -20,6 +20,16 @@ function add(ID, aORb, type, index){
 		var xml = loadXML(sessvars.xml);
 		var newIndex = index;
 		var added = 0;
+		if(ID == 0){
+			var div = document.getElementById("section");
+			var divHTML = div.innerHTML
+			var start = divHTML.search("<U>");
+			var divSub = divHTML.substring(start+3);
+			var idEnd = divSub.search(" - ");
+			var divID = divSub.substring(-1, idEnd);
+			alert(divID);
+			showMenu(divID, 3);
+		}
 		var sections = xml.getElementsByTagName("Section");
 		for(var i = 0; i < sections.length; i++){
 			if(type == 0 || type == 1 || type == 3){//If add Section or Requirement or Para

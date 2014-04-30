@@ -162,6 +162,9 @@
 	
 	<xsl:template match="Section" mode="para">
 		<xsl:if test="@isNewest = 'true'">
+			<xsl:variable name="vID">
+				<xsl:value-of select="@id"/>
+			</xsl:variable>
 			<div id="section">
 				<div id="{@id}" style="display: none;">
 					<div id="edit">
@@ -174,6 +177,11 @@
 			</div>
 			<div id="refs">
 				<xsl:apply-templates select="Ref"/>
+				<div id ="{$vID}options" style="display: none;">
+					<button onclick="add('{@id}', '0', '2')">Add Reference To: </button>
+					<select id="{$vID}References">
+					</select>
+				</div>
 			</div>
 		</xsl:if>
 		<xsl:apply-templates select="Section" mode="para"/>
@@ -249,12 +257,6 @@
 				<div id="{$vID}Menu" style="display: none;">
 					<button onclick="remove('{$vID}', '{$vfromID}', '2')">Remove this Reference</button>
 					<br/>
-					<button onclick="add('{$vID}', '{$vfromID}', '2')">Add Reference To: </button>
-						<select id="{$vID}References" onmouseover="addEditValues('{$vID}', '1', '{$vfromID}')">
-								<option value="-1" selected="selected">
-									<xsl:value-of select="$vID"/> - <xsl:value-of select="$vTitle"/>
-								</option>
-						</select>
 					<button onclick="hideMenu('{$vID}')">Cancel</button>
 				</div>
 			</div>

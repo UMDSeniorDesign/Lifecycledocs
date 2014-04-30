@@ -12,6 +12,11 @@ function showMenu(ID, type, paraCount) {
 			var rightClickMenu = document.getElementById(ID+"Menu");
 			rightClickMenu.style.display = 'block';
 		}
+		else if(type == 3){
+			var refOptions = document.getElementById(ID+"options");
+			refOptions.style.display = 'block';
+			addEditValues(ID, 1);
+		}
 	}
 	else{
 		alert("Please open in Lifecycle Document Editor to enable this functionality");
