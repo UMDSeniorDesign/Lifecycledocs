@@ -180,11 +180,11 @@
 				<xsl:value-of select="."/></textarea>
 				<br/>
 				<div id="{$vID}ParaMenu{$vCount}" style="display: none;">
-					<button onclick="addPara('{$vID}', '0', '{$vCount}')">Add Para Above</button>
+					<button onclick="add('{$vID}', '0', '3', '{$vCount}')">Add Para Above</button>
 					<br/>
-					<button onclick="addPara('{$vID}', '1', '{$vCount}')">Add Para Below</button>
+					<button onclick="add('{$vID}', '1', '3', '{$vCount}')">Add Para Below</button>
 					<br/>
-					<button onclick="removePara('{$vID}', '{$vCount}')">Remove Para</button>
+					<button onclick="remove('{$vID}', '{$vCount}', '3')">Remove Para</button>
 					<br/>
 					<button onclick="hideMenu('{$vID}', '1', '{$vCount}')">Cancel</button>
 				</div>
@@ -233,7 +233,7 @@
 					<xsl:value-of select="$vPara"/>
 				</div>
 				<div id="{$vID}Menu" style="display: none;">
-					<button onclick="removeRef('{$vID}', '{$vfromID}')">Remove this Reference</button>
+					<button onclick="remove('{$vID}', '{$vfromID}', '2')">Remove this Reference</button>
 					<br/>
 					<button onclick="addReference('{$vID}', '{$vfromID}')">Add Reference To: </button>
 						<select id="{$vID}References" onmouseover="addEditValues('{$vID}', '1', '{$vfromID}')">
