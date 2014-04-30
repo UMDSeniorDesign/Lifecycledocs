@@ -6,6 +6,12 @@
                 <script>
                     function showSection(ID, title){
 						var para = document.getElementById(ID).innerHTML;
+						var textareas = document.getElementsByTagName("textarea");
+						<!--
+						for(var i = 0; i &lt; textareas.length;i++) {
+						textareas[i].row = (parseInt(this.value.length/this.cols)+2||1);
+						}
+						-->
 						var subReqs = document.getElementById("sub"+ID).innerHTML;
 						var subReqSpot = document.getElementById("sub"+ID);
 						var subReqStyle = subReqSpot.style.display;
@@ -42,6 +48,7 @@
                     float: left;
                     width: 40%;
                     font-size: 12pt;
+                    height: 100%;
                     }
                     #view {
                     float: right;
@@ -183,7 +190,8 @@
 				<xsl:value-of select="@index"/>
 			</xsl:variable>
 			<div id="Para">
-				<textarea id="{$vID}Para{$vIndex}" cols="50" style='overflow-y:hidden;' onfocus='this.rows = (parseInt(this.value.length/this.cols)+2||1)' onkeyup='this.rows = (parseInt(this.value.length/this.cols)+2||1);' oncontextmenu="showMenu('{$vID}', '2', '{$vIndex}');return false;">
+				
+				<textarea id="{$vID}Para{$vIndex}" cols="50" style='overflow-y:hidden;' onfocus='this.rows = (parseInt(this.value.length/this.cols)+2||1)' onkeyup='this.rows = (parseInt(this.value.length/this.cols)+2||1);' oncontextmenu="showMenu('{$vID}', '2', '{$vIndex}');return false;" readonly="readonly">
 				<xsl:value-of select="."/></textarea>
 				<br/>
 				<div id="{$vID}ParaMenu{$vIndex}" style="display: none;">
