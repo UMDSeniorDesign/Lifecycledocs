@@ -1,15 +1,33 @@
 /////***START GETTABS FUNCTION***///
 function getTabs() {
+	var table = "<table border='2' border-style='groove' border-color='black'>";
+	var endtable="</table>";
+	var tr = "<tr>";
+	var td = "<td>";
+	var etr = "</tr>";
+	var etd = "</td>";
+	var tableString = "";
 	var project = loadProject(sessvars.projectName);
 	var filesToLoad = project.getElementsByTagName("file_location");
 	var div = document.getElementById("head1");
+	
+	tableString += table;
+	tableString +=tr;
 	for(var i = 0; i < filesToLoad.length; i++) {
 		var filename = filesToLoad[i].childNodes[0].getAttribute("href");
 		if(i == 0){
 			sessvars.first = filename;
 		}
-		div.innerHTML += ("<button onclick=loadXSLT(0,0,'"+filename+"')>"+filename+"</button>");
+		
+		tableString += td;
+		tableString += ("<button onclick=loadXSLT(0,0,'"+filename+"')>"+filename+"</button>");
+		tableString += etd;
+		
+		
 	}
+	tableString +=etr;
+	tableString += endtable;
+	div.innerHTML += tableString;
 }
 /////***START LOADXSLT FUNCTION***///
 function loadXSLT(withTabs, withCurrent, xmlToLoad){
