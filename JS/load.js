@@ -103,3 +103,11 @@ function loadProject(file_name) {
 	project.load("../Projects/" + file_name);
 	return project;
 }
+/////***START LOADRTM FUNCTION***///
+function loadRTM(){
+	var rtmLocation = document.getElementById("RTM");
+	var xml = loadXML("NotionalSRS.xml");
+	var xsl = loadXML("RTM.xsl");
+	var rtm = xml.transformNode(xsl);
+	rtmLocation.innerHTML = rtm;
+}
