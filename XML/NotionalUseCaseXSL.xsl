@@ -172,21 +172,21 @@
 			<xsl:variable name="vID">
 				<xsl:value-of select="../@id"/>
 			</xsl:variable>
-			<xsl:variable name="vCount">
-				<xsl:value-of select="@count"/>
+			<xsl:variable name="vIndex">
+				<xsl:value-of select="@index"/>
 			</xsl:variable>
 			<div id="Para">
-				<textarea id="{$vID}Para{$vCount}" cols="50" style='overflow-y:hidden;' onfocus='this.rows = (parseInt(this.value.length/this.cols)+2||1)' onkeyup='this.rows = (parseInt(this.value.length/this.cols)+2||1);' oncontextmenu="showMenu('{$vID}', '2', '{$vCount}');return false;">
+				<textarea id="{$vID}Para{$vIndex}" cols="50" style='overflow-y:hidden;' onfocus='this.rows = (parseInt(this.value.length/this.cols)+2||1)' onkeyup='this.rows = (parseInt(this.value.length/this.cols)+2||1);' oncontextmenu="showMenu('{$vID}', '2', '{$vIndex}');return false;">
 				<xsl:value-of select="."/></textarea>
 				<br/>
-				<div id="{$vID}ParaMenu{$vCount}" style="display: none;">
-					<button onclick="add('{$vID}', '0', '3', '{$vCount}')">Add Para Above</button>
+				<div id="{$vID}ParaMenu{$vIndex}" style="display: none;">
+					<button onclick="add('{$vID}', '0', '3', '{$vIndex}')">Add Para Above</button>
 					<br/>
-					<button onclick="add('{$vID}', '1', '3', '{$vCount}')">Add Para Below</button>
+					<button onclick="add('{$vID}', '1', '3', '{$vIndex}')">Add Para Below</button>
 					<br/>
-					<button onclick="remove('{$vID}', '{$vCount}', '3')">Remove Para</button>
+					<button onclick="remove('{$vID}', '{$vIndex}', '3')">Remove Para</button>
 					<br/>
-					<button onclick="hideMenu('{$vID}', '1', '{$vCount}')">Cancel</button>
+					<button onclick="hideMenu('{$vID}', '1', '{$vIndex}')">Cancel</button>
 				</div>
 				<br/>
 			</div>

@@ -44,7 +44,7 @@ function saveParas(xml){
 					editedText=xml.createTextNode(editedCheck);
 					editedPara.appendChild(editedText);
 					editedPara.setAttribute("isNewest","true");
-					editedPara.setAttribute("count", k);
+					editedPara.setAttribute("index", k);
 					sections[i].appendChild(editedPara);
 					return saveFile(xml, "File Saved!");
 				}

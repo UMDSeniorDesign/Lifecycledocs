@@ -36,19 +36,19 @@ function add(ID, aORb, type, index){
 						var paras = sections[i].childNodes;
 						for(var j = 0; j < paras.length; j++){
 							if(paras[j].nodeName == "Para"){
-								if(index == paras[j].getAttribute("count")){
+								if(index == paras[j].getAttribute("index")){
 									if(paras[j].getAttribute("isNewest") == "false")
 										continue;
 									var newNode = paras[j].cloneNode(true);
-									newNode.setAttribute("count", newIndex);
+									newNode.setAttribute("index", newIndex);
 									newNode.childNodes[0].nodeValue = "New Para";
 									if(aORb == 0){//If Add Above
-										paras[j].setAttribute("count", ++newIndex);
+										paras[j].setAttribute("index", ++newIndex);
 										sections[i].insertBefore(newNode, paras[j]);
 										j++;
 									}
 									else if(aORb == 1){//If Add Below
-										newNode.setAttribute("count", ++newIndex);
+										newNode.setAttribute("index", ++newIndex);
 										var nextSibling = paras[j].nextSibling;
 										j++;
 										if(nextSibling == null)
@@ -60,7 +60,7 @@ function add(ID, aORb, type, index){
 									continue;
 								}
 								if(added == 1)
-									paras[j].setAttribute("count", ++newIndex);
+									paras[j].setAttribute("index", ++newIndex);
 							}
 						}
 						if(added == 1)
@@ -127,19 +127,19 @@ function add(ID, aORb, type, index){
 						var paras = reqs[i].childNodes;
 						for(var j = 0; j < paras.length; j++){
 							if(paras[j].nodeName == "Para"){
-								if(index == paras[j].getAttribute("count")){
+								if(index == paras[j].getAttribute("index")){
 									if(paras[j].getAttribute("isNewest") == "false")
 										continue;
 									var newNode = paras[j].cloneNode(true);
-									newNode.setAttribute("count", newIndex);
+									newNode.setAttribute("index", newIndex);
 									newNode.childNodes[0].nodeValue = "New Para";
 									if(aORb == 0){//If Add Above
-										paras[j].setAttribute("count", ++newIndex);
+										paras[j].setAttribute("index", ++newIndex);
 										reqs[i].insertBefore(newNode, paras[j]);
 										j++;
 									}
 									else if(aORb == 1){//If Add Below
-										newNode.setAttribute("count", ++newIndex);
+										newNode.setAttribute("index", ++newIndex);
 										var nextSibling = paras[j].nextSibling;
 										j++;
 										if(nextSibling == null)
@@ -150,7 +150,7 @@ function add(ID, aORb, type, index){
 									added = 1;
 								}
 								if(added == 1)
-									paras[j].setAttribute("count", ++newIndex);
+									paras[j].setAttribute("index", ++newIndex);
 							}
 						}
 						if(added == 1)
@@ -235,7 +235,7 @@ function remove(ID, fromID, type){
 					var paras = sections[i].childNodes;
 					for(var j = 0; j < paras.length; j++){
 						if(paras[j].nodeName == "Para"){
-							if(fromID == paras[j].getAttribute("count")){
+							if(fromID == paras[j].getAttribute("index")){
 								if(paras[j].getAttribute("isNewest") == "false")
 									continue;
 								paras[j].setAttribute("isNewest", "false");
@@ -266,7 +266,7 @@ function remove(ID, fromID, type){
 					var paras = reqs[i].childNodes;
 					for(var j = 0; j < paras.length; j++){
 						if(paras[j].nodeName == "Para"){
-							if(fromID == paras[j].getAttribute("count")){
+							if(fromID == paras[j].getAttribute("index")){
 								paras[j].setAttribute("isNewest", "false");
 								return saveFile(xml, "Para Removed");
 							}
