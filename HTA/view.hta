@@ -17,6 +17,11 @@
 	    <style type="text/css">
 		    #xsltDiv { 
 			}
+			
+			#rightSide {
+			align: right;
+			bottom: 0px;
+			}
 	    </style>
 		<script src="../JS/sessionvars.js"></script>
 		<script src="../JS/contextMenu.js"></script>
@@ -29,8 +34,22 @@
 		<div id="wrapper">
 			<body background="ProjectImages/bg1.jpg">
 		    <div id="head1">
-		        <button onclick=location.href='RTM.hta'>Create Matrix</button>
-				<button onclick=downloadAsHTML()>Download as HTML</button>
+			<table align="right" cellpadding="0px">
+			<tr>
+			<td>
+			<center>
+		        <button style="width:200px;" onclick=location.href='RTM.hta'>Create Matrix</button>
+				</center>
+				</td>
+				</tr>
+				
+				
+				<tr>
+				<td>
+				<button style="width:200px" onclick=downloadAsHTML()>Download as HTML</button>
+				</td>
+				</tr>
+				</table>
 		    </div>
 			<div id="xsltDiv">
 			    <h1>Preview</h1>
