@@ -32,22 +32,81 @@
 		</script>
 		
 		<script>
-			function changeBase(projectName) {
+			function saveFiletoProject(xml, file){
+				var fso = new ActiveXObject("Scripting.FileSystemObject");
+				//If windows 7, use this line
+				//var f = fs.GetFolder("../XML");
+				//If windows 8, use this line
+				var f = fso.GetFolder("\Projects");
+				var a = fso.CreateTextFile(f+"\\"+xml, true);
+				//alert(xml);
+				a.WriteLine(file.xml);
+				a.Close();
+				
+			}
+			function saveFiletoXML(xml, file){
+				var fso = new ActiveXObject("Scripting.FileSystemObject");
+				//If windows 7, use this line
+				//var f = fs.GetFolder("../XML");
+				//If windows 8, use this line
+				var f = fso.GetFolder("\XML");
+				var a = fso.CreateTextFile(f+"\\"+xml, true);
+				//alert(xml);
+				a.WriteLine(file.xml);
+				a.Close();
+				
+			}
+			function save(projectName) {
+				var f = new ActiveXObject("Scripting.FileSystemObject");
+				var project = projectName+".xml";
+				var file = loadProject(project);
+	
+				for(var j = 0; file.getElementsByTagName("file_location").length > j; j++) {
+					var attr = file.getElementsByTagName("file_location")[j].childNodes[0].getAttribute("href");
+					//file.getElementsByTagName("file_location")[j].childNodes[0].setAttribute
+					var newFile = document.getElementById(j).value;
+					//alert(attr + " " +  getName(j));
+					
+					var xmlFile = loadXML(attr);
+					var doc = xmlFile.documentElement;
+					
+					doc.setAttribute("xml:base",project);
+					
+					//alert(attr);
+					//saveFile(attr, getName(j));
+					file.getElementsByTagName("file_location")[j].childNodes[0].setAttribute("href", getName(j)+".xml");
+					//alert(file.xml);
+					f.CopyFile("../Lifecycledocs/XML/"+attr, "../Lifecycledocs/XML/"+getName(j)+".xml", 1);
+					//alert(getName(j) + " " + doc.xml);
+					saveFiletoXML(getName(j), doc);
+				}
+				//alert(doc.xml);
+				saveFiletoProject(project, file);
+				
+			}
+			
+			function getName(j) {																		// Gets names of files to saveAs
+				return document.getElementById(j).value;
+			}
+			
+			function load(projectName) {
 				var project = projectName+".xml";
 				var file = loadProject(project);
 				
+				//document.getElementById("new").innerHTML = "";
 				for(var j = 0; file.getElementsByTagName("file_location").length > j; j++) {
 					var attr = file.getElementsByTagName("file_location")[j].childNodes[0].getAttribute("href");
-					var xmlFile = loadXML(attr);
-				
-					var doc = xmlFile.documentElement;
-					var xmlattr = doc.setAttribute("xml:base",project);
-					//alert(xmlFile.xml);
-				}				
+					
+					document.getElementById("new").innerHTML += attr + ": <input type='text' id=" + j + ">";	
+				}								
+			}
+			
+			function setProject() {
+				document.getElementById("new").style.visibility="visible";
 			}
 			
 			function createProject() {
-				var projectName = prompt("New Project Name: ", "");
+				var projectName = document.getElementById("projectName").value;
 				
 				if(projectName.substr(projectName.length - 4) == ".xml") {
 						projectName = projectName.substring(0, projectName.length - 4);
@@ -77,15 +136,21 @@
 				
 				//Windows 8 function
 				fso.CopyFile("../Lifecycledocs/Projects/template.xml", "../Lifecycledocs/Projects/"+projectName+".xml", 1);
-				
+								
 				//Windows 7 function
 				//fso.CopyFile("../Projects/template.xml", "../Projects/"+projectName+".xml", 1);
 				
-				changeBase(projectName);
-				
+				load(projectName);
+
 				sessvars.projectName = projectName+".xml";
-				document.location.href = 'view.hta';
 				
+			}
+			
+			function continueOn() {
+				var projectName = document.getElementById("projectName").value;
+
+				save(projectName);
+				document.location.href = 'view.hta';
 			}
 		</script>
 		
@@ -172,7 +237,6 @@
             txt+="<Role>"+newR+"</Role>";
 			txt+="</TeamMember>";*/
 			
-			
 			var parser = new DOMParser();
 			
 		}
@@ -185,24 +249,30 @@
         <div id="wrapper">
             <div id ="head">
                 <div id="siteControl">
-                    <button id="create" onclick=createProject()>New Project</button>
+                    <button id="create" onclick=setProject()>New Project</button>
                     <button id="open" onclick=openProject()>Open Project</button>
 					<input id="browse" type="file" onchange="getProjectInfo(0, '')">
                 </div>
             </div>
+			<button onclick=continueOn()>></button>
         </div>
 		<div id="splash">
             <div id ="logo">
                 <div id="images">
 					<br/><br/>
 					<h1>Welcome to the Lifecycle Documentation Development System!</h1>
-					<a href="http://www.navsea.navy.mil/nuwc/default.aspx" target="_blank">
+					<a id="pic" href="http://www.navsea.navy.mil/nuwc/default.aspx" target="_blank">
                     <img src="ProjectImages/nuwc_logo.jpg" alt="nuwc_logo" width="400" height="400"></a>
 					<br/><br/>
 					<body background="ProjectImages/water_texture2375.jpg">
 				</div>
             </div>
+			<div id="new" style="visibility: hidden; float: left; width: 250px; position: absolute">
+				Project Name: <input type="text" id="projectName" > <br/>			
+				<button onclick="createProject()">Create Project</button>
+			</div>
         </div>
+		
 	</center>
     </body>
 </html>
