@@ -14,12 +14,15 @@
 		<Title isNewest="true">Purpose</Title>
 		<Para isNewest="true" index="0"> To provide a detailed description of how the product will produce it’s lifecycle documents as well as edit and export them. It also overviews the basic functional requirements requested by the customer.
 		</Para>
+		<Image>/Images/home1.jpg</Image>
 	</Section>
 		
 	<Section isNewest="true" id="RQ1.2">	
 		<Title isNewest="true">Scope</Title>
+		<Image>/Images/Manta_002.jpg</Image>
 		<Para isNewest="true" index="0">The Lifecycle Project Manager will create and edit projects and lifecycle documents. It will serve as a cheap but easy to use software that allows users to input their own data and organize based on an XML schema. The product will export the lifecycle documents as PDF and HTML, as well as print out a requirements traceability matrix.
 		</Para>
+		
 	</Section>
 	<Section isNewest="true" id="RQ1.3">
 		<Title isNewest="true">Definitions </Title>
@@ -41,6 +44,7 @@
 		<Title isNewest="true">Overview</Title>
 		<Para isNewest="true" index="0">The SRS contains explicit details describing how the product is designed and implemented. It is organized in a top-down layered approach. The goal of this project is to create a protoype application capable of allowing a user to productively manage lifecycle documentation in XML without an previous XML experience. 
 		</Para>
+		<Image>/Images/pic1.jpg</Image>
 	</Section>
 	</Section>
  <!--SECTION 2-->
@@ -64,6 +68,7 @@
   	<Title isNewest="true">User Characteristics</Title>
       <Para isNewest="true" index="0">This product is intended to be used by a non-technical user who may have no knowledge of the XML language. There will be no user groups, or administrator authentications. The user will be assumed to have access once the user is able to log into the computer where the software is stored.
       </Para>
+  		<Image>/Images/cat.jpg</Image>
   	</Section>
   	<Section isNewest="true" id="RQ2.4">
   	<Title isNewest="true">General Constraints</Title>

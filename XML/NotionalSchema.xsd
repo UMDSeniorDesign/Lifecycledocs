@@ -139,8 +139,14 @@
     </xsd:complexType>
     <xsd:element name="Image" type="ImageType"/>
     <xsd:complexType name="ImageType">
-        <xsd:attribute name="id" type="xsd:ID"/>
-        <xsd:attribute name="isNewest" type="xsd:boolean"/>
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="isNewest" type="xsd:boolean"/>
+                <xsd:attribute name="id" type="xsd:ID"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+        
+        
     </xsd:complexType>
 
     <xsd:element name="ApprovedBy" type="ApprovedByType"/>
