@@ -97,12 +97,13 @@
 				for(var j = 0; file.getElementsByTagName("file_location").length > j; j++) {
 					var attr = file.getElementsByTagName("file_location")[j].childNodes[0].getAttribute("href");
 					
-					document.getElementById("new").innerHTML += attr + ": <input type='text' id=" + j + ">";	
+					document.getElementById("new").innerHTML += attr + ": <input type='text' style='width: 200px' id=" + j + "> <br /><br />";	
 				}								
 			}
 			
 			function setProject() {
 				document.getElementById("new").style.visibility="visible";
+				document.getElementById("images").style.visibility="hidden";
 			}
 			
 			function createProject() {
@@ -196,7 +197,7 @@
 			
 			var fs = new ActiveXObject("Scripting.FileSystemObject");
 			//If windows 7, use this line
-			var f = fs.GetFolder("../Projects");
+			//var f = fs.GetFolder("../Projects");
 			//If windows 8, use this line
 			var f = fs.GetFolder("\Projects");
 			//var f = fs.GetFolder("\Projects");
@@ -267,9 +268,9 @@
 					<body background="ProjectImages/water_texture2375.jpg">
 				</div>
             </div>
-			<div id="new" style="visibility: hidden; float: left; width: 250px; position: absolute">
-				Project Name: <input type="text" id="projectName" > <br/>			
-				<button onclick="createProject()">Create Project</button>
+			<div id="new" style="visibility: hidden; float: left; width: 900px; position: absolute; top: 100px; left: 200px">
+				<p style="font-size:30px">Project Name:</p><input autofocus style="width: 300px" type="text" id="projectName" > <br/> 			
+				<button onclick="createProject()">Create Project</button> <br/><br/>
 			</div>
         </div>
 		
