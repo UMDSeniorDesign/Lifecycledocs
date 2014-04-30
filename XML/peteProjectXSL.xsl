@@ -9,18 +9,48 @@
     
     <xsl:template match="ProjectLifecycleDocuments">
         <xsl:variable name="fileCount" select="count(file_location)"/>
+        
         <html>
             <head>
                 <title>Team Member List</title>
-                <table border="3">
+                <br/><br/>
+                <table border="3" bgcolor="white">
                     <tbody>
+                        <tr>
+                            <td rowspan="{number($fileCount) + 1}" colspan="2" align="center">
+                                <b>
+                                    <font size="5">
+                                        <xsl:value-of select="ancestor-or-self::*/@projectName"/>
+                                    </font>
+                                </b>
+                            </td>
+                            <td>
+                                <b><u>
+                                    <xsl:text>File count:&#160;</xsl:text>
+                                    <xsl:value-of select="$fileCount"/>
+                                </u></b>
+                            </td>
+                        </tr>
+                        <xsl:for-each select="file_location">
+                            <tr>
+                                <td>
+                                    <xsl:value-of select="*/@href"/>
+                                </td>
+                            </tr>
+                        </xsl:for-each>
+                        <tr>
+                            <td></td><td></td>
+                        </tr>
+                        <tr>
+                            <td></td><td></td>
+                        </tr>
                         <tr style="height:25px">
-                            <th style="width:100px">Name</th>
+                            <th style="width:100px">Member</th>
                             <th style="width:100px">Role</th>
                             <th style="width:100px">Remove</th>
                         </tr>
                         <xsl:for-each select="Team/TeamMember[@isNewest='true']">
-                            <tr style="height:100px">
+                            <tr style="height:50px">
                                 <td>
                                     <xsl:choose>
                                         <xsl:when test="count(Name[@isNewest='true']) = 0">
@@ -30,6 +60,9 @@
                                         </xsl:when>
                                         <xsl:otherwise>
                                             <xsl:value-of select="Name[@isNewest='true']"/>
+                                            <xsl:text>&#160;&#160;</xsl:text>
+                                            <br/>
+                                            <xsl:value-of select="UIC[@isNewest = 'true']"/>
                                         </xsl:otherwise>
                                     </xsl:choose>
                                 </td>
@@ -51,27 +84,6 @@
 								    </xsl:variable>
 									<button type="button" onclick="removeMember('{$memberName}')">Remove Member</button>
 								</td>
-                            </tr>
-                        </xsl:for-each>
-                        <tr>
-                            <td></td><td></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <xsl:text>File count:</xsl:text>
-                            </td>
-                            <td>
-                                <xsl:value-of select="$fileCount"/>
-                            </td>
-                        </tr>
-                        <xsl:for-each select="file_location">
-                            <tr>
-                                <td>
-                                    <xsl:value-of select="*/@href"/>
-                                </td>
-                                <td>
-                                    
-                                </td>
                             </tr>
                         </xsl:for-each>
                     </tbody>
