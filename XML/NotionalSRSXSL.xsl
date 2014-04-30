@@ -41,7 +41,6 @@
                     #toc {
                     float: left;
                     width: 40%;
-                    
                     font-size: 12pt;
                     }
                     #view {
@@ -68,16 +67,12 @@
         </html>
     </xsl:template>
 
+
     <xsl:template match="Section" mode="section">
 		<xsl:if test="@isNewest = 'true'">
-			<br/>
-			<xsl:variable name="vID">
-				<xsl:value-of select="@id"/>
-			</xsl:variable>
-			<xsl:variable name="vTitle">
-				<xsl:value-of select="Title"/>
-			</xsl:variable>
-            
+			<xsl:variable name="vID" select="@id"/>
+			<xsl:variable name="vTitle" select="Title"/>
+			
 			<button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="showMenu('{$vID}', '0');return false;">
 			<xsl:value-of select="$vID"/></button> - <xsl:value-of select="$vTitle"/>
             <div id="{@id}Menu" style="display: none;">
@@ -96,41 +91,44 @@
 				<xsl:apply-templates select="Section" mode="section"/>
 				<xsl:apply-templates select="Requirement" mode="section"/>
 			</div>
+			<xsl:if test="position() != last()">
+				<br/>
+			</xsl:if>
 		</xsl:if>
     </xsl:template>
 	
+	
 	<xsl:template match="Requirement" mode="section">
 		<xsl:if test="@isNewest = 'true'">
-			<br/>
-			<xsl:variable name="vID">
-				<xsl:value-of select="@id"/>
-			</xsl:variable>
-			<xsl:variable name="vTitle">
-				<xsl:value-of select="Title"/>
-			</xsl:variable>
-            
+			<xsl:variable name="vID" select="@id"/>
+			<xsl:variable name="vTitle" select="Title"/>
+			
 			<li>
-            <button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="showMenu('{$vID}', '0');return false;">
-			<xsl:value-of select="$vID"/></button> - <xsl:value-of select="$vTitle"/>
-            <div id="{@id}Menu" style="display: none;">
-                <button onclick="add('{$vID}', '0', '0')">Add Section Above</button><button onclick="add('{$vID}', '0', '1')">Add Requirement Above</button>
-                <br/>
-                <button onclick="add('{$vID}', '1', '0')">Add Section Below</button><button onclick="add('{$vID}', '1', '1')">Add Requirement Below</button>
-                <br/>
-				<button onclick="add('{$vID}', '3', '0')">Add subSection</button><button onclick="add('{$vID}', '3', '1')">Add subRequirement</button>
-                <br/>
-				<button onclick="changeTitle('{$vID}')">Change Title to: </button>
-				<textarea id="{@id}Title" rows="1"><xsl:value-of select="$vTitle"/></textarea>
-				<br/>
-                <button onclick="hideMenu('{$vID}')">Cancel</button>
-            </div>
+	            <button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="showMenu('{$vID}', '0');return false;">
+				<xsl:value-of select="$vID"/></button> - <xsl:value-of select="$vTitle"/>
+	            <div id="{@id}Menu" style="display: none;">
+	                <button onclick="add('{$vID}', '0', '0')">Add Section Above</button><button onclick="add('{$vID}', '0', '1')">Add Requirement Above</button>
+	                <br/>
+	                <button onclick="add('{$vID}', '1', '0')">Add Section Below</button><button onclick="add('{$vID}', '1', '1')">Add Requirement Below</button>
+	                <br/>
+					<button onclick="add('{$vID}', '3', '0')">Add subSection</button><button onclick="add('{$vID}', '3', '1')">Add subRequirement</button>
+	                <br/>
+					<button onclick="changeTitle('{$vID}')">Change Title to: </button>
+					<textarea id="{@id}Title" rows="1"><xsl:value-of select="$vTitle"/></textarea>
+					<br/>
+	                <button onclick="hideMenu('{$vID}')">Cancel</button>
+	            </div>
 			</li>
 			<div id="sub{@id}" style="display: none;">
 				<xsl:apply-templates select="Section" mode="section"/>
 				<xsl:apply-templates select="Requirement" mode="section"/>
 			</div>
+			<xsl:if test="position() != last()">
+				<br/>
+			</xsl:if>
 		</xsl:if>
     </xsl:template>
+	
 	
     <xsl:template match="Requirement" mode="para">
 		<xsl:if test="@isNewest = 'true'">
@@ -138,15 +136,18 @@
 				<div id="{@id}" style="display: none;">
 					<div id="edit">
 						<xsl:apply-templates select="Para"/>
-						<br/>
+						<xsl:if test="position() != last()">
+							<br/>
+						</xsl:if>
 					</div>
 					<div id="refs">
 					<xsl:apply-templates select="Ref"/>
-					<br/>
+						<xsl:if test="position() != last()">
+							<br/>
+						</xsl:if>
 					</div>
 				</div>
 			</div>
-			
 		</xsl:if>
         <xsl:apply-templates select="Section" mode="para"/>
         <xsl:apply-templates select="Requirement" mode="para"/>
@@ -158,31 +159,32 @@
 				<div id="{@id}" style="display: none;">
 					<div id="edit">
 						<xsl:apply-templates select="Para"/>
-						<br/>
+						<xsl:if test="position() != last()">
+							<br/>
+						</xsl:if>
 					</div>
 				</div>
 			</div>
 			<div id="refs">
 				<xsl:apply-templates select="Ref"/>
-				<br/>
+				<xsl:if test="position() != last()">
+					<br/>
+				</xsl:if>
 			</div>
 		</xsl:if>
 		<xsl:apply-templates select="Section" mode="para"/>
         <xsl:apply-templates select="Requirement" mode="para"/>
     </xsl:template>
-	
+
+
 	<xsl:template match="Para">
 		<xsl:if test="@isNewest = 'true'">
-			<xsl:variable name="vID">
-				<xsl:value-of select="../@id"/>
-			</xsl:variable>
-			<xsl:variable name="vCount">
-				<xsl:value-of select="@count"/>
-			</xsl:variable>
+			<xsl:variable name="vID" select="../@id"/>
+			<xsl:variable name="vCount" select="@count"/>
+			
 			<div id="Para">
 				<textarea id="{$vID}Para{$vCount}" cols="50" style='overflow-y:hidden;' onfocus='this.rows = (parseInt(this.value.length/this.cols)+2||1)' onkeyup='this.rows = (parseInt(this.value.length/this.cols)+2||1);' oncontextmenu="showMenu('{$vID}', '2', '{$vCount}');return false;">
 				<xsl:value-of select="."/></textarea>
-				<br/>
 				<div id="{$vID}ParaMenu{$vCount}" style="display: none;">
 					<button onclick="add('{$vID}', '0', '3', '{$vCount}')">Add Para Above</button>
 					<br/>
@@ -192,19 +194,15 @@
 					<br/>
 					<button onclick="hideMenu('{$vID}', '1', '{$vCount}')">Cancel</button>
 				</div>
-				<br/>
 			</div>
 		</xsl:if>
     </xsl:template>
 	
+	
 	<xsl:template match="Ref">
 		<xsl:if test="@isNewest = 'true'">
-			<xsl:variable name="vID">
-				<xsl:value-of select="."/>
-			</xsl:variable>
-			<xsl:variable name="vfromID">
-				<xsl:value-of select="../@id"/>
-			</xsl:variable>
+			<xsl:variable name="vID" select="."/>
+			<xsl:variable name="vfromID" select="../@id"/>
 			<xsl:variable name="vDocumentBase" select="/*/@xml:base"/>
 			<xsl:variable name="vDocumentPath" select="string(concat('..//Projects//',$vDocumentBase))"/>
 			<xsl:variable name="vDocumentProj" select="document($vDocumentPath)"/>
@@ -214,7 +212,9 @@
 					<xsl:variable name="vDocumentNewPath" select="string(concat('..//XML//',$vLocations))"/>
 					<xsl:for-each select="document($vDocumentNewPath)/descendant-or-self::*/*[@id=$vID]">
 						<xsl:value-of select="Title"/>
-						<br/>
+						<xsl:if test="position() != last()">
+							<br/>
+						</xsl:if>
 					</xsl:for-each>
 				</xsl:for-each>
 			</xsl:variable>
@@ -245,12 +245,13 @@
 									<xsl:value-of select="$vID"/> - <xsl:value-of select="$vTitle"/>
 								</option>
 						</select>
-					<br/>
 					<button onclick="hideMenu('{$vID}')">Cancel</button>
 				</div>
 			</div>
 			<xsl:apply-templates select="Ref" mode="para"/>
-			<br/>
+			<xsl:if test="position() != last()">
+				<br/>
+			</xsl:if>
 		</xsl:if>
 	</xsl:template>
 </xsl:stylesheet>
