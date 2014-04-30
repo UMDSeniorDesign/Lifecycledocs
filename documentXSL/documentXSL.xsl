@@ -29,10 +29,10 @@
                     <xsl:for-each select="$base/descendant-or-self::TeamMember[@isNewest = 'true']">
                         <tr>
                             <td>
-                                <xsl:value-of select="Name[@isNewest = 'true']"/>
+                                <xsl:value-of select="UIC[@isNewest = 'true']"/>
                             </td>
                             <td>
-                                <xsl:value-of select="UIC[@isNewest = 'true']"/>
+                                <xsl:value-of select="Name[@isNewest = 'true']"/>
                             </td>
                             <td>
                                 <xsl:value-of select="Role[@isNewest = 'true']"/>
@@ -69,6 +69,8 @@
     
     <xsl:template match="Requirement">
         <xsl:param name="sizeOffset"/>
+        <xsl:variable name="myID" select="@id"/>
+        <xsl:variable name="base" select="document(ancestor-or-self::*/@xml:base)"/>
         
         <br/><br/>
         <xsl:if test="$sizeOffset &lt; 6">
@@ -177,6 +179,49 @@
                 </table>
             </div>
         </xsl:if>
+        <br/>
+        <xsl:if test="Ref != ''">
+            <div align="center">
+                <table border="1">
+                    <tbody>
+                        <tr align="left">
+                            <th colspan="3">
+                                <xsl:value-of select="$myID"/>
+                                <xsl:text>&#160;References:&#160;</xsl:text>
+                            </th>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <xsl:for-each select="Ref">
+                            <xsl:variable name="myRef" select="."/>
+                            <tr>
+                                <td align="right">
+                                    <xsl:value-of select="position()"/> -
+                                </td>
+                                <td>
+                                    <xsl:value-of select="$myRef"/>
+                                </td>
+                                <td>
+                                    <xsl:for-each select="$base/descendant-or-self::*/file_location">
+                                        <xsl:variable name="myHREF" select="*/@href"/>
+                                        <xsl:variable name="newDoc" select="document($myHREF)"/>
+                                        <xsl:choose>
+                                            <xsl:when test="$newDoc/descendant-or-self::*[@isNewest = 'true'][@id = $myRef]/Title[@isNewest = 'true'] = ''">
+                                                <xsl:value-of select="$newDoc/descendant-or-self::*[@isNewest = 'true'][@id = $myRef]/Para[@isNewest = 'true']"/>
+                                            </xsl:when>
+                                            <xsl:otherwise>
+                                                <xsl:value-of select="$newDoc/descendant-or-self::*[@isNewest = 'true'][@id = $myRef]/Title[@isNewest = 'true']"/>
+                                            </xsl:otherwise>
+                                        </xsl:choose>
+                                    </xsl:for-each>
+                                </td>
+                            </tr>
+                        </xsl:for-each>
+                    </tbody>
+                </table>
+            </div>
+        </xsl:if>
+        
         <xsl:if test="Requirement[@isNewest = 'true'] != ''">
             <xsl:apply-templates select="Requirement">
                 <xsl:with-param name="sizeOffset" select="($sizeOffset - 1)"/>
@@ -187,13 +232,13 @@
                 <xsl:with-param name="sizeOffset" select="($sizeOffset - 1)"/>
             </xsl:apply-templates>
         </xsl:if>
-        
     </xsl:template>
     
     
     <xsl:template match="Section">
         <xsl:param name="sizeOffset"/>
         <xsl:variable name="myID" select="@id"/>
+        <xsl:variable name="base" select="document(ancestor-or-self::*/@xml:base)"/>
         
         <br/><br/>
         <xsl:if test="$sizeOffset &lt; 6">
@@ -230,6 +275,16 @@
             </xsl:for-each>
         </font>
         </p>
+        <xsl:if test="Ref = ''">
+            <div align="center">
+                <b>
+                    <font color="red" size="4">
+                        <xsl:value-of select="$myID"/>
+                        <xsl:text> - has no references</xsl:text>
+                    </font>
+                </b>
+            </div>
+        </xsl:if>
         <xsl:if test="TestResult != ''">
             <div align="center">
                 <table border="1">
@@ -300,37 +355,48 @@
                 </table>
             </div>
         </xsl:if>
-        <div align="center">
-            <table border="1">
-                <tbody>
-                    <tr>
-                        <th colspan="2">
-                            <xsl:value-of select="$myID"/>
-                            <xsl:text>&#160;References:&#160;</xsl:text>
-                        </th>
-                    </tr>
-                </tbody>
-                <tbody>
-                <xsl:for-each select="Ref">
-                        <xsl:variable name="myRef" select="."/>
-                        <tr>
-                            <td>
-                                <xsl:value-of select="position()"/>
-                            </td>
-                            <td>
-<!-- fix ref here -->               <xsl:value-of select="."/>
-                                <xsl:text>blah</xsl:text>
-                            </td>
+        <br/>
+        <xsl:if test="Ref != ''">
+            <div align="center">
+                <table border="1">
+                    <tbody>
+                        <tr align="left">
+                            <th colspan="3">
+                                <xsl:value-of select="$myID"/>
+                                <xsl:text>&#160;References:&#160;</xsl:text>
+                            </th>
                         </tr>
-                    </xsl:for-each>
-                </tbody>
-            </table>
-        </div>
-            
-        
-        
-        
-        
+                    </tbody>
+                    <tbody>
+                        <xsl:for-each select="Ref">
+                            <xsl:variable name="myRef" select="."/>
+                                <tr>
+                                    <td align="right">
+                                        <xsl:value-of select="position()"/> -
+                                    </td>
+                                    <td>
+                                        <xsl:value-of select="$myRef"/>
+                                    </td>
+                                    <td>
+                                        <xsl:for-each select="$base/descendant-or-self::*/file_location">
+                                            <xsl:variable name="myHREF" select="*/@href"/>
+                                            <xsl:variable name="newDoc" select="document($myHREF)"/>
+                                            <xsl:choose>
+                                                <xsl:when test="$newDoc/descendant-or-self::*[@isNewest = 'true'][@id = $myRef]/Title[@isNewest = 'true'] = ''">
+                                                    <xsl:value-of select="$newDoc/descendant-or-self::*[@isNewest = 'true'][@id = $myRef]/Para[@isNewest = 'true']"/>
+                                                </xsl:when>
+                                                <xsl:otherwise>
+                                                    <xsl:value-of select="$newDoc/descendant-or-self::*[@isNewest = 'true'][@id = $myRef]/Title[@isNewest = 'true']"/>
+                                                </xsl:otherwise>
+                                            </xsl:choose>
+                                        </xsl:for-each>
+                                     </td>
+                                </tr>
+                        </xsl:for-each>
+                    </tbody>
+                </table>
+            </div>
+        </xsl:if>
         <xsl:apply-templates select="Requirement">
             <xsl:with-param name="sizeOffset" select="($sizeOffset - 1)"/>
         </xsl:apply-templates>

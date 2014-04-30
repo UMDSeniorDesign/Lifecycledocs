@@ -21,7 +21,7 @@
                         <th style="width:50px">Testing Completion</th>
                         <th style="width:300px">Test Case Locations</th>
                         <th style="width:100px">Last Result</th>
-                        <th style="width:100px">Tested By</th>
+                        <th style="width:150px">Tested By</th>
                         <th style="width:100px">Date</th>
                         <th style="width:200px">Comment</th>
                     </tr>
@@ -58,7 +58,7 @@
         <xsl:variable name="TCCount" select="count(Ref[substring(.,1,2) = 'TC'][@isNewest='true'])"/>
         <xsl:variable name="TCPass">
             <xsl:for-each select="Ref[substring(.,1,2) = 'TC'][@isNewest='true']">
-                <xsl:variable name="myRef" select="."></xsl:variable>
+                <xsl:variable name="myRef" select="."/>
                 <xsl:choose>
                     <xsl:when test="$vDocumentTC/descendant-or-self::*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult = 'true'">
                         <count>1</count>
@@ -246,7 +246,12 @@
             </xsl:choose>
         </td>
         <td>
-            <xsl:value-of select="$vDocumentTC/descendant-or-self::*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Name"/>
+            <xsl:variable name="xmlBase" select="document(ancestor::*/@xml:base)"/>
+            <xsl:variable name="thisName" select="$vDocumentTC/descendant-or-self::*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest = 'true']/Name"/>
+            
+            <xsl:value-of select="$thisName"/>
+            <br/>
+            <xsl:value-of select="$xmlBase/descendant-or-self::TeamMember[@isNewest = 'true'][Name[@isNewest = 'true'] = $thisName]/UIC[@isNewest = 'true']"/>
         </td>
         <td>
             <xsl:choose>
@@ -261,7 +266,6 @@
                     </font>
                 </xsl:otherwise>
             </xsl:choose>
-            
         </td>
         <td>
             <xsl:value-of select="$vDocumentTC/descendant-or-self::*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Para[@isNewest='true']"/>
