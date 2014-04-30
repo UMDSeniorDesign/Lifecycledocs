@@ -167,9 +167,6 @@
 			</div>
 			<div id="refs">
 				<xsl:apply-templates select="Ref"/>
-				<xsl:if test="position() != last()">
-					<br/>
-				</xsl:if>
 			</div>
 		</xsl:if>
 		<xsl:apply-templates select="Section" mode="para"/>
