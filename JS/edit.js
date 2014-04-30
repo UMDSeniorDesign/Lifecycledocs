@@ -1,19 +1,22 @@
 /////***START TOGGLEEDIT FUNCTION***/////
 function toggleEdit(){
 	var edit = document.getElementById("edit");
+	var tools = document.getElementById("tools");
 	if(sessvars.toggle == "1") {
 		sessvars.toggle = "0";
 		edit.style.border = "none";
+		tools.style.display = "none";
 	}
 	else if(sessvars.toggle == "0") {
 		sessvars.toggle = "1";
 		edit.style.border = "dashed thin";
+		tools.style.display = "block";
 	}
 }
 /////***START ADD FUNCTION***/////
 //Type 	'0' = Section		'aORb' = 0 - Add Section above
 //		'1' = Requirement	'aORb' = 0 - Add Requirement above
-//		'2' = Reference		'aORb' = ID of section you want to add the on
+//		'2' = Reference		
 //		'3' = Para			'aORb' = 0 - add Para above
 function add(ID, aORb, type, index){ 
 	if(sessvars.xml.length > 0){
@@ -109,6 +112,7 @@ function add(ID, aORb, type, index){
 				}				
 			}
 			if(type == 2){
+				var options = document.getElementById(ID+"options");
 				var value = document.getElementById(ID+"References").value;
 				if(ID == sections[i].getAttribute("id")){
 					newRef = xml.createElement("Ref");
@@ -116,6 +120,8 @@ function add(ID, aORb, type, index){
 					newRefText = xml.createTextNode(value);
 					newRef.appendChild(newRefText);
 					sections[i].appendChild(newRef);
+					if(options.style.display == 'block')
+						options.style.display = 'none';
 					return saveFile(xml, "Reference Added");
 				}
 			}

@@ -144,6 +144,9 @@
 	
     <xsl:template match="Requirement" mode="para">
 		<xsl:if test="@isNewest = 'true'">
+		<xsl:variable name="vID">
+			<xsl:value-of select="@id"/>
+		</xsl:variable>
 			<div id="section">
 				<div id="{@id}" style="display: none;">
 					<div id="edit">
@@ -159,6 +162,11 @@
 						</xsl:if>
 					</div>
 				</div>
+			</div>
+			<div id ="{$vID}options" style="display: none;">
+				<button onclick="add('{$vID}', '0', '2')">Add Reference To: </button>
+				<select id="{$vID}References">
+				</select>
 			</div>
 		</xsl:if>
         <xsl:apply-templates select="Section" mode="para"/>
@@ -178,15 +186,18 @@
 							<br/>
 						</xsl:if>
 					</div>
+					<div id="refs">
+					<xsl:apply-templates select="Ref"/>
+						<xsl:if test="position() != last()">
+							<br/>
+						</xsl:if>
+					</div>
 				</div>
 			</div>
-			<div id="refs">
-				<xsl:apply-templates select="Ref"/>
-				<div id ="{$vID}options" style="display: none;">
-					<button onclick="add('{$vID}', '0', '2')">Add Reference To: </button>
-					<select id="{$vID}References">
-					</select>
-				</div>
+			<div id ="{$vID}options" style="display: none;">
+				<button onclick="add('{$vID}', '0', '2')">Add Reference To: </button>
+				<select id="{$vID}References">
+				</select>
 			</div>
 		</xsl:if>
 		<xsl:apply-templates select="Section" mode="para"/>
