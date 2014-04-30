@@ -178,7 +178,7 @@
 			<div id="refs">
 				<xsl:apply-templates select="Ref"/>
 				<div id ="{$vID}options" style="display: none;">
-					<button onclick="add('{@id}', '0', '2')">Add Reference To: </button>
+					<button onclick="add('{$vID}', '0', '2')">Add Reference To: </button>
 					<select id="{$vID}References">
 					</select>
 				</div>

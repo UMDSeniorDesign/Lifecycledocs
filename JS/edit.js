@@ -27,7 +27,6 @@ function add(ID, aORb, type, index){
 			var divSub = divHTML.substring(start+3);
 			var idEnd = divSub.search(" - ");
 			var divID = divSub.substring(-1, idEnd);
-			alert(divID);
 			showMenu(divID, 3);
 		}
 		var sections = xml.getElementsByTagName("Section");
@@ -111,7 +110,7 @@ function add(ID, aORb, type, index){
 			}
 			if(type == 2){
 				var value = document.getElementById(ID+"References").value;
-				if(aORb == sections[i].getAttribute("id")){
+				if(ID == sections[i].getAttribute("id")){
 					newRef = xml.createElement("Ref");
 					newRef.setAttribute("isNewest","true");
 					newRefText = xml.createTextNode(value);
