@@ -1,352 +1,353 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="NotionalUseCaseXSL.xsl"?>
+<?xml-stylesheet type="text/xsl" href="documentXSL.xsl"?>
 
 <UseCaseDocument xml:base="ProjectLifecycleDocuments.xml" projectName="Lifecycle Documents with Requirements Tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="NotionalSchema.xsd">
 
-    <Section isNewest="true" name="Introduction" id="UC1.0">
+    <Section isNewest="true" id="UC1.0">
         <Title isNewest="true">Lifecycle Document Project Manager with Requirements Tracking</Title>
         <Para isNewest="true"> The goal of this project is to create a protoype application capable of allowing a user to productively manage lifecycle documentation in XML without a previous XML experience. </Para>
+    
+        <Section isNewest="true" id="UC1.1">
+            <Title isNewest="true">Use Cases</Title>
+            <Para isNewest="true">this is the use case para</Para>
+            <Requirement isNewest="true" id="UC1.1.1">
+                <Title isNewest="true">Create Lifecycle Document </Title>
+                <Requirement isNewest="true" id="UC1.1.1.1">
+                    <Title isNewest="true"> Brief Description </Title>
+                    <Para isNewest="true"> 	User is presented with the option to create a Lifecycle project, or new document within an existing project. The user only needs to input a name, location, and template selection.</Para> 
+                    <Ref isNewest="true">RQ3.2.1</Ref>
+                    <Ref isNewest="true">TC1.1</Ref>
+                </Requirement>
+                
+                <Requirement isNewest="true" id="UC1.1.1.2"> 
+                    <Title isNewest="true">Preconditions</Title>
+                    <Para isNewest="true">The user has started the program.</Para> 
+                    <Para isNewest="true">A valid template has been selected.</Para> 
+                    <Ref isNewest="true">RQ3.2.1</Ref>
+                    <Ref isNewest="true">TC1.1</Ref>
+                </Requirement>
+                
+                <Requirement isNewest="true" id="UC1.1.1.3">
+                    <Title isNewest="true"> Basic Flow of Events </Title>
+                    <Para isNewest="true">User selects create. </Para> 
+                    <Para isNewest="true">Name, location, and template are input. </Para>
+                    <Para isNewest="true">Templates are copied to the given location using the name specified. </Para> 
+                    <Para isNewest="true">Read method is called </Para> 
+                    <Ref isNewest="true">RQ3.2.1</Ref>
+                    <Ref isNewest="true">TC1.1</Ref>
+                </Requirement>
+                <Requirement isNewest="true" id="UC1.1.1.4">
+                    <Title isNewest="true"> Alternate Flows</Title>
+                    <Para isNewest="true"> If creating a document within an existing project, location is already specified. </Para> 
+                    <Ref isNewest="true">RQ3.2.1</Ref>
+                    <Ref isNewest="true">TC1.1</Ref>
+                </Requirement>
+                <Requirement isNewest="true" id="UC1.1.1.5">
+                    <Title isNewest="true">Sub Flows</Title>
+                    <Para isNewest="true">Documents are checked against schema for initial integrity.</Para> 
+                    <Ref isNewest="true">RQ3.2.1</Ref>
+                    <Ref isNewest="true">TC1.1</Ref>
+                </Requirement>
+                
+                <Requirement isNewest="true" id="UC1.1.1.6">
+                    <Title isNewest="true">Post Conditions </Title>
+                    <Para isNewest="true"> Project directory is created.</Para>
+                    <Para isNewest="true"> Project file is created containing meta-data and additional project file locations.</Para> 
+                    <Ref isNewest="true">RQ3.2.1</Ref>
+                    <Ref isNewest="true">TC1.1</Ref>
+                </Requirement>
+                
+                
+                <Requirement isNewest="true" id="UC1.1.1.7">
+                    <Title isNewest="true"> Specific Requirements</Title>
+                    <Para isNewest="true"> User is unaware of XML back end implementation</Para>
+                    <Para isNewest="true"> All hardware interfacing is handled by the browser</Para>
+                    <Para isNewest="true"> Must work with Internet Explorer 10</Para> 
+                    <Para isNewest="true">Must communicate with local file system to create and edit XML files </Para> 
+                    <Ref isNewest="true">RQ3.2.1</Ref>
+                    <Ref isNewest="true">TC1.1</Ref>
+                </Requirement>
+                <Requirement isNewest="true" id="UC1.1.1.8"> 
+                    <Title isNewest="true">Additional Information</Title>
+                    <Ref isNewest="true">RQ3.2.1</Ref>
+                    <Ref isNewest="true">TC1.1</Ref>
+                </Requirement>
+            </Requirement>
+            
+            <Requirement isNewest="true" id="UC1.1.2">
+                <Title isNewest="true">Read Lifecycle Document</Title>
+                <Requirement isNewest="true" id="UC1.1.2.1"> 
+                    <Title isNewest="true">Brief Description</Title>
+                    <Para isNewest="true">	User selects to open a LC document in a read-only format.  A file system search is opened.</Para>                 <Ref isNewest="true">RQ3.2.2</Ref>
+                    <Ref isNewest="true">RQ3.2.3</Ref>
+                </Requirement>
+                <Requirement isNewest="true" id="UC1.1.2.2"> 
+                    <Title isNewest="true">Preconditions</Title>
+                    <Para isNewest="true">	The document to be opened must already exist and match the XML schema. </Para> 
+                    <Ref isNewest="true">RQ3.2.2</Ref>
+                    <Ref isNewest="true">RQ3.2.3</Ref>
+                </Requirement>	
+                <Requirement isNewest="true" id="UC1.1.2.3"> 
+                    <Title isNewest="true">Basic Flow of Events</Title>
+                    <Para isNewest="true"> Open LC document is clicked.  </Para> 
+                    <Para isNewest="true">User is prompted with search of file system.</Para> 
+                    <Para isNewest="true">User selects LC project</Para> 
+                    <Para isNewest="true">LC document is opened in a read-only mode.</Para>
+                    <Ref isNewest="true">RQ3.2.2</Ref>
+                    <Ref isNewest="true">RQ3.2.3</Ref>
+                </Requirement>	
+                <Requirement isNewest="true" id="UC1.1.2.4">
+                    <Title isNewest="true"> Alternate Flows</Title>
+                    <Para isNewest="true"> User could open file which does not match XML schema →prompted with error.</Para> 
+                    <Para isNewest="true"> User can click on the read-only document and enable an editing mode.</Para> 
+                    <Para isNewest="true">User can switch tabs which will open a different document within the project. </Para> 
+                    <Ref isNewest="true">RQ3.2.2</Ref>
+                    <Ref isNewest="true">RQ3.2.3</Ref>
+                </Requirement>	
+                <Requirement isNewest="true" id="UC1.1.2.5">
+                    <Title isNewest="true"> Sub Flows</Title>
+                    <Para isNewest="true">Documents are checked against schema for integrity</Para> 
+                    <Ref isNewest="true">RQ3.2.2</Ref>
+                    <Ref isNewest="true">RQ3.2.3</Ref>
+                </Requirement>	
+                <Requirement isNewest="true" id="UC1.1.2.6"> 
+                    <Title isNewest="true">Post Conditions</Title>
+                    <Para isNewest="true">Document is opened in read-only mode until user clicks on section to be edited.</Para>
+                    <Ref isNewest="true">RQ3.2.2</Ref>
+                    <Ref isNewest="true">RQ3.2.3</Ref>
+                </Requirement>
+                <Requirement isNewest="true" id="UC1.1.2.7">
+                    <Title isNewest="true">Specific Requirements</Title>
+                    <Para isNewest="true"> User is unaware of XML back end implementation</Para> 
+                    <Para isNewest="true"> System shall present a GUI to users that allow them to develop and edit lifecycle   documents (i.e Requirements, Design, and Test)</Para> 
+                    <Para isNewest="true">Must work with Internet Explorer 10 </Para> 
+                    <Para isNewest="true">System shall produce XML instances conformant with an XML schema designed and developed by the team. </Para> 
+                    <Para isNewest="true"> Must communicate with local file system to create and edit XML files</Para> 
+                    <Ref isNewest="true">RQ3.2.2</Ref>
+                    <Ref isNewest="true">RQ3.2.3</Ref>
+                </Requirement>
+                <Requirement isNewest="true" id="UC1.1.2.8">
+                    <Title isNewest="true">Additional Information</Title>
+                    <Para isNewest="true">Not applicable at this time. </Para> 
+                    <Ref isNewest="true">RQ3.2.2</Ref>
+                    <Ref isNewest="true">RQ3.2.3</Ref>
+                </Requirement>
+            </Requirement>
+            
+            <Requirement isNewest="true" id="UC1.1.3">
+                <Title isNewest="true">Edit Lifecycle Document</Title>
+                
+                <Requirement isNewest="true" id="UC1.1.3.1">
+                    <Title isNewest="true">Brief Description</Title>
+                    <Para isNewest="true">User selects a section from the Table of Contents. This section is focused in the preview and put into an editable text area. </Para> 
+                    <Ref isNewest="true">RQ3.3.3</Ref>
+                </Requirement>
+                <Requirement isNewest="true" id="UC1.1.3.2"> 
+                    <Title isNewest="true">Preconditions</Title>
+                    <Para isNewest="true">A LC project has been opened and checked against the given schema. </Para> 
+                    <Para isNewest="true">	Table of Contents and preview have been generated and displayed. </Para> 
+                    <Ref isNewest="true">RQ3.3.3</Ref>
+                </Requirement>	
+                <Requirement isNewest="true" id="UC1.1.3.3"> 
+                    <Title isNewest="true">Basic Flow of Events</Title>
+                    <Para isNewest="true">User selects a section from the Table of Contents </Para>  
+                    <Para isNewest="true"> This section is focused and made editable</Para> 
+                    <Para isNewest="true">User makes changes and selects another section or exits </Para> 
+                    <Para isNewest="true"> User is prompted to save any changes.</Para>
+                    <Ref isNewest="true">RQ3.3.3</Ref>
+                </Requirement>	
+                <Requirement isNewest="true" id="UC1.1.3.4">
+                    <Title isNewest="true"> Alternate Flows</Title>
+                    <Para isNewest="true">No changes are made </Para> 
+                    <Ref isNewest="true">RQ3.3.3</Ref>
+                </Requirement>	
+                <Requirement isNewest="true" id="UC1.1.3.5"> 
+                    <Title isNewest="true">Sub Flows</Title>
+                    <Para isNewest="true">Changes are committed to local file </Para>
+                    <Ref isNewest="true">RQ3.3.3</Ref>
+                </Requirement>	
+                <Requirement isNewest="true" id="UC1.1.3.6"> 
+                    <Title isNewest="true">Post Conditions</Title>
+                    <Para isNewest="true"> If files are changed, they still match schema</Para> 
+                    <Ref isNewest="true">RQ3.3.3</Ref>
+                </Requirement>
+                <Requirement isNewest="true" id="UC1.1.3.7">
+                    <Title isNewest="true">Specific Requirements</Title>
+                    <Para isNewest="true"> User is unaware of XML back end implementation</Para> 
+                    <Para isNewest="true">System shall present a GUI to users that allow them to develop and edit lifecycle documents (i.e Requirements, Design, and Test) </Para> 
+                    <Para isNewest="true">Ability to view existing requirements, design elements and test cases shall be available at all times </Para> 
+                    <Para isNewest="true"> All hardware interfacing is handled by the browser</Para> 
+                    <Para isNewest="true">Must work with Internet Explorer 10</Para> 
+                    <Para isNewest="true">Must communicate with local file system to create and edit XML files </Para> 
+                    <Ref isNewest="true">RQ3.3.3</Ref>
+                </Requirement>
+                <Requirement isNewest="true" id="UC1.1.3.8"> 
+                    <Title isNewest="true">Additional Information</Title>
+                    <Para isNewest="true">Not applicable at this time. </Para> 
+                    <Ref isNewest="true">RQ3.3.3</Ref>
+                </Requirement>
+            </Requirement>
+            
+            
+            <Requirement isNewest="true" id="UC1.1.4">
+                <Title isNewest="true">Export Lifecycle Document</Title>
+                
+                <Requirement isNewest="true" id="UC1.1.4.1"> 
+                    <Title isNewest="true">Brief Description</Title>
+                    <Para isNewest="true"> LC Document will be exported as an HTML file using the XSLT processor based on the defined XML schema.</Para> 
+                    <Ref isNewest="true">RQ3.3.4</Ref>
+                </Requirement>
+                <Requirement isNewest="true" id="UC1.1.4.2"> 
+                    <Title isNewest="true">Preconditions</Title>
+                    <Para isNewest="true">XML Schema is defined. </Para> 
+                    <Para isNewest="true"> LC Document contains text.</Para> 
+                    <Ref isNewest="true">RQ3.3.4</Ref>
+                </Requirement>	
+                <Requirement isNewest="true" id="UC1.1.4.3"> 
+                    <Title isNewest="true">Basic Flow of Events</Title>
+                    <Para isNewest="true"> XML Schema is defined.</Para> 
+                    <Para isNewest="true"> LC Document is opened and being viewed/edited.</Para>
+                    <Para isNewest="true">User clicks Export LC Document.</Para> 
+                    <Para isNewest="true"> User is prompted for name of file to be exported.</Para> 
+                    <Para isNewest="true"> XSLT processor uses XML schema to create HTML file.</Para> 
+                    <Ref isNewest="true">RQ3.3.4</Ref>
+                </Requirement>	
+                <Requirement isNewest="true" id="UC1.1.4.4"> 
+                    <Title isNewest="true">Alternate Flows</Title>
+                    <Para isNewest="true"> User can be asked which export file format is appropriate.</Para>
+                    <Para isNewest="true">User can choose between HTML and PDF. </Para> 
+                    <Ref isNewest="true">RQ3.3.4</Ref>
+                </Requirement>	
+                <Requirement isNewest="true" id="UC1.1.4.5"> 
+                    <Title isNewest="true">Sub Flows</Title>
+                    <Para isNewest="true"> Documents are checked against schema for integrity.</Para> 
+                    <Ref isNewest="true">RQ3.3.4</Ref>
+                </Requirement>	
+                <Requirement isNewest="true" id="UC1.1.4.6"> 
+                    <Title isNewest="true">Post Conditions</Title>
+                    <Para isNewest="true">HTML file is exported and viewable in browser. </Para> 
+                    <Ref isNewest="true">RQ3.3.4</Ref>
+                </Requirement>
+                <Requirement isNewest="true" id="UC1.1.4.7"> 
+                    <Title isNewest="true">Specific Requirements</Title>
+                    <Para isNewest="true"> System shall present a GUI to users that allow them to develop and edit lifecycle documents (i.e Requirements, Design, and Test)</Para> 
+                    <Para isNewest="true"> All hardware interfacing is handled by the browser</Para> 
+                    <Para isNewest="true">Must work with Internet Explorer 10 </Para> 
+                    <Para isNewest="true">Program should be capable of running XSLT processing for HTML and PDF output. </Para> 
+                    <Para isNewest="true">An XML instance shall be transformed, via XSLT designed and developed by the team into an HTML-based interactive document </Para> 
+                    <Para isNewest="true">Must communicate with local file system to create and edit XML files</Para> 
+                    <Ref isNewest="true">RQ3.3.4</Ref>
+                </Requirement>
+                <Requirement isNewest="true" id="UC1.1.4.8"> 
+                    <Title isNewest="true">Additional Information</Title>
+                    <Para isNewest="true"> Not applicable at this time. </Para> 
+                    <Ref isNewest="true">RQ3.3.4</Ref>
+                </Requirement>
+            </Requirement>
+            
+            <Requirement isNewest="true" id="UC1.1.5">
+                <Title isNewest="true">Generate RTM</Title>
+                
+                <Requirement isNewest="true" id="UC1.1.5.1"> 
+                    <Title isNewest="true">Brief Description</Title>
+                    <Para isNewest="true"> A RTM should be generated from the requirements, use cases, and test cases within a project. This will be displayed as an HTML table while giving the user the ability to download it as a CSV.</Para> 
+                    <Ref isNewest="true">RQ3.3.5</Ref>
+                </Requirement>
+                <Requirement isNewest="true" id="UC1.1.5.2"> 
+                    <Title isNewest="true">Preconditions</Title>
+                    <Para isNewest="true">An project is open and the documents follow a given schema</Para> 
+                    <Ref isNewest="true">RQ3.3.5</Ref>
+                </Requirement>	
+                <Requirement isNewest="true" id="UC1.1.5.3"> 
+                    <Title isNewest="true">Basic Flow of Events</Title>
+                    <Para isNewest="true"> User clicks generate RTM</Para>
+                    <Para isNewest="true"> Requirements document is scanned, assigning an ID to each requirement for easy navigation</Para>
+                    <Para isNewest="true">Use and test case documents are scanned for these requirements</Para>
+                    <Para isNewest="true"> Found instances are noted on table</Para>
+                    <Para isNewest="true">HTML and CSV are generated and displayed </Para> 
+                    <Ref isNewest="true">RQ3.3.5</Ref>
+                </Requirement>	
+                <Requirement isNewest="true" id="UC1.1.5.4"> 
+                    <Title isNewest="true">Alternate Flows</Title>
+                    <Para isNewest="true"> If the desired document does not exist, those cells will be left blank</Para> 
+                    <Ref isNewest="true">RQ3.3.5</Ref>
+                </Requirement>	
+                <Requirement isNewest="true" id="UC1.1.5.5"> 
+                    <Title isNewest="true">Sub Flows</Title>
+                    <Para isNewest="true">CSV is generated from table </Para> 
+                    <Para isNewest="true">If button is pressed, download is presented to user </Para> 
+                    <Ref isNewest="true">RQ3.3.5</Ref>
+                </Requirement>	
+                <Requirement isNewest="true" id="UC1.1.5.6"> 
+                    <Title isNewest="true">Post Conditions</Title>
+                    <Para isNewest="true"> None</Para> 
+                    <Ref isNewest="true">RQ3.3.5</Ref>
+                </Requirement>
+                <Requirement isNewest="true" id="UC1.1.5.7"> 
+                    <Title isNewest="true">Specific Requirements</Title>
+                    <Para isNewest="true"> User is unaware of XML back end implementation</Para>
+                    <Para isNewest="true">System shall present a GUI to users that allow them to develop and edit lifecycle documents (i.e Requirements, Design, and Test) </Para>
+                    <Para isNewest="true">Must work with Internet Explorer 10</Para>
+                    <Para isNewest="true">System shall produce XML instances conformant with an XML schema designed and developed by the team. </Para>
+                    <Para isNewest="true">  System shall be able to auto-generate a Requirements Traceability Matrix at any point during development</Para> 
+                    <Para isNewest="true">Must communicate with local file system to create and edit XML files</Para>
+                    <Ref isNewest="true">RQ3.3.5</Ref>
+                </Requirement>
+                <Requirement isNewest="true" id="UC1.1.5.8"> 
+                    <Title isNewest="true">Additional Information</Title>
+                    <Para isNewest="true">Not applicable at this time. </Para> 
+                    <Ref isNewest="true">RQ3.3.5</Ref>
+                </Requirement>
+            </Requirement>
+            
+            <Requirement isNewest="true" id="UC1.1.6">
+                <Title isNewest="true">Quit Program</Title>
+                
+                <Requirement isNewest="true" id="UC1.1.6.1"> 
+                    <Title isNewest="true">Brief Description</Title>
+                    <Para isNewest="true">Browser close button will exit the LC Project Manager. </Para> 
+                    <Ref isNewest="true">RQ3.3.6</Ref>
+                </Requirement>
+                <Requirement isNewest="true" id="UC1.1.6.2"> 
+                    <Title isNewest="true">Preconditions</Title>
+                    <Para isNewest="true">Software is open.</Para> 
+                    <Ref isNewest="true">RQ3.3.6</Ref>
+                </Requirement>	
+                <Requirement isNewest="true" id="UC1.1.6.3"> 
+                    <Title isNewest="true">Basic Flow of Events</Title>
+                    <Para isNewest="true"> User decides they wants to exit program</Para>
+                    <Para isNewest="true"> User clicks close browser.</Para>
+                    <Para isNewest="true">Browser unload prompts user to save</Para>
+                    <Para isNewest="true">Program is terminated.</Para> 
+                    <Ref isNewest="true">RQ3.3.6</Ref>
+                </Requirement>	
+                <Requirement isNewest="true" id="UC1.1.6.4"> 
+                    <Title isNewest="true">Alternate Flows</Title>
+                    <Para isNewest="true">Not applicable.</Para> 
+                    <Ref isNewest="true">RQ3.3.6</Ref>
+                </Requirement>	
+                <Requirement isNewest="true" id="UC1.1.6.5"> 
+                    <Title isNewest="true">Sub Flows</Title>
+                    <Para isNewest="true">Not applicable.</Para> 
+                    <Ref isNewest="true">RQ3.3.6</Ref>
+                </Requirement>	
+                <Requirement isNewest="true" id="UC1.1.6.6"> 
+                    <Title isNewest="true">Post Conditions</Title>
+                    <Para isNewest="true"> Program is terminated.</Para> 
+                    <Ref isNewest="true">RQ3.3.6</Ref>
+                </Requirement>
+                <Requirement isNewest="true" id="UC1.1.6.7"> 
+                    <Title isNewest="true">Specific Requirements</Title>
+                    <Para isNewest="true">All hardware interfacing is handled by the browser</Para>
+                    <Para isNewest="true">Must work with Internet Explorer 10 </Para> 
+                    <Ref isNewest="true">RQ3.3.6</Ref>
+                </Requirement>
+                <Requirement isNewest="true" id="UC1.1.6.8"> 
+                    <Title isNewest="true">Additional Information</Title>
+                    <Para isNewest="true"> Not applicable at this time. </Para>
+                    <Ref isNewest="true">RQ3.3.6</Ref>
+                </Requirement>
+            </Requirement>
+        </Section>
     </Section>
-    <Section isNewest="true" name="UseCase" id="UC1.1">
-        <Title isNewest="true">Use Cases</Title>
-        <Requirement isNewest="true" id="UC1.1.1">
-            <Title isNewest="true">Create Lifecycle Document </Title>
-            <Requirement isNewest="true" id="UC1.1.1.1">
-                <Title isNewest="true"> Brief Description </Title>
-                <Para isNewest="true"> 	User is presented with the option to create a Lifecycle project, or new document within an existing project. The user only needs to input a name, location, and template selection.</Para> 
-                <Ref isNewest="true">RQ3.2.1</Ref>
-                <Ref isNewest="true">TC1.1</Ref>
-            </Requirement>
-            
-            <Requirement isNewest="true" id="UC1.1.1.2"> 
-                <Title isNewest="true">Preconditions</Title>
-                <Para isNewest="true">The user has started the program.</Para> 
-                <Para isNewest="true">A valid template has been selected.</Para> 
-                <Ref isNewest="true">RQ3.2.1</Ref>
-                <Ref isNewest="true">TC1.1</Ref>
-            </Requirement>
-            
-            <Requirement isNewest="true" id="UC1.1.1.3">
-                <Title isNewest="true"> Basic Flow of Events </Title>
-                <Para isNewest="true">User selects create. </Para> 
-                <Para isNewest="true">Name, location, and template are input. </Para>
-                <Para isNewest="true">Templates are copied to the given location using the name specified. </Para> 
-                <Para isNewest="true">Read method is called </Para> 
-                <Ref isNewest="true">RQ3.2.1</Ref>
-                <Ref isNewest="true">TC1.1</Ref>
-            </Requirement>
-            <Requirement isNewest="true" id="UC1.1.1.4">
-                <Title isNewest="true"> Alternate Flows</Title>
-                <Para isNewest="true"> If creating a document within an existing project, location is already specified. </Para> 
-                <Ref isNewest="true">RQ3.2.1</Ref>
-                <Ref isNewest="true">TC1.1</Ref>
-            </Requirement>
-            <Requirement isNewest="true" id="UC1.1.1.5">
-                <Title isNewest="true">Sub Flows</Title>
-                <Para isNewest="true">Documents are checked against schema for initial integrity.</Para> 
-                <Ref isNewest="true">RQ3.2.1</Ref>
-                <Ref isNewest="true">TC1.1</Ref>
-            </Requirement>
-            
-            <Requirement isNewest="true" id="UC1.1.1.6">
-                <Title isNewest="true">Post Conditions </Title>
-                <Para isNewest="true"> Project directory is created.</Para>
-                <Para isNewest="true"> Project file is created containing meta-data and additional project file locations.</Para> 
-                <Ref isNewest="true">RQ3.2.1</Ref>
-                <Ref isNewest="true">TC1.1</Ref>
-            </Requirement>
-            
-            
-            <Requirement isNewest="true" id="UC1.1.1.7">
-                <Title isNewest="true"> Specific Requirements</Title>
-                <Para isNewest="true"> User is unaware of XML back end implementation</Para>
-                <Para isNewest="true"> All hardware interfacing is handled by the browser</Para>
-                <Para isNewest="true"> Must work with Internet Explorer 10</Para> 
-                <Para isNewest="true">Must communicate with local file system to create and edit XML files </Para> 
-                <Ref isNewest="true">RQ3.2.1</Ref>
-                <Ref isNewest="true">TC1.1</Ref>
-            </Requirement>
-            <Requirement isNewest="true" id="UC1.1.1.8"> 
-                <Title isNewest="true">Additional Information</Title>
-                <Ref isNewest="true">RQ3.2.1</Ref>
-                <Ref isNewest="true">TC1.1</Ref>
-            </Requirement>
-        </Requirement>
-        
-        <Requirement isNewest="true" id="UC1.1.2">
-            <Title isNewest="true">Read Lifecycle Document</Title>
-            <Requirement isNewest="true" id="UC1.1.2.1"> 
-                <Title isNewest="true">Brief Description</Title>
-                <Para isNewest="true">	User selects to open a LC document in a read-only format.  A file system search is opened.</Para>                 <Ref isNewest="true">RQ3.2.2</Ref>
-                <Ref isNewest="true">RQ3.2.3</Ref>
-            </Requirement>
-            <Requirement isNewest="true" id="UC1.1.2.2"> 
-                <Title isNewest="true">Preconditions</Title>
-                <Para isNewest="true">	The document to be opened must already exist and match the XML schema. </Para> 
-                <Ref isNewest="true">RQ3.2.2</Ref>
-                <Ref isNewest="true">RQ3.2.3</Ref>
-            </Requirement>	
-            <Requirement isNewest="true" id="UC1.1.2.3"> 
-                <Title isNewest="true">Basic Flow of Events</Title>
-                <Para isNewest="true"> Open LC document is clicked.  </Para> 
-                <Para isNewest="true">User is prompted with search of file system.</Para> 
-                <Para isNewest="true">User selects LC project</Para> 
-                <Para isNewest="true">LC document is opened in a read-only mode.</Para>
-                <Ref isNewest="true">RQ3.2.2</Ref>
-                <Ref isNewest="true">RQ3.2.3</Ref>
-            </Requirement>	
-            <Requirement isNewest="true" id="UC1.1.2.4">
-                <Title isNewest="true"> Alternate Flows</Title>
-                <Para isNewest="true"> User could open file which does not match XML schema →prompted with error.</Para> 
-                <Para isNewest="true"> User can click on the read-only document and enable an editing mode.</Para> 
-                <Para isNewest="true">User can switch tabs which will open a different document within the project. </Para> 
-                <Ref isNewest="true">RQ3.2.2</Ref>
-                <Ref isNewest="true">RQ3.2.3</Ref>
-            </Requirement>	
-            <Requirement isNewest="true" id="UC1.1.2.5">
-                <Title isNewest="true"> Sub Flows</Title>
-                <Para isNewest="true">Documents are checked against schema for integrity</Para> 
-                <Ref isNewest="true">RQ3.2.2</Ref>
-                <Ref isNewest="true">RQ3.2.3</Ref>
-            </Requirement>	
-            <Requirement isNewest="true" id="UC1.1.2.6"> 
-                <Title isNewest="true">Post Conditions</Title>
-                <Para isNewest="true">Document is opened in read-only mode until user clicks on section to be edited.</Para>
-                <Ref isNewest="true">RQ3.2.2</Ref>
-                <Ref isNewest="true">RQ3.2.3</Ref>
-            </Requirement>
-            <Requirement isNewest="true" id="UC1.1.2.7">
-                <Title isNewest="true">Specific Requirements</Title>
-                <Para isNewest="true"> User is unaware of XML back end implementation</Para> 
-                <Para isNewest="true"> System shall present a GUI to users that allow them to develop and edit lifecycle   documents (i.e Requirements, Design, and Test)</Para> 
-                <Para isNewest="true">Must work with Internet Explorer 10 </Para> 
-                <Para isNewest="true">System shall produce XML instances conformant with an XML schema designed and developed by the team. </Para> 
-                <Para isNewest="true"> Must communicate with local file system to create and edit XML files</Para> 
-                <Ref isNewest="true">RQ3.2.2</Ref>
-                <Ref isNewest="true">RQ3.2.3</Ref>
-            </Requirement>
-            <Requirement isNewest="true" id="UC1.1.2.8">
-                <Title isNewest="true">Additional Information</Title>
-                <Para isNewest="true">Not applicable at this time. </Para> 
-                <Ref isNewest="true">RQ3.2.2</Ref>
-                <Ref isNewest="true">RQ3.2.3</Ref>
-            </Requirement>
-        </Requirement>
-        
-        <Requirement isNewest="true" id="UC1.1.3">
-            <Title isNewest="true">Edit Lifecycle Document</Title>
-            
-            <Requirement isNewest="true" id="UC1.1.3.1">
-                <Title isNewest="true">Brief Description</Title>
-                <Para isNewest="true">User selects a section from the Table of Contents. This section is focused in the preview and put into an editable text area. </Para> 
-                <Ref isNewest="true">RQ3.3.3</Ref>
-            </Requirement>
-            <Requirement isNewest="true" id="UC1.1.3.2"> 
-                <Title isNewest="true">Preconditions</Title>
-                <Para isNewest="true">A LC project has been opened and checked against the given schema. </Para> 
-                <Para isNewest="true">	Table of Contents and preview have been generated and displayed. </Para> 
-                <Ref isNewest="true">RQ3.3.3</Ref>
-            </Requirement>	
-            <Requirement isNewest="true" id="UC1.1.3.3"> 
-                <Title isNewest="true">Basic Flow of Events</Title>
-                <Para isNewest="true">User selects a section from the Table of Contents </Para>  
-                <Para isNewest="true"> This section is focused and made editable</Para> 
-                <Para isNewest="true">User makes changes and selects another section or exits </Para> 
-                <Para isNewest="true"> User is prompted to save any changes.</Para>
-                <Ref isNewest="true">RQ3.3.3</Ref>
-            </Requirement>	
-            <Requirement isNewest="true" id="UC1.1.3.4">
-                <Title isNewest="true"> Alternate Flows</Title>
-                <Para isNewest="true">No changes are made </Para> 
-                <Ref isNewest="true">RQ3.3.3</Ref>
-            </Requirement>	
-            <Requirement isNewest="true" id="UC1.1.3.5"> 
-                <Title isNewest="true">Sub Flows</Title>
-                <Para isNewest="true">Changes are committed to local file </Para>
-                <Ref isNewest="true">RQ3.3.3</Ref>
-            </Requirement>	
-            <Requirement isNewest="true" id="UC1.1.3.6"> 
-                <Title isNewest="true">Post Conditions</Title>
-                <Para isNewest="true"> If files are changed, they still match schema</Para> 
-                <Ref isNewest="true">RQ3.3.3</Ref>
-            </Requirement>
-            <Requirement isNewest="true" id="UC1.1.3.7">
-                <Title isNewest="true">Specific Requirements</Title>
-                <Para isNewest="true"> User is unaware of XML back end implementation</Para> 
-                <Para isNewest="true">System shall present a GUI to users that allow them to develop and edit lifecycle documents (i.e Requirements, Design, and Test) </Para> 
-                <Para isNewest="true">Ability to view existing requirements, design elements and test cases shall be available at all times </Para> 
-                <Para isNewest="true"> All hardware interfacing is handled by the browser</Para> 
-                <Para isNewest="true">Must work with Internet Explorer 10</Para> 
-                <Para isNewest="true">Must communicate with local file system to create and edit XML files </Para> 
-                <Ref isNewest="true">RQ3.3.3</Ref>
-            </Requirement>
-            <Requirement isNewest="true" id="UC1.1.3.8"> 
-                <Title isNewest="true">Additional Information</Title>
-                <Para isNewest="true">Not applicable at this time. </Para> 
-                <Ref isNewest="true">RQ3.3.3</Ref>
-            </Requirement>
-        </Requirement>
-        
-        
-        <Requirement isNewest="true" id="UC1.1.4">
-            <Title isNewest="true">Export Lifecycle Document</Title>
-            
-            <Requirement isNewest="true" id="UC1.1.4.1"> 
-                <Title isNewest="true">Brief Description</Title>
-                <Para isNewest="true"> LC Document will be exported as an HTML file using the XSLT processor based on the defined XML schema.</Para> 
-                <Ref isNewest="true">RQ3.3.4</Ref>
-            </Requirement>
-            <Requirement isNewest="true" id="UC1.1.4.2"> 
-                <Title isNewest="true">Preconditions</Title>
-                <Para isNewest="true">XML Schema is defined. </Para> 
-                <Para isNewest="true"> LC Document contains text.</Para> 
-                <Ref isNewest="true">RQ3.3.4</Ref>
-            </Requirement>	
-            <Requirement isNewest="true" id="UC1.1.4.3"> 
-                <Title isNewest="true">Basic Flow of Events</Title>
-                <Para isNewest="true"> XML Schema is defined.</Para> 
-                <Para isNewest="true"> LC Document is opened and being viewed/edited.</Para>
-                <Para isNewest="true">User clicks Export LC Document.</Para> 
-                <Para isNewest="true"> User is prompted for name of file to be exported.</Para> 
-                <Para isNewest="true"> XSLT processor uses XML schema to create HTML file.</Para> 
-                <Ref isNewest="true">RQ3.3.4</Ref>
-            </Requirement>	
-            <Requirement isNewest="true" id="UC1.1.4.4"> 
-                <Title isNewest="true">Alternate Flows</Title>
-                <Para isNewest="true"> User can be asked which export file format is appropriate.</Para>
-                <Para isNewest="true">User can choose between HTML and PDF. </Para> 
-                <Ref isNewest="true">RQ3.3.4</Ref>
-            </Requirement>	
-            <Requirement isNewest="true" id="UC1.1.4.5"> 
-                <Title isNewest="true">Sub Flows</Title>
-                <Para isNewest="true"> Documents are checked against schema for integrity.</Para> 
-                <Ref isNewest="true">RQ3.3.4</Ref>
-            </Requirement>	
-            <Requirement isNewest="true" id="UC1.1.4.6"> 
-                <Title isNewest="true">Post Conditions</Title>
-                <Para isNewest="true">HTML file is exported and viewable in browser. </Para> 
-                <Ref isNewest="true">RQ3.3.4</Ref>
-            </Requirement>
-            <Requirement isNewest="true" id="UC1.1.4.7"> 
-                <Title isNewest="true">Specific Requirements</Title>
-                <Para isNewest="true"> System shall present a GUI to users that allow them to develop and edit lifecycle documents (i.e Requirements, Design, and Test)</Para> 
-                <Para isNewest="true"> All hardware interfacing is handled by the browser</Para> 
-                <Para isNewest="true">Must work with Internet Explorer 10 </Para> 
-                <Para isNewest="true">Program should be capable of running XSLT processing for HTML and PDF output. </Para> 
-                <Para isNewest="true">An XML instance shall be transformed, via XSLT designed and developed by the team into an HTML-based interactive document </Para> 
-                <Para isNewest="true">Must communicate with local file system to create and edit XML files</Para> 
-                <Ref isNewest="true">RQ3.3.4</Ref>
-            </Requirement>
-            <Requirement isNewest="true" id="UC1.1.4.8"> 
-                <Title isNewest="true">Additional Information</Title>
-                <Para isNewest="true"> Not applicable at this time. </Para> 
-                <Ref isNewest="true">RQ3.3.4</Ref>
-            </Requirement>
-        </Requirement>
-        
-        <Requirement isNewest="true" id="UC1.1.5">
-            <Title isNewest="true">Generate RTM</Title>
-            
-            <Requirement isNewest="true" id="UC1.1.5.1"> 
-                <Title isNewest="true">Brief Description</Title>
-                <Para isNewest="true"> A RTM should be generated from the requirements, use cases, and test cases within a project. This will be displayed as an HTML table while giving the user the ability to download it as a CSV.</Para> 
-                <Ref isNewest="true">RQ3.3.5</Ref>
-            </Requirement>
-            <Requirement isNewest="true" id="UC1.1.5.2"> 
-                <Title isNewest="true">Preconditions</Title>
-                <Para isNewest="true">An project is open and the documents follow a given schema</Para> 
-                <Ref isNewest="true">RQ3.3.5</Ref>
-            </Requirement>	
-            <Requirement isNewest="true" id="UC1.1.5.3"> 
-                <Title isNewest="true">Basic Flow of Events</Title>
-                <Para isNewest="true"> User clicks generate RTM</Para>
-                <Para isNewest="true"> Requirements document is scanned, assigning an ID to each requirement for easy navigation</Para>
-                <Para isNewest="true">Use and test case documents are scanned for these requirements</Para>
-                <Para isNewest="true"> Found instances are noted on table</Para>
-                <Para isNewest="true">HTML and CSV are generated and displayed </Para> 
-                <Ref isNewest="true">RQ3.3.5</Ref>
-            </Requirement>	
-            <Requirement isNewest="true" id="UC1.1.5.4"> 
-                <Title isNewest="true">Alternate Flows</Title>
-                <Para isNewest="true"> If the desired document does not exist, those cells will be left blank</Para> 
-                <Ref isNewest="true">RQ3.3.5</Ref>
-            </Requirement>	
-            <Requirement isNewest="true" id="UC1.1.5.5"> 
-                <Title isNewest="true">Sub Flows</Title>
-                <Para isNewest="true">CSV is generated from table </Para> 
-                <Para isNewest="true">If button is pressed, download is presented to user </Para> 
-                <Ref isNewest="true">RQ3.3.5</Ref>
-            </Requirement>	
-            <Requirement isNewest="true" id="UC1.1.5.6"> 
-                <Title isNewest="true">Post Conditions</Title>
-                <Para isNewest="true"> None</Para> 
-                <Ref isNewest="true">RQ3.3.5</Ref>
-            </Requirement>
-            <Requirement isNewest="true" id="UC1.1.5.7"> 
-                <Title isNewest="true">Specific Requirements</Title>
-                <Para isNewest="true"> User is unaware of XML back end implementation</Para>
-                <Para isNewest="true">System shall present a GUI to users that allow them to develop and edit lifecycle documents (i.e Requirements, Design, and Test) </Para>
-                <Para isNewest="true">Must work with Internet Explorer 10</Para>
-                <Para isNewest="true">System shall produce XML instances conformant with an XML schema designed and developed by the team. </Para>
-                <Para isNewest="true">  System shall be able to auto-generate a Requirements Traceability Matrix at any point during development</Para> 
-                <Para isNewest="true">Must communicate with local file system to create and edit XML files</Para>
-                <Ref isNewest="true">RQ3.3.5</Ref>
-            </Requirement>
-            <Requirement isNewest="true" id="UC1.1.5.8"> 
-                <Title isNewest="true">Additional Information</Title>
-                <Para isNewest="true">Not applicable at this time. </Para> 
-                <Ref isNewest="true">RQ3.3.5</Ref>
-            </Requirement>
-        </Requirement>
-        
-        <Requirement isNewest="true" id="UC1.1.6">
-            <Title isNewest="true">Quit Program</Title>
-            
-            <Requirement isNewest="true" id="UC1.1.6.1"> 
-                <Title isNewest="true">Brief Description</Title>
-                <Para isNewest="true">Browser close button will exit the LC Project Manager. </Para> 
-                <Ref isNewest="true">RQ3.3.6</Ref>
-            </Requirement>
-            <Requirement isNewest="true" id="UC1.1.6.2"> 
-                <Title isNewest="true">Preconditions</Title>
-                <Para isNewest="true">Software is open.</Para> 
-                <Ref isNewest="true">RQ3.3.6</Ref>
-            </Requirement>	
-            <Requirement isNewest="true" id="UC1.1.6.3"> 
-                <Title isNewest="true">Basic Flow of Events</Title>
-                <Para isNewest="true"> User decides they wants to exit program</Para>
-                <Para isNewest="true"> User clicks close browser.</Para>
-                <Para isNewest="true">Browser unload prompts user to save</Para>
-                <Para isNewest="true">Program is terminated.</Para> 
-                <Ref isNewest="true">RQ3.3.6</Ref>
-            </Requirement>	
-            <Requirement isNewest="true" id="UC1.1.6.4"> 
-                <Title isNewest="true">Alternate Flows</Title>
-                <Para isNewest="true">Not applicable.</Para> 
-                <Ref isNewest="true">RQ3.3.6</Ref>
-            </Requirement>	
-            <Requirement isNewest="true" id="UC1.1.6.5"> 
-                <Title isNewest="true">Sub Flows</Title>
-                <Para isNewest="true">Not applicable.</Para> 
-                <Ref isNewest="true">RQ3.3.6</Ref>
-            </Requirement>	
-            <Requirement isNewest="true" id="UC1.1.6.6"> 
-                <Title isNewest="true">Post Conditions</Title>
-                <Para isNewest="true"> Program is terminated.</Para> 
-                <Ref isNewest="true">RQ3.3.6</Ref>
-            </Requirement>
-            <Requirement isNewest="true" id="UC1.1.6.7"> 
-                <Title isNewest="true">Specific Requirements</Title>
-                <Para isNewest="true">All hardware interfacing is handled by the browser</Para>
-                <Para isNewest="true">Must work with Internet Explorer 10 </Para> 
-                <Ref isNewest="true">RQ3.3.6</Ref>
-            </Requirement>
-            <Requirement isNewest="true" id="UC1.1.6.8"> 
-                <Title isNewest="true">Additional Information</Title>
-                <Para isNewest="true"> Not applicable at this time. </Para>
-                <Ref isNewest="true">RQ3.3.6</Ref>
-            </Requirement>
-        </Requirement>
-    </Section>
-   
 </UseCaseDocument>

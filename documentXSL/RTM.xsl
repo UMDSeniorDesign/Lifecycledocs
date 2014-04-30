@@ -58,7 +58,7 @@
         <xsl:variable name="TCCount" select="count(Ref[substring(.,1,2) = 'TC'][@isNewest='true'])"/>
         <xsl:variable name="TCPass">
             <xsl:for-each select="Ref[substring(.,1,2) = 'TC'][@isNewest='true']">
-                <xsl:variable name="myRef" select="."></xsl:variable>
+                <xsl:variable name="myRef" select="."/>
                 <xsl:choose>
                     <xsl:when test="$vDocumentTC/descendant-or-self::*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult = 'true'">
                         <count>1</count>
@@ -261,7 +261,6 @@
                     </font>
                 </xsl:otherwise>
             </xsl:choose>
-            
         </td>
         <td>
             <xsl:value-of select="$vDocumentTC/descendant-or-self::*[@id=$myRef][@isNewest='true']/ApprovedBy[@isNewest='true']/Para[@isNewest='true']"/>

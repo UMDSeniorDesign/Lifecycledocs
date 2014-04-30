@@ -5,27 +5,27 @@
     
     <Section isNewest="true" id="TC1.0">
         <Title isNewest="true">Lifecycle Document Project Manager with Requirements Tracking</Title>
-        <Para isNewest="true"> The goal of this project is to create a protoype application capable of allowing a user to productively manage lifecycle documentation in XML without a previous XML experience. </Para>
+        <Para isNewest="true" index="0"> The goal of this project is to create a protoype application capable of allowing a user to productively manage lifecycle documentation in XML without a previous XML experience. </Para>
         <Section isNewest="true" id="TC1.1">
             <Title>Display splash screen.</Title>
             <Section isNewest="true" id="TC1.1.1">
                 <Title>Buttons and textbox are displayed</Title>
-                <Para>New Project, Open Project, and Browse buttons are displayed, as well as a textbox.</Para>
+                <Para isNewest="true">New Project, Open Project, and Browse buttons are displayed, as well as a textbox.</Para>
                 <TestResult>false</TestResult>
                 <ApprovedBy isNewest="true">
                     <Name isNewest="true"></Name>
-                    <Para isNewest="true"></Para>
+                    <Para isNewest="true" index="0"></Para>
                 </ApprovedBy>
                 <Ref isNewest="true"></Ref>
                 <Ref isNewest="true"></Ref>
             </Section>
             <Section isNewest="true" id="TC1.1.2">
                 <Title>Title and sponsor image are displayed</Title>
-                <Para>Title is displayed and sponsor image is clickable href.</Para>
+                <Para isNewest="true" index="0">Title is displayed and sponsor image is clickable href.</Para>
                 <TestResult>false</TestResult>
                 <ApprovedBy isNewest="true">
                     <Name isNewest="true"></Name>
-                    <Para isNewest="true"></Para>
+                    <Para isNewest="true" index="0"></Para>
                 </ApprovedBy>
                 <Ref isNewest="true"></Ref>
                 <Ref isNewest="true"></Ref>
@@ -34,17 +34,17 @@
         
         <Section isNewest="true" id="TC1.2">
             <Title>Click browse button</Title>
-            <Para>Browse button displays file directory for user to select projectXML.</Para>
+            <Para isNewest="true" index="0">Browse button displays file directory for user to select projectXML.</Para>
             <TestResult>false</TestResult>
             <ApprovedBy isNewest="true">
                 <Name isNewest="true"></Name>
-                <Para isNewest="true"></Para>
+                <Para isNewest="true" index="0"></Para>
             </ApprovedBy>
             <Ref isNewest="true"></Ref>
             <Ref isNewest="true"></Ref>
             <Section isNewest="true" id="TC1.2.1">
                 <Title>User selects valid Project file</Title>
-                <Para>Project is opened if correct file is chosen. If not, the user is prompted with an error.</Para>
+                <Para isNewest="true" index="0">Project is opened if correct file is chosen. If not, the user is prompted with an error.</Para>
                 <TestResult>false</TestResult>
                 <ApprovedBy>
                     <Name isNewest="false"></Name>
@@ -54,7 +54,7 @@
             
             <Section isNewest="true" id="TC1.2.2">
                 <Title>Textbox contains file location</Title>
-                <Para>Fills textbox with file location.</Para>
+                <Para isNewest="true" index="0">Fills textbox with file location.</Para>
                 <TestResult>false</TestResult>
                 <ApprovedBy>
                     <Name isNewest="false"></Name>
@@ -64,7 +64,7 @@
             
             <Section isNewest="true" id="TC1.2.3">
                 <Title>Team member information is displayed</Title>
-                <Para>Properly display the XSL containing team member names, file count, and buttons to remove team members.</Para>
+                <Para isNewest="true" index="0">Properly display the XSL containing team member names, file count, and buttons to remove team members.</Para>
                 <TestResult>false</TestResult>
                 <ApprovedBy>
                     <Name isNewest="false"></Name>
@@ -74,7 +74,7 @@
             
             <Section isNewest="true" id="TC1.2.4">
                 <Title>Open project is clicked</Title>
-                <Para>If project file is valid, project is opened in new view.hta. If project file is not valid, user is prompted with error.</Para>
+                <Para isNewest="true" index="0">If project file is valid, project is opened in new view.hta. If project file is not valid, user is prompted with error.</Para>
                 <TestResult>false</TestResult>
                 <ApprovedBy>
                     <Name isNewest="false"></Name>
@@ -85,7 +85,7 @@
         </Section>
         <Section isNewest="true" id="TC1.3">
             <Title>Open project is clicked with empty textbox</Title>
-            <Para>User is prompted with error message: Please select a project to open!</Para>
+            <Para isNewest="true" index="0">User is prompted with error message: Please select a project to open!</Para>
             <TestResult>false</TestResult>
             <ApprovedBy>
                 <Name isNewest="false"></Name>
@@ -94,7 +94,7 @@
         </Section>
         <Section isNewest="true" id="TC1.4">
             <Title>New Project is clicked</Title>
-            <Para>User is prompted with textbox to enter project name.</Para>
+            <Para isNewest="true" index="0">User is prompted with textbox to enter project name.</Para>
             <TestResult>false</TestResult>
             <ApprovedBy>
                 <Name isNewest="false"></Name>
@@ -103,7 +103,7 @@
             
             <Section isNewest="true" id="TC1.4.1">
                 <Title>User clicks cancel</Title>
-                <Para>Textbox is closed and user is brought back to splash screen.</Para>
+                <Para isNewest="true" index="0">Textbox is closed and user is brought back to splash screen.</Para>
                 <TestResult>false</TestResult>
                 <ApprovedBy>
                     <Name isNewest="false"></Name>
@@ -113,7 +113,7 @@
             
             <Section isNewest="true" id="TC1.4.2">
                 <Title>User clicks OK</Title>
-                <Para>If the project name is valid, user is directed to view.hta. Otherwise, user is asked to enter a valid project name.</Para>
+                <Para isNewest="true" index="0">If the project name is valid, user is directed to view.hta. Otherwise, user is asked to enter a valid project name.</Para>
                 <TestResult>false</TestResult>
                 <ApprovedBy>
                     <Name isNewest="false"></Name>

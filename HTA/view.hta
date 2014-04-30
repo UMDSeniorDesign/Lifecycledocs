@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<HTA:APPLICATION
-		border="thin"
+		border="thick"
 		borderStyle="normal" 
 		caption="yes"
 		maximizeButton="yes"
@@ -17,145 +17,44 @@
 	    <style type="text/css">
 		    #xsltDiv { 
 			}
+			
+			#rightSide {
+			align: right;
+			bottom: 0px;
+			}
 	    </style>
-		
-		<script src="../JS/loadXML.js"></script>
-		<script src="../JS/saveXML.js"></script>
-		<script src="../JS/getFromSessvar.js"></script>
 		<script src="../JS/sessionvars.js"></script>
 		<script src="../JS/contextMenu.js"></script>
 		<script src="../JS/dropdowns.js"></script>
-		<script src="../JS/paras.js"></script>
-		
-		<script>
-			function goBack(){
-			  window.history.back()
-			  }
-			  function toggleEdit() {
-				var edit = document.getElementById("edit");
-				if(sessvars.toggle == "1") {
-					sessvars.toggle = "0";
-					edit.style.border = "none";
-					//edit.contentEditable = false;
-				}
-				else if(sessvars.toggle == "0") {
-					sessvars.toggle = "1";
-					edit.style.border = "dashed thin";
-					//edit.contentEditable = true;
-				}
-			}
-		</script>
-		<script>
-			function addReference(ID, fromID){
-				var selectBoxValue = document.getElementById(ID+"References").value;
-				addRef(selectBoxValue, fromID);
-			}
-		</script>
-		<script>
-			function getTabs() {
-				var project = loadProject(sessvars.projectName);
-				var filesToLoad = project.getElementsByTagName("file_location");
-				var div = document.getElementById("head1");
-				for(var i = 0; i < filesToLoad.length; i++) {
-					var filename = filesToLoad[i].childNodes[0].getAttribute("href");
-					if(i == 0){
-						sessvars.first = filename;
-					}
-					div.innerHTML += ("<button onclick=loadXSLT(0,0,'"+filename+"')>"+filename+"</button>");
-				}
-			}
-		</script>
-		
-		<script>
-			function loadXSLT(withTabs, withCurrent, xmlToLoad){
-				var xml;
-				var xsl;
-				//Load tabs from project file
-				if(withTabs == 1){
-					getTabs();
-					xmlToLoad = sessvars.first;
-				}
-				
-				//Load XML and XSL '0' = loadnew '1' = reload with current
-				if(withCurrent == 0){
-					sessvars.xml = xmlToLoad;
-					xml = loadXML(sessvars.xml);
-					var textVersion = xml.xml;
-					var styleStringStart = textVersion.search("href=");
-					var styleStringPart = textVersion.substring(styleStringStart);
-					var styleStringEnd = styleStringPart.search(">");
-					var styleName = styleStringPart.substring(6, styleStringEnd-2);
-					sessvars.xsl = styleName;
-					xsl = loadXML(sessvars.xsl);
-				}
-				
-				if(withCurrent == 1){
-					xml = loadXML(sessvars.xml);
-					xsl = loadXML(sessvars.xsl);
-				}
-				
-				//Transform XML to HTML
-				var value = xml.transformNode(xsl);
-				
-				//Search for script in generated HTML, this should be put into a loop in case of multiple scripts
-				var scriptStart = value.search("<script>");
-				var scriptEnd = value.search("<"+'/'+"script>");
-				
-				//Create substring that is the script, offset start because script tag is inserted with createElement method
-				var xsltScript = value.substring(scriptStart+8, scriptEnd);
-				var editScript = xsltScript;//.replace("edit = 0", "edit=1");
-				//Find the head so we know where to append
-				var head = document.getElementsByTagName('head')[0];
-				
-				//Create our new script object
-				var script = document.createElement('script');
-				script.type = 'text/javascript';
-				script.text = editScript;
-				
-				//Append it to the head
-				head.appendChild(script);
-				
-				//Search for the style in generated HTML
-				var styleStart = value.search('<style type="text'+'/'+'css">');
-				var styleEnd = value.search("<"+'/'+"style>");
-				//Create substring that is the style
-				var xsltStyle = value.substring(styleStart+23, styleEnd);
-				
-				//Find Style insert location
-				var styleSpot = head.getElementsByTagName('style')[0];
-				var sheet = document.styleSheets[0];
-				//Append new styling
-				sheet.cssText += xsltStyle;
-				
-				//Append our generated HTML to the newly formatted page
-				value += "<br><button onclick='saveXML(sessvars.xml)'>Save</button>";
-				value += "<button onclick=toggleEdit()>Edit On/Off</button>";
-				document.getElementById("xsltDiv").innerHTML = value;
-				var edit = document.getElementById("edit");
-				
-				if(edit.isContentEditable == true) {
-					edit.style.border = "dashed";
-					sessvars.toggle = "1";
-				}
-				if(edit.isContentEditable == false) { 
-					edit.style.border = "none";
-					sessvars.toggle = "0";
-				}
-			}
-		</script>
-		
+		<script src="../JS/edit.js"></script>
+		<script src="../JS/load.js"></script>
+		<script src="../JS/save.js"></script>
 	</head>
-	
 	<body onload="loadXSLT(1,0)">
 		<div id="wrapper">
 			<body background="ProjectImages/bg1.jpg">
-		    <div id="head1">
-				<button onclick="goBack()">Go Back</button>
-		        <button onclick=location.href='RTM.hta'>Create Matrix</button>
-				<button onclick=downloadAsHTML()>Download as HTML</button>
+			<center>
+		    <div id="head1"">
+			<table align="right" cellpadding="0px">
+			<tr>
+			<td>
+			<center>
+		        <button style="width:200px;" onclick=location.href='RTM.hta'>Create Matrix</button>
+				</center>
+				</td>
+				</tr>
+				
+				
+				<tr>
+				<td>
+				<button style="width:200px" onclick=downloadAsHTML()>Download as HTML</button>
+				</td>
+				</tr>
+				</table>
 		    </div>
+			</center>
 			<div id="xsltDiv">
-			    <h1>Preview</h1>
+			    
 			</div>
 		</div>
 	</body>

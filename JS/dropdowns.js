@@ -31,7 +31,7 @@ function addEditValues(ID, type, fromID){
 		if(type == '1'){//If type equals References
 			var referenceSpot = document.getElementById(ID+"References");
 			if(referenceSpot.length < 2){
-				var refOptions = findRefs(fromID);
+				var refOptions = findRefs(ID);
 				var options = "";
 				for(var i = 0; i < refOptions.length; i++){
 					var refText = (refOptions[i][0]+refOptions[i][1]);

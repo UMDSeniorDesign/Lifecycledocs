@@ -7,18 +7,27 @@
         <Title isNewest="true">Lifecycle Document Project Manager with Requirements Tracking</Title>
         <Para isNewest="true"> The goal of this project is to create a protoype application capable of allowing a user to productively manage lifecycle documentation in XML without a previous XML experience. </Para>
         <Section isNewest="true" id="TC1.1">
-            <Title>Display splash screen.</Title>
+            <Title isNewest='true'>Display splash screen.</Title>
+            <Para isNewest='true'>To display the splash screen and all of it's contents to the user</Para>
             <Section isNewest="true" id="TC1.1.1">
                 <Title>Buttons and textbox are displayed</Title>
                 <Para>New Project, Open Project, and Browse buttons are displayed, as well as a textbox.</Para>
                 <TestResult>false</TestResult>
                 <ApprovedBy isNewest="true">
-                    <Name isNewest="true">Pete</Name>
-                    <Date isNewest="true">2004-04-12T13:20:15.5</Date>
-                    <Para isNewest="true">This is getting the date element.</Para>
+                    <Name isNewest="true">Peter Magalhaes</Name>
+                    
+                    <Date isNewest="true">2014-04-12T13:20:15.5</Date>
+                    
+                    <Para isNewest="true">This is getting the date element, and info using project xml with xml:base</Para>
                 </ApprovedBy>
-                <Ref isNewest="true"></Ref>
-                <Ref isNewest="true"></Ref>
+                <ApprovedBy isNewest="false">
+                    <Name isNewest="true">Peter M</Name>
+                    <UIC isNewest="true">UMASSD-F</UIC>
+                    <Date isNewest="true">2004-04-12T13:20:15.5</Date>
+                    <Para isNewest="true">This is getting the date element, and UIC from xml doc</Para>
+                </ApprovedBy>
+                <Ref isNewest="true">RQ1.1</Ref>
+                <Ref isNewest="true">UC1.1.2</Ref>
             </Section>
             <Section isNewest="true" id="TC1.1.2">
                 <Title>Title and sponsor image are displayed</Title>

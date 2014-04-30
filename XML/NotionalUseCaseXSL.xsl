@@ -77,9 +77,11 @@
 			<button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="showMenu('{$vID}', '0');return false;">
 			<xsl:value-of select="$vID"/></button> - <xsl:value-of select="$vTitle"/>
             <div id="{@id}Menu" style="display: none;">
-                <button onclick="addAbove('{$vID}')">Add Section Above</button>
+                <button onclick="add('{$vID}', '0', '0')">Add Section Above</button><button onclick="add('{$vID}', '0', '1')">Add Requirement Above</button>
                 <br/>
-                <button onclick="addBelow('{$vID}')">Add Section Below</button>
+                <button onclick="add('{$vID}', '1', '0')">Add Section Below</button><button onclick="add('{$vID}', '1', '1')">Add Requirement Below</button>
+                <br/>
+				<button onclick="add('{$vID}', '3', '0')">Add subSection</button><button onclick="add('{$vID}', '3', '1')">Add subRequirement</button>
                 <br/>
 				<button onclick="changeTitle('{$vID}')">Change Title to: </button>
 				<textarea id="{@id}Title" rows="1"><xsl:value-of select="$vTitle"/></textarea>
@@ -107,10 +109,15 @@
             <button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="showMenu('{$vID}', '0');return false;">
 			<xsl:value-of select="$vID"/></button> - <xsl:value-of select="$vTitle"/>
             <div id="{@id}Menu" style="display: none;">
-                <button onclick="addAbove('{$vID}')">Add Requirement Above</button><br/>
-                <button onclick="addBelow('{$vID}')">Add Requirement Below</button><br/>
+                <button onclick="add('{$vID}', '0', '0')">Add Section Above</button><button onclick="add('{$vID}', '0', '1')">Add Requirement Above</button>
+                <br/>
+                <button onclick="add('{$vID}', '1', '0')">Add Section Below</button><button onclick="add('{$vID}', '1', '1')">Add Requirement Below</button>
+                <br/>
+				<button onclick="add('{$vID}', '3', '0')">Add subSection</button><button onclick="add('{$vID}', '3', '1')">Add subRequirement</button>
+                <br/>
 				<button onclick="changeTitle('{$vID}')">Change Title to: </button>
-				<textarea id="{@id}Title" rows="1"><xsl:value-of select="$vTitle"/></textarea><br/>
+				<textarea id="{@id}Title" rows="1"><xsl:value-of select="$vTitle"/></textarea>
+				<br/>
                 <button onclick="hideMenu('{$vID}')">Cancel</button>
             </div>
 			</li>
@@ -165,21 +172,21 @@
 			<xsl:variable name="vID">
 				<xsl:value-of select="../@id"/>
 			</xsl:variable>
-			<xsl:variable name="vCount">
-				<xsl:value-of select="@count"/>
+			<xsl:variable name="vIndex">
+				<xsl:value-of select="@index"/>
 			</xsl:variable>
 			<div id="Para">
-				<textarea id="{$vID}Para{$vCount}" cols="50" style='overflow-y:hidden;' onfocus='this.rows = (parseInt(this.value.length/this.cols)+2||1)' onkeyup='this.rows = (parseInt(this.value.length/this.cols)+2||1);' oncontextmenu="showMenu('{$vID}', '2', '{$vCount}');return false;">
+				<textarea id="{$vID}Para{$vIndex}" cols="50" style='overflow-y:hidden;' onfocus='this.rows = (parseInt(this.value.length/this.cols)+2||1)' onkeyup='this.rows = (parseInt(this.value.length/this.cols)+2||1);' oncontextmenu="showMenu('{$vID}', '2', '{$vIndex}');return false;">
 				<xsl:value-of select="."/></textarea>
 				<br/>
-				<div id="{$vID}ParaMenu{$vCount}" style="display: none;">
-					<button onclick="addPara('{$vID}', '0', '{$vCount}')">Add Para Above</button>
+				<div id="{$vID}ParaMenu{$vIndex}" style="display: none;">
+					<button onclick="add('{$vID}', '0', '3', '{$vIndex}')">Add Para Above</button>
 					<br/>
-					<button onclick="addPara('{$vID}', '1', '{$vCount}')">Add Para Below</button>
+					<button onclick="add('{$vID}', '1', '3', '{$vIndex}')">Add Para Below</button>
 					<br/>
-					<button onclick="removePara('{$vID}', '{$vCount}')">Remove Para</button>
+					<button onclick="remove('{$vID}', '{$vIndex}', '3')">Remove Para</button>
 					<br/>
-					<button onclick="hideMenu('{$vID}', '1', '{$vCount}')">Cancel</button>
+					<button onclick="hideMenu('{$vID}', '1', '{$vIndex}')">Cancel</button>
 				</div>
 				<br/>
 			</div>
@@ -226,7 +233,7 @@
 					<xsl:value-of select="$vPara"/>
 				</div>
 				<div id="{$vID}Menu" style="display: none;">
-					<button onclick="removeRef('{$vID}', '{$vfromID}')">Remove this Reference</button>
+					<button onclick="remove('{$vID}', '{$vfromID}', '2')">Remove this Reference</button>
 					<br/>
 					<button onclick="addReference('{$vID}', '{$vfromID}')">Add Reference To: </button>
 						<select id="{$vID}References" onmouseover="addEditValues('{$vID}', '1', '{$vfromID}')">

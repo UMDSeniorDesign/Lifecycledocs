@@ -12,7 +12,8 @@
                 <Para isNewest="true">Form is displayed properly to user with appropriate textboxes and buttons.</Para>
                 <TestResult>false</TestResult>
                 <ApprovedBy isNewest="true">
-                    <Name>Kevin</Name>
+                    <Name>Kevin Palmer</Name>
+                    <Date isNewest="true">2014-04-12T13:20:15.5</Date>
                     <Para isNewest="true">Comment</Para>
                 </ApprovedBy>
                 <Ref isNewest="true">RQ3.1.1</Ref>
@@ -113,11 +114,12 @@
             <TestResult>true</TestResult>
             
             <ApprovedBy isNewest="true">
-                <Name>Jeremiah</Name>
+                <Name>Jeremiah Butler</Name>
+                <Date isNewest="true">2004-04-12T13:20:15.5</Date>
                 <Para isNewest="true">jeremiah's para is a very long paragraph, way longer than this single compund sentence</Para>
             </ApprovedBy>
             <ApprovedBy isNewest="false">
-                <Name>Pete</Name>
+                <Name>Peter Magalhaes</Name>
                 <Para isNewest="true">myPara</Para>
             </ApprovedBy>
             <Ref isNewest="true">RQ3.1.1</Ref>

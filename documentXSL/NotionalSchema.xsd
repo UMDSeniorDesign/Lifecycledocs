@@ -40,7 +40,15 @@
     <xsd:element name="Team" type="TeamType"/>
     <xsd:complexType name="TeamType">
         <xsd:sequence>
-            <xsd:element name="TeamMember" type="TMType" minOccurs="1" maxOccurs="unbounded"/>
+            <xsd:element name="TeamMember" minOccurs="1" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:complexContent>
+                        <xsd:extension base="TMType">
+                            <xsd:attribute name="isNewest" type="xsd:boolean"/>
+                        </xsd:extension>
+                    </xsd:complexContent>
+                </xsd:complexType>
+            </xsd:element>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="TMType">
@@ -146,6 +154,17 @@
                     </xsd:simpleContent>
                 </xsd:complexType>
             </xsd:element>
+            <xsd:choice minOccurs="0">
+                <xsd:element name="UIC">
+                    <xsd:complexType>
+                        <xsd:simpleContent>
+                            <xsd:extension base="xsd:string">
+                                <xsd:attribute name="isNewest" type="xsd:boolean"/>
+                            </xsd:extension>
+                        </xsd:simpleContent>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:choice>
             <xsd:element name="Date" minOccurs="0" maxOccurs="unbounded">
                 <xsd:complexType>
                     <xsd:simpleContent>

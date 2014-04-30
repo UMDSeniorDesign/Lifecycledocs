@@ -2,28 +2,19 @@
 <html>
     <head>
 		<HTA:APPLICATION
-		border="thin"
+		border="thick"
 		borderStyle="normal"
 		caption="yes"
 		maximizeButton="yes"
 		minimizeButton="yes"
-		showInTaskbar="no"
+		showInTaskbar="yes"
 		windowState="maximize"
 		innerBorder="yes"
 		navigable="yes"
 		scroll="auto"
 		scrollFlat="yes" />
 	</head>
-		<script src="../JS/loadXML.js"></script>
-	<script>
-		function loadRTM(){
-			var rtmLocation = document.getElementById("RTM");
-			var xml = loadXML("NotionalSRS.xml");
-			var xsl = loadXML("RTM.xsl");
-			var rtm = xml.transformNode(xsl);
-			rtmLocation.innerHTML = rtm;
-		}
-    </script>
+		<script src="../JS/load.js"></script>
     </head>
     <body onload="loadRTM()">
 	<center> 
