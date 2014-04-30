@@ -308,7 +308,7 @@
 	<Requirement isNewest="true" id="RQ3.2.4.3">
 		<Title isNewest="true">Processing</Title>
 		<Para isNewest="true">XSLT processor uses XML and XSLT stylesheet to process HTML or PDF export. </Para> 
-		<Ref isNewest="true" index="0">UC1.1.4</Ref>
+		<Ref isNewest="true">UC1.1.4</Ref>
 	</Requirement>
 	<Requirement isNewest="true" id="RQ3.2.4.4">
 		<Title isNewest="true">Outputs </Title>
