@@ -1,18 +1,4 @@
-function loadXML(file_name) {
-	var XML = new ActiveXObject("Msxml2.DOMDocument.6.0");
-	XML.setProperty("AllowDocumentFunction", true);
-	XML.async = false;
-	XML.load("../XML/" + file_name);
-	return XML;
-}
-
-function loadProject(file_name) {
-	var project = new ActiveXObject("Msxml2.DOMDocument.6.0");
-	project.setProperty("AllowDocumentFunction", true);
-	project.async = false;
-	project.load("../Projects/" + file_name);
-	return project;
-}
+/////***START DOWNLOADASHTML FUNCTION***///
 function downloadAsHTML(){
 	xml = loadXML(sessvars.xml);
 	var textVersion = xml.xml;
@@ -34,4 +20,23 @@ function downloadAsHTML(){
 	file.write(value);
 	file.close();
 	alert("File saved");
+}
+/////***START SAVEXML FUNCTION***///
+function saveXML(xml) {
+	var xml = loadXML(xml);
+	saveParas(xml);
+	//Calling loadXSLT() at the end should refresh to show changes. Currently calls getTabs() again though.
+	loadXSLT(0,1);
+}
+/////***START SAVEFILE FUNCTION***///
+function saveFile(xml, alertText){
+	var fs = new ActiveXObject("Scripting.FileSystemObject");
+	//If windows 7, use this line
+	var f = fs.GetFolder("../XML");
+	//If windows 8, use this line
+	//var f = fs.GetFolder("\XML");
+	file = f.CreateTextFile("TestSave.xml", true, true);
+	file.write(xml.xml);
+	file.close();
+	alert(alertText);
 }

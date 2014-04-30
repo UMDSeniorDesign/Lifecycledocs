@@ -239,7 +239,7 @@
 				<div id="{$vID}Menu" style="display: none;">
 					<button onclick="removeRef('{$vID}', '{$vfromID}')">Remove this Reference</button>
 					<br/>
-					<button onclick="addReference('{$vID}', '{$vfromID}')">Add Reference To: </button>
+					<button onclick="add('{$vID}', '{$vfromID}', '2')">Add Reference To: </button>
 						<select id="{$vID}References" onmouseover="addEditValues('{$vID}', '1', '{$vfromID}')">
 								<option value="-1" selected="selected">
 									<xsl:value-of select="$vID"/> - <xsl:value-of select="$vTitle"/>
