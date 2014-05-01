@@ -73,6 +73,26 @@ function downloadProject(xml){
 	downloadAsHTML(xml, 1);
 	alert("Project saved");
 }
+/////***START PREVIEWASDOCUMENT FUNCTION***/////
+function previewAsDocument(){
+	var xml = loadXML(sessvars.xml);
+	var xsl = loadXML("documentXSL.xsl");
+	var preview = xml.transformNode(xsl);
+	
+	var filename = sessvars.xml.substring(-1,sessvars.xml.length-4);
+	filename += "DocFormat.html";
+	var fs = new ActiveXObject("Scripting.FileSystemObject");
+	//If windows 7, use this line
+	var f = fs.GetFolder("../Saves");
+	//If windows 8, use this line
+	//var f = fs.GetFolder("\XML");
+	file = f.CreateTextFile(filename, true, true);
+	file.write(preview);
+	file.close();
+	
+	//document.location.href = ("../Saves/"+filename);
+	window.open("../Saves/"+filename);
+}
 /////***START SAVEPARAS FUNCTION***/////
 function saveParas(xml){
 	var saveInfo = document.getElementById("section").innerHTML;
