@@ -1,8 +1,8 @@
 
 function displayDownloads() {
-	var table = "<table border='2' border-style='groove' border-color='black'>";
+	var table = "<table border='2' border-color='black'>";
 	var endtable="</table>";
-	var tr = "<tr>";
+	var tr = "<tr align='center'>";
 	var td = "<td>";
 	var etr = "</tr>";
 	var etd = "</td>";
@@ -11,20 +11,26 @@ function displayDownloads() {
 	var div = document.getElementById("buttons");
 	var tableString = "";
 	tableString += table;
-	tableString +=tr;
+	if(div.innerHTML.length > 5) {
+		var divStyle = div.style.display;
+		if(divStyle == 'block') 
+			return div.style.display='none';
+		else
+			return div.style.display='block';
+	}
 	for(var i = 0; i < downloadDisplay.length; i++) {
 		var filename = downloadDisplay[i].childNodes[0].getAttribute("href");
 		if(i == 0){
 			sessvars.first = filename;
 		}
-		
-		//tableString += td;
-		tableString += ("<button onclick=downloadAsHTML('filename')>"+"Download "+filename+"</button>");
-		//tableString += etd;
-		
+		tableString +=tr;
+		tableString += td;
+		tableString += ("<button style='width:250px' onclick=downloadAsHTML('"+filename+"')>"+"Download "+filename+"</button>");
+		tableString += etd;
+		tableString +=etr;
 		
 	}
-	tableString +=etr;
+	//tableString +=etr;
 	tableString += endtable;
 	div.innerHTML += tableString;
 	
@@ -37,6 +43,7 @@ document.getElementById("b3").style.display='block';*/
 
 /////***START DOWNLOADASHTML FUNCTION***/////
 function downloadAsHTML(xml){
+	var xmlName = xml;
 	xml = loadXML(xml);
 	var textVersion = xml.xml;
 	var styleStringStart = textVersion.search("href=");
@@ -47,7 +54,7 @@ function downloadAsHTML(xml){
 	xsl = loadXML(sessvars.xsl);
 	var value = xml.transformNode(xsl);
 	
-	filename = sessvars.xml.substring(-1,sessvars.xml.length-4);
+	filename = xmlName.substring(-1,xmlName.length-4);
 	var fs = new ActiveXObject("Scripting.FileSystemObject");
 	//If windows 7, use this line
 	var f = fs.GetFolder("../Saves");
