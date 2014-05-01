@@ -106,7 +106,7 @@
 					</div>
 					<xsl:for-each select="Image">
 						<xsl:variable name="x" select="."/>
-						<img src="{$x}" style="float:right"/>
+						<img height="400" width="400" src="{$x}" style="float:right"/>
 					</xsl:for-each>
 					<xsl:if test="TestResult != ''">
 						<xsl:text>Test Result: </xsl:text>
