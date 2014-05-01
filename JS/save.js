@@ -26,7 +26,7 @@ function displayDownloads() {
 		}
 		tableString +=tr;
 		tableString += td;
-		tableString += ("<button style='width:250px' onclick=downloadProject('"+filename+"')>"+"Download "+filename+"</button>")
+		tableString += ("<button style='width:250px' onclick=downloadAsHTML('"+filename+"')>"+"Download "+filename+"</button>")
 		tableString += etd;
 		tableString +=etr;
 		
@@ -71,24 +71,16 @@ function downloadAsHTML(xml){
 	file.close();
 	alert("File saved");
 }
-/////***START DOWNLOADPROJECTASHTML FUNCTION***/////
-function downloadProjectAsHTML(xml){
-	var xmlName = xml;
-	xml = loadXML(xml);
-	var textVersion = xml.xml;
-	xsl = loadXML(sessvars.xsl);
-	var value = xml.transformNode(xsl);
-	
-	filename = xmlName.substring(-1,xmlName.length-4);
-	var fs = new ActiveXObject("Scripting.FileSystemObject");
-	//If windows 7, use this line
-	var f = fs.GetFolder("../Saves");
-	//If windows 8, use this line
-	//var f = fs.GetFolder("\XML");
-	file = f.CreateTextFile(filename+".html", true, true);
-	file.write(value);
-	file.close();
-	alert("File saved");
+/////***START DOWNLOADPROJECT FUNCTION***/////
+function downloadProject(xml){
+	var project = loadProject(xml);
+	var fileNames = project.getElementsByTagName("file_location");
+	for(var i = 0; i < fileNames.length; i++) {
+		var filename = fileNames[i].childNodes[0].getAttribute("href");
+		downloadAsHTML(filename);
+	}
+	downloadAsHTML(xml);
+	alert("Project saved");
 }
 /////***START SAVEPARAS FUNCTION***/////
 function saveParas(xml){
