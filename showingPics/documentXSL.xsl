@@ -93,6 +93,10 @@
         </u></b>
         <p>
             <font size="4">
+                <xsl:for-each select="Image">
+                    <xsl:variable name="x" select="."/>
+                    <img src="{$x}" style="float:right"/>
+                </xsl:for-each>
                 <xsl:for-each select="Para">
                     <xsl:if test="$sizeOffset &lt; 6">
                         <xsl:text>&#160;&#160;&#160;&#160;&#160;</xsl:text>
@@ -240,7 +244,7 @@
         <xsl:variable name="myID" select="@id"/>
         <xsl:variable name="base" select="document(ancestor-or-self::*/@xml:base)"/>
         
-        <br/><br/>
+        <br/>
         <xsl:if test="$sizeOffset &lt; 6">
             <xsl:text>&#160;&#160;&#160;&#160;&#160;</xsl:text>
         </xsl:if>
@@ -258,6 +262,10 @@
         </u></b>
         <p>
             <font size="4">
+                <xsl:for-each select="Image">
+                    <xsl:variable name="x" select="."/>
+                    <img src="{$x}" style="float:right"/>
+                </xsl:for-each>
                 <xsl:for-each select="Para">
                     <xsl:if test="$sizeOffset &lt; 6">
                         <xsl:text>&#160;&#160;&#160;&#160;&#160;</xsl:text>
@@ -272,10 +280,6 @@
                     <xsl:text>&#160;&#160;&#160;&#160;&#160;</xsl:text>
                     <xsl:value-of select="."/>
                     <br/>
-                </xsl:for-each>
-                <xsl:for-each select="Image">
-                    <xsl:variable name="x" select="."/>
-                    <img src="{$x}" style="float:right"/>
                 </xsl:for-each>
                 </font>
         </p>
