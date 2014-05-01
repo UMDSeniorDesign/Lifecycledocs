@@ -27,8 +27,9 @@
 				}
 				if(projectName != "") {
 					save(projectName);
+					//document.getElementById("new").innerHTML += "<br><br><button onclick='proceed()'>Proceed to Project</button>";
 					getProjectInfo(1, projectName+".xml");
-					document.getElementById("new").innerHTML += "<br><br><button onclick='proceed()'>Proceed to Project</button>";
+					//sessvars.p = projectName+".xml";
 					//document.location.href = 'view.hta';
 				}
 				if(v != "") {
@@ -183,15 +184,26 @@
 				
 				var x = y.transformNode(z);
 				image.innerHTML = x;
+				
+				document.getElementById("button").style.visibility="visible";
+
 			}
 	</script>
 	
 	<script>
 		function removeMember(memberName) {
 			var b = document.getElementById("browse").value;
-			var varray = b.split("\\");
-			var projectName = varray[varray.length-1];
+			//alert(b.split("\\")[b.split("\\").length-1]);
+			if(b.value == undefined) {
+				//alert(sessvars.projectName);
+				var projectName = sessvars.projectName;
+			}
+			if (b.split("\\")[b.split("\\").length-1] != ""){
+				var varray = b.split("\\");
+				var projectName = varray[varray.length-1];
+			}
 			
+			//alert(projectName);
 			var xmlDoc = loadProject(projectName);
 
 						
@@ -210,15 +222,15 @@
 			//var f = fs.GetFolder("\Projects");
 
 			file = f.CreateTextFile(projectName, true);
-			
 			file.write(xmlDoc.xml);
-			file.close();
-			
-					//alert(projectName);
-					//alert(xmlDoc.xml);
-					
 			file.close();		
-			getProjectInfo(1, projectName);
+
+			if(b.value == undefined) {
+				getProjectInfo(1, projectName);
+			}
+			if (b.split("\\")[b.split("\\").length-1] != ""){
+				getProjectInfo(0, projectName);
+			}	
 		}
 		
 		function addMember() {
@@ -279,7 +291,9 @@
 				<button id="make" onclick="createProject()">Make My Project</button> <br /><br />
 			</div>
         </div>
-		
+		<br><br>
+		<button id="button" style="visibility: hidden;" onclick='proceed()'>Proceed to Project</button>
+
 	</center>
 	<!-- <button style="position: absolute; left: 45%" onclick=openProject()>Proceed to Project</button> -->
     </body>
