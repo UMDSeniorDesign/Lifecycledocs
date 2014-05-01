@@ -30,7 +30,7 @@ function displayDownloads() {
 	}
 	tableString += (tr + td);
 	tableString += ("<button style='width:250px' onclick=downloadProject('"+sessvars.projectName+"')>"+"Download Project"+"</button>");
-	tableString += (etd + etr + endtable);
+	tableString += (etd + etr + endTable);
 	div.innerHTML += tableString;
 	div.style.display = 'block';
 }
