@@ -1,6 +1,6 @@
 /////***START DOWNLOADASHTML FUNCTION***/////
-function downloadAsHTML(){
-	xml = loadXML(sessvars.xml);
+function downloadAsHTML(xml){
+	xml = loadXML(xml);
 	var textVersion = xml.xml;
 	var styleStringStart = textVersion.search("href=");
 	var styleStringPart = textVersion.substring(styleStringStart);
