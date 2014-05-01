@@ -175,7 +175,7 @@
 				var y = loadProject(projectName);
 				var z = loadXML("peteProjectXSL.xsl");		
 				
-				alert(y.xml);
+				//alert(y.xml);
 				
 				var x = y.transformNode(z);
 				image.innerHTML = x;
@@ -231,7 +231,7 @@
 			n.appendChild(newel);
 			
 			n=xmlDoc.getElementsByTagName("Team")[length-1];
-			alert(n.value);
+			//alert(n.value);
 						
 			/*var newM = prompt("New Member Name: ", "");
 			var newR = prompt("New Member Role: ", "");

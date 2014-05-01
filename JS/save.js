@@ -71,6 +71,25 @@ function downloadAsHTML(xml){
 	file.close();
 	alert("File saved");
 }
+/////***START DOWNLOADPROJECTASHTML FUNCTION***/////
+function downloadProjectAsHTML(xml){
+	var xmlName = xml;
+	xml = loadXML(xml);
+	var textVersion = xml.xml;
+	xsl = loadXML(sessvars.xsl);
+	var value = xml.transformNode(xsl);
+	
+	filename = xmlName.substring(-1,xmlName.length-4);
+	var fs = new ActiveXObject("Scripting.FileSystemObject");
+	//If windows 7, use this line
+	var f = fs.GetFolder("../Saves");
+	//If windows 8, use this line
+	//var f = fs.GetFolder("\XML");
+	file = f.CreateTextFile(filename+".html", true, true);
+	file.write(value);
+	file.close();
+	alert("File saved");
+}
 /////***START SAVEPARAS FUNCTION***/////
 function saveParas(xml){
 	var saveInfo = document.getElementById("section").innerHTML;
