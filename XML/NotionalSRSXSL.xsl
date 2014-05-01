@@ -104,7 +104,9 @@
 				<br/>
                 <button onclick="hideMenu('{$vID}')">Cancel</button>
             </div>
+			
 			<div id="sub{@id}" style="display: none;">
+				
 				<xsl:apply-templates select="Section" mode="section"/>
 				<xsl:apply-templates select="Requirement" mode="section"/>
 			</div>
@@ -160,6 +162,10 @@
 							<br/>
 						</xsl:if>
 					</div>
+					<xsl:for-each select="Image">
+						<xsl:variable name="x" select="."/>
+						<img src="{$x}" style="float:right"/>
+					</xsl:for-each>
 					<div id="refs">
 					<xsl:apply-templates select="Ref"/>
 						<xsl:if test="position() != last()">
@@ -191,6 +197,10 @@
 							<br/>
 						</xsl:if>
 					</div>
+					<xsl:for-each select="Image">
+						<xsl:variable name="x" select="."/>
+						<img src="{$x}" style="float:right"/>
+					</xsl:for-each>
 					<div id="refs">
 					<xsl:apply-templates select="Ref"/>
 						<xsl:if test="position() != last()">
