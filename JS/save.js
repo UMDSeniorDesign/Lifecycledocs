@@ -48,9 +48,12 @@ document.getElementById("b2").style.display='block';
 document.getElementById("b3").style.display='block';*/
 
 /////***START DOWNLOADASHTML FUNCTION***/////
-function downloadAsHTML(xml){
+function downloadAsHTML(xml, type){
 	var xmlName = xml;
-	xml = loadXML(xml);
+	if(type != 1)
+		xml = loadXML(xml);
+	else
+		xml = loadProject(xml);
 	var textVersion = xml.xml;
 	var styleStringStart = textVersion.search("href=");
 	var styleStringPart = textVersion.substring(styleStringStart);
@@ -69,7 +72,8 @@ function downloadAsHTML(xml){
 	file = f.CreateTextFile(filename+".html", true, true);
 	file.write(value);
 	file.close();
-	alert("File saved");
+	if (typeof type === 'undefined')
+		alert("File saved");
 }
 /////***START DOWNLOADPROJECT FUNCTION***/////
 function downloadProject(xml){
@@ -77,9 +81,9 @@ function downloadProject(xml){
 	var fileNames = project.getElementsByTagName("file_location");
 	for(var i = 0; i < fileNames.length; i++) {
 		var filename = fileNames[i].childNodes[0].getAttribute("href");
-		downloadAsHTML(filename);
+		downloadAsHTML(filename, 0);
 	}
-	downloadAsHTML(xml);
+	downloadAsHTML(xml, 1);
 	alert("Project saved");
 }
 /////***START SAVEPARAS FUNCTION***/////
