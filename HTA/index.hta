@@ -92,7 +92,7 @@
 			function load(projectName) {
 				var project = projectName+".xml";
 				var file = loadProject(project);
-				
+				alert(file.xml);
 				//document.getElementById("new").innerHTML = "";
 				for(var j = 0; file.getElementsByTagName("file_location").length > j; j++) {
 					var attr = file.getElementsByTagName("file_location")[j].childNodes[0].getAttribute("href");

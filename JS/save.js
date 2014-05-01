@@ -1,3 +1,40 @@
+
+function displayDownloads() {
+	var table = "<table border='2' border-style='groove' border-color='black'>";
+	var endtable="</table>";
+	var tr = "<tr>";
+	var td = "<td>";
+	var etr = "</tr>";
+	var etd = "</td>";
+	var project = loadProject(sessvars.projectName);
+	var downloadDisplay = project.getElementsByTagName("file_location");
+	var div = document.getElementById("buttons");
+	var tableString = "";
+	tableString += table;
+	tableString +=tr;
+	for(var i = 0; i < downloadDisplay.length; i++) {
+		var filename = downloadDisplay[i].childNodes[0].getAttribute("href");
+		if(i == 0){
+			sessvars.first = filename;
+		}
+		
+		//tableString += td;
+		tableString += ("<button onclick=downloadAsHTML('filename')>"+"Download "+filename+"</button>");
+		//tableString += etd;
+		
+		
+	}
+	tableString +=etr;
+	tableString += endtable;
+	div.innerHTML += tableString;
+	
+//for(var j = 0; file.getElementsByTagName("file_location").length > j; j++) {
+		//var attr = file.getElementsByTagName("file_location")[j].childNodes[0].getAttribute("href");
+		}
+/*document.getElementById("b1").style.display='block';
+document.getElementById("b2").style.display='block';
+document.getElementById("b3").style.display='block';*/
+
 /////***START DOWNLOADASHTML FUNCTION***/////
 function downloadAsHTML(xml){
 	xml = loadXML(xml);
