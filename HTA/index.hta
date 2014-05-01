@@ -28,6 +28,7 @@
 				if(projectName != "") {
 					save(projectName);
 					getProjectInfo(1, projectName+".xml");
+					document.getElementById("new").innerHTML += "<br><br><button onclick='proceed()'>Proceed to Project</button>";
 					//document.location.href = 'view.hta';
 				}
 				if(v != "") {
@@ -35,6 +36,9 @@
 					sessvars.projectName = varray[varray.length-1];
 					document.location.href = 'view.hta';
 				}
+			}
+			function proceed() {
+				document.location.href = 'view.hta';
 			}
 		</script>
 		
@@ -107,7 +111,7 @@
 					
 					document.getElementById("new").innerHTML += "<p style='font-size:24px'>" + attr + "</p>" + ": <input type='text' style='width: 200px' id="+j+"> <br /><br />";	
 				}			
-				//document.getElementById("new").innerHTML += "<button onclick='getProjectInfo(1, "+file+")'>Change Member Names</button>";
+				//document.getElementById("name").innerHTML += "<button onclick='getProjectInfo(1, "+ file +".xml)'>Get Member Names</button>";
 			}
 			
 			function setProject() {
