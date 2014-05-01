@@ -7,7 +7,7 @@
 		maximizeButton="yes"
 		minimizeButton="yes"
 		showInTaskbar="yes"
-		windowState="normal"
+		windowState="maximize"
 		innerBorder="yes"
 		navigable="yes"
 		scroll="auto"
@@ -19,11 +19,18 @@
 				
 		<script>
 			function openProject() {	
+				var projectName = document.getElementById("projectName").value;
 				var v = document.getElementById("browse").value;
-				if(v == "") {
+				
+				if(v == "" && projectName == "") {
 					alert("Please select a project to open!");	
 				}
-				else {
+				if(projectName != "") {
+					save(projectName);
+					getProjectInfo(1, projectName+".xml");
+					//document.location.href = 'view.hta';
+				}
+				if(v != "") {
 					var varray = v.split("\\");
 					sessvars.projectName = varray[varray.length-1];
 					document.location.href = 'view.hta';
@@ -60,7 +67,7 @@
 				var f = new ActiveXObject("Scripting.FileSystemObject");
 				var project = projectName+".xml";
 				var file = loadProject(project);
-	
+				//alert(document.getElementById(1).value);
 				for(var j = 0; file.getElementsByTagName("file_location").length > j; j++) {
 					var attr = file.getElementsByTagName("file_location")[j].childNodes[0].getAttribute("href");
 					//file.getElementsByTagName("file_location")[j].childNodes[0].setAttribute
@@ -92,13 +99,15 @@
 			function load(projectName) {
 				var project = projectName+".xml";
 				var file = loadProject(project);
-				alert(file.xml);
+				//alert(file.xml);
+				
 				//document.getElementById("new").innerHTML = "";
 				for(var j = 0; file.getElementsByTagName("file_location").length > j; j++) {
 					var attr = file.getElementsByTagName("file_location")[j].childNodes[0].getAttribute("href");
 					
-					document.getElementById("new").innerHTML += attr + ": <input type='text' style='width: 200px' id=" + j + "> <br /><br />";	
-				}								
+					document.getElementById("new").innerHTML += "<p style='font-size:24px'>" + attr + "</p>" + ": <input type='text' style='width: 200px' id="+j+"> <br /><br />";	
+				}			
+				//document.getElementById("new").innerHTML += "<button onclick='getProjectInfo(1, "+file+")'>Change Member Names</button>";
 			}
 			
 			function setProject() {
@@ -107,6 +116,7 @@
 			}
 			
 			function createProject() {
+				document.getElementById("make").style.visibility="hidden";
 				var projectName = document.getElementById("projectName").value;
 				
 				if(projectName.substr(projectName.length - 4) == ".xml") {
@@ -117,9 +127,9 @@
 				
 				//windows 8
 				if(fso.FileExists("../Lifecycledocs/Projects/"+projectName+".xml")) {
-					var r = confirm("file already exists! overwrite?")	
+					var r = confirm("Overwrite?")	
 					if(r == true) 
-						alert("file overwriten");
+						alert("Overwriten");
 					else
 						createProject();
 				}
@@ -142,39 +152,32 @@
 				//fso.CopyFile("../Projects/template.xml", "../Projects/"+projectName+".xml", 1);
 				
 				load(projectName);
-
 				sessvars.projectName = projectName+".xml";
-				
-			}
-			
-			function continueOn() {
-				var projectName = document.getElementById("projectName").value;
-
-				save(projectName);
-				document.location.href = 'view.hta';
 			}
 		</script>
 		
 		<script>
 			function getProjectInfo(i, project) {
-				var image = document.getElementById("images");
+				//var image = document.getElementById("images");
 				
 				if(i==0) {
 					var b = document.getElementById("browse").value;
 					var varray = b.split("\\");
 					var projectName = varray[varray.length-1];
-				} else 
+					var image = document.getElementById("images");
+				} else if(i == 1){
 					var projectName = project;
+					var image = document.getElementById("new");
+				}
 				
 				image.innerHTML = "";	
 				
 				var y = loadProject(projectName);
 				var z = loadXML("peteProjectXSL.xsl");		
 				
-				//alert(y.xml);
+				alert(y.xml);
 				
 				var x = y.transformNode(z);
-				
 				image.innerHTML = x;
 			}
 	</script>
@@ -245,7 +248,7 @@
 	
     </head>
 <title>Lifecycle Documents</title>
-    <body>
+    <body background="ProjectImages/water_texture2375.jpg">
     <center>
         <div id="wrapper">
             <div id ="head">
@@ -255,7 +258,7 @@
 					<input id="browse" type="file" onchange="getProjectInfo(0, '')">
                 </div>
             </div>
-			<button onclick=continueOn()>></button>
+			
         </div>
 		<div id="splash">
             <div id ="logo">
@@ -265,15 +268,15 @@
 					<a id="pic" href="http://www.navsea.navy.mil/nuwc/default.aspx" target="_blank">
                     <img src="ProjectImages/nuwc_logo.jpg" alt="nuwc_logo" width="400" height="400"></a>
 					<br/><br/>
-					<body background="ProjectImages/water_texture2375.jpg">
 				</div>
             </div>
-			<div id="new" style="visibility: hidden; float: left; width: 900px; position: absolute; top: 100px; left: 200px">
-				<p style="font-size:30px">Project Name:</p><input autofocus style="width: 300px" type="text" id="projectName" > <br/> 			
-				<button onclick="createProject()">Create Project</button> <br/><br/>
+			<div id="new" style="visibility: hidden; position: absolute; top: 100px; left: 40%">
+				<p style="font-size:30px">Project Name:</p><input autofocus style="width: 300px" type="text" id="projectName" > <br/> <br/> 			
+				<button id="make" onclick="createProject()">Make My Project</button> <br /><br />
 			</div>
         </div>
 		
 	</center>
+	<!-- <button style="position: absolute; left: 45%" onclick=openProject()>Proceed to Project</button> -->
     </body>
 </html>
