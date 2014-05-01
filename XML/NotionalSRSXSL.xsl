@@ -50,21 +50,26 @@
 					#page{
 					}
                     #toc {
+                    position: fixed;
+                    overflow-y: scroll;
+                    overflow-x: auto;
                     float: left;
-                    width: 40%;
+                    width: 30%;
                     font-size: 12pt;
-                    height: 100%;
+                    height: 90%;
                     }
                     #view {
                     float: right;
-                    width: 60%;
+                    width: 70%;
                     font-size: 12pt;
                     }
-					textarea {
-					overflow: auto;
-					resize: both;
-					}
-                </style>  
+                    textarea {
+                    overflow-y: scroll;
+                    overflow-x: auto;
+                    width: 100%;
+                    resize: both;
+                    }
+                </style>
             </head>
             <body>
             	<div id="toc">
@@ -215,7 +220,7 @@
 			</xsl:variable>
 			<div id="Para">
 				
-				<textarea id="{$vID}Para{$vIndex}" cols="50" style='overflow-y:hidden;width:550px;height:150px' onfocus='this.rows = (parseInt(this.value.length/this.cols)+2||1)' onkeyup='this.rows = (parseInt(this.value.length/this.cols)+2||1);' oncontextmenu="showMenu('{$vID}', '2', '{$vIndex}');return false;" readonly="readonly">
+				<textarea id="{$vID}Para{$vIndex}" style='height:150px' onfocus='this.rows = (parseInt(this.value.length/this.cols)+2||1)' onkeyup='this.rows = (parseInt(this.value.length/this.cols)+2||1);' oncontextmenu="showMenu('{$vID}', '2', '{$vIndex}');return false;" readonly="readonly">
 				<xsl:value-of select="."/></textarea>
 				<br/>
 				<div id="{$vID}ParaMenu{$vIndex}" style="display: none;">
