@@ -86,7 +86,7 @@
 				<button onclick="changeTitle('{$vID}')">Change Title to: </button>
 				<textarea id="{@id}Title" rows="1"><xsl:value-of select="$vTitle"/></textarea>
 				<br/>
-                <button onclick="hideMenu('{$vID}')">Cancel</button>
+                <button onclick="hideMenu('{$vID}')" id="close">Cancel</button>
             </div>
 			<div id="sub{@id}" style="display: none;">
 				<xsl:apply-templates select="Section" mode="section"/>
@@ -118,7 +118,7 @@
 				<button onclick="changeTitle('{$vID}')">Change Title to: </button>
 				<textarea id="{@id}Title" rows="1"><xsl:value-of select="$vTitle"/></textarea>
 				<br/>
-                <button onclick="hideMenu('{$vID}')">Cancel</button>
+                <button onclick="hideMenu('{$vID}')" id="close">Cancel</button>
             </div>
 			</li>
 			<div id="sub{@id}" style="display: none;">
@@ -130,11 +130,16 @@
 	
     <xsl:template match="Requirement" mode="para">
 		<xsl:if test="@isNewest = 'true'">
+		<xsl:variable name="vID">
+			<xsl:value-of select="@id"/>
+		</xsl:variable>
 			<div id="section">
 				<div id="{@id}" style="display: none;">
 					<div id="edit">
 						<xsl:apply-templates select="Para"/>
-						<br/>
+						<xsl:if test="position() != last()">
+							<br/>
+						</xsl:if>
 					</div>
 					<xsl:for-each select="Image">
 						<xsl:variable name="x" select="."/>
@@ -142,11 +147,17 @@
 					</xsl:for-each>
 					<div id="refs">
 					<xsl:apply-templates select="Ref"/>
-					<br/>
+						<xsl:if test="position() != last()">
+							<br/>
+						</xsl:if>
 					</div>
 				</div>
 			</div>
-			
+			<div id ="{$vID}options" style="display: none;">
+				<button onclick="add('{$vID}', '0', '2')">Add Reference To: </button>
+				<select id="{$vID}References">
+				</select>
+			</div>
 		</xsl:if>
         <xsl:apply-templates select="Section" mode="para"/>
         <xsl:apply-templates select="Requirement" mode="para"/>
@@ -154,21 +165,33 @@
 	
 	<xsl:template match="Section" mode="para">
 		<xsl:if test="@isNewest = 'true'">
+			<xsl:variable name="vID">
+				<xsl:value-of select="@id"/>
+			</xsl:variable>
 			<div id="section">
 				<div id="{@id}" style="display: none;">
 					<div id="edit">
 						<xsl:apply-templates select="Para"/>
-						<br/>
+						<xsl:if test="position() != last()">
+							<br/>
+						</xsl:if>
+					</div>
+					<xsl:for-each select="Image">
+						<xsl:variable name="x" select="."/>
+						<img height="250" width="250" src="{$x}" style="float:left"/>
+					</xsl:for-each>
+					<div id="refs">
+					<xsl:apply-templates select="Ref"/>
+						<xsl:if test="position() != last()">
+							<br/>
+						</xsl:if>
 					</div>
 				</div>
 			</div>
-			<xsl:for-each select="Image">
-				<xsl:variable name="x" select="."/>
-				<img height="250" width="250" src="{$x}" style="float:left"/>
-			</xsl:for-each>
-			<div id="refs">
-				<xsl:apply-templates select="Ref"/>
-				<br/>
+			<div id ="{$vID}options" style="display: none;">
+				<button onclick="add('{$vID}', '0', '2')">Add Reference To: </button>
+				<select id="{$vID}References">
+				</select>
 			</div>
 		</xsl:if>
 		<xsl:apply-templates select="Section" mode="para"/>
@@ -194,7 +217,7 @@
 					<br/>
 					<button onclick="remove('{$vID}', '{$vIndex}', '3')">Remove Para</button>
 					<br/>
-					<button onclick="hideMenu('{$vID}', '1', '{$vIndex}')">Cancel</button>
+					<button onclick="hideMenu('{$vID}', '1', '{$vIndex}')" id="close">Cancel</button>
 				</div>
 				<br/>
 			</div>
@@ -203,12 +226,8 @@
 	
 	<xsl:template match="Ref">
 		<xsl:if test="@isNewest = 'true'">
-			<xsl:variable name="vID">
-				<xsl:value-of select="."/>
-			</xsl:variable>
-			<xsl:variable name="vfromID">
-				<xsl:value-of select="../@id"/>
-			</xsl:variable>
+			<xsl:variable name="vID" select="."/>
+			<xsl:variable name="vfromID" select="../@id"/>
 			<xsl:variable name="vDocumentBase" select="/*/@xml:base"/>
 			<xsl:variable name="vDocumentPath" select="string(concat('..//Projects//',$vDocumentBase))"/>
 			<xsl:variable name="vDocumentProj" select="document($vDocumentPath)"/>
@@ -218,7 +237,9 @@
 					<xsl:variable name="vDocumentNewPath" select="string(concat('..//XML//',$vLocations))"/>
 					<xsl:for-each select="document($vDocumentNewPath)/descendant-or-self::*/*[@id=$vID]">
 						<xsl:value-of select="Title"/>
-						<br/>
+						<xsl:if test="position() != last()">
+							<br/>
+						</xsl:if>
 					</xsl:for-each>
 				</xsl:for-each>
 			</xsl:variable>
@@ -241,20 +262,15 @@
 					<xsl:value-of select="$vPara"/>
 				</div>
 				<div id="{$vID}Menu" style="display: none;">
-					<button onclick="remove('{$vID}', '{$vfromID}', '2')">Remove this Reference</button>
+					<button onclick="remove('{$vID}', '{$vfromID}', '2', sessvars.xml)">Remove this Reference</button>
 					<br/>
-					<button onclick="addReference('{$vID}', '{$vfromID}')">Add Reference To: </button>
-						<select id="{$vID}References" onmouseover="addEditValues('{$vID}', '1', '{$vfromID}')">
-								<option value="-1" selected="selected">
-									<xsl:value-of select="$vID"/> - <xsl:value-of select="$vTitle"/>
-								</option>
-						</select>
-					<br/>
-					<button onclick="hideMenu('{$vID}')">Cancel</button>
+					<button onclick="hideMenu('{$vID}')" id="close">Cancel</button>
 				</div>
 			</div>
 			<xsl:apply-templates select="Ref" mode="para"/>
-			<br/>
+			<xsl:if test="position() != last()">
+				<br/>
+			</xsl:if>
 		</xsl:if>
 	</xsl:template>
 </xsl:stylesheet>
