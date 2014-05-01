@@ -1,50 +1,46 @@
-
+/////***START DISPLAYDOWNLOADS FUNCTION***/////
 function displayDownloads() {
-	var table = "<table border='2' border-color='black'>";
-	var endtable="</table>";
+	var startTable = "<table>";
+	var endTable="</table>";
 	var tr = "<tr align='center'>";
 	var td = "<td>";
 	var etr = "</tr>";
 	var etd = "</td>";
+	var tableString = "";
+	
 	var project = loadProject(sessvars.projectName);
 	var downloadDisplay = project.getElementsByTagName("file_location");
 	var div = document.getElementById("buttons");
-	var tableString = "";
-	tableString += table;
+	tableString += startTable;
 	if(div.innerHTML.length > 5) {
 		var divStyle = div.style.display;
 		if(divStyle == 'block') 
-			return div.style.display='none';
+			return div.style.display = 'none';
 		else
-			return div.style.display='block';
+			return div.style.display = 'block';
 	}
 	for(var i = 0; i < downloadDisplay.length; i++) {
 		var filename = downloadDisplay[i].childNodes[0].getAttribute("href");
 		if(i == 0){
 			sessvars.first = filename;
 		}
-		tableString +=tr;
-		tableString += td;
-		tableString += ("<button style='width:250px' onclick=downloadAsHTML('"+filename+"')>"+"Download "+filename+"</button>");
-		tableString += etd;
-		tableString +=etr;
-		
+		tableString += (tr + td);
+		tableString += ("<button style='width:250px' onclick=downloadAsHTML('"+filename+"')>"+"Download "+filename+"</button>")
+		tableString += (etd + etr);
 	}
-	//tableString +=etr;
-	tableString += endtable;
+	tableString += (tr + td);
+	tableString += ("<button style='width:250px' onclick=downloadProject('"+sessvars.projectName+"')>"+"Download Project"+"</button>");
+	tableString += (etd + etr + endTable);
 	div.innerHTML += tableString;
-	
-//for(var j = 0; file.getElementsByTagName("file_location").length > j; j++) {
-		//var attr = file.getElementsByTagName("file_location")[j].childNodes[0].getAttribute("href");
-		}
-/*document.getElementById("b1").style.display='block';
-document.getElementById("b2").style.display='block';
-document.getElementById("b3").style.display='block';*/
-
+	div.style.display = 'block';
+}
 /////***START DOWNLOADASHTML FUNCTION***/////
-function downloadAsHTML(xml){
+function downloadAsHTML(xml, type){
 	var xmlName = xml;
-	xml = loadXML(xml);
+	if(type != 1)
+		xml = loadXML(xml);
+	else
+		xml = loadProject(xml);
 	var textVersion = xml.xml;
 	var styleStringStart = textVersion.search("href=");
 	var styleStringPart = textVersion.substring(styleStringStart);
@@ -63,7 +59,39 @@ function downloadAsHTML(xml){
 	file = f.CreateTextFile(filename+".html", true, true);
 	file.write(value);
 	file.close();
-	alert("File saved");
+	if (typeof type === 'undefined')
+		alert("File saved");
+}
+/////***START DOWNLOADPROJECT FUNCTION***/////
+function downloadProject(xml){
+	var project = loadProject(xml);
+	var fileNames = project.getElementsByTagName("file_location");
+	for(var i = 0; i < fileNames.length; i++) {
+		var filename = fileNames[i].childNodes[0].getAttribute("href");
+		downloadAsHTML(filename, 0);
+	}
+	downloadAsHTML(xml, 1);
+	alert("Project saved");
+}
+/////***START PREVIEWASDOCUMENT FUNCTION***/////
+function previewAsDocument(){
+	var xml = loadXML(sessvars.xml);
+	var xsl = loadXML("documentXSL.xsl");
+	var preview = xml.transformNode(xsl);
+	
+	var filename = sessvars.xml.substring(-1,sessvars.xml.length-4);
+	filename += "DocFormat.html";
+	var fs = new ActiveXObject("Scripting.FileSystemObject");
+	//If windows 7, use this line
+	var f = fs.GetFolder("../Saves");
+	//If windows 8, use this line
+	//var f = fs.GetFolder("\XML");
+	file = f.CreateTextFile(filename, true, true);
+	file.write(preview);
+	file.close();
+	
+	//document.location.href = ("../Saves/"+filename);
+	window.open("../Saves/"+filename);
 }
 /////***START SAVEPARAS FUNCTION***/////
 function saveParas(xml){

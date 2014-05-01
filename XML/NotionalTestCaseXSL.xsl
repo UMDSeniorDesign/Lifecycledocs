@@ -104,6 +104,10 @@
 						<xsl:apply-templates select="Para"/>
 						<br/>
 					</div>
+					<xsl:for-each select="Image">
+						<xsl:variable name="x" select="."/>
+						<img height="250" width="250" src="{$x}" style="float:left"/>
+					</xsl:for-each>
 					<xsl:if test="TestResult != ''">
 						<xsl:text>Test Result: </xsl:text>
 						<select id="TestResult" onmouseover="addEditValues('{$vID}', '0')" onchange="if (this.selectedIndex) selectBoxChange('{$vID}', '0', this.value);">

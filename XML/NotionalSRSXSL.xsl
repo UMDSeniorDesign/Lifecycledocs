@@ -104,7 +104,9 @@
 				<br/>
                 <button onclick="hideMenu('{$vID}')">Cancel</button>
             </div>
+			
 			<div id="sub{@id}" style="display: none;">
+				
 				<xsl:apply-templates select="Section" mode="section"/>
 				<xsl:apply-templates select="Requirement" mode="section"/>
 			</div>
@@ -160,6 +162,10 @@
 							<br/>
 						</xsl:if>
 					</div>
+					<xsl:for-each select="Image">
+						<xsl:variable name="x" select="."/>
+						<img height="250" width="250" src="{$x}" style="float:left"/>
+					</xsl:for-each>
 					<div id="refs">
 					<xsl:apply-templates select="Ref"/>
 						<xsl:if test="position() != last()">
@@ -191,6 +197,10 @@
 							<br/>
 						</xsl:if>
 					</div>
+					<xsl:for-each select="Image">
+						<xsl:variable name="x" select="."/>
+						<img height="250" width="250" src="{$x}" style="float:left"/>
+					</xsl:for-each>
 					<div id="refs">
 					<xsl:apply-templates select="Ref"/>
 						<xsl:if test="position() != last()">
@@ -220,7 +230,7 @@
 			</xsl:variable>
 			<div id="Para">
 				
-				<textarea id="{$vID}Para{$vIndex}" style='height:150px' onfocus='this.rows = (parseInt(this.value.length/this.cols)+2||1)' onkeyup='this.rows = (parseInt(this.value.length/this.cols)+2||1);' oncontextmenu="showMenu('{$vID}', '2', '{$vIndex}');return false;" readonly="readonly">
+				<textarea id="{$vID}Para{$vIndex}" rows='(parseInt(this.value.length/this.cols)+2||1)' oncontextmenu="showMenu('{$vID}', '2', '{$vIndex}');alert('this.cols');return false;" readonly="readonly">
 				<xsl:value-of select="."/></textarea>
 				<br/>
 				<div id="{$vID}ParaMenu{$vIndex}" style="display: none;">

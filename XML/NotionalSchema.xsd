@@ -145,8 +145,8 @@
                 <xsd:attribute name="id" type="xsd:ID"/>
             </xsd:extension>
         </xsd:simpleContent>
-        
-        
+
+
     </xsd:complexType>
 
     <xsd:element name="ApprovedBy" type="ApprovedByType"/>
@@ -179,6 +179,7 @@
         <!-- This is just an example. It may be more complex than this... -->
         <xsd:choice minOccurs="0" maxOccurs="unbounded">
             <xsd:element ref="Title" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="Image" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element ref="Para" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element ref="Requirement" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="Ref" minOccurs="1" maxOccurs="unbounded" default="Ref">

@@ -136,6 +136,10 @@
 						<xsl:apply-templates select="Para"/>
 						<br/>
 					</div>
+					<xsl:for-each select="Image">
+						<xsl:variable name="x" select="."/>
+						<img height="250" width="250" src="{$x}" style="float:left"/>
+					</xsl:for-each>
 					<div id="refs">
 					<xsl:apply-templates select="Ref"/>
 					<br/>
@@ -158,6 +162,10 @@
 					</div>
 				</div>
 			</div>
+			<xsl:for-each select="Image">
+				<xsl:variable name="x" select="."/>
+				<img height="250" width="250" src="{$x}" style="float:left"/>
+			</xsl:for-each>
 			<div id="refs">
 				<xsl:apply-templates select="Ref"/>
 				<br/>
