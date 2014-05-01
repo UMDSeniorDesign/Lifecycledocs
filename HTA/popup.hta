@@ -1,0 +1,17 @@
+<html>
+<head>
+<script src="../JS/contextMenu.js"></script>
+<script>
+function load(){
+	var bodyHTML = window.dialogArguments.html;
+	var windowID = window.dialogArguments.id;
+	document.title = windowID;
+	document.getElementById("popupBody").innerHTML = bodyHTML;
+}
+</script>
+</head>
+<body onload="load()">
+<div id="popupBody">
+</div>
+</body>
+</html>
