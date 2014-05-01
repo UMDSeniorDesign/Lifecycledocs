@@ -1,52 +1,39 @@
-
+/////***START DISPLAYDOWNLOADS FUNCTION***/////
 function displayDownloads() {
-	var table = "<table>";
-	var endtable="</table>";
+	var startTable = "<table>";
+	var endTable="</table>";
 	var tr = "<tr align='center'>";
 	var td = "<td>";
 	var etr = "</tr>";
 	var etd = "</td>";
+	var tableString = "";
+	
 	var project = loadProject(sessvars.projectName);
 	var downloadDisplay = project.getElementsByTagName("file_location");
-	
 	var div = document.getElementById("buttons");
-	var tableString = "";
-	tableString += table;
+	tableString += startTable;
 	if(div.innerHTML.length > 5) {
 		var divStyle = div.style.display;
 		if(divStyle == 'block') 
-			return div.style.display='none';
+			return div.style.display = 'none';
 		else
-			return div.style.display='block';
+			return div.style.display = 'block';
 	}
 	for(var i = 0; i < downloadDisplay.length; i++) {
 		var filename = downloadDisplay[i].childNodes[0].getAttribute("href");
 		if(i == 0){
 			sessvars.first = filename;
 		}
-		tableString +=tr;
-		tableString += td;
+		tableString += (tr + td);
 		tableString += ("<button style='width:250px' onclick=downloadAsHTML('"+filename+"')>"+"Download "+filename+"</button>")
-		tableString += etd;
-		tableString +=etr;
-		
+		tableString += (etd + etr);
 	}
-	tableString += tr;
-	tableString += td;
+	tableString += (tr + td);
 	tableString += ("<button style='width:250px' onclick=downloadProject('"+sessvars.projectName+"')>"+"Download Project"+"</button>");
-	
-	tableString += etd;
-	tableString += etr;
-	tableString += endtable;
+	tableString += (etd + etr + endtable);
 	div.innerHTML += tableString;
-	
-//for(var j = 0; file.getElementsByTagName("file_location").length > j; j++) {
-		//var attr = file.getElementsByTagName("file_location")[j].childNodes[0].getAttribute("href");
-		}
-/*document.getElementById("b1").style.display='block';
-document.getElementById("b2").style.display='block';
-document.getElementById("b3").style.display='block';*/
-
+	div.style.display = 'block';
+}
 /////***START DOWNLOADASHTML FUNCTION***/////
 function downloadAsHTML(xml, type){
 	var xmlName = xml;
