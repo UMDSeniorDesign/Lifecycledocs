@@ -1,6 +1,6 @@
 
 function displayDownloads() {
-	var table = "<table border='2' border-color='black'>";
+	var table = "<table>";
 	var endtable="</table>";
 	var tr = "<tr align='center'>";
 	var td = "<td>";
@@ -8,6 +8,7 @@ function displayDownloads() {
 	var etd = "</td>";
 	var project = loadProject(sessvars.projectName);
 	var downloadDisplay = project.getElementsByTagName("file_location");
+	
 	var div = document.getElementById("buttons");
 	var tableString = "";
 	tableString += table;
@@ -25,12 +26,17 @@ function displayDownloads() {
 		}
 		tableString +=tr;
 		tableString += td;
-		tableString += ("<button style='width:250px' onclick=downloadAsHTML('"+filename+"')>"+"Download "+filename+"</button>");
+		tableString += ("<button style='width:250px' onclick=downloadProject('"+filename+"')>"+"Download "+filename+"</button>")
 		tableString += etd;
 		tableString +=etr;
 		
 	}
-	//tableString +=etr;
+	tableString += tr;
+	tableString += td;
+	tableString += ("<button style='width:250px' onclick=downloadProject('"+sessvars.projectName+"')>"+"Download Project"+"</button>");
+	
+	tableString += etd;
+	tableString += etr;
 	tableString += endtable;
 	div.innerHTML += tableString;
 	
