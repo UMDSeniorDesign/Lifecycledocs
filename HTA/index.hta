@@ -19,10 +19,13 @@
 				
 		<script>
 			function openProject() {	
-				//alert(sessvars.projectName);
+				
 				var projectName = document.getElementById("projectName").value;
 				
 				var v = document.getElementById("browse").value;
+				
+				
+				alert(projectName);
 				
 				if(v == "" && projectName == "") {
 					alert("Please select a project to open!");	
@@ -71,7 +74,7 @@
 				var a = fso.CreateTextFile(f+"/"+xml, true);
 				//If windows 8, use this line
 				//var f = fso.GetFolder("\XML");
-				//var a = fso.CreateTextFile(f+"\\"+xml+".xml", true);
+				//var a = fso.CreateTextFile(f+"\\"+xml, true);
 				//alert(xml);
 				a.Write(file.xml);
 				a.Close();
@@ -102,7 +105,7 @@
 					//f.CopyFile("../Lifecycledocs/XML/"+attr, "../Lifecycledocs/XML/"+getName(j)+".xml", 1);
 					//Windows 7
 					f.CopyFile("../XML/"+attr, "../XML/"+getName(j)+".xml", 1);
-					alert(getName(j) + " " + doc.xml);
+					//alert(getName(j) + " " + doc.xml);
 					saveFiletoXML(getName(j), doc);
 				}
 				saveFiletoProject(project, file);
@@ -167,6 +170,7 @@
 				fso.CopyFile("../Projects/template.xml", "../Projects/"+projectName+".xml", 1);
 				
 				load(projectName);
+				//alert(projectName);
 				sessvars.projectName = projectName+".xml";
 			}
 		</script>
