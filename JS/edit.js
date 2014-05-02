@@ -267,6 +267,7 @@ function add(ID, aORb, type, index){
 //		'1' = Requirement	
 //		'2' = Reference		'fromID' = ID of section to remove Ref[ID] from
 //		'3' = Para			'fromID' = Index of Para to remove
+//		'4' = Image			'fromID' = Image path to remove
 function remove(ID, fromID, type){
 	if(sessvars.xml.length > 0){
 		var xml = loadXML(sessvars.xml);
