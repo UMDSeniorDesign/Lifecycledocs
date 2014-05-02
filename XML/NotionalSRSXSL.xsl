@@ -102,7 +102,7 @@
 				<button onclick="changeTitle('{$vID}')">Change Title to: </button>
 				<textarea id="{@id}Title" rows="1"><xsl:value-of select="$vTitle"/></textarea>
 				<br/>
-                <button onclick="hideMenu('{$vID}')">Cancel</button>
+                <button onclick="hideMenu('{$vID}')" id="close">Cancel</button>
             </div>
 			
 			<div id="sub{@id}" style="display: none;">
@@ -135,7 +135,7 @@
 					<button onclick="changeTitle('{$vID}')">Change Title to: </button>
 					<textarea id="{@id}Title" rows="1"><xsl:value-of select="$vTitle"/></textarea>
 					<br/>
-	                <button onclick="hideMenu('{$vID}')">Cancel</button>
+	                <button onclick="hideMenu('{$vID}')" id="close">Cancel</button>
 	            </div>
 			</li>
 			<div id="sub{@id}" style="display: none;">
@@ -230,7 +230,7 @@
 			</xsl:variable>
 			<div id="Para">
 				
-				<textarea id="{$vID}Para{$vIndex}" rows='(parseInt(this.value.length/this.cols)+2||1)' oncontextmenu="showMenu('{$vID}', '2', '{$vIndex}');alert('this.cols');return false;" readonly="readonly">
+				<textarea id="{$vID}Para{$vIndex}" rows='(parseInt(this.value.length/this.cols)+2||1)' oncontextmenu="showMenu('{$vID}', '2', '{$vIndex}');return false;" readonly="readonly">
 				<xsl:value-of select="."/></textarea>
 				<br/>
 				<div id="{$vID}ParaMenu{$vIndex}" style="display: none;">
@@ -240,7 +240,7 @@
 					<br/>
 					<button onclick="remove('{$vID}', '{$vIndex}', '3')">Remove Para</button>
 					<br/>
-					<button onclick="hideMenu('{$vID}', '1', '{$vIndex}')">Cancel</button>
+					<button onclick="hideMenu('{$vID}', '1', '{$vIndex}')" id="close">Cancel</button>
 				</div>
 				<br/>
 			</div>
@@ -286,9 +286,9 @@
 					<xsl:value-of select="$vPara"/>
 				</div>
 				<div id="{$vID}Menu" style="display: none;">
-					<button onclick="remove('{$vID}', '{$vfromID}', '2')">Remove this Reference</button>
+					<button onclick="remove('{$vID}', '{$vfromID}', '2', sessvars.xml)">Remove this Reference</button>
 					<br/>
-					<button onclick="hideMenu('{$vID}')">Cancel</button>
+					<button onclick="hideMenu('{$vID}')" id="close">Cancel</button>
 				</div>
 			</div>
 			<xsl:apply-templates select="Ref" mode="para"/>
