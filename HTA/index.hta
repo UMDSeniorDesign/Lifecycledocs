@@ -56,11 +56,11 @@
 				//var a = fso.CreateTextFile(f+"\\"+xml, true);
 				
 				//a.WriteLine(file.xml);
-				alert(file.xml);
+				//alert(file.xml);
 				var f = fso.GetFolder("\Projects");
-				var a = fso.CreateTextFile(f+"\\"+xml, true);
+				var a = fso.CreateTextFile(f+"\\"+xml+".xml", true);
 				//alert(xml);
-				a.WriteLine(file.xml);
+				a.Write(file.xml);
 				a.Close();
 				
 			}
@@ -71,9 +71,9 @@
 				//var a = fso.CreateTextFile(f+"/"+xml, true);
 				//If windows 8, use this line
 				var f = fso.GetFolder("\XML");
-				var a = fso.CreateTextFile(f+"\\"+xml, true);
+				var a = fso.CreateTextFile(f+"\\"+xml+".xml", true);
 				//alert(xml);
-				a.WriteLine(file.xml);
+				a.Write(file.xml);
 				a.Close();
 				
 			}
