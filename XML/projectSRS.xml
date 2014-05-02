@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="NotionalSRSXSL.xsl"?>
+<SoftwareRequirementsDocument xml:base="projectName.xml" projectName="Lifecycle Documents with Requirements Tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="NotionalSchema.xsd">
+	<Section isNewest="true" id="RQ1.0">
+		<Title isNewest="true">Introduction</Title>
+		<Para isNewest="true" index="0">INSERT INTRODUCTION 
+	  </Para>
+		<Section isNewest="true" id="RQ1.1">
+			<Title isNewest="true">Purpose</Title>
+			<Para isNewest="true" index="0">INSERT PURPOSE
+			</Para>
+		</Section>
+		<Section isNewest="true" id="RQ1.2">
+			<Title isNewest="true">Scope</Title>
+			<Para isNewest="true" index="0">INSERT SCOPE
+		</Para>
+		</Section>
+		<Section isNewest="true" id="RQ1.3">
+			<Title isNewest="true">Definitions </Title>
+			<Para isNewest="true" index="0">INSERT DEFINITIONS</Para>
+			<Para isNewest="true" index="1">EXAMPLE: </Para>
+			<Para isNewest="true" index="2">HTML - HyperText Mark-up Language</Para>
+			<Para isNewest="true" index="3">XML - Extensible Mark-up Language</Para>
+		</Section>
+		<Section isNewest="true" id="RQ1.4">
+			<Title isNewest="true">Overview</Title>
+			<Para isNewest="true" index="0">INSERT OVERVIEW 
+		</Para>
+		</Section>
+	</Section>
+	<!--SECTION 2-->
+	<Section isNewest="true" id="RQ2.0">
+		<Title isNewest="true">General Description</Title>
+		<Para isNewest="true" index="0">INSERT GENERAL DESCRIPTION</Para>
+		<Section isNewest="true" id="RQ2.1">
+			<Title isNewest="true">Product Perspective </Title>
+			<Para isNewest="true" index="0">INSERT PRODUCT PERSPECTIVE
+  	</Para>
+		</Section>
+		<Section isNewest="true" id="RQ2.2">
+			<Title isNewest="true">Product Functions </Title>
+			<Para isNewest="true" index="0">INSERT PRODUCT FUNCTIONS 
+  	</Para>
+		</Section>
+		<Section isNewest="true" id="RQ2.3">
+			<Title isNewest="true">User Characteristics</Title>
+			<Para isNewest="true" index="0">INSERT USER CHARACTERISTICS
+      </Para>
+		</Section>
+		<Section isNewest="true" id="RQ2.4">
+			<Title isNewest="true">General Constraints</Title>
+			<Para isNewest="true" index="0">INSERT PRODUCT CONTRAINTS</Para>
+		</Section>
+		<Section isNewest="true" id="RQ2.5">
+			<Title isNewest="true">Assumptions</Title>
+			<Para isNewest="true" index="0">INSERT ASSUMPTIONS</Para>
+		</Section>
+	</Section>
+	<!--END Section 2-->
+	<!--SECTION 3-->
+	<Section isNewest="true" id="RQ3.0">
+		<Title isNewest="true">Specific Requirements</Title>
+		<Para isNewest="true" index="0">INSERT SPECIFIC REQUIREMENTS</Para>
+		<Section isNewest="true" id="RQ3.1">
+			<Title isNewest="true">External Interface Requirements</Title>
+			<Para isNewest="true" index="0">INSERT EXTERNAL INTERFACE REQUIREMENTS</Para>
+			<Requirement isNewest="true" id="RQ3.1.1">
+				<Title isNewest="true"> User Interfaces </Title>
+				<Para isNewest="true" index="0">INSERT USER INTERFACE DESCRIPTION
+		</Para>
+			</Requirement>
+			<Requirement isNewest="true" id="RQ3.1.2">
+				<Title isNewest="true">HardwareInterfaces</Title>
+				<Para isNewest="true" index="0">INSERT HARDWARE INTERFACE DESCRIPTION
+  		</Para>
+			</Requirement>
+			<Requirement isNewest="true" id="RQ3.1.3">
+				<Title isNewest="true">Software Interfaces</Title>
+				<Para isNewest="true" index="0">INSERT SOFTWARE INTERFACE DESCRIPTION</Para>
+			</Requirement>
+			<Requirement isNewest="true" id="RQ3.1.4">
+				<Title isNewest="true">Communication Interfaces</Title>
+				<Para isNewest="true" index="0">INSERT COMMUNICATION INTERFACE DESCRIPTION </Para>
+			</Requirement>
+		</Section>
+	</Section>
+	<Section isNewest="true" id="RQ3.2">
+		<Title isNewest="true">Functional Requirements</Title>
+		<Para isNewest="true" index="0">INSERT FUNCTIONAL REQUIREMENTS</Para>
+	</Section>
+	<Section isNewest="true" id="RQ3.3">
+		<Title isNewest="true">Use Case</Title>
+		<Para isNewest="true" index="0">INSERT USE CASES</Para>
+	</Section>
+</SoftwareRequirementsDocument>

@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="NotionalUseCaseXSL.xsl"?>
-
-<UseCaseDocument xml:base="new.xml" projectName="Lifecycle Documents with Requirements Tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="NotionalSchema.xsd">
+<UseCaseDocument xml:base="projectName.xml" projectName="Lifecycle Documents with Requirements Tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="NotionalSchema.xsd">
 	<Section isNewest="true" name="Introduction" id="UC1.0">
 		<Title isNewest="true">PROJECT TITLE</Title>
 		<Para isNewest="true" index="0">INSERT PROJECT GOAL</Para>
