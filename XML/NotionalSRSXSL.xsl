@@ -164,13 +164,11 @@
 					</div>
 					<xsl:for-each select="Image">
 						<xsl:variable name="vImagePath" select="."/>
-						<a id="{$vID}{$vImagePath}image" onclick="alert('CLICKED!')" oncontextmenu="showMenu('{$vID}', '4', '{$vImagePath}');return false;">
-							<img height="250" width="250" src="{$vImagePath}" style="float:left"/>
-							<div id="{$vID}{$vImagePath}menu" style="display: none;">
-								<button onclick="remove('{$vID}', '{$vImagePath}', '4')">Remove Image</button>
-								<button onclick="hideMenu()">Cancel</button>
-							</div>
-						</a>
+						<img oncontextmenu="showMenu('{$vID}', '4', '{$vImagePath}');return false;" height="250" width="250" src="{$vImagePath}" style="float:left"/>
+						<div id="{$vID}{$vImagePath}menu" style="display: none;">
+							<button onclick="remove('{$vID}', '{$vImagePath}', '4')">Remove Image</button>
+							<button onclick="hideMenu()">Cancel</button>
+						</div>
 					</xsl:for-each>
 					<div id="refs">
 					<xsl:apply-templates select="Ref"/>
@@ -204,8 +202,12 @@
 						</xsl:if>
 					</div>
 					<xsl:for-each select="Image">
-						<xsl:variable name="x" select="."/>
-						<img height="250" width="250" src="{$x}" style="float:left"/>
+						<xsl:variable name="vImagePath" select="."/>
+						<img oncontextmenu="showMenu('{$vID}', '4', '{$vImagePath}');return false;" height="250" width="250" src="{$vImagePath}" style="float:left"/>
+						<div id="{$vID}{$vImagePath}menu" style="display: none;">
+							<button onclick="remove('{$vID}', '{$vImagePath}', '4')">Remove Image</button>
+							<button onclick="hideMenu()">Cancel</button>
+						</div>
 					</xsl:for-each>
 					<div id="refs">
 					<xsl:apply-templates select="Ref"/>
