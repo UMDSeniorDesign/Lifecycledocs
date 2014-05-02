@@ -19,14 +19,8 @@
 				
 		<script>
 			function openProject() {	
-				
 				var projectName = document.getElementById("projectName").value;
-				
 				var v = document.getElementById("browse").value;
-				
-				
-				alert(projectName);
-				
 				if(v == "" && projectName == "") {
 					alert("Please select a project to open!");	
 				}
@@ -47,25 +41,18 @@
 				document.location.href = 'view.hta';
 			}
 		</script>
-		
 		<script>
 			function saveFiletoProject(xml, file){
 				var fso = new ActiveXObject("Scripting.FileSystemObject");
 				//If windows 7, use this line
-				var f = fso.GetFolder("../XML");
+				var f = fso.GetFolder("../Projects");
 				var a = fso.CreateTextFile(f+"/"+xml, true);
 				//If windows 8, use this line
 				//var f = fso.GetFolder("\Projects");
 				//var a = fso.CreateTextFile(f+"\\"+xml, true);
 				
-				//a.WriteLine(file.xml);
-				//alert(file.xml);
-				var f = fso.GetFolder("\Projects");
-				var a = fso.CreateTextFile(f+"\\"+xml, true);
-				//alert(xml);
 				a.Write(file.xml);
 				a.Close();
-				
 			}
 			function saveFiletoXML(xml, file){
 				var fso = new ActiveXObject("Scripting.FileSystemObject");
@@ -75,42 +62,28 @@
 				//If windows 8, use this line
 				//var f = fso.GetFolder("\XML");
 				//var a = fso.CreateTextFile(f+"\\"+xml, true);
-				//alert(xml);
+				
 				a.Write(file.xml);
 				a.Close();
-				
 			}
 			function save(projectName) {
 				var f = new ActiveXObject("Scripting.FileSystemObject");
 				var project = projectName+".xml";
 				var file = loadProject(project);
-				//alert(document.getElementById(1).value);
 				for(var j = 0; file.getElementsByTagName("file_location").length > j; j++) {
 					var attr = file.getElementsByTagName("file_location")[j].childNodes[0].getAttribute("href");
-					//file.getElementsByTagName("file_location")[j].childNodes[0].setAttribute
-					var newFile = document.getElementById(j).value;
-					//alert(attr + " " +  getName(j));
-					
 					var xmlFile = loadXML(attr);
-					var doc = xmlFile.documentElement;
-					
-					doc.setAttribute("xml:base",project);
-					
+					xmlFile.documentElement.setAttribute("xml:base",project)
 					file.getElementsByTagName("file_location")[j].childNodes[0].setAttribute("href", getName(j)+".xml");
 					
-					//f.CopyFile("../Lifecycledocs/XML/"+attr, "../Lifecycledocs/XML/"+getName(j)+".xml", 1);
-					
-					//alert(file.xml);
 					//windows 8
 					//f.CopyFile("../Lifecycledocs/XML/"+attr, "../Lifecycledocs/XML/"+getName(j)+".xml", 1);
 					//Windows 7
 					f.CopyFile("../XML/"+attr, "../XML/"+getName(j)+".xml", 1);
-					//alert(getName(j) + " " + doc.xml);
-					saveFiletoXML(getName(j), doc);
+					
+					saveFiletoXML(getName(j), xmlFile);
 				}
 				saveFiletoProject(project, file);
-				//alert(project);
-				
 			}
 			
 			function getName(j) {	// Gets names of files to saveAs													
@@ -120,10 +93,8 @@
 			function load(projectName) {
 				var project = projectName+".xml";
 				var file = loadProject(project);
-				
 				for(var j = 0; file.getElementsByTagName("file_location").length > j; j++) {
 					var attr = file.getElementsByTagName("file_location")[j].childNodes[0].getAttribute("href");
-					
 					document.getElementById("new").innerHTML += "<p style='font-size:24px'>" + attr + "</p>" + ": <input type='text' style='width: 200px' id="+j+"> <br /><br />";	
 				}			
 			}
@@ -136,7 +107,6 @@
 			function createProject() {
 				document.getElementById("make").style.visibility="hidden";
 				var projectName = document.getElementById("projectName").value;
-				
 				if(projectName.substr(projectName.length - 4) == ".xml") {
 						projectName = projectName.substring(0, projectName.length - 4);
 					} 
@@ -153,7 +123,6 @@
 				}*/
 				
 				//windows 7 
-				
 				if(fso.FileExists("../Projects/"+projectName+".xml")) {
 					var r = confirm("file already exists! overwrite?")
 					if(r == true) 
@@ -177,8 +146,6 @@
 		
 		<script>
 			function getProjectInfo(i, project) {
-				//var image = document.getElementById("images");
-				
 				if(i==0) {
 					var b = document.getElementById("browse").value;
 					var varray = b.split("\\");
@@ -188,19 +155,12 @@
 					var projectName = project;
 					var image = document.getElementById("new");
 				}
-				
-				image.innerHTML = "";	
-				
+				image.innerHTML = "";
 				var y = loadProject(projectName);
-				var z = loadXML("peteProjectXSL.xsl");		
-				
-				//alert(y.xml);
-				
+				var z = loadXML("peteProjectXSL.xsl");
 				var x = y.transformNode(z);
 				image.innerHTML = x;
-				
 				document.getElementById("button").style.visibility="visible";
-
 			}
 	</script>
 	
@@ -232,7 +192,6 @@
 			//If windows 7, use this line
 			var f = fs.GetFolder("../Projects");
 			//If windows 8, use this line
-			//var f = fs.GetFolder("\Projects");
 			//var f = fs.GetFolder("\Projects");
 
 			file = f.CreateTextFile(projectName, true);
