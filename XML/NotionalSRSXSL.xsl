@@ -238,7 +238,7 @@
 			</xsl:variable>
 			<div id="Para">
 				
-				<textarea id="{$vID}Para{$vIndex}" rows='(parseInt(this.value.length/this.cols)+2||1)' oncontextmenu="showMenu('{$vID}', '2', '{$vIndex}');return false;" readonly="readonly">
+				<textarea id="{$vID}Para{$vIndex}" rows='(parseInt(this.value.length/this.cols)+2||1)' oncontextmenu="showMenu('{$vID}', '2', '{$vIndex}');return false;">
 				<xsl:value-of select="."/></textarea>
 				<br/>
 				<div id="{$vID}ParaMenu{$vIndex}" style="display: none;">

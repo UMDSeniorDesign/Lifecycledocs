@@ -93,7 +93,7 @@ function showMenu(ID, type, paraCount) {
 			var popupButtons = popup.getElementsByTagName("button");
 			var popupString = ("<center>"+popup.innerHTML+"</center>");
 			var popObject = {html:popupString, id:"Download"};
-			var pop = window.showModalDialog("popup.hta", popObject, "dialogWidth:275px;dialogHeight: 150px");
+			var pop = window.showModalDialog("popup.hta", popObject, "dialogWidth:325px;dialogHeight: 150px");
 			if(pop != -1 && pop != undefined){
 				buttons[pop].click();
 			}

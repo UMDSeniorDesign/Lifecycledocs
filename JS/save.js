@@ -8,7 +8,10 @@ function displayDownloads(projectName) {
 	var tableString = start;
 	for(var i = 0; i < downloadDisplay.length; i++) {
 		var filename = downloadDisplay[i].childNodes[0].getAttribute("href");
-		tableString += ("<button onclick=downloadAsHTML('"+filename+"') style='width:250px'>"+"Download "+filename+"</button></br>");
+		tableString += ("<button onclick=downloadAsHTML('"+filename+"') style='width:250px'>"+"Download "+filename+"</button>");
+		tableString += ("<select id='"+filename+"'Stylesheets'>");
+		tableString += "</select>";
+		tableString += ("</br>");
 	}
 	tableString += ("<button style='width:250px' onclick=downloadProject('"+projectName+"')>"+"Download Project"+"</button></br>");
 	tableString += end;
@@ -119,8 +122,9 @@ function saveFile(xml, alertText){
 	var f = fs.GetFolder("../XML");
 	//If windows 8, use this line
 	//var f = fs.GetFolder("\XML");
-	file = f.CreateTextFile("TestSave.xml", true, true);
+	file = f.CreateTextFile(sessvars.xml, true, true);
 	file.write(xml.xml);
 	file.close();
 	alert(alertText);
+	loadXSLT(0,1);
 }
