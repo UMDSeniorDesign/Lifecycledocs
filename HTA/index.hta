@@ -71,7 +71,7 @@
 				var fso = new ActiveXObject("Scripting.FileSystemObject");
 				//If windows 7, use this line
 				var f = fso.GetFolder("../XML");
-				var a = fso.CreateTextFile(f+"/"+xml, true);
+				var a = fso.CreateTextFile(f+"/"+xml+".xml", true);
 				//If windows 8, use this line
 				//var f = fso.GetFolder("\XML");
 				//var a = fso.CreateTextFile(f+"\\"+xml, true);
