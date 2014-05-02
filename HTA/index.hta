@@ -49,29 +49,40 @@
 			function saveFiletoProject(xml, file){
 				var fso = new ActiveXObject("Scripting.FileSystemObject");
 				//If windows 7, use this line
-				//var f = fso.GetFolder("../XML");
-				//var a = fso.CreateTextFile(f+"/"+xml, true);
+				var f = fso.GetFolder("../XML");
+				var a = fso.CreateTextFile(f+"/"+xml, true);
+				var f = fso.GetFolder("../Projects");
 				//If windows 8, use this line
 				//var f = fso.GetFolder("\Projects");
 				//var a = fso.CreateTextFile(f+"\\"+xml, true);
+				//var f = fso.GetFolder("\Projects");
 				
 				//a.WriteLine(file.xml);
+<<<<<<< HEAD
 				//alert(file.xml);
 				var f = fso.GetFolder("\Projects");
 				var a = fso.CreateTextFile(f+"\\"+xml+".xml", true);
+=======
+				alert(file.xml);
+				var a = fso.CreateTextFile(f+"\\"+xml, true);
+>>>>>>> 55fe7ff9cf9bda1fa5b8b34b0f87244e6ff5ab1a
 				//alert(xml);
 				a.Write(file.xml);
 				a.Close();
-				
 			}
 			function saveFiletoXML(xml, file){
 				var fso = new ActiveXObject("Scripting.FileSystemObject");
 				//If windows 7, use this line
-				//var f = fso.GetFolder("../XML");
-				//var a = fso.CreateTextFile(f+"/"+xml, true);
+				var f = fso.GetFolder("../XML");
+				var a = fso.CreateTextFile(f+"/"+xml, true);
 				//If windows 8, use this line
+<<<<<<< HEAD
 				var f = fso.GetFolder("\XML");
 				var a = fso.CreateTextFile(f+"\\"+xml+".xml", true);
+=======
+				//var f = fso.GetFolder("\XML");
+				//var a = fso.CreateTextFile(f+"\\"+xml, true);
+>>>>>>> 55fe7ff9cf9bda1fa5b8b34b0f87244e6ff5ab1a
 				//alert(xml);
 				a.Write(file.xml);
 				a.Close();
@@ -99,9 +110,9 @@
 					
 					//alert(file.xml);
 					//windows 8
-					f.CopyFile("../Lifecycledocs/XML/"+attr, "../Lifecycledocs/XML/"+getName(j)+".xml", 1);
+					//f.CopyFile("../Lifecycledocs/XML/"+attr, "../Lifecycledocs/XML/"+getName(j)+".xml", 1);
 					//Windows 7
-					//f.CopyFile("../XML/"+attr, "../XML/"+getName(j)+".xml", 1);
+					f.CopyFile("../XML/"+attr, "../XML/"+getName(j)+".xml", 1);
 					//alert(getName(j) + " " + doc.xml);
 					saveFiletoXML(getName(j), doc);
 				}
@@ -161,10 +172,10 @@
 				
 				
 				//Windows 8 function
-				fso.CopyFile("../Lifecycledocs/Projects/template.xml", "../Lifecycledocs/Projects/"+projectName+".xml", 1);
+				//fso.CopyFile("../Lifecycledocs/Projects/template.xml", "../Lifecycledocs/Projects/"+projectName+".xml", 1);
 								
 				//Windows 7 function
-				//fso.CopyFile("../Projects/template.xml", "../Projects/"+projectName+".xml", 1);
+				fso.CopyFile("../Projects/template.xml", "../Projects/"+projectName+".xml", 1);
 				
 				load(projectName);
 				sessvars.projectName = projectName+".xml";

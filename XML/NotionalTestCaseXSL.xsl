@@ -84,7 +84,7 @@
 				<button onclick="changeTitle('{$vID}')">Change Title to: </button>
 				<textarea id="{@id}Title" rows="1"><xsl:value-of select="$vTitle"/></textarea>
 				<br/>
-                <button onclick="hideMenu('{$vID}')" id="close">Cancel</button>
+                <button onclick="hideMenu('{$vID}')">Cancel</button>
             </div>
 			<div id="sub{@id}" style="display: none;">
 				<xsl:apply-templates select="Section" mode="section"/>
@@ -108,18 +108,38 @@
 						<xsl:variable name="x" select="."/>
 						<img height="250" width="250" src="{$x}" style="float:left"/>
 					</xsl:for-each>
-					<xsl:if test="TestResult != ''">
-						<xsl:text>Test Result: </xsl:text>
-						<select id="TestResult" onmouseover="addEditValues('{$vID}', '0')" onchange="if (this.selectedIndex) selectBoxChange('{$vID}', '0', this.value);">
-							<option value="-1" selected="selected">
-								<xsl:value-of select="TestResult"/>
-							</option>
-						</select>
-						<br/>
-					</xsl:if>
+					<xsl:text>Test Result: </xsl:text>
+					<select id="TestResult" onmouseover="addEditValues('{$vID}', '0')" onchange="if (this.selectedIndex) selectBoxChange('{$vID}', '0', this.value);">
+						<option value="-1" selected="selected">
+							<xsl:value-of select="TestResult"/>
+						</option>
+					</select>
+					<br/>
 					<xsl:variable name="vDocumentBase" select="/*/@xml:base"/>
 					<xsl:variable name="vDocumentPath" select="string(concat('..//Projects//',$vDocumentBase))"/>
 					<xsl:variable name="vDocumentProj" select="document($vDocumentPath)"/>
+					<xsl:if test="not(ApprovedBy)">
+						<xsl:text>Approved By: </xsl:text>
+						<select id="ApprovedBy" onmouseover="addEditValues('{$vID}', '0')" onchange="if (this.selectedIndex) selectBoxChange('{$vID}', '1', this.value);">
+							<option value="-1" selected="selected">
+								<xsl:value-of select="Name"/>
+							</option>
+						</select>
+						<br/>
+						<div id="options" style="display: none;">
+							<xsl:for-each select="$vDocumentProj//*//*//TeamMember">
+								<xsl:variable name="vTeamMember" select="Name"/>
+								<xsl:value-of select="$vTeamMember"/>,
+							</xsl:for-each>
+						</div>
+						<div id="Other" style="display: none;">
+							<button onclick="changeApprovedBy('{$vID}')">Approved By: </button>
+							<textarea id="OtherText" rows="1">Other</textarea>
+							<br/>
+						</div>
+						<xsl:value-of select="Name"/>
+						<xsl:text>'s Comment: </xsl:text>
+					</xsl:if>
 					<xsl:for-each select="ApprovedBy[@isNewest='true']">
 						<xsl:text>Approved By: </xsl:text>
 						<select id="ApprovedBy" onmouseover="addEditValues('{$vID}', '0')" onchange="if (this.selectedIndex) selectBoxChange('{$vID}', '1', this.value);">
@@ -151,11 +171,6 @@
 					</div>
 				</div>
 			</div>
-			<div id ="{$vID}options" style="display: none;">
-				<button onclick="add('{$vID}', '0', '2')">Add Reference To: </button>
-				<select id="{$vID}References">
-				</select>
-			</div>
 		</xsl:if>
         <xsl:apply-templates select="Section" mode="para"/>
         <xsl:apply-templates select="Requirement" mode="para"/>
@@ -180,7 +195,7 @@
 					<br/>
 					<button onclick="remove('{$vID}', '{$vIndex}', '3')">Remove Para</button>
 					<br/>
-					<button onclick="hideMenu('{$vID}', '1', '{$vIndex}')" id="close">Cancel</button>
+					<button onclick="hideMenu('{$vID}', '1', '{$vIndex}')">Cancel</button>
 				</div>
 				<br/>
 			</div>
@@ -229,7 +244,14 @@
 				<div id="{$vID}Menu" style="display: none;">
 					<button onclick="remove('{$vID}', '{$vfromID}', '2')">Remove this Reference</button>
 					<br/>
-					<button onclick="hideMenu('{$vID}')" id="close">Cancel</button>
+					<button onclick="addReference('{$vID}', '{$vfromID}')">Add Reference To: </button>
+						<select id="{$vID}References" onmouseover="addEditValues('{$vID}', '1', '{$vfromID}')">
+								<option value="-1" selected="selected">
+									<xsl:value-of select="$vID"/> - <xsl:value-of select="$vTitle"/>
+								</option>
+						</select>
+					<br/>
+					<button onclick="hideMenu('{$vID}')">Cancel</button>
 				</div>
 			</div>
 			<xsl:apply-templates select="Ref" mode="para"/>
