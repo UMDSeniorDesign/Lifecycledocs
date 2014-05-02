@@ -87,7 +87,7 @@ function saveParas(xml){
 	for(var i = 0; i < sections.length; i++){
 		if(editedId == sections[i].getAttribute("id")){
 			var originalParas = sections[i].getElementsByTagName("Para");
-			for(var j = 0, k = 1; j < originalParas.length; j++, k++){
+			for(var j = 0, k = 0; j < originalParas.length; j++, k++){
 				while(originalParas[j].getAttribute("isNewest") != 'true')
 					j++;
 				var editedPara = document.getElementById(editedId+"Para"+k).value;
