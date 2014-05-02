@@ -96,7 +96,7 @@ function loadXSLT(withTabs, withCurrent, xmlToLoad){
 	value += "<br><button onclick='saveXML(sessvars.xml)'>Save</button>";
 	value += "<button onclick='add(0, 0)'>Add Reference</button>";
 	value += "<button onclick='add(0, 1)'>Add Para</button>";
-	value += "<button onclick='add(0, 2)'>Add Image</button>";
+	value += "<button onclick='showBrowse()'>Add Image</button>";
 	value += "</div>";
 	document.getElementById("xsltDiv").innerHTML = value;
 	var edit = document.getElementById("edit");
@@ -109,6 +109,9 @@ function loadXSLT(withTabs, withCurrent, xmlToLoad){
 		edit.style.border = "none";
 		sessvars.toggle = "0";
 	}
+}
+function showBrowse(){
+	var browseInput = document.getElementById("browseBox").click();
 }
 /////***START LOADXML FUNCTION***///
 function loadXML(file_name) {

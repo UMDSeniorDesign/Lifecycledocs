@@ -36,8 +36,10 @@ function add(ID, aORb, type, index){
 				showMenu(divID, 3);
 			if(aORb == 1)
 				add(divID, 1, 3, -1);
-			if(aORb == 2)
-				add(divID, 
+			if(aORb == 2){
+				alert(type);
+				add(divID, 1, 4, -1);
+			}
 		}
 		var sections = xml.getElementsByTagName("Section");
 		for(var i = 0; i < sections.length; i++){
