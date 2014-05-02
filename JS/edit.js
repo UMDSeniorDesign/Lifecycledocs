@@ -14,10 +14,12 @@ function toggleEdit(){
 	}
 }
 /////***START ADD FUNCTION***/////
+//ID	'0' = addFromTools	- If ID == 0 then the tools menu made the call
 //Type 	'0' = Section		'aORb' = 0 - Add Section above
 //		'1' = Requirement	'aORb' = 0 - Add Requirement above
 //		'2' = Reference		
 //		'3' = Para			'aORb' = 0 - add Para above
+//		'4' = Image			'aORb' = 0 - add Image above
 function add(ID, aORb, type, index){ 
 	if(sessvars.xml.length > 0){
 		var xml = loadXML(sessvars.xml);
@@ -34,6 +36,8 @@ function add(ID, aORb, type, index){
 				showMenu(divID, 3);
 			if(aORb == 1)
 				add(divID, 1, 3, -1);
+			if(aORb == 2)
+				add(divID, 
 		}
 		var sections = xml.getElementsByTagName("Section");
 		for(var i = 0; i < sections.length; i++){
