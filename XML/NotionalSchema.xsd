@@ -170,6 +170,15 @@
                     </xsd:simpleContent>
                 </xsd:complexType>
             </xsd:element>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="UIC">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:string">
+                            <xsd:attribute name="isNewest" type="xsd:string"/>
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
             <xsd:element ref="Para" minOccurs="0"/>
         </xsd:sequence>
         <xsd:attribute name="isNewest" type="xsd:boolean"/>

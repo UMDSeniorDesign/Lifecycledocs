@@ -150,6 +150,11 @@
                             <xsl:for-each select="ApprovedBy">
                                 <tr>
                                     <td align="center">
+                                        <xsl:value-of select="substring-before(Date[@isNewest = 'true'], 'T')"/>
+                                        <br/>
+                                        <xsl:value-of select="substring-after(Date[@isNewest = 'true'], 'T')"/>
+                                    </td>
+                                    <td align="center">
                                         <font size="4">
                                             <xsl:choose>
                                                 <xsl:when test="UIC != ''">
@@ -167,11 +172,6 @@
                                                 <xsl:value-of select="Name[@isNewest = 'true']"/>
                                             </b>
                                         </font>
-                                    </td>
-                                    <td align="center">
-                                        <xsl:value-of select="substring-before(Date[@isNewest = 'true'], 'T')"/>
-                                        <br/>
-                                        <xsl:value-of select="substring-after(Date[@isNewest = 'true'], 'T')"/>
                                     </td>
                                     <td>
                                         <xsl:value-of select="Para[@isNewest = 'true']"/>
@@ -330,6 +330,11 @@
                             <xsl:for-each select="ApprovedBy">
                                 <tr>
                                     <td align="center">
+                                        <xsl:value-of select="substring-before(Date[@isNewest = 'true'], 'T')"/>
+                                        <br/>
+                                        <xsl:value-of select="substring-after(Date[@isNewest = 'true'], 'T')"/>
+                                    </td>
+                                    <td align="center">
                                         <font size="4">
                                             <xsl:choose>
                                                 <xsl:when test="UIC != ''">
@@ -347,11 +352,6 @@
                                                 <xsl:value-of select="Name[@isNewest = 'true']"/>
                                             </b>
                                         </font>
-                                    </td>
-                                    <td align="center">
-                                        <xsl:value-of select="substring-before(Date[@isNewest = 'true'], 'T')"/>
-                                        <br/>
-                                        <xsl:value-of select="substring-after(Date[@isNewest = 'true'], 'T')"/>
                                     </td>
                                     <td>
                                         <xsl:value-of select="Para[@isNewest = 'true']"/>
