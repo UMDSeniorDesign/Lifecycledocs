@@ -84,6 +84,20 @@ function showMenu(ID, type, paraCount) {
 				buttons[pop].click();
 			}
 		}
+		else if(type == 5){
+			var rightClickMenu = document.getElementById("downloadOptions");
+			var popup = document.createElement("div");
+			popup.style.display = 'none';
+			popup.innerHTML = rightClickMenu.innerHTML;
+			var buttons = popup.getElementsByTagName("button");
+			var popupButtons = popup.getElementsByTagName("button");
+			var popupString = ("<center>"+popup.innerHTML+"</center>");
+			var popObject = {html:popupString, id:"Download"};
+			var pop = window.showModalDialog("popup.hta", popObject, "dialogWidth:275px;dialogHeight: 150px");
+			if(pop != -1 && pop != undefined){
+				buttons[pop].click();
+			}
+		}
 	}
 	else{
 		alert("Please open in Lifecycle Document Editor to enable this functionality");

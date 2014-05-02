@@ -1,38 +1,19 @@
 /////***START DISPLAYDOWNLOADS FUNCTION***/////
-function displayDownloads() {
-	var startTable = "<table>";
-	var endTable="</table>";
-	var tr = "<tr align='center'>";
-	var td = "<td>";
-	var etr = "</tr>";
-	var etd = "</td>";
-	var tableString = "";
-	
-	var project = loadProject(sessvars.projectName);
+function displayDownloads(projectName) {
+	var start = "<div id='downloadOptions' style='display:none;'>";
+	var end = "</div>";
+	var project = loadProject(projectName);
 	var downloadDisplay = project.getElementsByTagName("file_location");
 	var div = document.getElementById("buttons");
-	tableString += startTable;
-	if(div.innerHTML.length > 5) {
-		var divStyle = div.style.display;
-		if(divStyle == 'block') 
-			return div.style.display = 'none';
-		else
-			return div.style.display = 'block';
-	}
+	var tableString = start;
 	for(var i = 0; i < downloadDisplay.length; i++) {
 		var filename = downloadDisplay[i].childNodes[0].getAttribute("href");
-		if(i == 0){
-			sessvars.first = filename;
-		}
-		tableString += (tr + td);
-		tableString += ("<button style='width:250px' onclick=downloadAsHTML('"+filename+"')>"+"Download "+filename+"</button>")
-		tableString += (etd + etr);
+		tableString += ("<button onclick=downloadAsHTML('"+filename+"') style='width:250px'>"+"Download "+filename+"</button></br>");
 	}
-	tableString += (tr + td);
-	tableString += ("<button style='width:250px' onclick=downloadProject('"+sessvars.projectName+"')>"+"Download Project"+"</button>");
-	tableString += (etd + etr + endTable);
+	tableString += ("<button style='width:250px' onclick=downloadProject('"+projectName+"')>"+"Download Project"+"</button></br>");
+	tableString += end;
 	div.innerHTML += tableString;
-	div.style.display = 'block';
+	showMenu(tableString, 5);
 }
 /////***START DOWNLOADASHTML FUNCTION***/////
 function downloadAsHTML(xml, type){
@@ -46,8 +27,8 @@ function downloadAsHTML(xml, type){
 	var styleStringPart = textVersion.substring(styleStringStart);
 	var styleStringEnd = styleStringPart.search(">");
 	var styleName = styleStringPart.substring(6, styleStringEnd-2);
-	sessvars.xsl = styleName;
-	xsl = loadXML(sessvars.xsl);
+	//sessvars.xsl = styleName;
+	xsl = loadXML(styleName);
 	var value = xml.transformNode(xsl);
 	
 	filename = xmlName.substring(-1,xmlName.length-4);
