@@ -60,18 +60,18 @@
 				var f = fso.GetFolder("\Projects");
 				var a = fso.CreateTextFile(f+"\\"+xml, true);
 				//alert(xml);
-				//a.WriteLine(file.xml);
+				a.WriteLine(file.xml);
 				a.Close();
 				
 			}
 			function saveFiletoXML(xml, file){
 				var fso = new ActiveXObject("Scripting.FileSystemObject");
 				//If windows 7, use this line
-				var f = fso.GetFolder("../XML");
-				var a = fso.CreateTextFile(f+"/"+xml, true);
+				//var f = fso.GetFolder("../XML");
+				//var a = fso.CreateTextFile(f+"/"+xml, true);
 				//If windows 8, use this line
-				//var f = fso.GetFolder("\XML");
-				//var a = fso.CreateTextFile(f+"\\"+xml, true);
+				var f = fso.GetFolder("\XML");
+				var a = fso.CreateTextFile(f+"\\"+xml, true);
 				//alert(xml);
 				a.WriteLine(file.xml);
 				a.Close();
@@ -95,13 +95,13 @@
 					
 					file.getElementsByTagName("file_location")[j].childNodes[0].setAttribute("href", getName(j)+".xml");
 					
-					f.CopyFile("../Lifecycledocs/XML/"+attr, "../Lifecycledocs/XML/"+getName(j)+".xml", 1);
+					//f.CopyFile("../Lifecycledocs/XML/"+attr, "../Lifecycledocs/XML/"+getName(j)+".xml", 1);
 					
 					//alert(file.xml);
 					//windows 8
-					//f.CopyFile("../Lifecycledocs/XML/"+attr, "../Lifecycledocs/XML/"+getName(j)+".xml", 1);
+					f.CopyFile("../Lifecycledocs/XML/"+attr, "../Lifecycledocs/XML/"+getName(j)+".xml", 1);
 					//Windows 7
-					f.CopyFile("../XML/"+attr, "../XML/"+getName(j)+".xml", 1);
+					//f.CopyFile("../XML/"+attr, "../XML/"+getName(j)+".xml", 1);
 					//alert(getName(j) + " " + doc.xml);
 					saveFiletoXML(getName(j), doc);
 				}
