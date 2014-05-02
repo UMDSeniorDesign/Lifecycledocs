@@ -19,7 +19,9 @@
 				
 		<script>
 			function openProject() {	
+				//alert(sessvars.projectName);
 				var projectName = document.getElementById("projectName").value;
+				
 				var v = document.getElementById("browse").value;
 				
 				if(v == "" && projectName == "") {
@@ -51,8 +53,9 @@
 				//If windows 8, use this line
 				var f = fso.GetFolder("\Projects");
 				var a = fso.CreateTextFile(f+"\\"+xml, true);
-				//alert(xml);
-				a.WriteLine(file.xml);
+				
+				//a.WriteLine(file.xml);
+				alert(file.xml);
 				a.Close();
 				
 			}
@@ -84,35 +87,30 @@
 					
 					doc.setAttribute("xml:base",project);
 					
-					//alert(attr);
-					//saveFile(attr, getName(j));
 					file.getElementsByTagName("file_location")[j].childNodes[0].setAttribute("href", getName(j)+".xml");
-					//alert(file.xml);
+					
 					f.CopyFile("../Lifecycledocs/XML/"+attr, "../Lifecycledocs/XML/"+getName(j)+".xml", 1);
-					//alert(getName(j) + " " + doc.xml);
+					
 					saveFiletoXML(getName(j), doc);
 				}
-				//alert(doc.xml);
 				saveFiletoProject(project, file);
+				//alert(project);
 				
 			}
 			
-			function getName(j) {																		// Gets names of files to saveAs
+			function getName(j) {	// Gets names of files to saveAs													
 				return document.getElementById(j).value;
 			}
 			
 			function load(projectName) {
 				var project = projectName+".xml";
 				var file = loadProject(project);
-				//alert(file.xml);
 				
-				//document.getElementById("new").innerHTML = "";
 				for(var j = 0; file.getElementsByTagName("file_location").length > j; j++) {
 					var attr = file.getElementsByTagName("file_location")[j].childNodes[0].getAttribute("href");
 					
 					document.getElementById("new").innerHTML += "<p style='font-size:24px'>" + attr + "</p>" + ": <input type='text' style='width: 200px' id="+j+"> <br /><br />";	
 				}			
-				//document.getElementById("name").innerHTML += "<button onclick='getProjectInfo(1, "+ file +".xml)'>Get Member Names</button>";
 			}
 			
 			function setProject() {
