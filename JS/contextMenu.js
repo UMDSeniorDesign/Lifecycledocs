@@ -65,12 +65,11 @@ function showMenu(ID, type, paraCount) {
 			refOptions.style.display = 'block';
 			addEditValues(ID, 1);
 		}
-		else if(type == 4){
+		else if(type == 4 && sessvars.toggle == 1){//If image and in edit mode
 			var rightClickMenu = document.getElementById(ID+paraCount+"menu");
 			var popup = document.createElement("div");
 			popup.style.display = 'none';
 			popup.innerHTML = rightClickMenu.innerHTML;
-			//rightClickMenu.style.display = 'block';
 			var buttons = rightClickMenu.getElementsByTagName("button");
 			var popupButtons = popup.getElementsByTagName("button");
 			for(var i = 0; i < popupButtons.length; i++){
@@ -80,7 +79,7 @@ function showMenu(ID, type, paraCount) {
 			}
 			var popupString = ("<center>"+popup.innerHTML+"</center>");
 			var popObject = {html:popupString, id:ID};
-			var pop = window.showModalDialog("popup.hta", popObject, "dialogWidth:425px;dialogHeight: 125px");
+			var pop = window.showModalDialog("popup.hta", popObject, "dialogWidth:150px;dialogHeight: 75px");
 			if(pop != -1 && pop != undefined){
 				buttons[pop].click();
 			}

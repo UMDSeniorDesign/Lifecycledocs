@@ -301,6 +301,19 @@ function remove(ID, fromID, type){
 					}
 				}
 			}
+			else if(type == 4){
+				if(ID == sections[i].getAttribute("id")){
+					var imagePaths = sections[i].childNodes;
+					for(var j = 0; j < imagePaths.length; j++){
+						if(imagePaths[j].nodeName == "Image"){
+							if(imagePaths[j].childNodes[0].nodeValue == fromID){
+								sections[i].removeChild(imagePaths[j]);
+								return saveFile(xml, "Image Removed");
+							}
+						}
+					}
+				}
+			}
 		}
 		var reqs = xml.getElementsByTagName("Requirement");
 		for(var i = 0; i < reqs.length; i++){
@@ -325,6 +338,19 @@ function remove(ID, fromID, type){
 							if(fromID == paras[j].getAttribute("index")){
 								paras[j].setAttribute("isNewest", "false");
 								return saveFile(xml, "Para Removed");
+							}
+						}
+					}
+				}
+			}
+			else if(type == 4){
+				if(ID == reqs[i].getAttribute("id")){
+					var imagePaths = reqs[i].childNodes;
+					for(var j = 0; j < imagePaths.length; j++){
+						if(imagePaths[j].nodeName == "Image"){
+							if(imagePaths[j].childNodes[0].nodeValue == fromID){
+								reqs[i].removeChild(imagePaths[j]);
+								return saveFile(xml, "Image Removed");
 							}
 						}
 					}
