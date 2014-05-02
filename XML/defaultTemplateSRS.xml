@@ -6,7 +6,7 @@
 		<Title isNewest="true">Introduction</Title>
 		<Para isNewest="true">INSERT INTRODUCTION 
 	  </Para>
-	</Section>
+	
 	<Section isNewest="true" id="RQ1.1">
 		<Title isNewest="true">Purpose</Title>
 		<Para isNewest="true">INSERT PURPOSE
@@ -28,6 +28,7 @@
 		<Title isNewest="true">Overview</Title>
 		<Para isNewest="true">INSERT OVERVIEW 
 		</Para>
+	</Section>
 	</Section>
 	<!--SECTION 2-->
 	<Section isNewest="true" id="RQ2.0">
