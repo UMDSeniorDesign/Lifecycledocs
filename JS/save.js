@@ -94,7 +94,7 @@ function saveParas(xml){
 				var originalCheck = originalParas[j].childNodes[0].nodeValue;
 				editedCheck = editedPara.replace("&nbsp;", "");
 				if(originalCheck != editedCheck){
-					alert("You changed: "+originalCheck+"\nTo : "+editedCheck);
+					//alert("You changed: "+originalCheck+"\nTo : "+editedCheck);
 					originalParas[j].setAttribute("isNewest","false");
 					editedPara = xml.createElement("Para");
 					editedText=xml.createTextNode(editedCheck);
@@ -102,7 +102,7 @@ function saveParas(xml){
 					editedPara.setAttribute("isNewest","true");
 					editedPara.setAttribute("index", k);
 					sections[i].appendChild(editedPara);
-					return saveFile(xml, "File Saved!");
+					return saveFile(xml, "File Saved!", editedId);
 				}
 			}
 		}
@@ -116,7 +116,7 @@ function saveXML(xml) {
 	loadXSLT(0,1);
 }
 /////***START SAVEFILE FUNCTION***/////
-function saveFile(xml, alertText){
+function saveFile(xml, alertText, ID){
 	var fs = new ActiveXObject("Scripting.FileSystemObject");
 	//If windows 7, use this line
 	var f = fs.GetFolder("../XML");
@@ -126,5 +126,5 @@ function saveFile(xml, alertText){
 	file.write(xml.xml);
 	file.close();
 	alert(alertText);
-	loadXSLT(0,1);
+	loadXSLT(0,1, ID);
 }

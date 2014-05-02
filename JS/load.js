@@ -109,6 +109,15 @@ function loadXSLT(withTabs, withCurrent, xmlToLoad){
 		edit.style.border = "none";
 		sessvars.toggle = "0";
 	}
+	if(withCurrent == 1){
+		var idToClick = xmlToLoad;
+		var div = document.getElementById("xsltDiv");
+		var buttons = div.getElementsByTagName("button");
+		for(var i = 0; i < buttons.length; i++){
+			if(idToClick+"button" == buttons[i].id)
+				buttons[i].click();
+		}
+	}
 }
 function showBrowse(){
 	var browseInput = document.getElementById("browseBox").click();

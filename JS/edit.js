@@ -104,11 +104,11 @@ function add(ID, aORb, type, index){
 								newNodeText =  xml.createTextNode("New Para");
 								newNode.appendChild(newNodeText)
 								sections[i].appendChild(newNode);
-								return saveFile(xml, "Para Added!");
+								return saveFile(xml, "Para Added!", ID);
 							}
 						}
 						if(added == 1)
-							return saveFile(xml, "Para Added!");
+							return saveFile(xml, "Para Added!", ID);
 						else
 							continue;
 					}
@@ -117,7 +117,7 @@ function add(ID, aORb, type, index){
 						newImagePath = xml.createTextNode(index);
 						newNode.appendChild(newImagePath);
 						sections[i].appendChild(newNode);
-						return saveFile(xml, "Image Added!");
+						return saveFile(xml, "Image Added!", ID);
 					}
 					newNode.setAttribute("isNewest","true");
 					newNode.setAttribute("id", sections[i].getAttribute("id"));
@@ -147,7 +147,7 @@ function add(ID, aORb, type, index){
 					else if(aORb == 3){//If add sub
 						sections[i].appendChild(newNode);
 					}
-					return saveFile(xml, "Added to Section");
+					return saveFile(xml, "Added to Section", ID);
 				}				
 			}
 			if(type == 2){
@@ -161,7 +161,7 @@ function add(ID, aORb, type, index){
 					sections[i].appendChild(newRef);
 					if(options.style.display == 'block')
 						options.style.display = 'none';
-					return saveFile(xml, "Reference Added");
+					return saveFile(xml, "Reference Added", ID);
 				}
 			}
 		}
@@ -222,11 +222,11 @@ function add(ID, aORb, type, index){
 								newNodeText =  xml.createTextNode("New Para");
 								newNode.appendChild(newNodeText)
 								reqs[i].appendChild(newNode);
-								return saveFile(xml, "Para Added!");
+								return saveFile(xml, "Para Added!", ID);
 							}
 						}
 						if(added == 1)
-							return saveFile(xml, "Para Added!");
+							return saveFile(xml, "Para Added!", ID);
 						else
 							continue;
 					}
@@ -235,7 +235,7 @@ function add(ID, aORb, type, index){
 						newImagePath = xml.createTextNode(index);
 						newNode.appendChild(newImagePath);
 						sections[i].appendChild(newNode);
-						return saveFile(xml, "Image Added!");
+						return saveFile(xml, "Image Added!", ID);
 					}
 					newNode.setAttribute("isNewest","true");
 					newNode.setAttribute("id", reqs[i].getAttribute("id"));
@@ -266,7 +266,7 @@ function add(ID, aORb, type, index){
 					else if(aORb == 3){//If add sub
 						reqs[i].appendChild(newNode);
 					}
-					return saveFile(xml, "Added to Requirement");
+					return saveFile(xml, "Added to Requirement", ID);
 				}
 			}
 			if(type == 2){
@@ -277,7 +277,7 @@ function add(ID, aORb, type, index){
 					newRefText = xml.createTextNode(value);
 					newRef.appendChild(newRefText);
 					reqs[i].appendChild(newRef);
-					return saveFile(xml, "Reference Added");
+					return saveFile(xml, "Reference Added", ID);
 				}
 			}
 		}
@@ -304,7 +304,7 @@ function remove(ID, fromID, type){
 						if(refs[j].nodeName == "Ref"){
 							if(ID == refs[j].childNodes[0].nodeValue){
 								refs[j].setAttribute("isNewest", "false");
-								return saveFile(xml, "Reference Removed");
+								return saveFile(xml, "Reference Removed", fromID);
 							}
 						}
 					}
@@ -319,7 +319,7 @@ function remove(ID, fromID, type){
 								if(paras[j].getAttribute("isNewest") == "false")
 									continue;
 								paras[j].setAttribute("isNewest", "false");
-								return saveFile(xml, "Para Removed");
+								return saveFile(xml, "Para Removed", ID);
 							}
 						}
 					}
@@ -332,7 +332,7 @@ function remove(ID, fromID, type){
 						if(imagePaths[j].nodeName == "Image"){
 							if(imagePaths[j].childNodes[0].nodeValue == fromID){
 								sections[i].removeChild(imagePaths[j]);
-								return saveFile(xml, "Image Removed");
+								return saveFile(xml, "Image Removed", ID);
 							}
 						}
 					}
@@ -348,7 +348,7 @@ function remove(ID, fromID, type){
 						if(refs[j].nodeName == "Ref"){
 							if(ID == refs[j].childNodes[0].nodeValue){
 								refs[j].setAttribute("isNewest", "false");
-								return saveFile(xml, "Reference Removed");
+								return saveFile(xml, "Reference Removed", fromID);
 							}
 						}
 					}
@@ -361,7 +361,7 @@ function remove(ID, fromID, type){
 						if(paras[j].nodeName == "Para"){
 							if(fromID == paras[j].getAttribute("index")){
 								paras[j].setAttribute("isNewest", "false");
-								return saveFile(xml, "Para Removed");
+								return saveFile(xml, "Para Removed", ID);
 							}
 						}
 					}
@@ -374,7 +374,7 @@ function remove(ID, fromID, type){
 						if(imagePaths[j].nodeName == "Image"){
 							if(imagePaths[j].childNodes[0].nodeValue == fromID){
 								reqs[i].removeChild(imagePaths[j]);
-								return saveFile(xml, "Image Removed");
+								return saveFile(xml, "Image Removed", ID);
 							}
 						}
 					}
@@ -432,5 +432,5 @@ function changeTitle(ID){
 			}
 		}
 	}
-	return saveFile(xml, "Title Changed");
+	return saveFile(xml, "Title Changed", ID);
 }

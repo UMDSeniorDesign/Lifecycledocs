@@ -72,7 +72,7 @@
 				<xsl:value-of select="Title"/>
 			</xsl:variable>
             
-			<button type="button" onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="showMenu('{$vID}', '0');return false;">
+			<button type="button" id='{$vID}' onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="showMenu('{$vID}', '0');return false;">
 			<xsl:value-of select="$vID"/></button> - <xsl:value-of select="$vTitle"/>
             <div id="{@id}Menu" style="display: none;">
                 <button onclick="add('{$vID}', '0', '0')">Add Section Above</button><button onclick="add('{$vID}', '0', '1')">Add Requirement Above</button>
