@@ -37,13 +37,17 @@ function add(ID, aORb, type, index){
 			if(aORb == 1)
 				add(divID, 1, 3, -1);
 			if(aORb == 2){
-				alert(type);
-				add(divID, 1, 4, -1);
+				if(index != "" && index != undefined){
+					var locArray = index.split("\\");
+					var imageName = locArray[locArray.length-1];
+					var imagePath = "../Images/"+imageName;
+					return add(divID, 0, 4, imagePath);
+				}
 			}
 		}
 		var sections = xml.getElementsByTagName("Section");
 		for(var i = 0; i < sections.length; i++){
-			if(type == 0 || type == 1 || type == 3){//If add Section or Requirement or Para
+			if(type == 0 || type == 1 || type == 3 || type == 4){//If add Section or Requirement or Para or Image
 				if(ID == sections[i].getAttribute("id")){
 					if(type == 0){//If add Section
 						newNode = xml.createElement("Section");
@@ -108,6 +112,13 @@ function add(ID, aORb, type, index){
 						else
 							continue;
 					}
+					else if(type == 4){
+						newNode = xml.createElement("Image");
+						newImagePath = xml.createTextNode(index);
+						newNode.appendChild(newImagePath);
+						sections[i].appendChild(newNode);
+						return saveFile(xml, "Image Added!");
+					}
 					newNode.setAttribute("isNewest","true");
 					newNode.setAttribute("id", sections[i].getAttribute("id"));
 					newSectionTitleElement = xml.createElement("Title");
@@ -156,7 +167,7 @@ function add(ID, aORb, type, index){
 		}
 		var reqs = xml.getElementsByTagName("Requirement");
 		for(var i = 0; i < reqs.length; i++){
-			if(type == 0 || type == 1 || type == 3){//If add Section or Requirement or Para
+			if(type == 0 || type == 1 || type == 3 || type ==4){//If add Section or Requirement or Para
 				if(ID == reqs[i].getAttribute("id")){
 					if(type == 0){//If add Section
 						newNode = xml.createElement("Section");
@@ -218,6 +229,13 @@ function add(ID, aORb, type, index){
 							return saveFile(xml, "Para Added!");
 						else
 							continue;
+					}
+					else if(type == 4){
+						newNode = xml.createElement("Image");
+						newImagePath = xml.createTextNode(index);
+						newNode.appendChild(newImagePath);
+						sections[i].appendChild(newNode);
+						return saveFile(xml, "Image Added!");
 					}
 					newNode.setAttribute("isNewest","true");
 					newNode.setAttribute("id", reqs[i].getAttribute("id"));
