@@ -96,6 +96,7 @@ function loadXSLT(withTabs, withCurrent, xmlToLoad){
 	value += "<br><button onclick='saveXML(sessvars.xml)'>Save</button>";
 	value += "<button onclick='add(0, 0)'>Add Reference</button>";
 	value += "<button onclick='add(0, 1)'>Add Para</button>";
+	value += "<button onclick='add(0, 2)'>Add Image</button>";
 	value += "</div>";
 	document.getElementById("xsltDiv").innerHTML = value;
 	var edit = document.getElementById("edit");

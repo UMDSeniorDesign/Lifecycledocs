@@ -167,7 +167,7 @@
 						<img oncontextmenu="showMenu('{$vID}', '4', '{$vImagePath}');return false;" height="250" width="250" src="{$vImagePath}" style="float:left"/>
 						<div id="{$vID}{$vImagePath}menu" style="display: none;">
 							<button onclick="remove('{$vID}', '{$vImagePath}', '4')">Remove Image</button>
-							<button onclick="hideMenu()">Cancel</button>
+							<button onclick="hideMenu()" id="close">Cancel</button>
 						</div>
 					</xsl:for-each>
 					<div id="refs">
@@ -206,7 +206,7 @@
 						<img oncontextmenu="showMenu('{$vID}', '4', '{$vImagePath}');return false;" height="250" width="250" src="{$vImagePath}" style="float:left"/>
 						<div id="{$vID}{$vImagePath}menu" style="display: none;">
 							<button onclick="remove('{$vID}', '{$vImagePath}', '4')">Remove Image</button>
-							<button onclick="hideMenu()">Cancel</button>
+							<button onclick="hideMenu()" id="close">Cancel</button>
 						</div>
 					</xsl:for-each>
 					<div id="refs">
