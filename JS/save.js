@@ -9,8 +9,8 @@ function displayDownloads(projectName) {
 	for(var i = 0; i < downloadDisplay.length; i++) {
 		var filename = downloadDisplay[i].childNodes[0].getAttribute("href");
 		tableString += ("<button onclick=downloadAsHTML('"+filename+"') style='width:250px'>"+"Download "+filename+"</button>");
-		tableString += ("<select id='"+filename+"'Stylesheets'>");
-		tableString += "</select>";
+		//tableString += ("<select id='"+filename+"'Stylesheets'>");
+		//tableString += "</select>";
 		tableString += ("</br>");
 	}
 	tableString += ("<button style='width:250px' onclick=downloadProject('"+projectName+"')>"+"Download Project"+"</button></br>");
