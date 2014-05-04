@@ -62,7 +62,7 @@
         </html>
     </xsl:template>
 
-    <xsl:template match="Section" mode="section">
+    <xsl:template match="Section | Requirement" mode="section">
 		<xsl:if test="@isNewest = 'true'">
 			<br/>
 			<xsl:variable name="vID">
@@ -93,7 +93,7 @@
 		</xsl:if>
     </xsl:template>
 	
-	<xsl:template match="Section" mode="para">
+	<xsl:template match="Section | Requirement" mode="para">
 		<xsl:variable name="vID">
             <xsl:value-of select="@id"/>
         </xsl:variable>

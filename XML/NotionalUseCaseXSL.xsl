@@ -1,4 +1,7 @@
 <?xml version="1.0" ?>
+
+<!-- need to add <li> to requirements -->
+
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:template match="UseCaseDocument">
         <html>
@@ -64,7 +67,7 @@
         </html>
     </xsl:template>
 
-    <xsl:template match="Section" mode="section">
+    <xsl:template match="Section | Requirement" mode="section">
 		<xsl:if test="@isNewest = 'true'">
 			<br/>
 			<xsl:variable name="vID">
@@ -95,75 +98,7 @@
 		</xsl:if>
     </xsl:template>
 	
-	<xsl:template match="Requirement" mode="section">
-		<xsl:if test="@isNewest = 'true'">
-			<br/>
-			<xsl:variable name="vID">
-				<xsl:value-of select="@id"/>
-			</xsl:variable>
-			<xsl:variable name="vTitle">
-				<xsl:value-of select="Title"/>
-			</xsl:variable>
-            
-			<li>
-            <button type="button" id='{$vID}button' onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="showMenu('{$vID}', '0');return false;">
-			<xsl:value-of select="$vID"/></button> - <xsl:value-of select="$vTitle"/>
-            <div id="{@id}Menu" style="display: none;">
-                <button onclick="add('{$vID}', '0', '0')">Add Section Above</button><button onclick="add('{$vID}', '0', '1')">Add Requirement Above</button>
-                <br/>
-                <button onclick="add('{$vID}', '1', '0')">Add Section Below</button><button onclick="add('{$vID}', '1', '1')">Add Requirement Below</button>
-                <br/>
-				<button onclick="add('{$vID}', '3', '0')">Add subSection</button><button onclick="add('{$vID}', '3', '1')">Add subRequirement</button>
-                <br/>
-				<button onclick="changeTitle('{$vID}')">Change Title to: </button>
-				<textarea id="{@id}Title" rows="1"><xsl:value-of select="$vTitle"/></textarea>
-				<br/>
-                <button onclick="hideMenu('{$vID}')" id="close">Cancel</button>
-            </div>
-			</li>
-			<div id="sub{@id}" style="display: none;">
-				<xsl:apply-templates select="Section" mode="section"/>
-				<xsl:apply-templates select="Requirement" mode="section"/>
-			</div>
-		</xsl:if>
-    </xsl:template>
-	
-    <xsl:template match="Requirement" mode="para">
-		<xsl:if test="@isNewest = 'true'">
-		<xsl:variable name="vID">
-			<xsl:value-of select="@id"/>
-		</xsl:variable>
-			<div id="section">
-				<div id="{@id}" style="display: none;">
-					<div id="edit">
-						<xsl:apply-templates select="Para"/>
-						<xsl:if test="position() != last()">
-							<br/>
-						</xsl:if>
-					</div>
-					<xsl:for-each select="Image">
-						<xsl:variable name="x" select="."/>
-						<img height="250" width="250" src="{$x}" style="float:left"/>
-					</xsl:for-each>
-					<div id="refs">
-					<xsl:apply-templates select="Ref"/>
-						<xsl:if test="position() != last()">
-							<br/>
-						</xsl:if>
-					</div>
-				</div>
-			</div>
-			<div id ="{$vID}options" style="display: none;">
-				<button onclick="add('{$vID}', '0', '2')">Add Reference To: </button>
-				<select id="{$vID}References">
-				</select>
-			</div>
-		</xsl:if>
-        <xsl:apply-templates select="Section" mode="para"/>
-        <xsl:apply-templates select="Requirement" mode="para"/>
-    </xsl:template>
-	
-	<xsl:template match="Section" mode="para">
+	<xsl:template match="Section | Requirement" mode="para">
 		<xsl:if test="@isNewest = 'true'">
 			<xsl:variable name="vID">
 				<xsl:value-of select="@id"/>
