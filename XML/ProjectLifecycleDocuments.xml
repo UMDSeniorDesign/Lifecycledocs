@@ -2,14 +2,16 @@
 <?xml-stylesheet type="text/xsl" href="ProjectXSL.xsl"?>
 
 <!-- <root:ProjectLifeCycleDocuments -->
-<ProjectLifecycleDocuments projectName="Lifecycle Document Project Manager with Requirements Tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="NotionalSchema.xsd">
+<ProjectLifecycleDocuments projectName="Lifecycle Document Project Manager" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="NotionalSchema.xsd">
     <Team> 
         <TeamMember isNewest="true">
             <Name isNewest="true">Jeremiah Butler</Name>
+            <UIC isNewest="true">UMASSD-2</UIC>
             <Role isNewest="true">Team Lead</Role> 
         </TeamMember>
         <TeamMember isNewest="true">
             <Name isNewest="true">Peter Magalhaes</Name>
+            <UIC isNewest="true">UMASSD-9</UIC>
             <Role isNewest="true">Team Member</Role>
         </TeamMember>
         <TeamMember isNewest="true">
