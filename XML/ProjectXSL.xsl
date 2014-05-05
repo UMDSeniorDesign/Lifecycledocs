@@ -8,15 +8,12 @@
     <xsl:strip-space elements="*"/>
     
     <xsl:template match="ProjectLifecycleDocuments">
-        
-       
         <xsl:variable name="fileCount" select="count(file_location)"/>
+        
         <html>
             <style type="text/css">
-               
                 #projectName {
                 align: center;
-                
                 font-size: 24pt;
                 }
             </style>  
@@ -24,8 +21,6 @@
             <xsl:value-of select="ancestor-or-self::*/@projectName"/>
             </div>
             <head>
-                
-                
                 <table align="center">
                     <tr>
                         <td>
@@ -36,7 +31,6 @@
                             </font>
                         </td>
                     </tr>
-                   
                 </table>
                 <table align="center">
                     <tbody align="center">
@@ -70,47 +64,32 @@
                                         </xsl:otherwise>
                                     </xsl:choose>
                                 </td>
-                               
                             </tr>
                         </xsl:for-each>
-                        
                         <tr rowspan="6">
-                        
                             <td>
-                                <br/>
-                                <br/>
-                                <br/>
+                                <br/><br/><br/>
                             </td>
                             <td>
-                                
+                                <!-- empty box -->
                             </td>
                         </tr>
                         <tr>
-
+                            <!-- empty row -->
                         </tr>
-                   
                         <xsl:for-each select="file_location">
                             <xsl:variable name="vhref" select="*/@href"/>
                             <xsl:variable name="vhrefLength" select="string-length($vhref)"/>
-                            
                             <xsl:variable name="vHTMLconcat" select="concat(substring($vhref,1,($vhrefLength - 3)),'html')"/>
                                 
-                            
-                                
-                            
-                            
-                            
                             <tr>
                                 <td colspan="2">
-                                    
                                     <button onclick="parent.location='{$vHTMLconcat}'">
                                         <xsl:value-of select="$vHTMLconcat"/>
                                     </button>
-                                    
                                 </td>
-                                
                                 <td>
-                                    
+                                    <!-- empty box -->
                                 </td>
                             </tr>
                         </xsl:for-each>
@@ -121,9 +100,7 @@
                         </tr>
                     </tbody>
                 </table>
-                
             </head>
         </html>
     </xsl:template>
-    
 </xsl:stylesheet>
