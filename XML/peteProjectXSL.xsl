@@ -51,20 +51,28 @@
                         </tr>
                         <xsl:for-each select="Team/TeamMember[@isNewest='true']">
                             <tr style="height:50px">
-                                <td>
+                                <td style="width:auto">
                                     <xsl:choose>
                                         <xsl:when test="count(Name[@isNewest='true']) = 0">
                                             <font color="red">
                                                 <xsl:text>DNE</xsl:text>
                                             </font>
+											
                                         </xsl:when>
                                         <xsl:otherwise>
                                             <xsl:value-of select="Name[@isNewest='true']"/>
                                             <xsl:text>&#160;&#160;</xsl:text>
                                             <br/>
                                             <xsl:value-of select="UIC[@isNewest = 'true']"/>
+											
+											
                                         </xsl:otherwise>
                                     </xsl:choose>
+									<br />
+									<xsl:variable name="memberName">
+								        <xsl:value-of select="Name[@isNewest='true']"/>
+								    </xsl:variable>
+									<button style="width:auto" type="button" onclick="changeMemberName('{$memberName}')">Change Member Name</button>
                                 </td>
                                 <td>
                                     <xsl:choose>
@@ -77,6 +85,11 @@
                                             <xsl:value-of select="Role[@isNewest='true']"/>
                                         </xsl:otherwise>
                                     </xsl:choose>
+									<br />
+									<xsl:variable name="memberName">
+								        <xsl:value-of select="Name[@isNewest='true']"/>
+								    </xsl:variable>
+									<button type="button" onclick="changeRole('{$memberName}')">Change Role</button>
                                 </td>
 								<td>
 								    <xsl:variable name="memberName">
