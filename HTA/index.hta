@@ -235,6 +235,90 @@
 		}
 	</script>
 	
+	<script>
+		function changeMemberName(memberName) {
+			var b = document.getElementById("browse").value;
+			//alert(b.split("\\")[b.split("\\").length-1]);
+			if(b.value == undefined) {
+				//alert(sessvars.projectName);
+				var projectName = sessvars.projectName;
+			}
+			if (b.split("\\")[b.split("\\").length-1] != ""){
+				var varray = b.split("\\");
+				var projectName = varray[varray.length-1];
+			}
+			
+			//alert(projectName);
+			var xmlDoc = loadProject(projectName);
+
+						
+			for(var i = 0; i < xmlDoc.getElementsByTagName("TeamMember").length; i++) {
+				if(xmlDoc.getElementsByTagName("Name")[i].childNodes[0].nodeValue == memberName)	
+					var n = xmlDoc.getElementsByTagName("Name")[i].childNodes[0];
+			}
+			var newMemberName = prompt("New Member Name: ", "");
+			n.nodeValue = newMemberName;
+			
+			var fs = new ActiveXObject("Scripting.FileSystemObject");
+			//If windows 7, use this line
+			var f = fs.GetFolder("../Projects");
+			//If windows 8, use this line
+			//var f = fs.GetFolder("\Projects");
+
+			file = f.CreateTextFile(projectName, true);
+			file.write(xmlDoc.xml);
+			file.close();		
+
+			if(b.value == undefined) {
+				getProjectInfo(1, projectName);
+			}
+			if (b.split("\\")[b.split("\\").length-1] != ""){
+				getProjectInfo(0, projectName);
+			}
+		}
+		
+		function changeRole(memberName) {
+			var b = document.getElementById("browse").value;
+			//alert(b.split("\\")[b.split("\\").length-1]);
+			if(b.value == undefined) {
+				//alert(sessvars.projectName);
+				var projectName = sessvars.projectName;
+			}
+			if (b.split("\\")[b.split("\\").length-1] != ""){
+				var varray = b.split("\\");
+				var projectName = varray[varray.length-1];
+			}
+			
+			//alert(projectName);
+			var xmlDoc = loadProject(projectName);
+
+						
+			for(var i = 0; i < xmlDoc.getElementsByTagName("TeamMember").length; i++) {
+				if(xmlDoc.getElementsByTagName("Name")[i].childNodes[0].nodeValue == memberName)	
+					var n = xmlDoc.getElementsByTagName("Role")[i].childNodes[0];
+			}
+			var newRole = prompt("New Member Role: ", "");
+			n.nodeValue = newRole;
+			
+			var fs = new ActiveXObject("Scripting.FileSystemObject");
+			//If windows 7, use this line
+			var f = fs.GetFolder("../Projects");
+			//If windows 8, use this line
+			//var f = fs.GetFolder("\Projects");
+
+			file = f.CreateTextFile(projectName, true);
+			file.write(xmlDoc.xml);
+			file.close();		
+
+			if(b.value == undefined) {
+				getProjectInfo(1, projectName);
+			}
+			if (b.split("\\")[b.split("\\").length-1] != ""){
+				getProjectInfo(0, projectName);
+			}
+		}
+	</script>
+	
     </head>
 <title>Lifecycle Documents</title>
     <body background="ProjectImages/water_texture2375.jpg">
@@ -266,7 +350,6 @@
         </div>
 		<br><br>
 		<button id="button" style="visibility: hidden;" onclick='proceed()'>Proceed to Project</button>
-
 	</center>
 	<!-- <button style="position: absolute; left: 45%" onclick=openProject()>Proceed to Project</button> -->
     </body>
