@@ -190,9 +190,9 @@
 			
 			var fs = new ActiveXObject("Scripting.FileSystemObject");
 			//If windows 7, use this line
-			//var f = fs.GetFolder("../Projects");
+			var f = fs.GetFolder("../Projects");
 			//If windows 8, use this line
-			var f = fs.GetFolder("\Projects");
+			//var f = fs.GetFolder("\Projects");
 
 			file = f.CreateTextFile(projectName, true);
 			file.write(xmlDoc.xml);
@@ -261,9 +261,9 @@
 			
 			var fs = new ActiveXObject("Scripting.FileSystemObject");
 			//If windows 7, use this line
-			//var f = fs.GetFolder("../Projects");
+			var f = fs.GetFolder("../Projects");
 			//If windows 8, use this line
-			var f = fs.GetFolder("\Projects");
+			//var f = fs.GetFolder("\Projects");
 
 			file = f.CreateTextFile(projectName, true);
 			file.write(xmlDoc.xml);
@@ -302,9 +302,9 @@
 			
 			var fs = new ActiveXObject("Scripting.FileSystemObject");
 			//If windows 7, use this line
-			//var f = fs.GetFolder("../Projects");
+			var f = fs.GetFolder("../Projects");
 			//If windows 8, use this line
-			var f = fs.GetFolder("\Projects");
+			//var f = fs.GetFolder("\Projects");
 
 			file = f.CreateTextFile(projectName, true);
 			file.write(xmlDoc.xml);
