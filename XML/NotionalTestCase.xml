@@ -223,5 +223,33 @@
                 <Ref isNewest="true">RQ3.2.2.4</Ref>
             </Section>
         </Section>
+        <Section isNewest="true" id="TC2.3">
+            <Title isNewest="true">Sections are displayed with their titles. </Title>
+            <Para isNewest="true">When a file is clicked, the left side of the screen is shown to have buttons with section id's in them, as well as the section title.</Para>
+            <TestResult>true</TestResult>
+            <ApprovedBy isNewest="true">
+                <Name isNewest="true">Peter Magalhaes</Name>
+                <Para isNewest="true" index="0">Comment Here</Para>
+            </ApprovedBy>
+            <Ref isNewest="true">RQ3.1.3</Ref>
+            <Ref isNewest="true">RQ3.1.4</Ref>
+            <Ref isNewest="true">RQ3.2.1.4</Ref>
+            <Ref isNewest="true">RQ3.2.2.4</Ref>
+        <Section isNewest="true" id="TC2.3.1">
+            <Title isNewest="true">Section or Requirement button is left clicked</Title>
+            <Para isNewest="true">When the Section or Requirement button is left clicked, the subsections, requirements and sub requirements will be displayed below the pressed button.</Para>
+            <TestResult>true</TestResult>
+            <ApprovedBy isNewest="true">
+                <Name isNewest="true">Peter Magalhaes</Name>
+                <Para isNewest="true" index="0">Comment Here</Para>
+            </ApprovedBy>
+            <Ref isNewest="true">RQ3.1.3</Ref>
+            <Ref isNewest="true">RQ3.1.4</Ref>
+            <Ref isNewest="true">RQ3.2.1.4</Ref>
+            <Ref isNewest="true">RQ3.2.2.4</Ref>
+            
+            
+        </Section>
+        </Section>
     </Section>
 </TestCaseDocument>
