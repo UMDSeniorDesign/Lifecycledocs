@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="documentXSL.xsl"?>
+<?xml-stylesheet type="text/xsl" href="NotionalTestCaseXSL.xsl"?>
  
 <TestCaseDocument xml:base="ProjectLifecycleDocuments.xml" projectName="Lifecycle Documents with Requirements Tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="NotionalSchema.xsd" >
     
@@ -22,7 +22,7 @@
             <Ref isNewest="true">RQ3.2.2</Ref>
             <Section isNewest="true" id="TC1.1.1">
                 <Title isNewest="true">Buttons and textbox are displayed</Title>
-                <Para isNewest="true">New Project, Open Project, and Browse buttons are displayed, as well as a textbox that the user may click into, but is unable to type since this is only a URI display when selecting a project..</Para>
+                <Para isNewest="true" index="0">New Project, Open Project, and Browse buttons are displayed, as well as a textbox that the user may click into, but is unable to type since this is only a URI display when selecting a project..</Para>
                 <TestResult>true</TestResult>
                 <ApprovedBy isNewest="true">
                     <Name isNewest="true">Peter Magalhaes</Name>
@@ -199,7 +199,7 @@
             <Ref isNewest="true">RQ3.1.1</Ref>
             <Section isNewest="true" id="TC2.2.1">
                 <Title isNewest="true">Create Matrix</Title>
-                <Para isNewest="true">The user clicks create matrix, and is directed to the requirements traceability matrix. From there, the user can view each individual requirement in each phase of development.</Para>
+                <Para isNewest="true" index="0">The user clicks create matrix, and is directed to the requirements traceability matrix. From there, the user can view each individual requirement in each phase of development.</Para>
                 <TestResult>false</TestResult>
                 <ApprovedBy isNewest="true">
                     <Name isNewest="true">Peter Magalhaes</Name>
@@ -223,7 +223,7 @@
                 </Section>
                 <Section isNewest="true" id="TC2.2.1.2">
                     <Title isNewest="true">Back Button</Title>
-                    <Para isNewest="true">The user clicks back, and is directed back to view HTA.</Para>
+                    <Para isNewest="true" index="0">The user clicks back, and is directed back to view HTA.</Para>
                     <TestResult>false</TestResult>
                     <ApprovedBy isNewest="true">
                         <Name isNewest="true">Jeremiah Butler</Name>
@@ -232,7 +232,7 @@
                 </Section>
                 <Section isNewest="true" id="TC2.2.1.3">
                     <Title isNewest="true">Save RTM as CSV</Title>
-                    <Para isNewest="true">The user clicks save RTM as CSV, and the csv is autmatically generated using the text input by the user into the textbox.</Para>
+                    <Para isNewest="true" index="0">The user clicks save RTM as CSV, and the csv is autmatically generated using the text input by the user into the textbox.</Para>
                     <TestResult>false</TestResult>
                     <ApprovedBy isNewest="true">
                         <Name isNewest="true">Peter Magalhaes</Name>
@@ -246,7 +246,7 @@
             </Section>
             <Section isNewest="true" id="TC2.2.2">
                 <Title isNewest="true">Preview in Document Format</Title>
-                <Para isNewest="true">The user clicked preview in document format, and is directed to a popup of the document, transformed by XSL, into a formal readable document. The user can exit the window at any time.</Para>
+                <Para isNewest="true" index="0">The user clicked preview in document format, and is directed to a popup of the document, transformed by XSL, into a formal readable document. The user can exit the window at any time.</Para>
                 <TestResult>true</TestResult>
                 <ApprovedBy isNewest="true">
                     <Name isNewest="true">Peter Magalhaes</Name>
@@ -257,7 +257,7 @@
             </Section>
             <Section isNewest="true" id="TC2.2.3">
                 <Title isNewest="true">Download as HTML</Title>
-                <Para isNewest="true">The user clicks download as html, and a hidden table appears in a small popup window. The buttons in the popup should be one for each file in the project, and one button to download the entire project.</Para>
+                <Para isNewest="true" index="0">The user clicks download as html, and a hidden table appears in a small popup window. The buttons in the popup should be one for each file in the project, and one button to download the entire project.</Para>
                 <TestResult>false</TestResult>
                 <ApprovedBy isNewest="true">
                     <Name isNewest="true">Peter Magalhaes</Name>
@@ -285,12 +285,87 @@
                 </Section>
             </Section>
         </Section>
-        <Section isNewest="true" id="TC6">
-            <Title isNewest="true">Table of contents pane shows with buttons for ID, and shows titles.</Title>
-            <Para isNewest="true" index="0">The appropriate xml selected by the user is then converted to html and saved into the "Saves" folder in the project directory.</Para>
+        <Section isNewest="true" id="TC2.3">
+            <Title isNewest="true">Sections are displayed with their titles in Table of Content div tag. </Title>
+            <Para isNewest="true" index="0">The table of contents is automatically filled with sections from the requirements XML document. Also, when a section is clicked, the "toc" or table of contents div which is aligned to the left side of the screen is shown to have buttons with section id's in them, as well as the section title.</Para>
+        </Section>
+            <Section isNewest="true" id="TC2.4">
+                <Title isNewest="true">Section or Requirement button is left clicked</Title>
+                <Para isNewest="true" index="0">When the Section or Requirement button is left clicked, the subsections, requirements and sub requirements will be displayed below the pressed button. The left clicked button will display its contents in the view div located on the right side of the screen.</Para>
+            </Section>
+            <Section isNewest="true" id="TC2.3.2">
+                <Title isNewest="true">Section or Requirement button is right clicked</Title>
+                <Para isNewest="true" index="0">When the Section or Requirement button is right clicked, options for editing the document are displayed.</Para>
+                
+                <Section isNewest="true" id="TC2.3.2.1">
+                    <Title isNewest="true">Add Section Above is left clicked.</Title>
+                    <Para isNewest="true" index="0">Add Section Above creates a section above the section that was right clicked.</Para>
+                </Section>
+                <Section isNewest="true" id="TC2.3.2.2">
+                    <Title isNewest="true">Add Requirement Above is left clicked.</Title>
+                    <Para isNewest="true" index="0">Add Requirement Above creates a requirement above the section that was right clicked.</Para>
+                </Section>
+                <Section isNewest="true" id="TC2.3.2.3">
+                    <Title isNewest="true">Add Section Below is left clicked.</Title>
+                    <Para isNewest="true" index="0">Add Section Below creates a section below the section that was right clicked.</Para>
+                </Section>
+                <Section isNewest="true" id="TC2.3.2.4">
+                    <Title isNewest="true">Add Requirement Below is left clicked.</Title>
+                    <Para isNewest="true" index="0">Add Requirement Below creates a section below the section that was right clicked.</Para>
+                </Section>
+                <Section isNewest="true" id="TC2.3.2.5">
+                    <Title isNewest="true">Add subSection is left clicked.</Title>
+                    <Para isNewest="true" index="0">Add subSection creates a sub section inside the section that was right clicked.</Para>
+                    <TestResult>true</TestResult>
+                    <ApprovedBy isNewest="true">
+                        <Name isNewest="true">Peter Magalhaes</Name>
+                        <Para isNewest="true" index="0">Comment Here</Para>
+                    </ApprovedBy>
+                    <Ref isNewest="true">RQ3.1.3</Ref>
+                    <Ref isNewest="true">RQ3.1.4</Ref>
+                    <Ref isNewest="true">RQ3.2.1.4</Ref>
+                    <Ref isNewest="true">RQ3.2.2.4</Ref>
+                </Section>
+                <Section isNewest="true" id="TC2.3.2.6">
+                    <Title isNewest="true">Add subRequirement is left clicked.</Title>
+                    <Para isNewest="true" index="0">Add subRequirement creates a sub requirement inside the section or requirement that was right clicked.</Para>
+                    <TestResult>true</TestResult>
+                    <ApprovedBy isNewest="true">
+                        <Name isNewest="true">Peter Magalhaes</Name>
+                        <Para isNewest="true" index="0">Comment Here</Para>
+                    </ApprovedBy>
+                    <Ref isNewest="true">RQ3.1.3</Ref>
+                    <Ref isNewest="true">RQ3.1.4</Ref>
+                    <Ref isNewest="true">RQ3.2.1.4</Ref>
+                    <Ref isNewest="true">RQ3.2.2.4</Ref>
+                </Section>
+                <Section isNewest="true" id="TC2.3.2.7">
+                    <Title isNewest="true">Change Title is left clicked.</Title>
+                    <Para isNewest="true" index="0">Change Title changes the title of the section, requirement, subSection, or subRequirement to whatever was typed in the textarea to the right.</Para>
+                    <TestResult>true</TestResult>
+                    <ApprovedBy isNewest="true">
+                        <Name isNewest="true">Peter Magalhaes</Name>
+                        <Para isNewest="true" index="0">Comment Here</Para>
+                    </ApprovedBy>
+                    <Ref isNewest="true">RQ3.1.3</Ref>
+                    <Ref isNewest="true">RQ3.1.4</Ref>
+                    <Ref isNewest="true">RQ3.2.1.4</Ref>
+                    <Ref isNewest="true">RQ3.2.2.4</Ref>
+                </Section>
+                <Section isNewest="true" id="TC2.3.2.8">
+                    <Title isNewest="true">Cancel is left clicked.</Title>
+                    <Para isNewest="true" index="0">The pop up menu is terminated. You are brought back to the view HTA.</Para>
+                    <TestResult>true</TestResult>
+                    <ApprovedBy isNewest="true">
+                        <Name isNewest="true">Peter Magalhaes</Name>
+                        <Para isNewest="true" index="0">Comment Here</Para>
+                    </ApprovedBy>
+                    <Ref isNewest="true">RQ3.1.3</Ref>
+                    <Ref isNewest="true">RQ3.1.4</Ref>
+                    <Ref isNewest="true">RQ3.2.1.4</Ref>
+                    <Ref isNewest="true">RQ3.2.2.4</Ref>
+                </Section>
+            </Section>
         </Section>
         
-        
-        
-    </Section>
 </TestCaseDocument>
