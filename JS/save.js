@@ -32,6 +32,10 @@ function downloadAsHTML(xml, type){
 	var styleName = styleStringPart.substring(6, styleStringEnd-2);
 	//sessvars.xsl = styleName;
 	xsl = loadXML(styleName);
+	if(type == -1){
+		xsl = loadXML("RTM.xsl");
+		xmlName = "RTM.xml";
+	}
 	var value = xml.transformNode(xsl);
 	
 	filename = xmlName.substring(-1,xmlName.length-4);
@@ -49,12 +53,15 @@ function downloadAsHTML(xml, type){
 /////***START DOWNLOADPROJECT FUNCTION***/////
 function downloadProject(xml){
 	var project = loadProject(xml);
+	var firstFile = "";
 	var fileNames = project.getElementsByTagName("file_location");
 	for(var i = 0; i < fileNames.length; i++) {
+		if(i == 0)
+			firstFile = fileNames[i].childNodes[0].getAttribute("href");
 		var filename = fileNames[i].childNodes[0].getAttribute("href");
 		downloadAsHTML(filename, 0);
 	}
-	saveRTM();
+	downloadAsHTML(firstFile, -1);
 	downloadAsHTML(xml, 1);
 	alert("Project saved");
 }
@@ -122,4 +129,10 @@ function saveFile(xml, alertText, ID){
 	file.close();
 	alert(alertText);
 	loadXSLT(0,1, ID);
+}
+/////***START SAVERTM FUNCTION***/////
+function saveRTM(){
+	//var xml = loadXML(sessvars.first);
+	//sessvars.xsl = loadXML("RTM.xsl");
+	downloadAsHTML(sessvars.first, -1);
 }
