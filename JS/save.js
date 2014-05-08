@@ -32,7 +32,7 @@ function downloadAsHTML(xml, type){
 	var styleName = styleStringPart.substring(6, styleStringEnd-2);
 	//sessvars.xsl = styleName;
 	xsl = loadXML(styleName);
-	if(type == -1){
+	if(type == -1 || type == -2){
 		xsl = loadXML("RTM.xsl");
 		xmlName = "RTM.xml";
 	}
@@ -47,7 +47,7 @@ function downloadAsHTML(xml, type){
 	file = f.CreateTextFile(filename+".html", true, true);
 	file.write(value);
 	file.close();
-	if (typeof type === 'undefined')
+	if (typeof type === 'undefined' || type == -2)
 		alert("File saved");
 }
 /////***START DOWNLOADPROJECT FUNCTION***/////
@@ -129,10 +129,4 @@ function saveFile(xml, alertText, ID){
 	file.close();
 	alert(alertText);
 	loadXSLT(0,1, ID);
-}
-/////***START SAVERTM FUNCTION***/////
-function saveRTM(){
-	//var xml = loadXML(sessvars.first);
-	//sessvars.xsl = loadXML("RTM.xsl");
-	downloadAsHTML(sessvars.first, -1);
 }
