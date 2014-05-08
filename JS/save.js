@@ -54,6 +54,7 @@ function downloadProject(xml){
 		var filename = fileNames[i].childNodes[0].getAttribute("href");
 		downloadAsHTML(filename, 0);
 	}
+	saveRTM();
 	downloadAsHTML(xml, 1);
 	alert("Project saved");
 }

@@ -95,7 +95,7 @@
                         </xsl:for-each>
                         <tr>
                             <td colspan="2">
-                            <button onclick="createRTM()">Create RTM</button>
+                            <button onclick="parent.location='RTM.html'">View RTM</button>
                             </td>
                         </tr>
                     </tbody>
