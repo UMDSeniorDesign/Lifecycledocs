@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="NotionalTestCaseXSL.xsl"?>
+<?xml-stylesheet type="text/xsl" href="documentXSL.xsl"?>
  
 <TestCaseDocument xml:base="ProjectLifecycleDocuments.xml" projectName="Lifecycle Documents with Requirements Tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="NotionalSchema.xsd" >
     
@@ -176,7 +176,7 @@
         <Ref isNewest="true">RQ3.2.1</Ref>
         <Ref isNewest="true">RQ3.3.1</Ref>
         <Section isNewest="true" id="TC2.1">
-            <Title isNewest="true">Project files are displayed as floating buttons.</Title>
+            <Title isNewest="true">Project files are displayed as buttons on floating table.</Title>
             <TestResult>true</TestResult>
             <Ref isNewest="true">RQ3.1.1</Ref>
             <ApprovedBy isNewest="true">
@@ -247,26 +247,10 @@
             <Section isNewest="true" id="TC2.2.2">
                 <Title isNewest="true">Preview in Document Format</Title>
                 <Para isNewest="true" index="0">The user clicked preview in document format, and is directed to a popup of the document, transformed by XSL, into a formal readable document. The user can exit the window at any time.</Para>
-                <TestResult>true</TestResult>
-                <ApprovedBy isNewest="true">
-                    <Name isNewest="true">Peter Magalhaes</Name>
-                    <Para isNewest="true" index="0">xsl is working great</Para>
-                </ApprovedBy>
-                <Ref isNewest="true">RQ3.1.1</Ref>
-                <Ref isNewest="true">RQ3.2.4</Ref>
             </Section>
             <Section isNewest="true" id="TC2.2.3">
                 <Title isNewest="true">Download as HTML</Title>
                 <Para isNewest="true" index="0">The user clicks download as html, and a hidden table appears in a small popup window. The buttons in the popup should be one for each file in the project, and one button to download the entire project.</Para>
-                <TestResult>false</TestResult>
-                <ApprovedBy isNewest="true">
-                    <Name isNewest="true">Peter Magalhaes</Name>
-                    <Para isNewest="true" index="0">great, start working on creating the download functionality</Para>
-                </ApprovedBy>
-                <Ref isNewest="true">RQ3.1.3</Ref>
-                <Ref isNewest="true">RQ3.1.4</Ref>
-                <Ref isNewest="true">RQ3.2.1.4</Ref>
-                <Ref isNewest="true">RQ3.2.2.4</Ref>
                 <Section isNewest="true" id="TC2.2.3.1">
                     <Title isNewest="true">Popup window appears with buttons.</Title>
                     <Para isNewest="true" index="0">Popup window apprears and is populated with buttons. One button for each xml file in the project, with an additional button to download all the files in the project as html.</Para>
@@ -288,15 +272,13 @@
         <Section isNewest="true" id="TC2.3">
             <Title isNewest="true">Sections are displayed with their titles in Table of Content div tag. </Title>
             <Para isNewest="true" index="0">The table of contents is automatically filled with sections from the requirements XML document. Also, when a section is clicked, the "toc" or table of contents div which is aligned to the left side of the screen is shown to have buttons with section id's in them, as well as the section title.</Para>
-        </Section>
-            <Section isNewest="true" id="TC2.4">
+            <Section isNewest="true" id="TC2.3.1">
                 <Title isNewest="true">Section or Requirement button is left clicked</Title>
-                <Para isNewest="true" index="0">When the Section or Requirement button is left clicked, the subsections, requirements and sub requirements will be displayed below the pressed button. The left clicked button will display its contents in the view div located on the right side of the screen.</Para>
+                <Para isNewest="true" index="0">When the Section or Requirement button is left clicked, all of the subsections or sub-requirements contained within the clicked section will be displayed below the pressed button, in the form of more buttons with ID and title. The left clicked button will display its contents in the view div located on the right side of the screen. This includes all para's, images, test result information, and references</Para>
             </Section>
             <Section isNewest="true" id="TC2.3.2">
                 <Title isNewest="true">Section or Requirement button is right clicked</Title>
                 <Para isNewest="true" index="0">When the Section or Requirement button is right clicked, options for editing the document are displayed.</Para>
-                
                 <Section isNewest="true" id="TC2.3.2.1">
                     <Title isNewest="true">Add Section Above is left clicked.</Title>
                     <Para isNewest="true" index="0">Add Section Above creates a section above the section that was right clicked.</Para>
@@ -316,56 +298,184 @@
                 <Section isNewest="true" id="TC2.3.2.5">
                     <Title isNewest="true">Add subSection is left clicked.</Title>
                     <Para isNewest="true" index="0">Add subSection creates a sub section inside the section that was right clicked.</Para>
-                    <TestResult>true</TestResult>
-                    <ApprovedBy isNewest="true">
-                        <Name isNewest="true">Peter Magalhaes</Name>
-                        <Para isNewest="true" index="0">Comment Here</Para>
-                    </ApprovedBy>
-                    <Ref isNewest="true">RQ3.1.3</Ref>
-                    <Ref isNewest="true">RQ3.1.4</Ref>
-                    <Ref isNewest="true">RQ3.2.1.4</Ref>
-                    <Ref isNewest="true">RQ3.2.2.4</Ref>
-                </Section>
+                 </Section>
                 <Section isNewest="true" id="TC2.3.2.6">
                     <Title isNewest="true">Add subRequirement is left clicked.</Title>
                     <Para isNewest="true" index="0">Add subRequirement creates a sub requirement inside the section or requirement that was right clicked.</Para>
-                    <TestResult>true</TestResult>
-                    <ApprovedBy isNewest="true">
-                        <Name isNewest="true">Peter Magalhaes</Name>
-                        <Para isNewest="true" index="0">Comment Here</Para>
-                    </ApprovedBy>
-                    <Ref isNewest="true">RQ3.1.3</Ref>
-                    <Ref isNewest="true">RQ3.1.4</Ref>
-                    <Ref isNewest="true">RQ3.2.1.4</Ref>
-                    <Ref isNewest="true">RQ3.2.2.4</Ref>
                 </Section>
                 <Section isNewest="true" id="TC2.3.2.7">
                     <Title isNewest="true">Change Title is left clicked.</Title>
                     <Para isNewest="true" index="0">Change Title changes the title of the section, requirement, subSection, or subRequirement to whatever was typed in the textarea to the right.</Para>
-                    <TestResult>true</TestResult>
-                    <ApprovedBy isNewest="true">
-                        <Name isNewest="true">Peter Magalhaes</Name>
-                        <Para isNewest="true" index="0">Comment Here</Para>
-                    </ApprovedBy>
-                    <Ref isNewest="true">RQ3.1.3</Ref>
-                    <Ref isNewest="true">RQ3.1.4</Ref>
-                    <Ref isNewest="true">RQ3.2.1.4</Ref>
-                    <Ref isNewest="true">RQ3.2.2.4</Ref>
-                </Section>
+                 </Section>
                 <Section isNewest="true" id="TC2.3.2.8">
                     <Title isNewest="true">Cancel is left clicked.</Title>
                     <Para isNewest="true" index="0">The pop up menu is terminated. You are brought back to the view HTA.</Para>
-                    <TestResult>true</TestResult>
-                    <ApprovedBy isNewest="true">
-                        <Name isNewest="true">Peter Magalhaes</Name>
-                        <Para isNewest="true" index="0">Comment Here</Para>
-                    </ApprovedBy>
-                    <Ref isNewest="true">RQ3.1.3</Ref>
-                    <Ref isNewest="true">RQ3.1.4</Ref>
-                    <Ref isNewest="true">RQ3.2.1.4</Ref>
-                    <Ref isNewest="true">RQ3.2.2.4</Ref>
                 </Section>
             </Section>
         </Section>
-        
+        <Section isNewest="true" id="TC2.4">
+            <Title isNewest="true">Preview pane displays edit On/Off button.</Title>
+            <Para isNewest="true" index="0">On loading the page, the preview div displays the Edit On/Off button and is waiting for the user to click a button in the table of contents. This will display in the view div.</Para>
+            <Section isNewest="true" id="TC2.4.1">
+                <Title isNewest="true">Title displays in preview pane.</Title>
+                <Para isNewest="true" index="0">When the user clicks a section button in the table of contents div, the title of that section is displayed both underlined and in italics at the top of the view div.</Para>   
+            </Section>
+            <Section isNewest="true" id="TC2.4.2">
+                <Title isNewest="true">Para gets displayed on view div</Title>
+                <Para isNewest="true" index="0">If a Para exists in the clicked section, it will be displayed in order in a textarea.</Para>
+            </Section>
+            <Section isNewest="true" id="TC2.4.3">
+                <Title isNewest="true">Images are displayed on view div</Title>
+                <Para isNewest="true" index="0">If an image exists in the clicked section, it will be displayed below the existing Paras.</Para>  
+            </Section>
+            <Section isNewest="true" id="TC2.4.4">
+                <Title isNewest="true">Test Result, Approved by, and Comment are displayed for test cases in view div</Title>
+                <Para isNewest="true" index="0">If user is viewing a test case document, test result, approved by, and comment are displayed to user in view div even if their information is empty. If there exists a last test result, these fields are filled with the previous results.</Para>
+            </Section>
+            <Section isNewest="true" id="TC2.4.5">
+                <Title isNewest="true">Reference buttons and titles are displayed.</Title>
+                <Para isNewest="true" index="0">Buttons are displayed for every reference inside this section along with the title associated with the ID on the button.</Para>
+                <Section isNewest="true" id="TC2.4.5.1">
+                    <Title isNewest="true">User clicks reference button.</Title>
+                    <Para isNewest="true" index="0">When the user clicks on a reference button, all the para's associated with the section are displayed under the button the user has clicked. If the para's already exist below the button, the para's are hidden.</Para>
+                </Section>
+            </Section>
+            <Section isNewest="true" id="TC2.4.6">
+                <Title isNewest="true">User clicks Edit On/Off button</Title>
+                <Para isNewest="true" index="0">The information in each section is displayed, but content changes can not be saved until clicking the save button. The save button is not available until in edit mode. This allows the user to make changes, except when in a deliverable format.</Para>
+                <Section isNewest="true" id="TC2.4.6.1">
+                    <Title isNewest="true">Button for adding images, paras, and other information are Displayed.</Title>
+                    <Para isNewest="true" index="0">When the user clicks the Edit On/Off button, buttons to save, add para, add reference, and add image are displayed below the edit button.</Para>
+                </Section>
+                <Section isNewest="true" id="TC2.4.6.2">
+                    <Title isNewest="true">Content becomes editable</Title>
+                    <Para isNewest="true" index="0">Once the user has selected the Edit button, the paras are displayed in order, inside of an edit box, shown by a dotted line. The user now has the ability to save any changes made in the preview pane.</Para>
+                </Section>
+                <Section isNewest="true" id="TC2.4.6.3">
+                    <Title isNewest="true">Test Results, Approved By, and Comment options are displayed as editable</Title>
+                    <Para isNewest="true" index="0">Test Result values Pass and Fail have the ability to be selected in editable mode. Approved by can be any team member or a user input. Comment is user input.</Para>
+                </Section>
+                <Section isNewest="true" id="TC2.4.6.4">
+                    <Title isNewest="true">Save button is clicked</Title>
+                    <Para isNewest="true" index="0">User is prompted with alert indicating that the document and all changes were saved. All changes made to editable options are saved.</Para>
+                </Section>
+                <Section isNewest="true" id="TC2.4.6.5">
+                    <Title isNewest="true">Add Reference button is clicked</Title>
+                    <Para isNewest="true" index="0">A button appears with a dropdown listing all current section and requirement IDs and their title. These sections and requirements are already available in one of the XML files contained in the project. When Add a Reference is clicked, the selected reference in the dropdown box is added.</Para>
+                </Section>
+                <Section isNewest="true" id="TC2.4.6.6">
+                    <Title isNewest="true">Add Para button is clicked.</Title>
+                    <Para isNewest="true" index="0">A textarea is added to the preview pane below any existing para's. Edit is then turned off.</Para>
+                </Section>
+                <Section isNewest="true" id="TC2.4.6.7">
+                    <Title isNewest="true">Add Image button is clicked</Title>
+                    <Para isNewest="true" index="0">Users presented with explorer window to select image file. Image is saved to Image folder. Image is displayed in preview pane.</Para>
+                </Section>
+                <Section isNewest="true" id="TC2.4.6.8">
+                    <Title isNewest="true">Editable content is right clicked</Title>
+                    <Para isNewest="true" index="0">User is prompted with pop up window displaying options Add Para Above, Add Para Below, Remove Para, Remove Image, and Cancel.</Para>
+                </Section>
+            </Section>
+        </Section>
+    </Section>
+    <Section isNewest="true" id="TC3.0">
+        <Title isNewest="true">Pop-up HTA</Title>
+        <Para isNewest="true" index="0">The Pop-up HTA handles a small popup window with variable content, depending on what the user has previously selected.</Para>
+        <Section isNewest="true" id="TC3.1">
+            <Title isNewest="true">User has right clicked a button in table of contents pane.</Title>
+            <Para isNewest="true" index="0">Once the user has right-clicked on a button, the application will display a pop-up window containing additional functionality. This functionality includes adding more sections or requirements, subsections, or changing the title.</Para>
+            <Section isNewest="true" id="TC3.1.1">
+                <Title isNewest="true">Add Section Above is left clicked.</Title>
+                <Para isNewest="true" index="0">Add Section Above creates a section above the section that was right clicked.</Para>
+            </Section>
+            <Section isNewest="true" id="TC3.1.2">
+                <Title isNewest="true">Add Requirement Above is left clicked.</Title>
+                <Para isNewest="true" index="0">Add Requirement Above creates a requirement above the section that was right clicked.</Para>
+            </Section>
+            <Section isNewest="true" id="TC3.1.3">
+                <Title isNewest="true">Add Section Below is left clicked.</Title>
+                <Para isNewest="true" index="0">Add Section Below creates a section below the section that was right clicked.</Para>
+            </Section>
+            <Section isNewest="true" id="TC3.1.4">
+                <Title isNewest="true">Add Requirement Below is left clicked.</Title>
+                <Para isNewest="true" index="0">Add Requirement Below creates a section below the section that was right clicked.</Para>
+            </Section>
+            <Section isNewest="true" id="TC3.1.5">
+                <Title isNewest="true">Add subSection is left clicked.</Title>
+                <Para isNewest="true" index="0">Add subSection creates a sub section inside the section that was right clicked.</Para>
+            </Section>
+            <Section isNewest="true" id="TC3.1.6">
+                <Title isNewest="true">Add subRequirement is left clicked.</Title>
+                <Para isNewest="true" index="0">Add subRequirement creates a sub requirement inside the section or requirement that was right clicked.</Para>
+            </Section>
+            <Section isNewest="true" id="TC3.1.7">
+                <Title isNewest="true">Change Title is left clicked.</Title>
+                <Para isNewest="true" index="0">Change Title changes the title of the section, requirement, subSection, or subRequirement to whatever was typed in the textarea to the right.</Para>
+            </Section>
+            <Section isNewest="true" id="TC3.1.8">
+                <Title isNewest="true">Cancel is left clicked or user closes window.</Title>
+                <Para isNewest="true" index="0">The pop up menu is terminated. This is also done by pressing the close button. You are brought back to the view HTA.</Para>
+            </Section>
+        </Section>
+        <Section isNewest="true" id="TC3.2">
+            <Title isNewest="true">User has right-clicked content in the preview pane.</Title>
+            <Para isNewest="true" index="0">The user has right clicked section content in the preview pane.</Para>
+            <Section isNewest="true" id="TC3.2.1">
+                <Title isNewest="true">User has right-clicked content with Edit Mode OFF.</Title>
+                <Para isNewest="true" index="0">The user will be displayed a contextual menu filled with browser functionality. The application will not handle right-click in the preview pane unless Edit Mode is ON. This allows a deliverable to contain only necessary information without additional parameters.</Para>
+            </Section>
+            <Section isNewest="true" id="TC3.2.2">
+                <Title isNewest="true">User has right-clicked on a para in the preview pane from the view HTA.</Title>
+                <Para isNewest="true" index="0">The user is presented a new pop-up window with options to add or remove para.</Para>
+                <Section isNewest="true" id="TC3.2.2.1">
+                    <Title isNewest="true">Pop-up displays buttons and title.</Title>
+                    <Para isNewest="true" index="0">Pop-up window displays buttons with para functionality, and title is ID of the section.</Para>
+                </Section>
+                <Section isNewest="true" id="TC3.2.2.2">
+                    <Title isNewest="true">User clicks Add Para Above.</Title>
+                    <Para isNewest="true" index="0">In the section from the title label appears a new para text box above the para that was right-clicked by the user. The pop-up window closes automatically.</Para>
+                </Section>
+                <Section isNewest="true" id="TC3.2.2.3">
+                    <Title isNewest="true">User clicks Add Para Below.</Title>
+                    <Para isNewest="true" index="0">In the section from the title label appears a new para text box below the para that was right-clicked by the user. The pop-up window closes automatically.</Para>
+                </Section>
+                <Section isNewest="true" id="TC3.2.2.4">
+                    <Title isNewest="true">User clicks Remove Para.</Title>
+                    <Para isNewest="true" index="0">In the section from the title label, the para that was right-clicked by the user in now removed and the pop-up window closes automatically.</Para>
+                </Section>
+                <Section isNewest="true" id="TC3.2.2.5">
+                    <Title isNewest="true">User clicks Cancel or closes window.</Title>
+                    <Para isNewest="true" index="0">The pop-up window closes, returning the user to the interface.</Para>
+                </Section>
+            </Section>
+            <Section isNewest="true" id="TC3.2.3">
+                <Title isNewest="true">User has right-clicked on an image in the preview pane from the view HTA.</Title>
+                <Para isNewest="true" index="0">The user is presented a new pop-up window with an option to remove para.</Para>
+                <Section isNewest="true" id="TC3.2.3.1">
+                    <Title isNewest="true">Pop-up displays buttons and title.</Title>
+                    <Para isNewest="true" index="0">Pop-up window displays buttons with image options, and title is ID of the section.</Para>
+                </Section>
+                <Section isNewest="true" id="TC3.2.3.2">
+                    <Title isNewest="true">User clicks Remove Image.</Title>
+                    <Para isNewest="true" index="0">The image in the section gets removed, and the popup window automatically closes.</Para>
+                </Section>
+                <Section isNewest="true" id="TC3.2.3.3">
+                    <Title isNewest="true">User clicks Cancel or closes window.</Title>
+                    <Para isNewest="true" index="0">The pop-up window closes, returning the user to the interface.</Para>
+                </Section>
+            </Section>
+        </Section>
+        <Section isNewest="true" id="TC3.3">
+            <Title isNewest="true">User has clicked a button in RTM matrix table.</Title>
+            <Para isNewest="true" index="0">The user is presented a new pop-up window with the information displayed from appropriate ID of the button tat was clicked, from the appropriate document located in the project XML file.</Para>
+            <Section isNewest="true" id="TC3.3.1">
+                <Title isNewest="true">Pop-up displays section information.</Title>
+                <Para isNewest="true" index="0">Pop-up window displays information contained in the appropriate section.</Para>
+            </Section>
+            <Section isNewest="true" id="TC3.3.2">
+                <Title isNewest="true">User uses Windows functionality.</Title>
+                <Para isNewest="true" index="0">The window is able to be closed, minimized, or maximized.</Para>
+            </Section>
+        </Section>
+    </Section>
 </TestCaseDocument>

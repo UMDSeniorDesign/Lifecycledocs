@@ -75,11 +75,14 @@
         <br/><br/>
         <xsl:if test="$sizeOffset &lt; 6">
             <xsl:text>&#160;&#160;&#160;&#160;&#160;</xsl:text>
+            <xsl:text>&#160;&#160;&#160;&#160;&#160;</xsl:text>
         </xsl:if>
         <xsl:if test="$sizeOffset &lt; 5">
             <xsl:text>&#160;&#160;&#160;&#160;&#160;</xsl:text>
+            <xsl:text>&#160;&#160;&#160;&#160;&#160;</xsl:text>
         </xsl:if>
         <xsl:if test="$sizeOffset &lt; 4">
+            <xsl:text>&#160;&#160;&#160;&#160;&#160;</xsl:text>
             <xsl:text>&#160;&#160;&#160;&#160;&#160;</xsl:text>
         </xsl:if>
         <b><u>
@@ -100,11 +103,14 @@
                 <xsl:for-each select="Para">
                     <xsl:if test="$sizeOffset &lt; 6">
                         <xsl:text>&#160;&#160;&#160;&#160;&#160;</xsl:text>
+                        <xsl:text>&#160;&#160;&#160;&#160;&#160;</xsl:text>
                     </xsl:if>
                     <xsl:if test="$sizeOffset &lt; 5">
                         <xsl:text>&#160;&#160;&#160;&#160;&#160;</xsl:text>
+                        <xsl:text>&#160;&#160;&#160;&#160;&#160;</xsl:text>
                     </xsl:if>
                     <xsl:if test="$sizeOffset &lt; 4">
+                        <xsl:text>&#160;&#160;&#160;&#160;&#160;</xsl:text>
                         <xsl:text>&#160;&#160;&#160;&#160;&#160;</xsl:text>
                     </xsl:if>
                     <xsl:text>&#160;&#160;&#160;&#160;&#160;</xsl:text>
