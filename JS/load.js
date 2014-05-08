@@ -93,7 +93,7 @@ function loadXSLT(withTabs, withCurrent, xmlToLoad){
 	//Append our generated HTML to the newly formatted page
 	value += "<button onclick=toggleEdit()>Edit On/Off</button>";
 	value += "<div id='tools' style='display: none;'>";
-	value += "<br><button onclick='saveXML(sessvars.xml)'>Save</button>";
+	value += "<br><button onclick='saveParas(sessvars.xml)'>Save</button>";
 	value += "<button onclick='add(0, 0)'>Add Reference</button>";
 	value += "<button onclick='add(0, 1)'>Add Para</button>";
 	value += "<button onclick='showBrowse()'>Add Image</button>";

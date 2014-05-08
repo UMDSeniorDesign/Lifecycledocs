@@ -131,21 +131,26 @@ function add(ID, aORb, type, index){
 					newSectionParaElement.setAttribute("isNewest","true");
 					newNode.appendChild(newSectionParaElement);
 					var parentNode = sections[i].parentNode;
-					if(aORb == 0)//If add above
+					if(aORb == 0){//If add above
 						parentNode.insertBefore(newNode, sections[i]);
+						reNumber(xml, parentNode, sections[i]);
+					}
 					else if(aORb == 1){//If add below
 						var nextSibling = sections[i].nextSibling;
 						if(nextSibling == null){
 							var parentNode = sections[i].parentNode;
 							parentNode.appendChild(newNode);
+							reNumber(xml, parentNode, sections[i]);
 						}
 						else{
 							var parentNode = nextSibling.parentNode;
 							parentNode.insertBefore(newNode, nextSibling);
+							reNumber(xml, parentNode, nextSibling);
 						}
 					}
 					else if(aORb == 3){//If add sub
 						sections[i].appendChild(newNode);
+						reNumber(xml, parentNode, sections[i]);
 					}
 					return saveFile(xml, "Added to Section", ID);
 				}				
@@ -250,21 +255,26 @@ function add(ID, aORb, type, index){
 					newNode.appendChild(newReqParaElement);
 					var parentNode = reqs[i].parentNode;
 					parentNode.insertBefore(newNode, reqs[i]);
-					if(aORb == 0)//If add above
+					if(aORb == 0){//If add above
 						parentNode.insertBefore(newNode, reqs[i]);
+						reNumber(xml, parentNode, sections[i]);
+					}
 					else if(aORb == 1){//If add below
 						var nextSibling = reqs[i].nextSibling;
 						if(nextSibling == null){
 							var parentNode = reqs[i].parentNode;
 							parentNode.appendChild(newNode);
+							reNumber(xml, parentNode, sections[i]);
 						}
 						else{
 							var parentNode = nextSibling.parentNode;
 							parentNode.insertBefore(newNode, nextSibling);
+							reNumber(xml, parentNode, sections[i]);
 						}
 					}
 					else if(aORb == 3){//If add sub
 						reqs[i].appendChild(newNode);
+						reNumber(xml, parentNode, sections[i]);
 					}
 					return saveFile(xml, "Added to Requirement", ID);
 				}
@@ -433,4 +443,35 @@ function changeTitle(ID){
 		}
 	}
 	return saveFile(xml, "Title Changed", ID);
+}
+/////***START RENUMBERFUNCTION***/////
+function reNumber(xml, parent, nodeToStartChange){
+	var occured = 0;
+	var parentId = parent.getAttribute("id");
+	var children = parent.childNodes;
+	var startChangeId = nodeToStartChange.getAttribute("id");
+	var newIDArray = startChangeId.split(".");
+	var idDigit = parseInt(newIDArray[newIDArray.length-1]);
+	var newIdDigit = idDigit +1;
+	newIDArray[newIDArray.length-1] = newIdDigit;
+	var newID = newIDArray.join(".");
+	nodeToStartChange.setAttribute("id", newID);
+	//alert("ID Changed to: "+newID);
+	var sections = parent.getElementsByTagName(nodeToStartChange.nodeName);
+	for(var i = 0; i < sections.length; i++){
+		if(sections[i].getAttribute("id") < newID || sections[i].getAttribute("isNewest") == 'false')
+			continue;
+		else{
+			/*if(occured < 1){
+				occured = 1;
+				continue;
+			}*/
+			newIdDigit ++;
+			newIDArray[newIDArray.length-1] = newIdDigit;
+			var newID = newIDArray.join(".");
+			sections[i].setAttribute("id", newID);
+			//alert("ID Changed "+sections[i].nodeValue+" to: "+newID);	
+		}
+	}
+	//return xml;
 }

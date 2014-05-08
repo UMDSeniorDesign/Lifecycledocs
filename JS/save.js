@@ -69,7 +69,7 @@ function previewAsDocument(){
 	//If windows 7, use this line
 	var f = fs.GetFolder("../Saves");
 	//If windows 8, use this line
-	//var f = fs.GetFolder("\XML");
+	//var f = fs.GetFolder("\Saves");
 	file = f.CreateTextFile(filename, true, true);
 	file.write(preview);
 	file.close();
@@ -79,6 +79,7 @@ function previewAsDocument(){
 }
 /////***START SAVEPARAS FUNCTION***/////
 function saveParas(xml){
+	var xml = loadXML(xml);
 	var saveInfo = document.getElementById("section").innerHTML;
 	var editedIdStart = saveInfo.search("<U>");
 	var editedIdEnd = saveInfo.search(" - ");
@@ -108,13 +109,6 @@ function saveParas(xml){
 		}
 	}
 }
-/////***START SAVEXML FUNCTION***/////
-function saveXML(xml) {
-	var xml = loadXML(xml);
-	saveParas(xml);
-	//Calling loadXSLT() at the end should refresh to show changes. Currently calls getTabs() again though.
-	loadXSLT(0,1);
-}
 /////***START SAVEFILE FUNCTION***/////
 function saveFile(xml, alertText, ID){
 	var fs = new ActiveXObject("Scripting.FileSystemObject");
@@ -122,7 +116,7 @@ function saveFile(xml, alertText, ID){
 	var f = fs.GetFolder("../XML");
 	//If windows 8, use this line
 	//var f = fs.GetFolder("\XML");
-	file = f.CreateTextFile(sessvars.xml, true, true);
+	file = f.CreateTextFile("testSave.xml", true, true);
 	file.write(xml.xml);
 	file.close();
 	alert(alertText);
