@@ -458,6 +458,15 @@ function reNumber(xml, parent, nodeToStartChange, type){
 	var newIdDigit = idDigit +1;
 	newIDArray[newIDArray.length-1] = newIdDigit;
 	var newID = newIDArray.join(".");
+	if(type == -1){
+		var parentIdArray = parentId.split(".");
+		//idDigit = parseInt(parentIdArray[parentIdArray.length-1]);
+		//newIdDigit = idDigit +1;
+		parentIdArray.push('1');
+		newIDArray = parentIdArray;
+		newID = newIDArray.join(".");
+		alert("ParentID: "+parentId+" new ChildID: "+newID);
+	}
 	if(type == 0)
 		nodeToStartChange.setAttribute("id", newID);
 	if(type == 1){
@@ -474,12 +483,19 @@ function reNumber(xml, parent, nodeToStartChange, type){
 				occured = 1;
 				continue;
 			}
+			var oldID = sections[i].getAttribute("id");
 			newIdDigit ++;
 			newIDArray[newIDArray.length-1] = newIdDigit;
 			var newID = newIDArray.join(".");
 			sections[i].setAttribute("id", newID);
-			//alert("ID Changed "+sections[i].nodeValue+" to: "+newID);	
+			if(type == -1)
+				alert("Changed oldID: "+oldID+"to newID: "+newID);
+			var children = sections[i].getElementsByTagName(nodeToStartChange.nodeName);
+			if(children.length > 0){
+				//alert("Number Of "+nodeToStartChange.nodeName+" Children: "+children.length);	
+				reNumber(xml, sections[i], children[0], -1);
+				alert("renumber ran on: "+sections[i].getAttribute("id"));
+			}
 		}
 	}
-	//return xml;
 }
