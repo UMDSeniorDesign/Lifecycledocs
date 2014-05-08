@@ -133,24 +133,24 @@ function add(ID, aORb, type, index){
 					var parentNode = sections[i].parentNode;
 					if(aORb == 0){//If add above
 						parentNode.insertBefore(newNode, sections[i]);
-						reNumber(xml, parentNode, sections[i]);
+						reNumber(xml, parentNode, sections[i], 0);
 					}
 					else if(aORb == 1){//If add below
 						var nextSibling = sections[i].nextSibling;
 						if(nextSibling == null){
 							var parentNode = sections[i].parentNode;
 							parentNode.appendChild(newNode);
-							reNumber(xml, parentNode, sections[i]);
+							reNumber(xml, parentNode, sections[i], 1);
 						}
 						else{
 							var parentNode = nextSibling.parentNode;
 							parentNode.insertBefore(newNode, nextSibling);
-							reNumber(xml, parentNode, nextSibling);
+							reNumber(xml, parentNode, sections[i], 1);
 						}
 					}
 					else if(aORb == 3){//If add sub
 						sections[i].appendChild(newNode);
-						reNumber(xml, parentNode, sections[i]);
+						reNumber(xml, parentNode, sections[i], 2);
 					}
 					return saveFile(xml, "Added to Section", ID);
 				}				
@@ -257,24 +257,24 @@ function add(ID, aORb, type, index){
 					parentNode.insertBefore(newNode, reqs[i]);
 					if(aORb == 0){//If add above
 						parentNode.insertBefore(newNode, reqs[i]);
-						reNumber(xml, parentNode, sections[i]);
+						reNumber(xml, parentNode, reqs[i], 0);
 					}
 					else if(aORb == 1){//If add below
 						var nextSibling = reqs[i].nextSibling;
 						if(nextSibling == null){
 							var parentNode = reqs[i].parentNode;
 							parentNode.appendChild(newNode);
-							reNumber(xml, parentNode, sections[i]);
+							reNumber(xml, parentNode, reqs[i], 1);
 						}
 						else{
 							var parentNode = nextSibling.parentNode;
 							parentNode.insertBefore(newNode, nextSibling);
-							reNumber(xml, parentNode, sections[i]);
+							reNumber(xml, parentNode, reqs[i], 1);
 						}
 					}
 					else if(aORb == 3){//If add sub
 						reqs[i].appendChild(newNode);
-						reNumber(xml, parentNode, sections[i]);
+						reNumber(xml, parentNode, reqs[i], 2);
 					}
 					return saveFile(xml, "Added to Requirement", ID);
 				}
@@ -445,7 +445,10 @@ function changeTitle(ID){
 	return saveFile(xml, "Title Changed", ID);
 }
 /////***START RENUMBERFUNCTION***/////
-function reNumber(xml, parent, nodeToStartChange){
+//Type	0 = add above
+//		1 = add below
+//		2 = add sub
+function reNumber(xml, parent, nodeToStartChange, type){
 	var occured = 0;
 	var parentId = parent.getAttribute("id");
 	var children = parent.childNodes;
@@ -455,17 +458,22 @@ function reNumber(xml, parent, nodeToStartChange){
 	var newIdDigit = idDigit +1;
 	newIDArray[newIDArray.length-1] = newIdDigit;
 	var newID = newIDArray.join(".");
-	nodeToStartChange.setAttribute("id", newID);
-	//alert("ID Changed to: "+newID);
+	if(type == 0)
+		nodeToStartChange.setAttribute("id", newID);
+	if(type == 1){
+		newNode = nodeToStartChange.nextSibling;
+		newNode.setAttribute("id", newID);
+		//alert("Section name: "+nodeToStartChange.childNodes[1].nodeValue+" Changed to: "+newID);
+	}
 	var sections = parent.getElementsByTagName(nodeToStartChange.nodeName);
 	for(var i = 0; i < sections.length; i++){
 		if(sections[i].getAttribute("id") < newID || sections[i].getAttribute("isNewest") == 'false')
 			continue;
 		else{
-			/*if(occured < 1){
+			if(occured < 1){
 				occured = 1;
 				continue;
-			}*/
+			}
 			newIdDigit ++;
 			newIDArray[newIDArray.length-1] = newIdDigit;
 			var newID = newIDArray.join(".");

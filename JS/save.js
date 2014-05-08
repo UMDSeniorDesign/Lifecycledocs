@@ -116,7 +116,7 @@ function saveFile(xml, alertText, ID){
 	var f = fs.GetFolder("../XML");
 	//If windows 8, use this line
 	//var f = fs.GetFolder("\XML");
-	file = f.CreateTextFile("testSave.xml", true, true);
+	file = f.CreateTextFile(sessvars.xml, true, true);
 	file.write(xml.xml);
 	file.close();
 	alert(alertText);
