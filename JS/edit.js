@@ -307,6 +307,18 @@ function remove(ID, fromID, type){
 		var xml = loadXML(sessvars.xml);
 		var sections = xml.getElementsByTagName("Section");
 		for(var i = 0; i < sections.length; i++){
+			if(type == 0){
+				if(sections[i].getAttribute("isNewest") == 'true'){
+					if(ID == sections[i].getAttribute("id")){
+						sections[i].setAttribute("isNewest", 'false');
+						var returnString = ("Removed Section "+ID);
+						var parent = sections[i].parentNode;
+						var returnID = parent.getAttribute("id");
+						reNumber(xml, parent);
+						return saveFile(xml, returnString, returnID);
+					}
+				}
+			}
 			if(type == 2){
 				if(fromID == sections[i].getAttribute("id")){
 					var refs = sections[i].childNodes;
@@ -351,6 +363,18 @@ function remove(ID, fromID, type){
 		}
 		var reqs = xml.getElementsByTagName("Requirement");
 		for(var i = 0; i < reqs.length; i++){
+			if(type == 1){
+				if(reqs[i].getAttribute("isNewest") == 'true'){
+					if(ID == reqs[i].getAttribute("id")){
+						reqs[i].setAttribute("isNewest", 'false');
+						var returnString = ("Removed Requirement "+ID);
+						var parent = reqs[i].parentNode;
+						var returnID = parent.getAttribute("id");
+						reNumber(xml, parent);
+						return saveFile(xml, returnString, returnID);
+					}
+				}
+			}
 			if(type == 2){
 				if(fromID == reqs[i].getAttribute("id")){
 					var refs = reqs[i].childNodes;
@@ -466,6 +490,10 @@ function reNumber(xml, parent, newNode){
 	var childs = parent.childNodes;
 	var firstChild = parent.firstChild;
 	for(var i = 0; i < childs.length; i++){
+		if(firstChild.getAttribute("isNewest") == 'false'){
+			firstChild = firstChild.nextSibling;
+			continue;
+		}
 		if(firstChild.nodeName == 'Section' || firstChild.nodeName == 'Requirement'){
 			startIndex++;
 			if(parentId == undefined){

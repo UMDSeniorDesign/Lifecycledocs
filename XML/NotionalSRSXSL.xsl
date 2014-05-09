@@ -102,12 +102,18 @@
             	<xsl:if test="self::Requirement">
             		<button onclick="add('{$vID}', '0', '1')">Add Requirement Above</button>
             	</xsl:if>
-                <br/>
             	<xsl:if test="self::Section">
             		<button onclick="add('{$vID}', '1', '0')">Add Section Below</button>
             	</xsl:if>
             	<xsl:if test="self::Requirement">
                 <button onclick="add('{$vID}', '1', '1')">Add Requirement Below</button>
+            	</xsl:if>
+                <br/>
+				<xsl:if test="self::Section">
+            		<button onclick="remove('{$vID}', '1', '0')">Remove Section</button>
+            	</xsl:if>
+            	<xsl:if test="self::Requirement">
+                <button onclick="remove('{$vID}', '1', '1')">Remove Requirement</button>
             	</xsl:if>
                 <br/>
 				<button onclick="add('{$vID}', '3', '0')">Add subSection</button><button onclick="add('{$vID}', '3', '1')">Add subRequirement</button>
