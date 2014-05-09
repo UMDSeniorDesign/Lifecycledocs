@@ -93,7 +93,6 @@
 		<xsl:if test="@isNewest = 'true'">
 			<xsl:variable name="vID" select="@id"/>
 			<xsl:variable name="vTitle" select="Title"/>
-			
 			<button type="button" id='{$vID}button' onclick="showSection('{$vID}','{$vTitle}')" oncontextmenu="showMenu('{$vID}', '0');return false;">
 			<xsl:value-of select="$vID"/></button> - <xsl:value-of select="$vTitle"/>
             <div id="{@id}Menu" style="display: none;">
@@ -120,13 +119,10 @@
             </div>
 			
 			<div id="sub{@id}" style="display: none;">
-				
 				<xsl:apply-templates select="Section" mode="section"/>
 				<xsl:apply-templates select="Requirement" mode="section"/>
 			</div>
-			<xsl:if test="position() != last()">
-				<br/>
-			</xsl:if>
+			<br/>
 		</xsl:if>
     </xsl:template>
 	

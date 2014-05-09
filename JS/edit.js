@@ -133,24 +133,24 @@ function add(ID, aORb, type, index){
 					var parentNode = sections[i].parentNode;
 					if(aORb == 0){//If add above
 						parentNode.insertBefore(newNode, sections[i]);
-						reNumber(xml, parentNode, sections[i], 0);
+						reNumber(xml, parentNode, sections[i]);
 					}
 					else if(aORb == 1){//If add below
 						var nextSibling = sections[i].nextSibling;
 						if(nextSibling == null){
 							var parentNode = sections[i].parentNode;
 							parentNode.appendChild(newNode);
-							reNumber(xml, parentNode, sections[i], 1);
+							reNumber(xml, parentNode, sections[i]);
 						}
 						else{
 							var parentNode = nextSibling.parentNode;
 							parentNode.insertBefore(newNode, nextSibling);
-							reNumber(xml, parentNode, sections[i], 1);
+							reNumber(xml, parentNode, sections[i]);
 						}
 					}
 					else if(aORb == 3){//If add sub
 						sections[i].appendChild(newNode);
-						reNumber(xml, parentNode, sections[i], 2);
+						reNumber(xml, parentNode, sections[i]);
 					}
 					return saveFile(xml, "Added to Section", ID);
 				}				
@@ -257,24 +257,24 @@ function add(ID, aORb, type, index){
 					parentNode.insertBefore(newNode, reqs[i]);
 					if(aORb == 0){//If add above
 						parentNode.insertBefore(newNode, reqs[i]);
-						reNumber(xml, parentNode, reqs[i], 0);
+						reNumber(xml, parentNode, reqs[i]);
 					}
 					else if(aORb == 1){//If add below
 						var nextSibling = reqs[i].nextSibling;
 						if(nextSibling == null){
 							var parentNode = reqs[i].parentNode;
 							parentNode.appendChild(newNode);
-							reNumber(xml, parentNode, reqs[i], 1);
+							reNumber(xml, parentNode, reqs[i]);
 						}
 						else{
 							var parentNode = nextSibling.parentNode;
 							parentNode.insertBefore(newNode, nextSibling);
-							reNumber(xml, parentNode, reqs[i], 1);
+							reNumber(xml, parentNode, reqs[i]);
 						}
 					}
 					else if(aORb == 3){//If add sub
 						reqs[i].appendChild(newNode);
-						reNumber(xml, parentNode, reqs[i], 2);
+						reNumber(xml, parentNode, reqs[i]);
 					}
 					return saveFile(xml, "Added to Requirement", ID);
 				}
@@ -445,57 +445,46 @@ function changeTitle(ID){
 	return saveFile(xml, "Title Changed", ID);
 }
 /////***START RENUMBERFUNCTION***/////
-//Type	0 = add above
-//		1 = add below
-//		2 = add sub
-function reNumber(xml, parent, nodeToStartChange, type){
-	var occured = 0;
+function reNumber(xml, parent, newNode){
 	var parentId = parent.getAttribute("id");
-	var children = parent.childNodes;
-	var startChangeId = nodeToStartChange.getAttribute("id");
-	var newIDArray = startChangeId.split(".");
-	var idDigit = parseInt(newIDArray[newIDArray.length-1]);
-	var newIdDigit = idDigit +1;
-	newIDArray[newIDArray.length-1] = newIdDigit;
-	var newID = newIDArray.join(".");
-	if(type == -1){
+	var parentIdArray = [];
+	var startIndex = 0;
+	var prefix = "";
+	if(parentId == undefined){
+		var prefixArray = newNode.getAttribute("id").split(".");
+		var numIndex = prefixArray[0].search(/\d+/g);
+		prefix = prefixArray[0].substring(-1, numIndex);
+	}
+	else{
 		var parentIdArray = parentId.split(".");
-		//idDigit = parseInt(parentIdArray[parentIdArray.length-1]);
-		//newIdDigit = idDigit +1;
-		parentIdArray.push('1');
-		newIDArray = parentIdArray;
-		newID = newIDArray.join(".");
-		alert("ParentID: "+parentId+" new ChildID: "+newID);
+		if(parentIdArray[parentIdArray.length-1] == 0)
+			parentIdArray.pop();
 	}
-	if(type == 0)
-		nodeToStartChange.setAttribute("id", newID);
-	if(type == 1){
-		newNode = nodeToStartChange.nextSibling;
-		newNode.setAttribute("id", newID);
-		//alert("Section name: "+nodeToStartChange.childNodes[1].nodeValue+" Changed to: "+newID);
-	}
-	var sections = parent.getElementsByTagName(nodeToStartChange.nodeName);
-	for(var i = 0; i < sections.length; i++){
-		if(sections[i].getAttribute("id") < newID || sections[i].getAttribute("isNewest") == 'false')
-			continue;
-		else{
-			if(occured < 1){
-				occured = 1;
-				continue;
+	//var sections = parent.getElementsByTagName(newNode.nodeName);
+	var sections = parent.getElementsByTagName("Section");
+	var reqs = parent.getElementsByTagName("Requirement");
+	var childs = parent.childNodes;
+	var firstChild = parent.firstChild;
+	for(var i = 0; i < childs.length; i++){
+		if(firstChild.nodeName == 'Section' || firstChild.nodeName == 'Requirement'){
+			startIndex++;
+			if(parentId == undefined){
+				var pre = prefix+startIndex;
+				parentIdArray.push(pre);
 			}
-			var oldID = sections[i].getAttribute("id");
-			newIdDigit ++;
-			newIDArray[newIDArray.length-1] = newIdDigit;
-			var newID = newIDArray.join(".");
-			sections[i].setAttribute("id", newID);
-			if(type == -1)
-				alert("Changed oldID: "+oldID+"to newID: "+newID);
-			var children = sections[i].getElementsByTagName(nodeToStartChange.nodeName);
-			if(children.length > 0){
-				//alert("Number Of "+nodeToStartChange.nodeName+" Children: "+children.length);	
-				reNumber(xml, sections[i], children[0], -1);
-				alert("renumber ran on: "+sections[i].getAttribute("id"));
-			}
+			else
+				parentIdArray.push(startIndex);
+			var newId = parentIdArray.join(".");
+			if(parentId == undefined)
+				firstChild.setAttribute("id", (newId+".0"));
+			else
+				firstChild.setAttribute("id", newId);
+			parentIdArray.pop();
+			var sectionChildren = firstChild.getElementsByTagName("Section")
+			var reqChildren = firstChild.getElementsByTagName("Requirement");
+			if(sectionChildren.length > 0 || reqChildren.length > 0)
+				reNumber(xml, firstChild)
 		}
+		firstChild = firstChild.nextSibling;
 	}
 }
