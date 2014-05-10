@@ -1,32 +1,34 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="NotionalSRSXSL.xsl"?>
-<SoftwareRequirementsDocument xml:base="projectName.xml" projectName="Lifecycle Documents with Requirements Tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="NotionalSchema.xsd">
+
+<SoftwareRequirementsDocument xml:base="new.xml" projectName="Lifecycle Documents with Requirements Tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="NotionalSchema.xsd">
 	<Section isNewest="true" id="RQ1.0">
 		<Title isNewest="true">Introduction</Title>
 		<Para isNewest="true" index="0">INSERT INTRODUCTION 
 	  </Para>
-		<Section isNewest="true" id="RQ1.1">
-			<Title isNewest="true">Purpose</Title>
-			<Para isNewest="true" index="0">INSERT PURPOSE
+	
+	<Section isNewest="true" id="RQ1.1">
+		<Title isNewest="true">Purpose</Title>
+		<Para isNewest="true" index="0">INSERT PURPOSE
 			</Para>
-		</Section>
-		<Section isNewest="true" id="RQ1.2">
-			<Title isNewest="true">Scope</Title>
-			<Para isNewest="true" index="0">INSERT SCOPE
+	</Section>
+	<Section isNewest="true" id="RQ1.2">
+		<Title isNewest="true">Scope</Title>
+		<Para isNewest="true" index="0">INSERT SCOPE
 		</Para>
-		</Section>
-		<Section isNewest="true" id="RQ1.3">
-			<Title isNewest="true">Definitions </Title>
-			<Para isNewest="true" index="0">INSERT DEFINITIONS</Para>
-			<Para isNewest="true" index="1">EXAMPLE: </Para>
-			<Para isNewest="true" index="2">HTML - HyperText Mark-up Language</Para>
-			<Para isNewest="true" index="3">XML - Extensible Mark-up Language</Para>
-		</Section>
-		<Section isNewest="true" id="RQ1.4">
-			<Title isNewest="true">Overview</Title>
-			<Para isNewest="true" index="0">INSERT OVERVIEW 
+	</Section>
+	<Section isNewest="true" id="RQ1.3">
+		<Title isNewest="true">Definitions </Title>
+		<Para isNewest="true" index="0">INSERT DEFINITIONS</Para>
+		<Para isNewest="true" index="1">EXAMPLE: </Para>
+		<Para isNewest="true" index="2">HTML - HyperText Mark-up Language</Para>
+		<Para isNewest="true" index="3">XML - Extensible Mark-up Language</Para>
+	</Section>
+	<Section isNewest="true" id="RQ1.4">
+		<Title isNewest="true">Overview</Title>
+		<Para isNewest="true" index="0">INSERT OVERVIEW 
 		</Para>
-		</Section>
+	</Section>
 	</Section>
 	<!--SECTION 2-->
 	<Section isNewest="true" id="RQ2.0">

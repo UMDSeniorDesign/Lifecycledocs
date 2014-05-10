@@ -101,7 +101,7 @@
                         </xsl:for-each>
                     </tbody>
                 </table>
-				<button onclick="addMember()">Add Member</button>
+				<!-- <button onclick="addMember()">Add Member</button> -->
             </head>
         </html>
     </xsl:template>
