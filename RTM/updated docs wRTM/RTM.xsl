@@ -9,30 +9,15 @@
     <xsl:strip-space elements="*"/>
     
     <xsl:template match="/">
-        <xsl:variable name="xmlBase" select="document(descendant-or-self::*/@xml:base)"/>
-        <xsl:for-each select="$xmlBase/descendant-or-self::*/file_location">
-            <xsl:variable name="elementName" select="name(document(*/@href)/*)"/>
+        <xsl:for-each select="descendant-or-self::*/@href">
+            <xsl:variable name="elementName" select="name(document(.)/*)"/>
             <xsl:choose>
                 <xsl:when test="$elementName = 'SoftwareRequirementsDocument'">
-                    <xsl:variable name="srsDoc" select="document(*/@href)"/>
-                    <xsl:text>SRSdoc</xsl:text>
+                    <xsl:variable name="srsDoc" select="document(.)"/>
+                    <xsl:apply-templates select="$srsDoc/SoftwareRequirementsDocument"/>
                 </xsl:when>
-                <xsl:when test="$elementName = 'UseCaseDocument'">
-                    <xsl:variable name="ucDoc" select="document(*/@href)"/>
-                    <xsl:text>UCdoc</xsl:text>
-                </xsl:when>
-                <xsl:when test="$elementName = 'TestCaseDocument'">
-                    <xsl:variable name="tcDoc" select="document(*/@href)"/>
-                    <xsl:text>TCdoc</xsl:text>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:text>Can't identify document!</xsl:text>
-                </xsl:otherwise>
-            </xsl:choose>
+           </xsl:choose>
         </xsl:for-each>
-        
-        
-        
     </xsl:template>
        
        
@@ -60,6 +45,7 @@
         </html>
     </xsl:template>
     
+    
     <xsl:template match="Requirement[@isNewest='true']">
         <xsl:variable name="vID2" select="@id"/>
         <xsl:variable name="vTitle2">
@@ -78,26 +64,10 @@
                     </font>
                 </xsl:otherwise>
             </xsl:choose>
-        </xsl:variable>        
-        <xsl:variable name="vID" select="@id"/>
-        
-        
-        
-        
-        
-        
-        
+        </xsl:variable>
+        <xsl:variable name="xmlBase" select="document(descendant-or-self::*/@xml:base)"/>
         <xsl:variable name="vDocumentUC" select="document('NotionalUseCase.xml')"/>
         <xsl:variable name="vDocumentTC" select="document('NotionalTestCase.xml')"/>
-        
-        
-        
-        
-        
-        
-        
-        
-        
         <xsl:variable name="UCCount" select="count(Ref[substring(.,1,2) = 'UC'][@isNewest='true'])"/>
         <xsl:variable name="TCCount" select="count(Ref[substring(.,1,2) = 'TC'][@isNewest='true'])"/>
         <xsl:variable name="TCPass">
