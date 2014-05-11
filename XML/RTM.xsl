@@ -8,31 +8,92 @@
     <xsl:output method="html" indent="yes"/>
     <xsl:strip-space elements="*"/>
     
+    <xsl:template match="/">
+        <xsl:variable name="doc1" select="document((descendant-or-self::*/@href)[1])"/>
+        <xsl:variable name="doc2" select="document((descendant-or-self::*/@href)[2])"/>
+        <xsl:variable name="doc3" select="document((descendant-or-self::*/@href)[3])"/>
+        
+        <xsl:choose>
+            <xsl:when test="name($doc1/*) = 'SoftwareRequirementsDocument'">
+                <xsl:apply-templates select="$doc1/SoftwareRequirementsDocument"/>
+            </xsl:when>
+            <xsl:when test="name($doc2/*) = 'SoftwareRequirementsDocument'">
+                <xsl:apply-templates select="$doc2/SoftwareRequirementsDocument"/>
+            </xsl:when>
+            <xsl:when test="name($doc3/*) = 'SoftwareRequirementsDocument'">
+                <xsl:apply-templates select="$doc3/SoftwareRequirementsDocument"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:text>Error identifying requirements document!</xsl:text>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+       
+       
     <xsl:template match="SoftwareRequirementsDocument">
-    <html>
-        <head>
-            <title>Requirements Tracability Matrix</title>
-            <table border="3">
-                <tbody>
-                    <tr style="height:50px">
-                        <th style="width:120px">Requirement ID</th>
-                        <th style="width:200px">Requirement Title</th>
-                        <th style="width:300px">Use Case Locations</th>
-                        <th style="width:50px">Testing Completion</th>
-                        <th style="width:300px">Test Case Locations</th>
-                        <th style="width:100px">Last Result</th>
-                        <th style="width:150px">Tested By</th>
-                        <th style="width:100px">Date</th>
-                        <th style="width:200px">Comment</th>
-                    </tr>
-                    <xsl:apply-templates select="/*/*/*/Requirement"/>
-                </tbody>
-            </table>
-        </head>
-    </html>
+        <html>
+            <head>
+                <title>Requirements Tracability Matrix</title>
+                <table border="3">
+                    <tbody>
+                        <tr style="height:50px">
+                            <th style="width:120px">Requirement ID</th>
+                            <th style="width:200px">Requirement Title</th>
+                            <th style="width:300px">Use Case Locations</th>
+                            <th style="width:50px">Testing Completion</th>
+                            <th style="width:300px">Test Case Locations</th>
+                            <th style="width:100px">Last Result</th>
+                            <th style="width:150px">Tested By</th>
+                            <th style="width:100px">Date</th>
+                            <th style="width:200px">Comment</th>
+                        </tr>
+                        <xsl:apply-templates select="descendant-or-self::Requirement"/>
+                    </tbody>
+                </table>
+            </head>
+        </html>
     </xsl:template>
     
+    
     <xsl:template match="Requirement[@isNewest='true']">
+        <xsl:variable name="xmlBase" select="document(ancestor-or-self::*/@xml:base)"/>
+        <xsl:variable name="doc1" select="($xmlBase/descendant-or-self::*/@href)[1]"/>
+        <xsl:variable name="doc2" select="($xmlBase/descendant-or-self::*/@href)[2]"/>
+        <xsl:variable name="doc3" select="($xmlBase/descendant-or-self::*/@href)[3]"/>
+        <xsl:variable name="findUCdoc">
+            <xsl:choose>
+                <xsl:when test="name(document($doc1)/*) = 'UseCaseDocument'">
+                    <xsl:value-of select="$doc1"/>
+                </xsl:when>
+                <xsl:when test="name(document($doc2)/*) = 'UseCaseDocument'">
+                    <xsl:value-of select="$doc2"/>
+                </xsl:when>
+                <xsl:when test="name(document($doc3)/*) = 'UseCaseDocument'">
+                    <xsl:value-of select="$doc3"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:text>Error identifying use case document!</xsl:text>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+        <xsl:variable name="findTCdoc">
+            <xsl:choose>
+                <xsl:when test="name(document($doc1)/*) = 'TestCaseDocument'">
+                    <xsl:value-of select="$doc1"/>
+                </xsl:when>
+                <xsl:when test="name(document($doc2)/*) = 'TestCaseDocument'">
+                    <xsl:value-of select="$doc2"/>
+                </xsl:when>
+                <xsl:when test="name(document($doc3)/*) = 'TestCaseDocument'">
+                    <xsl:value-of select="$doc3"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:text>Error identifying test case document!</xsl:text>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+        <xsl:variable name="vDocumentUC" select="document($findUCdoc)"/>
+        <xsl:variable name="vDocumentTC" select="document($findTCdoc)"/>
         <xsl:variable name="vID2" select="@id"/>
         <xsl:variable name="vTitle2">
             <xsl:choose>
@@ -50,10 +111,7 @@
                     </font>
                 </xsl:otherwise>
             </xsl:choose>
-        </xsl:variable>        
-        <xsl:variable name="vID" select="@id"/>
-        <xsl:variable name="vDocumentUC" select="document('NotionalUseCase.xml')"/>
-        <xsl:variable name="vDocumentTC" select="document('NotionalTestCase.xml')"/>
+        </xsl:variable>
         <xsl:variable name="UCCount" select="count(Ref[substring(.,1,2) = 'UC'][@isNewest='true'])"/>
         <xsl:variable name="TCCount" select="count(Ref[substring(.,1,2) = 'TC'][@isNewest='true'])"/>
         <xsl:variable name="TCPass">
@@ -167,10 +225,10 @@
         <xsl:apply-templates select="Requirement"/>
     </xsl:template>
     
+    
     <xsl:template name="testCaseRow">
         <xsl:param name="i"/>
         <xsl:param name="rows"/>
-        <xsl:variable name="vDocumentUC" select="document('NotionalUseCase.xml')"/>
         <xsl:variable name="vDocumentTC" select="document('NotionalTestCase.xml')"/>
         
         <xsl:if test="($i = 'no_value') or ($i = 'no_value')">
@@ -206,7 +264,6 @@
                         </td>
                     </xsl:otherwise>
                 </xsl:choose>
-                
                 <xsl:if test="$i &lt; $rows">
                     <tr>
                         <xsl:call-template name="testCaseRow">
@@ -223,9 +280,9 @@
         </xsl:if>
     </xsl:template>
     
+    
     <xsl:template name="testResults">
         <xsl:param name="myRef"/>
-        <xsl:variable name="vDocumentUC" select="document('NotionalUseCase.xml')"/>
         <xsl:variable name="vDocumentTC" select="document('NotionalTestCase.xml')"/>
         
         <td>
