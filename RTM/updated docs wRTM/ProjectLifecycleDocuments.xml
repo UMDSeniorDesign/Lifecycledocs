@@ -33,7 +33,7 @@
     </file_location>
 	
     <file_location>
-    <xi:include href="NotionalTestCase.xml">
+    <xi:include href="NotionalUseCase.xml">
         <xi:fallback>
             <p>The included document2 was not found!</p>
         </xi:fallback>
@@ -41,7 +41,7 @@
     </file_location>
 	
     <file_location>
-    <xi:include href="NotionalUseCase.xml">
+    <xi:include href="NotionalTestCase.xml">
         <xi:fallback>
             <p>The included document3 was not found!</p>
         </xi:fallback>
