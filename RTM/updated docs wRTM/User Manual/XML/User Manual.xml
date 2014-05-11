@@ -8,7 +8,6 @@
         <Para isNewest="true" index="0">Welcome to the User Manual for Lifecycle Documents with Requirements Tracking.</Para>
         <Para isNewest="true" index="1">This application is used to aid in requirements tracking throughout the development of these documents. It offers users a way to keep track of documents within projects, generate deliverables automatically, and preview documents.</Para> 
         <Para isNewest="true" index="2">This manual supplements the user with basic how-to instructions, to familiarize the user the the graphical user interface. Anything outside the scope of this document should seek technican assistance.</Para>
-        <Image>../Images/Models/GUI/Create.jpg</Image>
         <Section isNewest="true" id="UC1.1">
             <Title isNewest="true">Copyright</Title>
             <Para isNewest="true" index="0">This application was created at the expense of Naval Undersea Warfare Center Division Newport in combination with the University of Massachusetts, Department of Computer Science.</Para>
@@ -24,14 +23,28 @@
     </Section>
     <Section isNewest="true" id="UC2.0">
         <Title isNewest="true">Getting Started</Title>
+        <Image>../Images/splash screen.jpg</Image>
         <Section isNewest="true" id="UC2.1">
             <Title isNewest="true">Requirements</Title>
             <Para isNewest="true" index="0">PC using Microsoft Windows operating system.</Para>
             <Para isNewest="true" index="1">User is capable of using Windows OS.</Para>
         </Section>
         <Section isNewest="true" id="UC2.2">
-            <Title isNewest="true">Installation</Title>
+            <Title isNewest="true">Installation and Execution</Title>
             <Para isNewest="true" index="0">Installation is simple and straight forward, just decompress the project zip, and execute the index.hta that resides in the HTA folder of the directory structure.</Para>
+            
+        </Section>
+    </Section>
+    <Section isNewest="true" id="UC3.0">
+        <Title isNewest="true">Projects</Title>
+        <Section isNewest="true" id="UC3.1">
+            <Title isNewest="true">Creating a project</Title>
+            <Para isNewest="true" index="0">PC using Microsoft Windows operating system.</Para>
+            <Para isNewest="true" index="1">User is capable of using Windows OS.</Para>
+        </Section>
+        <Section isNewest="true" id="UC3.2">
+            <Title isNewest="true">Inon</Title>
+            <Para isNewest="true" index="0">Inore.</Para>
         </Section>
     </Section>
 </UseCaseDocument>
