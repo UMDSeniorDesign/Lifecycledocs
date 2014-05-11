@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="documentXSL.xsl"?>
+
+<UseCaseDocument xml:base="ProjectLifecycleDocuments.xml" projectName="User Manual for Lifecycle Documents with Requirements Tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="NotionalSchema.xsd">
+
+    <Section isNewest="true" name="Introductions" id="UC1.0">
+        <Title isNewest="true">Introduction</Title>
+        <Para isNewest="true" index="0">Welcome to the User Manual for Lifecycle Documents with Requirements Tracking.</Para>
+        <Para isNewest="true" index="1">This application is used to aid in requirements tracking throughout the development of these documents. It offers users a way to keep track of documents within projects, generate deliverables automatically, and preview documents.</Para> 
+        <Para isNewest="true" index="2">This manual supplements the user with basic how-to instructions, to familiarize the user the the graphical user interface. Anything outside the scope of this document should seek technican assistance.</Para>
+        <Image>../Images/Models/GUI/Create.jpg</Image>
+        <Section isNewest="true" id="UC1.1">
+            <Title isNewest="true">Copyright</Title>
+            <Para isNewest="true" index="0">This application was created at the expense of Naval Undersea Warfare Center Division Newport in combination with the University of Massachusetts, Department of Computer Science.</Para>
+        </Section>
+        <Section isNewest="true" id="UC1.2">
+            <Title isNewest="true">Features</Title>
+            <Para isNewest="true" index="0">Easy-to-Use interface that requires minimal training to operate, and accommodates for users who have no coding experience to create XML documentation.</Para>
+            <Para isNewest="true" index="1">Document previews allow the user to get an alternate visual representation of the data entered into the system. This document preview displays the document in an easily readable format to help the user to track their progress through the document.</Para>
+            <Para isNewest="true" index="2">Convert the project XML documents to HTML, with just a few clicks. You can select either a single XML document from the project, or convert the entire project into HTML.</Para>
+            <Para isNewest="true" index="3">Auto-Generate deliverables instantly. The application will aid in tracking requirements through verious phases of development in each document. Requirements tracking information can be generated and converted to HTML quickly</Para>
+            <Para isNewest="true" index="4">Standalone application for the Windows environment, allow multi-version capatibility. The application has been tested on Windows 7 and Windows 8 to ensure robustness for the future.</Para>
+        </Section>
+    </Section>
+    <Section isNewest="true" id="UC2.0">
+        <Title isNewest="true">Getting Started</Title>
+        <Section isNewest="true" id="UC2.1">
+            <Title isNewest="true">Requirements</Title>
+            <Para isNewest="true" index="0">PC using Microsoft Windows operating system.</Para>
+            <Para isNewest="true" index="1">User is capable of using Windows OS.</Para>
+        </Section>
+        <Section isNewest="true" id="UC2.2">
+            <Title isNewest="true">Installation</Title>
+            <Para isNewest="true" index="0">Installation is simple and straight forward, just decompress the project zip, and execute the index.hta that resides in the HTA folder of the directory structure.</Para>
+        </Section>
+    </Section>
+</UseCaseDocument>

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xi="http://www.w3.org/2001/XInclude"
+    elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"
+        schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
+    <xsd:element name="ProjectLifecycleDocuments" type="ProjectLifecycleDocumentsType"/>
+    <xsd:complexType name="ProjectLifecycleDocumentsType">
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element ref="Team"/>
+            <xsd:element name="file_location" maxOccurs="3"/>
+            <xsd:element ref="SoftwareRequirementsDocument"/>
+            <xsd:element ref="UseCaseDocument"/>
+            <xsd:element ref="TestCaseDocument"/>
+        </xsd:choice>
+        <xsd:attribute name="projectName" use="required" type="xsd:string"/>
+    </xsd:complexType>
+
+    <xsd:element name="SoftwareRequirementsDocument" type="SoftwareRequirementsDocumentType"/>
+    <xsd:complexType name="SoftwareRequirementsDocumentType">
+        <xsd:sequence>
+            <xsd:element name="StyleSheet" minOccurs="0" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:string">
+                            <!--<xsd:attribute name="isNewest" type="xsd:boolean" use="required"/>
+                                maybe incorporate isNewest here-->
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element ref="Section" maxOccurs="unbounded"/>
+
+            <!-- Other global elements to be referenced here. -->
+        </xsd:sequence>
+        <xsd:attribute name="projectName" use="required" type="xsd:string"/>
+        <xsd:attribute ref="xml:base"/>
+        <!--<xsd:attribute name="id" use="required" type="xsd:ID"/>-->
+    </xsd:complexType>
+    <xsd:element name="Team" type="TeamType"/>
+    <xsd:complexType name="TeamType">
+        <xsd:sequence>
+            <xsd:element name="TeamMember" minOccurs="1" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:complexContent>
+                        <xsd:extension base="TMType">
+                            <xsd:attribute default="true" name="isNewest" type="xsd:boolean"/>
+                        </xsd:extension>
+                    </xsd:complexContent>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="TMType">
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="Name" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:string">
+                            <xsd:attribute name="isNewest" type="xsd:boolean" use="required"/>
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="Role" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:string">
+                            <xsd:attribute name="isNewest" type="xsd:boolean" use="required"/>
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="UIC" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:string">
+                            <xsd:attribute name="isNewest" type="xsd:boolean" use="required"/>
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:choice>
+
+    </xsd:complexType>
+
+    <xsd:element name="Title">
+        <xsd:complexType>
+            <xsd:simpleContent>
+                <xsd:extension base="xsd:string">
+                    <xsd:attribute name="isNewest" type="xsd:boolean"/>
+                </xsd:extension>
+            </xsd:simpleContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Para">
+        <xsd:complexType>
+            <xsd:simpleContent>
+                <xsd:extension base="xsd:string">
+                    <xsd:attribute name="isNewest" type="xsd:boolean"/>
+                    <xsd:attribute name="index" type="xsd:string" use="optional"/>
+                </xsd:extension>
+            </xsd:simpleContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Section" type="SectionType"/>
+    <xsd:complexType name="SectionType">
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+
+            <xsd:element ref="Title" minOccurs="0"/>
+            <xsd:element ref="Para" minOccurs="0"/>
+            <xsd:element ref="Requirement" minOccurs="0"/>
+            <xsd:element ref="Image" minOccurs="0"/>
+            <xsd:element ref="Section" minOccurs="0"/>
+            <xsd:element name="TestResult" minOccurs="0" type="xsd:boolean"/>
+            <xsd:element ref="ApprovedBy" minOccurs="0"/>
+            <xsd:element name="Ref" minOccurs="1" default="Ref">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:string">
+                            <xsd:attribute name="isNewest" type="xsd:boolean"/>
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="Comment" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:string">
+                            <xsd:attribute name="isNewest" type="xsd:boolean"/>
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:choice>
+        <xsd:attribute name="id" use="optional" type="xsd:ID"/>
+        <xsd:attribute name="name" use="optional" type="xsd:string"/>
+        <xsd:attribute name="isNewest" type="xsd:boolean"/>
+    </xsd:complexType>
+    <xsd:element name="Image" type="ImageType"/>
+    <xsd:complexType name="ImageType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="isNewest" type="xsd:boolean"/>
+                <xsd:attribute name="id" type="xsd:ID"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+
+
+    </xsd:complexType>
+
+    <xsd:element name="ApprovedBy" type="ApprovedByType"/>
+    <xsd:complexType name="ApprovedByType">
+        <xsd:sequence>
+            <xsd:element name="Name" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:string">
+                            <xsd:attribute name="isNewest" type="xsd:boolean" use="required"/>
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="Date" minOccurs="0" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:dateTime">
+                            <xsd:attribute name="isNewest" type="xsd:boolean" use="required"/>
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="UIC">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:string">
+                            <xsd:attribute name="isNewest" type="xsd:string"/>
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element ref="Para" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="isNewest" type="xsd:boolean"/>
+    </xsd:complexType>
+    <xsd:element name="Requirement" type="RequirementType"> </xsd:element>
+    <xsd:complexType name="RequirementType">
+        <!-- This is just an example. It may be more complex than this... -->
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element ref="Title" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="Image" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="Para" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="Requirement" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="Ref" minOccurs="1" maxOccurs="unbounded" default="Ref">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:string">
+                            <xsd:attribute name="isNewest" type="xsd:boolean"/>
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:choice>
+        <xsd:attribute name="id" use="optional" type="xsd:ID"/>
+        <!-- <xsd:attribute name="name" use="optional" type="xsd:string"/>-->
+        <xsd:attribute name="isNewest" type="xsd:boolean"/>
+    </xsd:complexType>
+    <xsd:element name="UseCaseDocument" type="UseCaseDocumentType"/>
+    <xsd:complexType name="UseCaseDocumentType">
+
+        <xsd:sequence>
+            <xsd:element name="StyleSheet" minOccurs="0" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:string">
+                            <!--<xsd:attribute name="isNewest" type="xsd:boolean" use="required"/>
+                                maybe incorporate isNewest here-->
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element ref="Section" minOccurs="0" maxOccurs="unbounded"/>
+            <!-- Other global elements to be referenced here. -->
+        </xsd:sequence>
+        <xsd:attribute ref="xml:base"/>
+        <xsd:attribute name="projectName" use="required" type="xsd:string"/>
+    </xsd:complexType>
+
+    <xsd:element name="TestCaseDocument" type="TestCaseDocumentType"/>
+    <xsd:complexType name="TestCaseDocumentType">
+        <xsd:sequence>
+            <xsd:element name="StyleSheet" minOccurs="0" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:string">
+                            <!--<xsd:attribute name="isNewest" type="xsd:boolean" use="required"/>
+                                maybe incorporate isNewest here-->
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element ref="Section" minOccurs="1" maxOccurs="unbounded"/>
+            <!-- Other global elements to be referenced here. -->
+        </xsd:sequence>
+        <!--<xsd:attribute name="id" use="required" type="xsd:ID"/>-->
+        <xsd:attribute ref="xml:base"/>
+        <xsd:attribute name="projectName" use="required" type="xsd:string"/>
+    </xsd:complexType>
+</xsd:schema>
