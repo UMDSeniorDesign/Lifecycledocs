@@ -18,7 +18,7 @@
 		<script src="../JS/sessionvars.js"></script>
 				
 		<script>
-			function openProject() {
+			function showProjectInfo() {
 				if(document.getElementById("browse").value != "" ) {
 					var varray = document.getElementById("browse").value.split("\\");
 					sessvars.projectName = varray[varray.length-1];
@@ -35,7 +35,13 @@
 			}
 			
 			function proceed() {
-				document.location.href = 'view.hta';
+				if(document.getElementById("browse").value != "" ) {
+					var varray = document.getElementById("browse").value.split("\\");
+					sessvars.projectName = varray[varray.length-1];
+					document.location.href = 'view.hta';
+				}
+				else 
+					document.location.href = 'view.hta';
 			}
 			
 		</script>
@@ -43,11 +49,11 @@
 			function saveFiletoProject(xml, file){
 				var fso = new ActiveXObject("Scripting.FileSystemObject");
 				//If windows 7, use this line
-				var f = fso.GetFolder("../Projects");
-				var a = fso.CreateTextFile(f+"/"+xml, true);
+				//var f = fso.GetFolder("../Projects");
+				//var a = fso.CreateTextFile(f+"/"+xml, true);
 				//If windows 8, use this line
-				//var f = fso.GetFolder("\Projects");
-				//var a = fso.CreateTextFile(f+"\\"+xml, true);
+				var f = fso.GetFolder("\Projects");
+				var a = fso.CreateTextFile(f+"\\"+xml, true);
 				
 				a.Write(file.xml);
 				a.Close();
@@ -55,8 +61,8 @@
 			function saveFiletoXML(xml, file){
 				var fso = new ActiveXObject("Scripting.FileSystemObject");
 				//If windows 7, use this line
-				var f = fso.GetFolder("../XML");
-				var a = fso.CreateTextFile(f+"/"+xml+".xml", true);
+				//var f = fso.GetFolder("../XML");
+				//var a = fso.CreateTextFile(f+"/"+xml+".xml", true);
 				//If windows 8, use this line
 				var f = fso.GetFolder("\XML");
 				var a = fso.CreateTextFile(f+"\\"+xml, true);
@@ -75,9 +81,9 @@
 					file.getElementsByTagName("file_location")[j].childNodes[0].setAttribute("href", getName(j)+".xml");
 					
 					//windows 8
-					//f.CopyFile("../Lifecycledocs/XML/"+attr, "../Lifecycledocs/XML/"+getName(j)+".xml", 1);
+					f.CopyFile("../Lifecycledocs/XML/"+attr, "../Lifecycledocs/XML/"+getName(j)+".xml", 1);
 					//Windows 7
-					f.CopyFile("../XML/"+attr, "../XML/"+getName(j)+".xml", 1);
+					//f.CopyFile("../XML/"+attr, "../XML/"+getName(j)+".xml", 1);
 					
 					saveFiletoXML(getName(j), xmlFile);
 				}
@@ -112,29 +118,29 @@
 				var fso = new ActiveXObject("Scripting.FileSystemObject");
 				
 				//windows 8
-				/*if(fso.FileExists("../Lifecycledocs/Projects/"+projectName+".xml")) {
+				if(fso.FileExists("../Lifecycledocs/Projects/"+projectName+".xml")) {
 					var r = confirm("Overwrite?")	
-					if(r == true) 
-						alert("Overwriten");
-					else
-						createProject();
-				}*/
-				
-				//windows 7 
-				if(fso.FileExists("../Projects/"+projectName+".xml")) {
-					var r = confirm("Overwrite?")
 					if(r == true) 
 						alert("Overwriten");
 					else
 						createProject();
 				}
 				
+				//windows 7 
+				/*if(fso.FileExists("../Projects/"+projectName+".xml")) {
+					var r = confirm("Overwrite?")
+					if(r == true) 
+						alert("Overwriten");
+					else
+						createProject();
+				}*/
+				
 				
 				//Windows 8 function
-				//fso.CopyFile("../Lifecycledocs/Projects/template.xml", "../Lifecycledocs/Projects/"+projectName+".xml", 1);
+				fso.CopyFile("../Lifecycledocs/Projects/template.xml", "../Lifecycledocs/Projects/"+projectName+".xml", 1);
 								
 				//Windows 7 function
-				fso.CopyFile("../Projects/template.xml", "../Projects/"+projectName+".xml", 1);
+				//fso.CopyFile("../Projects/template.xml", "../Projects/"+projectName+".xml", 1);
 				
 				load(projectName);
 				//alert(projectName);
@@ -158,6 +164,7 @@
 				var z = loadXML("peteProjectXSL.xsl");
 				var x = y.transformNode(z);
 				image.innerHTML = x;
+				document.getElementById("add").style.visibility="visible";
 				document.getElementById("button").style.visibility="visible";
 			}
 	</script>
@@ -188,9 +195,9 @@
 			
 			var fs = new ActiveXObject("Scripting.FileSystemObject");
 			//If windows 7, use this line
-			var f = fs.GetFolder("../Projects");
+			//var f = fs.GetFolder("../Projects");
 			//If windows 8, use this line
-			//var f = fs.GetFolder("\Projects");
+			var f = fs.GetFolder("\Projects");
 
 			file = f.CreateTextFile(projectName, true);
 			file.write(xmlDoc.xml);
@@ -247,9 +254,9 @@
 			
 			var fs = new ActiveXObject("Scripting.FileSystemObject");
 			//If windows 7, use this line
-			var f = fs.GetFolder("../Projects");
+			//var f = fs.GetFolder("../Projects");
 			//If windows 8, use this line
-			//var f = fs.GetFolder("\Projects");
+			var f = fs.GetFolder("\Projects");
 
 			file = f.CreateTextFile(projectName, true);
 			file.write(xmlDoc.xml);
@@ -290,9 +297,9 @@
 			
 			var fs = new ActiveXObject("Scripting.FileSystemObject");
 			//If windows 7, use this line
-			var f = fs.GetFolder("../Projects");
+			//var f = fs.GetFolder("../Projects");
 			//If windows 8, use this line
-			//var f = fs.GetFolder("\Projects");
+			var f = fs.GetFolder("\Projects");
 
 			file = f.CreateTextFile(projectName, true);
 			file.write(xmlDoc.xml);
@@ -331,9 +338,9 @@
 			
 			var fs = new ActiveXObject("Scripting.FileSystemObject");
 			//If windows 7, use this line
-			var f = fs.GetFolder("../Projects");
+			//var f = fs.GetFolder("../Projects");
 			//If windows 8, use this line
-			//var f = fs.GetFolder("\Projects");
+			var f = fs.GetFolder("\Projects");
 
 			file = f.CreateTextFile(projectName, true);
 			file.write(xmlDoc.xml);
@@ -356,7 +363,7 @@
             <div id ="head">
                 <div id="siteControl">
                     <button id="create" onclick=setProject()>New Project</button>
-                    <button id="open" onclick=openProject()>Open Project</button>
+                    <button id="open" onclick=showProjectInfo()>Show Project Info</button>
 					<input id="browse" type="file" onchange="getProjectInfo(0, '')">
                 </div>
             </div>
@@ -378,8 +385,7 @@
 			</div>
         </div>
 		<br><br>
-		<button id="button" style="visibility: hidden;" onclick='proceed()'>Proceed to Project</button>
-	<table id="add" style="visibility: ">	
+	<table id="add" style="visibility: hidden">	
 		<tr>
 			<td>
 				<button onclick="addMember()">Add Member</button>
@@ -389,6 +395,11 @@
 			</td>
 			<td>
 				Role: <input id="role" type="text">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<button id="button" style="visibility: hidden;" onclick='proceed()'>Proceed to Project</button>
 			</td>
 		</tr>
 	</table>
