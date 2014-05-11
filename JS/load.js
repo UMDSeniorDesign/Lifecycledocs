@@ -141,7 +141,7 @@ function loadProject(file_name) {
 /////***START LOADRTM FUNCTION***///
 function loadRTM(){
 	var rtmLocation = document.getElementById("RTM");
-	var xml = loadXML("NotionalSRS.xml");
+	var xml = loadXML(sessvars.projectName);
 	var xsl = loadXML("RTM.xsl");
 	var rtm = xml.transformNode(xsl);
 	rtmLocation.innerHTML = rtm;
