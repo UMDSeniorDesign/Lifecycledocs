@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="documentXSL.xsl"?>
 
-<UseCaseDocument xml:base="ProjectLifecycleDocuments.xml" projectName="User Manual for Lifecycle Documents with Requirements Tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="NotionalSchema.xsd">
+<UseCaseDocument xml:base="ProjectLifecycleDocuments.xml" projectName="User Manual for the Lifecycle Documentation Development System with Requirements Tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="NotionalSchema.xsd">
 
     <Section isNewest="true" name="Introductions" id="UC1.0">
         <Title isNewest="true">Introduction</Title>
@@ -30,21 +30,160 @@
             <Para isNewest="true" index="1">User is capable of using Windows OS.</Para>
         </Section>
         <Section isNewest="true" id="UC2.2">
-            <Title isNewest="true">Installation and Execution</Title>
-            <Para isNewest="true" index="0">Installation is simple and straight forward, just decompress the project zip, and execute the index.hta that resides in the HTA folder of the directory structure.</Para>
-            
+            <Title isNewest="true">Installation, Execution, and Exitting</Title>
+            <Para isNewest="true" index="0">Installation is simple and straight forward, just decompress the project zip, and execute the 'index.hta' that resides in the HTA folder of the directory structure. The program can be exitted at any time, by clicking the Windows "X" in the top right of the window, any unsaved changes will be discarded.</Para>
         </Section>
     </Section>
     <Section isNewest="true" id="UC3.0">
         <Title isNewest="true">Projects</Title>
         <Section isNewest="true" id="UC3.1">
             <Title isNewest="true">Creating a project</Title>
-            <Para isNewest="true" index="0">PC using Microsoft Windows operating system.</Para>
-            <Para isNewest="true" index="1">User is capable of using Windows OS.</Para>
+            <Para isNewest="true" index="0">1. Once the application has opened, and the welcome screen is displayed, the user can click 'New Project' to start creating a new project containing three default templates.</Para>
+            <Para isNewest="true" index="1">2. Enter the title of the project into the 'Project Name' textbox, then click the 'Make My Project' button to name the individual files.</Para>
+            <Para isNewest="true" index="2">3. The user can now enter the names of each of the default files created for the project. Once all three have been created, the user can click "Proceed to Project" button.</Para>
         </Section>
         <Section isNewest="true" id="UC3.2">
-            <Title isNewest="true">Inon</Title>
-            <Para isNewest="true" index="0">Inore.</Para>
+            <Title isNewest="true">Opening a project</Title>
+            <Para isNewest="true" index="0">1. Once the application has opened, and the welcome screen is displayed, the user can click 'Browse' to open an explorer window to find the project base file.</Para>
+            <Para isNewest="true" index="1">2. Once the correct project xml file has been selected, the user can select 'Open', and the project information is displayed.</Para>
+            <Para isNewest="true" index="2">3. If the correct project base xml has been selected, the user can click 'Open Project' to proceed to the interface, or browse for another project base xml.</Para>
         </Section>
+        <Section isNewest="true" id="UC3.3">
+            <Title isNewest="true">Managing Team Members</Title>
+            <Para isNewest="true" index="0">1. Once the application has opened, and the welcome screen is displayed, the user can click 'Browse' to open an explorer window to find the project base file.</Para>
+            <Para isNewest="true" index="1">2. Once the correct project xml file has been selected, the user can select 'Open', and the project information is displayed.</Para>
+            <Para isNewest="true" index="2">3. If the correct project base xml has been selected, the user can now edit team member information by clicking on the appropriate buttons.</Para>
+            <Para isNewest="true" index="3">...the user can now select from the following tasks:</Para>
+            <Section isNewest="true" id="UC3.3.1">
+                <Title isNewest="true">Change Member Information</Title>
+                <Para isNewest="true" index="0">4. Once the user has navigated to the project information screen, the user is presented with button to change each member's name, UIC, role, and an option to remove.</Para>
+            </Section>
+            <Section isNewest="true" id="UC3.3.2">
+                <Title isNewest="true">Remove Member</Title>
+                <Para isNewest="true" index="0">4. Once the user has navigated to the project information screen, the user can click the 'Remove Member' button, in the appropriate row of the table.</Para>
+            </Section>
+            <Section isNewest="true" id="UC3.3.3">
+                <Title isNewest="true">Adding Members</Title>
+                <Para isNewest="true" index="0">4. Once the user has navigated to the project information screen, the user can enter appropriate information at the bottom of the page.</Para>
+                <Para isNewest="true" index="1">5. Once the user has entered at least a name, the member will be added to the table. Adding information in UIC and Role is optional.</Para>
+            </Section>
+        </Section>
+    </Section>
+    <Section isNewest="true" id="UC4.0">
+        <Title isNewest="true">User Interface</Title>
+        <Image>../Images/user interface.jpg</Image>
+        <Section isNewest="true" id="UC4.1">
+            <Title isNewest="true">Interface Layout</Title>
+            <Section isNewest="true" id="UC4.1.1">
+                <Title isNewest="true">Project Files</Title>
+                <Para isNewest="true" index="0">The documents that are included in the project are located in the top row of buttons. These buttons have file names on them for the user to switch between documents.</Para>
+            </Section>
+            <Section isNewest="true" id="UC4.1.2">
+                <Title isNewest="true">Table of Contents Pane</Title>
+                <Para isNewest="true" index="0">When the user selects a document in the project, the user is displayed a table of contents pane on the left side of the page. Next to the button will appear the title for the respective section. Here the user has option to add and remove sections, requirements, subsection, and change the title of the section.</Para>
+            </Section>
+            <Section isNewest="true" id="UC4.1.3">
+                <Title isNewest="true">View Pane</Title>
+                <Para isNewest="true" index="0">The view pane is the section displayed to the right of the table of contents pane. In this windows the user will see, and be able to edit information from the respective section. This includes editting paragraphs, add or remove images, and add references to other documents in the project.</Para>
+            </Section>
+            <Section isNewest="true" id="UC4.1.4">
+                <Title isNewest="true">Export Buttons</Title>
+                <Para isNewest="true" index="0">The buttons to export the documents in the project are located in the top right of the screen. The user should see a few buttons labeled 'Create Matrix', 'Preview in Document Format', and 'Download as HTML', which offers some sub-options. When downloading as HTML, the user can export an individual document, or the entire project containing all the documents, and the requirements traceability matrix.</Para>
+            </Section>
+        </Section>
+        <Section isNewest="true" id="UC4.2">
+            <Title isNewest="true">Changing Documents</Title>
+            <Para isNewest="true" index="0">Once the application has opened, and the user interface is displayed, the user is displayed many elements with buttons. The small floating bar at the top of the page has at least three buttons with file names on them. The user can simply click each document to view it in the interface.</Para>
+        </Section>
+        <Section isNewest="true" id="UC4.3">
+            <Title isNewest="true">Generating RTM Table</Title>
+            <Image>../Images/picRTM19d.jpg</Image>
+            <Para isNewest="true" index="0">Once the application has opened, and the user interface is displayed, the user will see and 'Create Matrix' button that will display a table with every individual requirement that is available in the requirements document (SRS document). This simply is a requirements traceability matrix and any design elements and test cases that reside in the respective documents (UC and TC) will be displayed in this table.</Para>
+            <Para isNewest="true" index="1">At the top (or bottom?) of the page should be a 'Back' button for the user to return to the interface, and a 'SaveRTM' button with a textbox. This feature is still in development, but gives the user the option to output to a CSV file. The RTM table can be export as HTML using the 'Download as HTML' button.</Para>
+            <Para isNewest="true" index="2">The RTM table includes:</Para>
+            <Para isNewest="true" index="3">1. Requirement ID residing in the requirements (SRS) document.</Para>
+            <Para isNewest="true" index="4">2. The title of that particular requirement, if there is no title set in the requirements document, then first paragraph will display.</Para>
+            <Para isNewest="true" index="5">3. Use Case Locations are the design elements that are referenced in the requirements document. The user is presented with a button for each use case, and the title appearing next to the button.</Para>
+            <Para isNewest="true" index="6">4. Percentage of testing completion, for the test cases referenced in the requirements document.</Para>
+            <Para isNewest="true" index="7">5. The rest of the columns will show each test case referenced in the requirements document, and the last result of that test case from the test case document. This includes the last result, tester with ID, date/time, and any comment left from the tester during the last test.</Para>
+        </Section>
+        <Section isNewest="true" id="UC4.4">
+            <Title isNewest="true">Table of Contents Pane</Title>
+            <Image>../Images/TOC.jpg</Image>
+            <Section isNewest="true" id="UC4.4.1">
+                <Title isNewest="true">Navigating Documents</Title>
+                <Para isNewest="true" index="0">The table of contents pane, on the left side of the interface, offers users the ability to navigate through each document in the project. The user can click a button next to the section title, and it will be expanded or shrunk. Any subsections or subrequirements will be displayed under the respective section title. On clicking, the information in the appropriate section will be displayed in the view pane, on the right side of the application.</Para>
+            </Section>
+            <Section isNewest="true" id="UC4.4.2">
+                <Title isNewest="true">Changing Section Title</Title>
+                <Para isNewest="true" index="0">The user can right-click the button for the appropriate section, and a popup will displayed with addition options. Here the user can enter a new title into a textbox, and click 'Change Title:' to change the title of the section or requirement.</Para>
+            </Section>
+            <Section isNewest="true" id="UC4.4.3">
+                <Title isNewest="true">Adding or Removing Sections</Title>
+                <Para isNewest="true" index="0">The user can add or remove a section or requirement, or even a subsection or subrequirement by right-clicking the button for the appropriate section. A pop-up window is displayed to the user with additional buttons to add section above or below the selected section, remove the section, or add a subsection.</Para>
+            </Section>
+        </Section>
+        <Section isNewest="true" id="UC4.5">
+            <Title isNewest="true">View Pane</Title>
+            <Image>../Images/ViewPane.jpg</Image>
+            <Para isNewest="true" index="0">The View Pane is the area to the right side of the application. It displays section information when a user clicks an appropriate button in the table of contents pane.</Para>
+            <Section isNewest="true" id="UC4.5.1">
+                <Title isNewest="true">Edit Mode ON/OFF</Title>
+                <Para isNewest="true" index="0">The 'Edit ON/OFF' button toggles edit mode for the section. The button is at the bottom of the application, it can reside in either table of contents pane, or the view pane. This allows the user to edit and save the information in each section. With edit mode turned off, by default, the user has no ability to save changes to the information in the section. Once edit mode is turned on, an edit box appears around each paragraph, and the user is presented additional button with editting functionalities.</Para>
+            </Section>
+            <Section isNewest="true" id="UC4.5.2">
+                <Title isNewest="true">Managing Paragraphs</Title>
+                <Section isNewest="true" id="UC4.5.2.1">
+                    <Title isNewest="true">Editting Paragraphs</Title>
+                    <Para isNewest="true" index="0">Once the user has turned edit mode on, the 'Save' button appears below the 'Edit ON/OFF' button. The user can now save the changes made in each paragraph.</Para>
+                </Section>
+                <Section isNewest="true" id="UC4.5.2.2">
+                    <Title isNewest="true">Add/Remove Paragraph</Title>
+                    <Para isNewest="true" index="0">Once the user has turned edit mode on, the 'Save' button appears below the 'Edit ON/OFF' button. With edit mode on, the user has functionality to right click on a paragraph, which displays a pop-up windows with more options for that paragraph. These buttons include adding a paragraph above, or below, and removing the paragraph. If there are no paragraphs, the user can find the 'Add Para' button below the 'Edit ON/OFF' button when edit mode is turned on.</Para>
+                </Section>
+            </Section>
+            <Section isNewest="true" id="UC4.5.3">
+                <Title isNewest="true">Image Functionality</Title>
+                <Para isNewest="true" index="0">Once edit mode is turned on, a button to add images is displayed below the 'Edit ON/OFF' button. The user is presented with a file explorer window to select and image. Once the user selects and image, it is displayed at the bottom of the view pane. The user also has the ability to right click and image in the view pane to display a pop-up window with an option to remove the image from the document.</Para>
+            </Section>
+            <Section isNewest="true" id="UC4.5.4">
+                <Title isNewest="true">Reference Management</Title>
+                <Section isNewest="true" id="UC4.5.4.1">
+                    <Title isNewest="true">Viewing Reference</Title>
+                    <Para isNewest="true" index="0">Once the user has selected a section in the table of contents pane, the section information is displayed in the view pane. If there are any references in the selected section, they will be displayed in the view pane as a button next to the title of the reference. The user can click the reference button to exxpand or shrink information from the reference. No information will display if there are no paragraphs in the referenced section.</Para>
+                </Section>
+                <Section isNewest="true" id="UC4.5.4.2">
+                    <Title isNewest="true">Adding References</Title>
+                    <Para isNewest="true" index="0">With edit mode turned on, the user is displayed a button below the 'Edit ON/OFF' button to add a reference. Once the user selects 'Add Reference', additional information is displayed above the 'Edit ON/OFF' button. This information includes a button to add the reference from the item selectetd in the dropdown list, which is pre-populated with sections and titles from the other documents in the project for the user to select from.</Para>
+                </Section>
+                <Section isNewest="true" id="UC4.5.4.3">
+                    <Title isNewest="true">Removing References</Title>
+                    <Para isNewest="true" index="0">With edit mode turned on, the user can right click on a reference button. A pop-up windows will be displayed to the user where they can select to remove the reference.</Para>
+                </Section>
+            </Section>
+        </Section>
+        <Section isNewest="true" id="UC4.6">
+            <Title isNewest="true">Document Preview</Title>
+            <Image>../Images/document preview.jpg</Image>
+            <Para isNewest="true" index="0">Once the application has opened, and the user interface is displayed, the user will see and 'Preview in Document Format' button that will display a pop-up of the document in an easily readable manner for the user. This will layout the titles, paragraphs, images, and test results into a formal document appearence, as if the document was created using a word editor. The user can now have an alternate visual representation of the data being entered into the user interface.</Para>
+        </Section>
+        <Section isNewest="true" id="UC4.7">
+            <Title isNewest="true">Downloading files as HTML</Title>
+            <Para isNewest="true" index="0">Once the application has opened, and the user interface is displayed, the user will see and 'Download as HTML' button, that when clicked will show a pop-up window containing additional option for the current file in the interface.</Para>
+            <Section isNewest="true" id="UC4.7.1">
+                <Title isNewest="true">Download *filename*.xml</Title>
+                <Para isNewest="true" index="0">When the user selects to download a file, the file is saved to the 'Saves' folder in the working directory of the application. Here the user will see a file converted from XML to HTML, with *filename*.html. The user is then alerted the file was saved, where they can click 'OK' to confirm the file was saved.</Para>
+            </Section>
+            <Section isNewest="true" id="UC4.7.2">
+                <Title isNewest="true">Download Entire Project</Title>
+                <Para isNewest="true" index="0">When the user selects to download the entire project, all the files related to the project are converted to HTML and placed into the 'Saves' folder, that resides in the working directory of the application. This option will save each individual document in the project, along with the requirements traceability matrix.</Para>
+            </Section>
+        </Section>
+    </Section>
+    <Section isNewest="true" id="UC5.0">
+        <Title isNewest="true">Developer Notes</Title>
+        <Para isNewest="true" index="0">Thanks for using the Lifecycle Documentation Development System!</Para>
+        <Para isNewest="true" index="1">Please do not manually edit XML files, they may not work correctly in the application.</Para>
+        <Para isNewest="true" index="2">If there is a significant error, or something not addressed in this user manual, please seek technical assistance.</Para>
     </Section>
 </UseCaseDocument>
