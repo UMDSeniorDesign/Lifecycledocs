@@ -28,6 +28,8 @@
                     <Name isNewest="true">Peter Magalhaes</Name>
                     <Para isNewest="true" index="0">nice!</Para>
                 </ApprovedBy>
+                <Ref isNewest="true">RQ3.1.1.2</Ref>
+                <Ref isNewest="true">RQ3.2.1</Ref>
             </Section>
             <Section isNewest="true" id="TC1.1.2">
                 <Title isNewest="true">Title and sponsor image are displayed</Title>
@@ -57,6 +59,7 @@
                     <Name isNewest="true">Peter Magalhaes</Name>
                     <Para isNewest="true" index="0">great!</Para>
                 </ApprovedBy>
+                <Ref isNewest="true">RQ3.1.4</Ref>
             </Section>
             <Section isNewest="true" id="TC1.2.2">
                 <Title isNewest="true">User selects an invalid Project file</Title>
@@ -66,6 +69,7 @@
                     <Name isNewest="true">Peter Magalhaes</Name>
                     <Para isNewest="true" index="0">great!</Para>
                 </ApprovedBy>
+                <Ref isNewest="true">RQ3.1.4</Ref>
             </Section>
             <Section isNewest="true" id="TC1.2.3">
                 <Title isNewest="true">Textbox contains file location</Title>
@@ -75,6 +79,7 @@
                     <Name isNewest="true">Ari Ushani</Name>
                     <UIC isNewest="true">UMD-UIC</UIC>
                 </ApprovedBy>
+                <Ref isNewest="true">RQ3.1.4</Ref>
             </Section>
             <Section isNewest="true" id="TC1.2.4">
                 <Title isNewest="true">Team member information is displayed</Title>
