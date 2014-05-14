@@ -28,6 +28,8 @@
                     <Name isNewest="true">Peter Magalhaes</Name>
                     <Para isNewest="true" index="0">nice!</Para>
                 </ApprovedBy>
+                <Ref isNewest="true">RQ3.1.1.2</Ref>
+                <Ref isNewest="true">RQ3.2.1</Ref>
             </Section>
             <Section isNewest="true" id="TC1.1.2">
                 <Title isNewest="true">Title and sponsor image are displayed</Title>
@@ -49,6 +51,7 @@
                 <Name isNewest="true">Peter Magalhaes</Name>
                 <Para isNewest="true" index="0">getting a script error here</Para>
             </ApprovedBy>
+            <Ref isNewest="true">RQ3.1</Ref>
             <Section isNewest="true" id="TC1.2.1">
                 <Title isNewest="true">User selects valid Project file</Title>
                 <Para isNewest="true" index="0">Project information is displayed on the splash screen before the user proceeds into the project.</Para>
@@ -57,6 +60,7 @@
                     <Name isNewest="true">Peter Magalhaes</Name>
                     <Para isNewest="true" index="0">great!</Para>
                 </ApprovedBy>
+                <Ref isNewest="true">RQ3.1.4</Ref>
             </Section>
             <Section isNewest="true" id="TC1.2.2">
                 <Title isNewest="true">User selects an invalid Project file</Title>
@@ -66,6 +70,7 @@
                     <Name isNewest="true">Peter Magalhaes</Name>
                     <Para isNewest="true" index="0">great!</Para>
                 </ApprovedBy>
+                <Ref isNewest="true">RQ3.1.4</Ref>
             </Section>
             <Section isNewest="true" id="TC1.2.3">
                 <Title isNewest="true">Textbox contains file location</Title>
@@ -75,6 +80,7 @@
                     <Name isNewest="true">Ari Ushani</Name>
                     <UIC isNewest="true">UMD-UIC</UIC>
                 </ApprovedBy>
+                <Ref isNewest="true">RQ3.1.4</Ref>
             </Section>
             <Section isNewest="true" id="TC1.2.4">
                 <Title isNewest="true">Team member information is displayed</Title>
@@ -89,6 +95,9 @@
         <Section isNewest="true" id="TC1.3">
             <Title isNewest="true">Open Project button is clicked</Title>
             <Para isNewest="true" index="0">When a valid URI appears in the textbox, and that URI leads to a valid project xml file, the user is then directed to the view HTA with one file open in the interface.</Para>
+            <Ref isNewest="true">RQ3.1</Ref>
+            <Ref isNewest="true">RQ3.2.2</Ref>
+            <Ref isNewest="true">RQ3.3.3</Ref>
             <Section isNewest="true" id="TC1.3.1">
                 <Title isNewest="true">Open project is clicked with valid XML in URI textbox</Title>
                 <Para isNewest="true" index="0">If project file is valid, project is opened in new view HTA.</Para>
@@ -97,8 +106,9 @@
                     <Name isNewest="true">Peter Magalhaes</Name>
                     <Para isNewest="true" index="0">this is a work in action</Para>
                 </ApprovedBy>
-                <Ref isNewest="true">RQ3.2.1</Ref>
-                <Ref isNewest="true">RQ3.3.1</Ref>
+                <Ref isNewest="true">RQ3.1.4</Ref>
+                <Ref isNewest="true">RQ3.2.2</Ref>
+                <Ref isNewest="true">RQ3.3.2</Ref>
             </Section>
             <Section isNewest="true" id="TC1.3.2">
                 <Title isNewest="true">Open project is clicked with empty textbox</Title>
@@ -108,17 +118,23 @@
                     <Name isNewest="true">Peter Magalhaes</Name>
                     <Para isNewest="true" index="0">Great fix Ari!</Para>
                 </ApprovedBy>
+                <Ref isNewest="true">RQ3.1.4</Ref>
                 <Ref isNewest="true">RQ3.2.1</Ref>
                 <Ref isNewest="true">RQ3.3.1</Ref>
             </Section>
             <Section isNewest="true" id="TC1.3.3">
                 <Title isNewest="true">Open project is clicked with invalid XML file in URI textbox</Title>
                 <Para isNewest="true" index="0">User is prompted with error message, and the project information does not display.</Para>
+                <Ref isNewest="true">RQ3.1.4</Ref>
             </Section>
         </Section>
         <Section isNewest="true" id="TC1.4">
             <Title isNewest="true">New Project button is clicked</Title>
             <Para isNewest="true" index="0">User selects new Project to create a new project, and is allowed to name files, while default templates fill a small portion of the XML data for the user to begin working.</Para>
+            <Ref isNewest="true">RQ3.1.1</Ref>
+            <Ref isNewest="true">RQ3.1.4</Ref>
+            <Ref isNewest="true">RQ3.2.1</Ref>
+            <Ref isNewest="true">RQ3.3.1</Ref>
             <Section isNewest="true" id="TC1.4.1">
                 <Title isNewest="true">Display information, button, and empty textbox.</Title>
                 <Para isNewest="true" index="0">Display button, empty textbox, and button for user to make project.</Para>
@@ -126,10 +142,14 @@
             <Section isNewest="true" id="TC1.4.2">
                 <Title isNewest="true">Text box is typeable.</Title>
                 <Para isNewest="true" index="0">The user is able to enter text into the text box representing the project name.</Para>
+                <Ref isNewest="true">RQ3.1.4</Ref>
+                <Ref isNewest="true">RQ3.2.3</Ref>
+                <Ref isNewest="true">RQ3.3.3</Ref>
             </Section>
             <Section isNewest="true" id="TC1.4.3">
                 <Title isNewest="true">Button is clicked with invalid input in textbox.</Title>
                 <Para isNewest="true" index="0">User is prompted to re-enter a valid project name for the project.</Para>
+                <Ref isNewest="true">RQ3.1.4</Ref>
             </Section>
             <Section isNewest="true" id="TC1.4.4">
                 <Title isNewest="true">User is able to cancel New Project selection.</Title>
@@ -140,6 +160,7 @@
                     <Date isNewest="true">2014-05-07T09:38:13.8</Date>
                     <Para isNewest="true" index="0">this doesn't work</Para>
                 </ApprovedBy>
+                <Ref isNewest="true">RQ3.1.4</Ref>
             </Section>
             <Section isNewest="true" id="TC1.4.5">
                 <Title isNewest="true">Make My Project button is selected with an empty project name textbox.</Title>
@@ -150,21 +171,38 @@
                     <Date isNewest="true">2014-05-07T09:38:00</Date>
                     <Para isNewest="true" index="0">this doesn't work</Para>
                 </ApprovedBy>
+                <Ref isNewest="true">RQ3.1.1</Ref>
+                <Ref isNewest="true">RQ3.1.4</Ref>
+                <Ref isNewest="true">RQ3.2.1</Ref>
+                <Ref isNewest="true">RQ3.3.1</Ref>
             </Section>
             <Section isNewest="true" id="TC1.4.6">
                 <Title isNewest="true">Make My Project button is selected with an invalid project name.</Title>
                 <Para isNewest="true" index="0">If the user has appended ".xml" to the project name, the project name is corrected and proceeds, or the user is prompted to re-enter a valid project name for the project.</Para>
+                <Ref isNewest="true">RQ3.1.1</Ref>
+                <Ref isNewest="true">RQ3.1.4</Ref>
+                <Ref isNewest="true">RQ3.2.1</Ref>
+                <Ref isNewest="true">RQ3.3.1</Ref>
             </Section>
             <Section isNewest="true" id="TC1.4.7">
                 <Title isNewest="true">Make My Project button is selected with an valid project name.</Title>
                 <Para isNewest="true" index="0">Once the user enters a valid name for the project, the user is allowed to name three initial project files. Once file for each document (requirement doc, use cases, and test cases).</Para>
+                <Ref isNewest="true">RQ3.1.1</Ref>
+                <Ref isNewest="true">RQ3.1.4</Ref>
+                <Ref isNewest="true">RQ3.2.1</Ref>
+                <Ref isNewest="true">RQ3.3.1</Ref>
                 <Section isNewest="true" id="TC1.4.7.1">
                     <Title isNewest="true">Open Project button is selected with an invalid file name in any of the default template files.</Title>
                     <Para isNewest="true" index="0">If the user has appended ".xml" to the file name, the file name is corrected and proceeds to open the project in the view HTA. Otherwise, the user is prompted to re-enter file names for the project.</Para>
+                    <Ref isNewest="true">RQ3.1.4</Ref>
                 </Section>
                 <Section isNewest="true" id="TC1.4.7.2">
                     <Title isNewest="true">Open Project button is selected with valid file names entered by the user.</Title>
                     <Para isNewest="true" index="0">The file names typed in by the user are created in the correct directory with the correct XPath. The view HTA is opened once the files are created on the hard disk, and the view HTA is populated with the information created by the user for this new project.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
+                    <Ref isNewest="true">RQ3.1.4</Ref>
+                    <Ref isNewest="true">RQ3.2.2</Ref>
+                    <Ref isNewest="true">RQ3.3.2</Ref>
                 </Section>
             </Section>
         </Section>
@@ -173,8 +211,12 @@
     <Section isNewest="true" id="TC2.0">
         <Title isNewest="true">Open Project in view HTA</Title>
         <Para isNewest="true" index="0">Once a valid project base xml is selected, and the 'Open Project' button is clicked. The user is then directed to the view HTA where there appears many divisions, to isolate buttons, table of contents, and different sections user interface appear, while some are hidden.</Para>
-        <Ref isNewest="true">RQ3.2.1</Ref>
-        <Ref isNewest="true">RQ3.3.1</Ref>
+        <Ref isNewest="true">RQ3.1.1</Ref>
+        <Ref isNewest="true">RQ3.1.2</Ref>
+        <Ref isNewest="true">RQ3.1.3.1</Ref>
+        <Ref isNewest="true">RQ3.1.4</Ref>
+        <Ref isNewest="true">RQ3.2.2</Ref>
+        <Ref isNewest="true">RQ3.3.2</Ref>
         <Section isNewest="true" id="TC2.1">
             <Title isNewest="true">Project files are displayed as buttons on floating table.</Title>
             <TestResult>true</TestResult>
@@ -183,6 +225,10 @@
                 <Name isNewest="true">Peter Magalhaes</Name>
                 <Para isNewest="true" index="0">Buttons appear, and are functional. The table also floats to the window! Great Job!</Para>
             </ApprovedBy>
+            <Ref isNewest="true">RQ3.1.1</Ref>
+            <Ref isNewest="true">RQ3.1.4</Ref>
+            <Ref isNewest="true">RQ3.2.2</Ref>
+            <Ref isNewest="true">RQ3.3.2</Ref>
         </Section>
         <Section isNewest="true" id="TC2.2">
             <Title isNewest="true">Export Table shows with buttons.</Title>
@@ -196,7 +242,10 @@
                 <Name isNewest="true">Jeremiah Butler</Name>
                 <Para isNewest="true" index="0">can you fix the size of the buttons</Para>
             </ApprovedBy>
-            <Ref isNewest="true">RQ3.1.1</Ref>
+            <Ref isNewest="true">RQ3.1</Ref>
+            <Ref isNewest="true">RQ3.2.4</Ref>
+            <Ref isNewest="true">RQ3.2.5</Ref>
+            <Ref isNewest="true">RQ3.3.4</Ref>
             <Section isNewest="true" id="TC2.2.1">
                 <Title isNewest="true">Create Matrix</Title>
                 <Para isNewest="true" index="0">The user clicks create matrix, and is directed to the requirements traceability matrix. From there, the user can view each individual requirement in each phase of development.</Para>
@@ -220,6 +269,12 @@
                 <Section isNewest="true" id="TC2.2.1.1">
                     <Title isNewest="true">Buttons, textbox, and populated table appears.</Title>
                     <Para isNewest="true" index="0">At the top of the page we see the Back button, and the Save RTM button with a textbox for the user to enter a file name should they choose to export the table. The requirements traceability matrix is displayed to the user, which displays all the columns and no empty elements.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
+                    <Ref isNewest="true">RQ3.1.3</Ref>
+                    <Ref isNewest="true">RQ3.2.2</Ref>
+                    <Ref isNewest="true">RQ3.2.5</Ref>
+                    <Ref isNewest="true">RQ3.3.2</Ref>
+                    <Ref isNewest="true">RQ3.3.5</Ref>
                 </Section>
                 <Section isNewest="true" id="TC2.2.1.2">
                     <Title isNewest="true">Back Button</Title>
@@ -238,30 +293,60 @@
                         <Name isNewest="true">Peter Magalhaes</Name>
                         <Para isNewest="true" index="0">this doesnt look right, not even a little bit</Para>
                     </ApprovedBy>
+                    <Ref isNewest="true">RQ3.1.3</Ref>
+                    <Ref isNewest="true">RQ3.1.4</Ref>
+                    <Ref isNewest="true">RQ3.2.4</Ref>
+                    <Ref isNewest="true">RQ3.3.4</Ref>
                 </Section>
                 <Section isNewest="true" id="TC2.2.1.4">
                     <Title isNewest="true">ID button clicked</Title>
                     <Para isNewest="true" index="0">ID buttons lead to popup containing information regarding the ID of the button clicked.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
+                    <Ref isNewest="true">RQ3.2.2</Ref>
+                    <Ref isNewest="true">RQ3.3.2</Ref>
                 </Section>
             </Section>
             <Section isNewest="true" id="TC2.2.2">
                 <Title isNewest="true">Preview in Document Format</Title>
                 <Para isNewest="true" index="0">The user clicked preview in document format, and is directed to a popup of the document, transformed by XSL, into a formal readable document. The user can exit the window at any time.</Para>
+                <Ref isNewest="true">RQ3.1.1.3</Ref>
+                <Ref isNewest="true">RQ3.2.4</Ref>
+                <Ref isNewest="true">RQ3.3.4</Ref>
             </Section>
             <Section isNewest="true" id="TC2.2.3">
                 <Title isNewest="true">Download as HTML</Title>
                 <Para isNewest="true" index="0">The user clicks download as html, and a hidden table appears in a small popup window. The buttons in the popup should be one for each file in the project, and one button to download the entire project.</Para>
+                <Ref isNewest="true">RQ3.2.1</Ref>
+                <Ref isNewest="true">RQ3.1.3.2</Ref>
+                <Ref isNewest="true">RQ3.1.4</Ref>
+                <Ref isNewest="true">RQ3.2.4</Ref>
+                <Ref isNewest="true">RQ3.2.5</Ref>
+                <Ref isNewest="true">RQ3.3.4</Ref>
+                <Ref isNewest="true">RQ3.3.5</Ref>
                 <Section isNewest="true" id="TC2.2.3.1">
                     <Title isNewest="true">Popup window appears with buttons.</Title>
                     <Para isNewest="true" index="0">Popup window apprears and is populated with buttons. One button for each xml file in the project, with an additional button to download all the files in the project as html.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
                 </Section>
                 <Section isNewest="true" id="TC2.2.3.2">
                     <Title isNewest="true">Download Single XML button is clicked.</Title>
                     <Para isNewest="true" index="0">The appropriate xml selected by the user is then converted to html and saved into the "Saves" folder in the project directory.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
+                    <Ref isNewest="true">RQ3.1.2</Ref>
+                    <Ref isNewest="true">RQ3.1.3.1</Ref>
+                    <Ref isNewest="true">RQ3.1.3.2</Ref>
+                    <Ref isNewest="true">RQ3.2.4</Ref>
+                    <Ref isNewest="true">RQ3.3.4</Ref>
                 </Section>
                 <Section isNewest="true" id="TC2.2.3.3">
                     <Title isNewest="true">Download Project is clicked</Title>
                     <Para isNewest="true" index="0">All of the xml files contained in the project file are converted to html and saved to the "Saves" folder in the project directory.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
+                    <Ref isNewest="true">RQ3.1.2</Ref>
+                    <Ref isNewest="true">RQ3.1.3.1</Ref>
+                    <Ref isNewest="true">RQ3.1.3.2</Ref>
+                    <Ref isNewest="true">RQ3.2.4</Ref>
+                    <Ref isNewest="true">RQ3.3.4</Ref>
                 </Section>
                 <Section isNewest="true" id="TC2.2.3.4">
                     <Title isNewest="true">User closes popup window.</Title>
@@ -272,108 +357,201 @@
         <Section isNewest="true" id="TC2.3">
             <Title isNewest="true">Sections are displayed with their titles in Table of Content div tag. </Title>
             <Para isNewest="true" index="0">The table of contents is automatically filled with sections from the requirements XML document. Also, when a section is clicked, the "toc" or table of contents div which is aligned to the left side of the screen is shown to have buttons with section id's in them, as well as the section title.</Para>
+            <Ref isNewest="true">RQ3.1.1</Ref>
+            <Ref isNewest="true">RQ3.1.3.2</Ref>
+            <Ref isNewest="true">RQ3.1.4.1</Ref>
+            <Ref isNewest="true">RQ3.2.1</Ref>
+            <Ref isNewest="true">RQ3.2.2</Ref>
+            <Ref isNewest="true">RQ3.2.3</Ref>
+            <Ref isNewest="true">RQ3.3.1</Ref>
+            <Ref isNewest="true">RQ3.3.2</Ref>
+            <Ref isNewest="true">RQ3.3.3</Ref>            
             <Section isNewest="true" id="TC2.3.1">
                 <Title isNewest="true">Section or Requirement button is left clicked</Title>
                 <Para isNewest="true" index="0">When the Section or Requirement button is left clicked, all of the subsections or sub-requirements contained within the clicked section will be displayed below the pressed button, in the form of more buttons with ID and title. The left clicked button will display its contents in the view div located on the right side of the screen. This includes all para's, images, test result information, and references</Para>
+                <Ref isNewest="true">RQ3.1.1</Ref>
+                <Ref isNewest="true">RQ3.2.2</Ref>
+                <Ref isNewest="true">RQ3.3.2</Ref>
             </Section>
             <Section isNewest="true" id="TC2.3.2">
                 <Title isNewest="true">Section or Requirement button is right clicked</Title>
                 <Para isNewest="true" index="0">When the Section or Requirement button is right clicked, options for editing the document are displayed.</Para>
+                <Ref isNewest="true">RQ3.1.1</Ref>
+                <Ref isNewest="true">RQ3.1.4</Ref>
+                <Ref isNewest="true">RQ3.2.2</Ref>
+                <Ref isNewest="true">RQ3.3.2</Ref>
                 <Section isNewest="true" id="TC2.3.2.1">
                     <Title isNewest="true">Add Section Above is left clicked.</Title>
                     <Para isNewest="true" index="0">Add Section Above creates a section above the section that was right clicked.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
+                    <Ref isNewest="true">RQ3.1.4</Ref>
+                    <Ref isNewest="true">RQ3.2.2</Ref>
+                    <Ref isNewest="true">RQ3.2.3</Ref>
+                    <Ref isNewest="true">RQ3.3.2</Ref>
+                    <Ref isNewest="true">RQ3.3.3</Ref>
                 </Section>
                 <Section isNewest="true" id="TC2.3.2.2">
                     <Title isNewest="true">Add Requirement Above is left clicked.</Title>
                     <Para isNewest="true" index="0">Add Requirement Above creates a requirement above the section that was right clicked.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
+                    <Ref isNewest="true">RQ3.1.4</Ref>
+                    <Ref isNewest="true">RQ3.2.2</Ref>
+                    <Ref isNewest="true">RQ3.2.3</Ref>
+                    <Ref isNewest="true">RQ3.3.2</Ref>
+                    <Ref isNewest="true">RQ3.3.3</Ref>
                 </Section>
                 <Section isNewest="true" id="TC2.3.2.3">
                     <Title isNewest="true">Add Section Below is left clicked.</Title>
                     <Para isNewest="true" index="0">Add Section Below creates a section below the section that was right clicked.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
+                    <Ref isNewest="true">RQ3.1.4</Ref>
+                    <Ref isNewest="true">RQ3.2.2</Ref>
+                    <Ref isNewest="true">RQ3.2.3</Ref>
+                    <Ref isNewest="true">RQ3.3.2</Ref>
+                    <Ref isNewest="true">RQ3.3.3</Ref>
                 </Section>
                 <Section isNewest="true" id="TC2.3.2.4">
                     <Title isNewest="true">Add Requirement Below is left clicked.</Title>
                     <Para isNewest="true" index="0">Add Requirement Below creates a section below the section that was right clicked.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
+                    <Ref isNewest="true">RQ3.1.4</Ref>
+                    <Ref isNewest="true">RQ3.2.2</Ref>
+                    <Ref isNewest="true">RQ3.2.3</Ref>
+                    <Ref isNewest="true">RQ3.3.2</Ref>
+                    <Ref isNewest="true">RQ3.3.3</Ref>
                 </Section>
                 <Section isNewest="true" id="TC2.3.2.5">
                     <Title isNewest="true">Add subSection is left clicked.</Title>
                     <Para isNewest="true" index="0">Add subSection creates a sub section inside the section that was right clicked.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
+                    <Ref isNewest="true">RQ3.1.4</Ref>
+                    <Ref isNewest="true">RQ3.2.2</Ref>
+                    <Ref isNewest="true">RQ3.2.3</Ref>
+                    <Ref isNewest="true">RQ3.3.2</Ref>
+                    <Ref isNewest="true">RQ3.3.3</Ref>
                  </Section>
                 <Section isNewest="true" id="TC2.3.2.6">
                     <Title isNewest="true">Add subRequirement is left clicked.</Title>
                     <Para isNewest="true" index="0">Add subRequirement creates a sub requirement inside the section or requirement that was right clicked.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
+                    <Ref isNewest="true">RQ3.1.4</Ref>
+                    <Ref isNewest="true">RQ3.2.2</Ref>
+                    <Ref isNewest="true">RQ3.2.3</Ref>
+                    <Ref isNewest="true">RQ3.3.2</Ref>
+                    <Ref isNewest="true">RQ3.3.3</Ref>
                 </Section>
                 <Section isNewest="true" id="TC2.3.2.7">
                     <Title isNewest="true">Change Title is left clicked.</Title>
                     <Para isNewest="true" index="0">Change Title changes the title of the section, requirement, subSection, or subRequirement to whatever was typed in the textarea to the right.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
+                    <Ref isNewest="true">RQ3.1.4</Ref>
+                    <Ref isNewest="true">RQ3.2.2</Ref>
+                    <Ref isNewest="true">RQ3.2.3</Ref>
+                    <Ref isNewest="true">RQ3.3.2</Ref>
+                    <Ref isNewest="true">RQ3.3.3</Ref>
                  </Section>
                 <Section isNewest="true" id="TC2.3.2.8">
                     <Title isNewest="true">Cancel is left clicked.</Title>
                     <Para isNewest="true" index="0">The pop up menu is terminated. You are brought back to the view HTA.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
+                    <Ref isNewest="true">RQ3.1.4</Ref>
                 </Section>
             </Section>
         </Section>
         <Section isNewest="true" id="TC2.4">
             <Title isNewest="true">Preview pane displays edit On/Off button.</Title>
             <Para isNewest="true" index="0">On loading the page, the preview div displays the Edit On/Off button and is waiting for the user to click a button in the table of contents. This will display in the view div.</Para>
+            <Ref isNewest="true">RQ3.1.1</Ref>
+            <Ref isNewest="true">RQ3.1.4</Ref>
             <Section isNewest="true" id="TC2.4.1">
                 <Title isNewest="true">Title displays in preview pane.</Title>
-                <Para isNewest="true" index="0">When the user clicks a section button in the table of contents div, the title of that section is displayed both underlined and in italics at the top of the view div.</Para>   
+                <Para isNewest="true" index="0">When the user clicks a section button in the table of contents div, the title of that section is displayed both underlined and in italics at the top of the view div.</Para> 
+                <Ref isNewest="true">RQ3.1.1</Ref>
             </Section>
             <Section isNewest="true" id="TC2.4.2">
                 <Title isNewest="true">Para gets displayed on view div</Title>
                 <Para isNewest="true" index="0">If a Para exists in the clicked section, it will be displayed in order in a textarea.</Para>
+                <Ref isNewest="true">RQ3.1.1</Ref>
             </Section>
             <Section isNewest="true" id="TC2.4.3">
                 <Title isNewest="true">Images are displayed on view div</Title>
                 <Para isNewest="true" index="0">If an image exists in the clicked section, it will be displayed below the existing Paras.</Para>  
+                <Ref isNewest="true">RQ3.1.1</Ref>
             </Section>
             <Section isNewest="true" id="TC2.4.4">
                 <Title isNewest="true">Test Result, Approved by, and Comment are displayed for test cases in view div</Title>
                 <Para isNewest="true" index="0">If user is viewing a test case document, test result, approved by, and comment are displayed to user in view div even if their information is empty. If there exists a last test result, these fields are filled with the previous results.</Para>
+                <Ref isNewest="true">RQ3.1.1</Ref>
+                <Ref isNewest="true">RQ3.1.4</Ref>
             </Section>
             <Section isNewest="true" id="TC2.4.5">
                 <Title isNewest="true">Reference buttons and titles are displayed.</Title>
                 <Para isNewest="true" index="0">Buttons are displayed for every reference inside this section along with the title associated with the ID on the button.</Para>
+                <Ref isNewest="true">RQ3.1.1</Ref>
+                <Ref isNewest="true">RQ3.1.3.1</Ref>
+                <Ref isNewest="true">RQ3.1.3.3</Ref>
                 <Section isNewest="true" id="TC2.4.5.1">
                     <Title isNewest="true">User clicks reference button.</Title>
                     <Para isNewest="true" index="0">When the user clicks on a reference button, all the para's associated with the section are displayed under the button the user has clicked. If the para's already exist below the button, the para's are hidden.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
                 </Section>
             </Section>
             <Section isNewest="true" id="TC2.4.6">
                 <Title isNewest="true">User clicks Edit On/Off button</Title>
                 <Para isNewest="true" index="0">The information in each section is displayed, but content changes can not be saved until clicking the save button. The save button is not available until in edit mode. This allows the user to make changes, except when in a deliverable format.</Para>
+                <Ref isNewest="true">RQ3.1.1</Ref>
+                <Ref isNewest="true">RQ3.1.4</Ref>
+                <Ref isNewest="true">RQ3.2.3</Ref>
+                <Ref isNewest="true">RQ3.3.3</Ref>
                 <Section isNewest="true" id="TC2.4.6.1">
                     <Title isNewest="true">Button for adding images, paras, and other information are Displayed.</Title>
                     <Para isNewest="true" index="0">When the user clicks the Edit On/Off button, buttons to save, add para, add reference, and add image are displayed below the edit button.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
                 </Section>
                 <Section isNewest="true" id="TC2.4.6.2">
                     <Title isNewest="true">Content becomes editable</Title>
                     <Para isNewest="true" index="0">Once the user has selected the Edit button, the paras are displayed in order, inside of an edit box, shown by a dotted line. The user now has the ability to save any changes made in the preview pane.</Para>
+                    <Ref isNewest="true">RQ3.2.3</Ref>
+                    <Ref isNewest="true">RQ3.3.3</Ref>
                 </Section>
                 <Section isNewest="true" id="TC2.4.6.3">
                     <Title isNewest="true">Test Results, Approved By, and Comment options are displayed as editable</Title>
                     <Para isNewest="true" index="0">Test Result values Pass and Fail have the ability to be selected in editable mode. Approved by can be any team member or a user input. Comment is user input.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
                 </Section>
                 <Section isNewest="true" id="TC2.4.6.4">
                     <Title isNewest="true">Save button is clicked</Title>
                     <Para isNewest="true" index="0">User is prompted with alert indicating that the document and all changes were saved. All changes made to editable options are saved.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
                 </Section>
                 <Section isNewest="true" id="TC2.4.6.5">
                     <Title isNewest="true">Add Reference button is clicked</Title>
                     <Para isNewest="true" index="0">A button appears with a dropdown listing all current section and requirement IDs and their title. These sections and requirements are already available in one of the XML files contained in the project. When Add a Reference is clicked, the selected reference in the dropdown box is added.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
+                    <Ref isNewest="true">RQ3.1.3.3</Ref>
+                    <Ref isNewest="true">RQ3.2.3</Ref>
+                    <Ref isNewest="true">RQ3.3.3</Ref>
                 </Section>
                 <Section isNewest="true" id="TC2.4.6.6">
                     <Title isNewest="true">Add Para button is clicked.</Title>
                     <Para isNewest="true" index="0">A textarea is added to the preview pane below any existing para's. Edit is then turned off.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
+                    <Ref isNewest="true">RQ3.2.3</Ref>
+                    <Ref isNewest="true">RQ3.3.3</Ref>
                 </Section>
                 <Section isNewest="true" id="TC2.4.6.7">
                     <Title isNewest="true">Add Image button is clicked</Title>
                     <Para isNewest="true" index="0">Users presented with explorer window to select image file. Image is saved to Image folder. Image is displayed in preview pane.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
+                    <Ref isNewest="true">RQ3.2.3</Ref>
+                    <Ref isNewest="true">RQ3.3.3</Ref>
                 </Section>
                 <Section isNewest="true" id="TC2.4.6.8">
                     <Title isNewest="true">Editable content is right clicked</Title>
                     <Para isNewest="true" index="0">User is prompted with pop up window displaying options Add Para Above, Add Para Below, Remove Para, Remove Image, and Cancel.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
+                    <Ref isNewest="true">RQ3.2.3</Ref>
+                    <Ref isNewest="true">RQ3.3.3</Ref>
                 </Section>
             </Section>
         </Section>
@@ -384,33 +562,64 @@
         <Section isNewest="true" id="TC3.1">
             <Title isNewest="true">User has right clicked a button in table of contents pane.</Title>
             <Para isNewest="true" index="0">Once the user has right-clicked on a button, the application will display a pop-up window containing additional functionality. This functionality includes adding more sections or requirements, subsections, or changing the title.</Para>
+            <Ref isNewest="true">RQ3.1.1</Ref>
+            <Ref isNewest="true">RQ3.2.3</Ref>
+            <Ref isNewest="true">RQ3.3.3</Ref>
             <Section isNewest="true" id="TC3.1.1">
                 <Title isNewest="true">Add Section Above is left clicked.</Title>
                 <Para isNewest="true" index="0">Add Section Above creates a section above the section that was right clicked.</Para>
+                <Ref isNewest="true">RQ3.1.1</Ref>
+                <Ref isNewest="true">RQ3.1.3.4</Ref>
+                <Ref isNewest="true">RQ3.2.3</Ref>
+                <Ref isNewest="true">RQ3.3.3</Ref>
             </Section>
             <Section isNewest="true" id="TC3.1.2">
                 <Title isNewest="true">Add Requirement Above is left clicked.</Title>
                 <Para isNewest="true" index="0">Add Requirement Above creates a requirement above the section that was right clicked.</Para>
+                <Ref isNewest="true">RQ3.1.1</Ref>
+                <Ref isNewest="true">RQ3.1.3.4</Ref>
+                <Ref isNewest="true">RQ3.2.3</Ref>
+                <Ref isNewest="true">RQ3.3.3</Ref>
             </Section>
             <Section isNewest="true" id="TC3.1.3">
                 <Title isNewest="true">Add Section Below is left clicked.</Title>
                 <Para isNewest="true" index="0">Add Section Below creates a section below the section that was right clicked.</Para>
+                <Ref isNewest="true">RQ3.1.1</Ref>
+                <Ref isNewest="true">RQ3.1.3.4</Ref>
+                <Ref isNewest="true">RQ3.2.3</Ref>
+                <Ref isNewest="true">RQ3.3.3</Ref>
             </Section>
             <Section isNewest="true" id="TC3.1.4">
                 <Title isNewest="true">Add Requirement Below is left clicked.</Title>
                 <Para isNewest="true" index="0">Add Requirement Below creates a section below the section that was right clicked.</Para>
+                <Ref isNewest="true">RQ3.1.1</Ref>
+                <Ref isNewest="true">RQ3.1.3.4</Ref>
+                <Ref isNewest="true">RQ3.2.3</Ref>
+                <Ref isNewest="true">RQ3.3.3</Ref>
             </Section>
             <Section isNewest="true" id="TC3.1.5">
                 <Title isNewest="true">Add subSection is left clicked.</Title>
                 <Para isNewest="true" index="0">Add subSection creates a sub section inside the section that was right clicked.</Para>
+                <Ref isNewest="true">RQ3.1.1</Ref>
+                <Ref isNewest="true">RQ3.1.3.4</Ref>
+                <Ref isNewest="true">RQ3.2.3</Ref>
+                <Ref isNewest="true">RQ3.3.3</Ref>
             </Section>
             <Section isNewest="true" id="TC3.1.6">
                 <Title isNewest="true">Add subRequirement is left clicked.</Title>
                 <Para isNewest="true" index="0">Add subRequirement creates a sub requirement inside the section or requirement that was right clicked.</Para>
+                <Ref isNewest="true">RQ3.1.1</Ref>
+                <Ref isNewest="true">RQ3.1.3.4</Ref>
+                <Ref isNewest="true">RQ3.2.3</Ref>
+                <Ref isNewest="true">RQ3.3.3</Ref>
             </Section>
             <Section isNewest="true" id="TC3.1.7">
                 <Title isNewest="true">Change Title is left clicked.</Title>
                 <Para isNewest="true" index="0">Change Title changes the title of the section, requirement, subSection, or subRequirement to whatever was typed in the textarea to the right.</Para>
+                <Ref isNewest="true">RQ3.1.1</Ref>
+                <Ref isNewest="true">RQ3.1.3.4</Ref>
+                <Ref isNewest="true">RQ3.2.3</Ref>
+                <Ref isNewest="true">RQ3.3.3</Ref>
             </Section>
             <Section isNewest="true" id="TC3.1.8">
                 <Title isNewest="true">Cancel is left clicked or user closes window.</Title>
@@ -420,13 +629,22 @@
         <Section isNewest="true" id="TC3.2">
             <Title isNewest="true">User has right-clicked content in the preview pane.</Title>
             <Para isNewest="true" index="0">The user has right clicked section content in the preview pane.</Para>
+            <Ref isNewest="true">RQ3.1.1</Ref>
+            <Ref isNewest="true">RQ3.2.3</Ref>
+            <Ref isNewest="true">RQ3.3.3</Ref>
             <Section isNewest="true" id="TC3.2.1">
                 <Title isNewest="true">User has right-clicked content with Edit Mode OFF.</Title>
                 <Para isNewest="true" index="0">The user will be displayed a contextual menu filled with browser functionality. The application will not handle right-click in the preview pane unless Edit Mode is ON. This allows a deliverable to contain only necessary information without additional parameters.</Para>
+                <Ref isNewest="true">RQ3.1.1</Ref>
+                <Ref isNewest="true">RQ3.2.3</Ref>
+                <Ref isNewest="true">RQ3.3.3</Ref>
             </Section>
             <Section isNewest="true" id="TC3.2.2">
                 <Title isNewest="true">User has right-clicked on a para in the preview pane from the view HTA.</Title>
                 <Para isNewest="true" index="0">The user is presented a new pop-up window with options to add or remove para.</Para>
+                <Ref isNewest="true">RQ3.1.1</Ref>
+                <Ref isNewest="true">RQ3.2.3</Ref>
+                <Ref isNewest="true">RQ3.3.3</Ref>
                 <Section isNewest="true" id="TC3.2.2.1">
                     <Title isNewest="true">Pop-up displays buttons and title.</Title>
                     <Para isNewest="true" index="0">Pop-up window displays buttons with para functionality, and title is ID of the section.</Para>
@@ -434,14 +652,26 @@
                 <Section isNewest="true" id="TC3.2.2.2">
                     <Title isNewest="true">User clicks Add Para Above.</Title>
                     <Para isNewest="true" index="0">In the section from the title label appears a new para text box above the para that was right-clicked by the user. The pop-up window closes automatically.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
+                    <Ref isNewest="true">RQ3.1.3.4</Ref>
+                    <Ref isNewest="true">RQ3.2.3</Ref>
+                    <Ref isNewest="true">RQ3.3.3</Ref>
                 </Section>
                 <Section isNewest="true" id="TC3.2.2.3">
                     <Title isNewest="true">User clicks Add Para Below.</Title>
                     <Para isNewest="true" index="0">In the section from the title label appears a new para text box below the para that was right-clicked by the user. The pop-up window closes automatically.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
+                    <Ref isNewest="true">RQ3.1.3.4</Ref>
+                    <Ref isNewest="true">RQ3.2.3</Ref>
+                    <Ref isNewest="true">RQ3.3.3</Ref>
                 </Section>
                 <Section isNewest="true" id="TC3.2.2.4">
                     <Title isNewest="true">User clicks Remove Para.</Title>
                     <Para isNewest="true" index="0">In the section from the title label, the para that was right-clicked by the user in now removed and the pop-up window closes automatically.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
+                    <Ref isNewest="true">RQ3.1.3.4</Ref>
+                    <Ref isNewest="true">RQ3.2.3</Ref>
+                    <Ref isNewest="true">RQ3.3.3</Ref>
                 </Section>
                 <Section isNewest="true" id="TC3.2.2.5">
                     <Title isNewest="true">User clicks Cancel or closes window.</Title>
@@ -451,13 +681,22 @@
             <Section isNewest="true" id="TC3.2.3">
                 <Title isNewest="true">User has right-clicked on an image in the preview pane from the view HTA.</Title>
                 <Para isNewest="true" index="0">The user is presented a new pop-up window with an option to remove para.</Para>
+                <Ref isNewest="true">RQ3.1.1</Ref>
+                <Ref isNewest="true">RQ3.1.3.4</Ref>
+                <Ref isNewest="true">RQ3.2.3</Ref>
+                <Ref isNewest="true">RQ3.3.3</Ref>
                 <Section isNewest="true" id="TC3.2.3.1">
                     <Title isNewest="true">Pop-up displays buttons and title.</Title>
                     <Para isNewest="true" index="0">Pop-up window displays buttons with image options, and title is ID of the section.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
                 </Section>
                 <Section isNewest="true" id="TC3.2.3.2">
                     <Title isNewest="true">User clicks Remove Image.</Title>
                     <Para isNewest="true" index="0">The image in the section gets removed, and the popup window automatically closes.</Para>
+                    <Ref isNewest="true">RQ3.1.1</Ref>
+                    <Ref isNewest="true">RQ3.1.3.4</Ref>
+                    <Ref isNewest="true">RQ3.2.3</Ref>
+                    <Ref isNewest="true">RQ3.3.3</Ref>
                 </Section>
                 <Section isNewest="true" id="TC3.2.3.3">
                     <Title isNewest="true">User clicks Cancel or closes window.</Title>
@@ -468,9 +707,17 @@
         <Section isNewest="true" id="TC3.3">
             <Title isNewest="true">User has clicked a button in RTM matrix table.</Title>
             <Para isNewest="true" index="0">The user is presented a new pop-up window with the information displayed from appropriate ID of the button tat was clicked, from the appropriate document located in the project XML file.</Para>
+            <Ref isNewest="true">RQ3.1.1</Ref>
+            <Ref isNewest="true">RQ3.1.3.2</Ref>
+            <Ref isNewest="true">RQ3.1.3.3</Ref>
+            <Ref isNewest="true">RQ3.1.3.5</Ref>
+            <Ref isNewest="true">RQ3.2.2</Ref>
+            <Ref isNewest="true">RQ3.3.2</Ref>
             <Section isNewest="true" id="TC3.3.1">
                 <Title isNewest="true">Pop-up displays section information.</Title>
                 <Para isNewest="true" index="0">Pop-up window displays information contained in the appropriate section.</Para>
+                <Ref isNewest="true">RQ3.2.2</Ref>
+                <Ref isNewest="true">RQ3.3.2</Ref>
             </Section>
             <Section isNewest="true" id="TC3.3.2">
                 <Title isNewest="true">User uses Windows functionality.</Title>
