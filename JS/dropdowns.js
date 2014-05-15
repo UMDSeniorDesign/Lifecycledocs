@@ -1,31 +1,39 @@
 function addEditValues(ID, type, fromID){
 	if(sessvars.toggle == "1"){
 		if(type == '0'){//If type equals approvedBy or testResult
-			var selectSpot = document.getElementById("ApprovedBy");
-			if(selectSpot.length < 2){
-				var options = document.getElementById("options").innerHTML;
-				options = options.split(',');
-				for(var i = 0; i < options.length-1; i++){
-					var name = document.createElement("option");
-					name.text = options[i];
-					name.value = options[i];
-					selectSpot.add(name);
+			var view = document.getElementById("view");
+			var selects = view.getElementsByTagName("select");
+			for(var i = 0; i < selects.length; i++){
+				if(selects[i].id == "ApprovedBy"){
+					selectSpot = selects[i];
+					if(selectSpot.length < 2){
+						var options = document.getElementById("options").innerHTML;
+						options = options.split(',');
+						for(var i = 0; i < options.length-1; i++){
+							var name = document.createElement("option");
+							name.text = options[i];
+							name.value = options[i];
+							selectSpot.add(name);
+						}
+						var other = document.createElement("option");
+						other.text = "Other";
+						other.value = "999";
+						selectSpot.add(other);
+					}
 				}
-				var other = document.createElement("option");
-				other.text = "Other";
-				other.value = "999";
-				selectSpot.add(other);
-			}
-			var resultSpot = document.getElementById("TestResult");
-			if(resultSpot.length < 2){
-				var pass = document.createElement("option");
-				pass.text = "Pass";
-				pass.value = "Pass";
-				var fail = document.createElement("option");
-				fail.text = "Fail";
-				fail.value = "Fail";
-				resultSpot.add(pass);
-				resultSpot.add(fail);
+				else if(selects[i].id == "TestResult"){
+					resultSpot = selects[i];
+					if(resultSpot.length < 2){
+						var pass = document.createElement("option");
+						pass.text = "Pass";
+						pass.value = "True";
+						var fail = document.createElement("option");
+						fail.text = "Fail";
+						fail.value = "False";
+						resultSpot.add(pass);
+						resultSpot.add(fail);
+					}
+				}
 			}
 		}
 		if(type == '1'){//If type equals References
@@ -93,22 +101,74 @@ function findRefs(ID){
 	return references;
 }
 function selectBoxChange(ID, type, value) {
+	var viewDiv = document.getElementById("view");
+	var xml = loadXML(sessvars.xml);
+	var sectionToChange;
+	var sections = xml.getElementsByTagName("Section");
+	var reqs = xml.getElementsByTagName("Requirement");
+	for(var i = 0; i < sections.length; i++)
+		if(ID == sections[i].getAttribute("id"))
+			sectionToChange = sections[i];
+	for(var i = 0; i < reqs.length; i++)
+		if(ID == reqs[i].getAttribute("id"))
+			sectionToChange = reqs[i];
+	var childs = sectionToChange.childNodes;
 	if(type == 0){//If type equals TestResult
-		alert("TestResult "+ID+" Changed to: "+value);
+		for(var i = 0; i < childs.length; i++){
+			if(childs[i].nodeName == "TestResult"){
+				childs[i].childNodes[0].nodeValue = value;
+			}
+		}
+		var returnString = "Test Result Changed to "+value;
+		saveFile(xml, returnString, ID);
 	}
 	else if(type == 1){//If type equals ApprovedBy
 		if(value == '999'){//If value is other, display input field to specify
-			var otherSpot = document.getElementById("Other");
-			otherSpot.style.display = "block";
+			var divs = viewDiv.getElementsByTagName("div");
+			for(var i = 0; i < divs.length; i++){
+				if(divs[i].id == "Other")
+					divs[i].style.display = "block";
+			}
 		}
-		alert("ApprovedBy "+ID+" Changed to: "+value);
+		else{
+			for(var i = 0; i < childs.length; i++){
+				if(childs[i].nodeName == "ApprovedBy"){
+					childs[i].childNodes[0].nodeValue = value;
+				}
+			}
+			var returnString = "Approved By Changed to "+value;
+			saveFile(xml, returnString, ID);
+		}
 	}
 	else if(type == 2){//If type equals References
 		addRef(value, ID);
 	}
 }
 function changeApprovedBy(ID){
-	var otherBox = document.getElementById("OtherText");
-	if(otherBox.innerHTML != "Other")
-		alert("Other changed to: "+otherBox.innerHTML);
+	var viewDiv = document.getElementById("view");
+	var xml = loadXML(sessvars.xml);
+	var sectionToChange;
+	var sections = xml.getElementsByTagName("Section");
+	var reqs = xml.getElementsByTagName("Requirement");
+	for(var i = 0; i < sections.length; i++)
+		if(ID == sections[i].getAttribute("id"))
+			sectionToChange = sections[i];
+	for(var i = 0; i < reqs.length; i++)
+		if(ID == reqs[i].getAttribute("id"))
+			sectionToChange = reqs[i];
+	var childs = sectionToChange.childNodes;
+	var divs = viewDiv.getElementsByTagName("textarea");
+	for(var i = 0; i < divs.length; i++){
+		if(divs[i].id == "OtherText"){
+			if(divs[i].value != "Other"){
+				for(var i = 0; i < childs.length; i++){
+					if(childs[i].nodeName == "ApprovedBy"){
+						childs[i].childNodes[0].nodeValue = divs[i].value;
+					}
+				}
+				var returnString = "Approved By Changed to "+divs[i].value;
+				saveFile(xml, returnString, ID);
+			}
+		}
+	}
 }
