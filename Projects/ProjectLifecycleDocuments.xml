@@ -17,44 +17,9 @@
 			<Name isNewest="true">Aria Ushani</Name>
 			<Role isNewest="true">Team Member</Role>
 		</TeamMember>
-		<TeamMember isNewest="false">
-			<Name isNewest="true">Palmer</Name>
-			<Role isNewest="true">Team</Role>
-		</TeamMember>
-		<TeamMember isNewest="false">
-			<Name isNewest="true">New</Name>
-			<UIC isNewest="true"></UIC>
-			<Role isNewest="true">New</Role>
-		</TeamMember>
-		<TeamMember isNewest="false">
-			<Name isNewest="true">New </Name>
-			<UIC isNewest="true"></UIC>
-			<Role isNewest="true">Role</Role>
-		</TeamMember>
-		<TeamMember isNewest="false">
-			<Name isNewest="true">new</Name>
-			<UIC isNewest="true"></UIC>
-			<Role isNewest="true">role</Role>
-		</TeamMember>
-		<TeamMember isNewest="false">
-			<Name isNewest="true">person</Name>
-			<UIC isNewest="true"></UIC>
-			<Role isNewest="true">add</Role>
-		</TeamMember>
-		<TeamMember isNewest="false">
-			<Name isNewest="true">r</Name>
-			<UIC isNewest="true"></UIC>
-			<Role isNewest="true">g</Role>
-		</TeamMember>
-		<TeamMember isNewest="false">
-			<Name isNewest="true">j</Name>
-			<UIC isNewest="true"></UIC>
-			<Role isNewest="true">k</Role>
-		</TeamMember>
 		<TeamMember isNewest="true">
 			<Name isNewest="true">Kevin Palmer</Name>
-			<UIC isNewest="true"></UIC>
-			<Role isNewest="true"></Role>
+			<Role isNewest="true">Team</Role>
 		</TeamMember>
 	</Team>
 	<file_location>

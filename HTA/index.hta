@@ -161,7 +161,7 @@
 				}
 				image.innerHTML = "";
 				var y = loadProject(projectName);
-				var z = loadXML("peteProjectXSL.xsl");
+				var z = loadXML("ProjectInfoXSL.xsl");
 				var x = y.transformNode(z);
 				image.innerHTML = x;
 				document.getElementById("add").style.visibility="visible";

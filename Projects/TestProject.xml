@@ -11,29 +11,13 @@
 			<Name isNewest="true">Peter Magalhaes</Name>
 			<Role isNewest="true">Team Member</Role>
 		</TeamMember>
-		<TeamMember isNewest="false">
+		<TeamMember isNewest="true">
 			<Name isNewest="true">Aria Ushani</Name>
 			<Role isNewest="true">Team Member</Role>
 		</TeamMember>
 		<TeamMember isNewest="true">
 			<Name isNewest="true">Kevin Palmer</Name>
 			<Role isNewest="true">Team Member</Role>
-		</TeamMember>
-		<TeamMember isNewest="true">
-			<Name isNewest="true">Ari Ushani</Name>
-			<Role isNewest="true"></Role>
-		</TeamMember>
-		<TeamMember isNewest="true">
-			<Name isNewest="true">Ari Ushani</Name>
-			<Role isNewest="true"></Role>
-		</TeamMember>
-		<TeamMember isNewest="true">
-			<Name isNewest="true"></Name>
-			<Role isNewest="true"></Role>
-		</TeamMember>
-		<TeamMember isNewest="true">
-			<Name isNewest="true"></Name>
-			<Role isNewest="true"></Role>
 		</TeamMember>
 	</Team>
 	<file_location>
