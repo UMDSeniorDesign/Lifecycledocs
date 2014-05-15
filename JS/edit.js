@@ -475,6 +475,8 @@ function reNumber(xml, parent, newNode){
 	var parentIdArray = [];
 	var startIndex = 0;
 	var prefix = "";
+	var oldIdArray = [];
+	var newIdArray = [];
 	if(parentId == undefined){
 		var prefixArray = newNode.getAttribute("id").split(".");
 		var numIndex = prefixArray[0].search(/\d+/g);
@@ -503,7 +505,10 @@ function reNumber(xml, parent, newNode){
 			}
 			else
 				parentIdArray.push(startIndex);
+			var oldId = firstChild.getAttribute("id");
+			oldIdArray.push(oldId);
 			var newId = parentIdArray.join(".");
+			newIdArray.push(newId);
 			if(parentId == undefined)
 				firstChild.setAttribute("id", (newId+".0"));
 			else
@@ -515,5 +520,40 @@ function reNumber(xml, parent, newNode){
 				reNumber(xml, firstChild)
 		}
 		firstChild = firstChild.nextSibling;
+	}
+	checkReferences(oldIdArray, newIdArray);
+}
+/////***START CHECKREFERENCES FUNCTION***/////
+function checkReferences(oldIds, newIds){
+	var project = loadProject(sessvars.projectName);
+	var files = project.getElementsByTagName("file_location");
+	for(var i = 0; i < files.length; i++){
+		var fileElement = files[i].getElementsByTagName("xi:include")[0];
+		var fileName = fileElement.getAttribute("href");
+		var xml = loadXML(fileName);
+		var sections = xml.getElementsByTagName("Section");
+		for(var j = 0; j < sections.length; j++){
+			var refs = sections[i].getElementsByTagName("Ref");
+			for(var k = 0; k < refs.length; k++){
+				for(var n = 0; n < oldIds.length; n++){
+					if(refs[k].childNodes[0].nodeValue == oldIds[n]){
+						refs[k].childNodes[0].nodeValue = newIds[n];
+						//alert("Changed ref: "+oldIds[n]+" in: "+fileName+" to: "+newIds[n]);
+					}
+				}
+			}
+		}
+		var reqs = xml.getElementsByTagName("Requirement");
+		for(var j = 0; j < reqs.length; j++){
+			var refs = reqs[i].getElementsByTagName("Ref");
+			for(var k = 0; k < refs.length; k++){
+				for(var n = 0; n < oldIds.length; n++){
+					if(refs[k].childNodes[0].nodeValue == oldIds[n]){
+						refs[k].childNodes[0].nodeValue = newIds[n];
+						//alert("Changed ref: "+oldIds[n]+" in: "+fileName+" to: "+newIds[n]);
+					}
+				}
+			}
+		}
 	}
 }
