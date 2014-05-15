@@ -127,6 +127,8 @@ function saveFile(xml, alertText, ID){
 	file = f.CreateTextFile(sessvars.xml, true, true);
 	file.write(xml.xml);
 	file.close();
-	alert(alertText);
-	loadXSLT(0,1, ID);
+	if(alertText != -1){
+		alert(alertText);
+		loadXSLT(0,1, ID);
+	}
 }

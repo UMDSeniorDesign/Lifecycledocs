@@ -317,7 +317,7 @@ function remove(ID, fromID, type){
 						var returnString = ("Removed Section "+ID);
 						var parent = sections[i].parentNode;
 						var returnID = parent.getAttribute("id");
-						reNumber(xml, parent);
+						reNumber(xml, parent, sections[i]);
 						return saveFile(xml, returnString, returnID);
 					}
 				}
@@ -373,7 +373,7 @@ function remove(ID, fromID, type){
 						var returnString = ("Removed Requirement "+ID);
 						var parent = reqs[i].parentNode;
 						var returnID = parent.getAttribute("id");
-						reNumber(xml, parent);
+						reNumber(xml, parent, sections[i]);
 						return saveFile(xml, returnString, returnID);
 					}
 				}
@@ -495,6 +495,10 @@ function reNumber(xml, parent, newNode){
 	var childs = parent.childNodes;
 	var firstChild = parent.firstChild;
 	for(var i = 0; i < childs.length; i++){
+		if(firstChild.nodeType == 8){
+			firstChild = firstChild.nextSibling;
+			continue;
+		}
 		if(firstChild.getAttribute("isNewest") == 'false'){
 			firstChild = firstChild.nextSibling;
 			continue;
@@ -510,11 +514,10 @@ function reNumber(xml, parent, newNode){
 			var oldId = firstChild.getAttribute("id");
 			oldIdArray.push(oldId);
 			var newId = parentIdArray.join(".");
-			newIdArray.push(newId);
 			if(parentId == undefined)
-				firstChild.setAttribute("id", (newId+".0"));
-			else
-				firstChild.setAttribute("id", newId);
+				newId = (newId+".0");
+			newIdArray.push(newId);
+			firstChild.setAttribute("id", newId);
 			parentIdArray.pop();
 			var sectionChildren = firstChild.getElementsByTagName("Section")
 			var reqChildren = firstChild.getElementsByTagName("Requirement");
@@ -523,10 +526,12 @@ function reNumber(xml, parent, newNode){
 		}
 		firstChild = firstChild.nextSibling;
 	}
+	//alert("oldIdArray: "+oldIdArray+" - newIdArray: "+newIdArray);
 	checkReferences(oldIdArray, newIdArray);
 }
 /////***START CHECKREFERENCES FUNCTION***/////
 function checkReferences(oldIds, newIds){
+	var originalName = sessvars.xml;
 	var project = loadProject(sessvars.projectName);
 	var files = project.getElementsByTagName("file_location");
 	for(var i = 0; i < files.length; i++){
@@ -540,7 +545,7 @@ function checkReferences(oldIds, newIds){
 				for(var n = 0; n < oldIds.length; n++){
 					if(refs[k].childNodes[0].nodeValue == oldIds[n]){
 						refs[k].childNodes[0].nodeValue = newIds[n];
-						//alert("Changed ref: "+oldIds[n]+" in: "+fileName+" to: "+newIds[n]);
+						//alert("Changed ref: "+oldIds[n]+" in: "+fileName+" to: "+refs[k].childNodes[0].nodeValue);
 					}
 				}
 			}
@@ -552,10 +557,13 @@ function checkReferences(oldIds, newIds){
 				for(var n = 0; n < oldIds.length; n++){
 					if(refs[k].childNodes[0].nodeValue == oldIds[n]){
 						refs[k].childNodes[0].nodeValue = newIds[n];
-						//alert("Changed ref: "+oldIds[n]+" in: "+fileName+" to: "+newIds[n]);
+						//alert("Changed ref: "+oldIds[n]+" in: "+fileName+" to: "+refs[k].childNodes[0].nodeValue);
 					}
 				}
 			}
 		}
+		sessvars.xml = fileName;
+		saveFile(xml, -1);
 	}
+	sessvars.xml = originalName;
 }
