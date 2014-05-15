@@ -6,6 +6,7 @@
     <Team> 
         <TeamMember isNewest="true">
             <Name isNewest="true">Leader</Name>
+			<UIC isNewest="true">UMASSD-2</UIC>
             <Role isNewest="true">Team Lead</Role> 
         </TeamMember>
         <TeamMember isNewest="true">

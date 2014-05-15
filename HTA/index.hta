@@ -74,12 +74,18 @@
 				var f = new ActiveXObject("Scripting.FileSystemObject");
 				var project = projectName+".xml";
 				var file = loadProject(project);
+				file.documentElement.setAttribute("projectName",projectName);
+				
+				
+				//xmlFile.documentElement.setAttribute("projectName",projectName);
 				for(var j = 0; file.getElementsByTagName("file_location").length > j; j++) {
 					var attr = file.getElementsByTagName("file_location")[j].childNodes[0].getAttribute("href");
 					var xmlFile = loadXML(attr);
-					xmlFile.documentElement.setAttribute("xml:base",project)
-					file.getElementsByTagName("file_location")[j].childNodes[0].setAttribute("href", getName(j)+".xml");
 					
+					xmlFile.documentElement.setAttribute("xml:base",project);
+					xmlFile.documentElement.setAttribute("projectName",projectName);
+					file.getElementsByTagName("file_location")[j].childNodes[0].setAttribute("href", getName(j)+".xml");
+					//alert(xmlFile.xml);
 					//windows 8
 					f.CopyFile("../Lifecycledocs/XML/"+attr, "../Lifecycledocs/XML/"+getName(j)+".xml", 1);
 					//Windows 7
@@ -247,10 +253,10 @@
 			for(var k = 0; k < newNode.childNodes.length; k++) {
 				if((k == 0) && (newNode.childNodes[k].childNodes[0].nodeValue == ""))
 					newNode.childNodes[k].childNodes[0].nodeValue = newM;
-				else if((k == 2) && (newNode.childNodes[k].childNodes[0].nodeValue == ""))
+				if((k == 2) && (newNode.childNodes[k].childNodes[0].nodeValue == ""))
 					newNode.childNodes[k].childNodes[0].nodeValue = newR;
 			}
-			
+			alert(newNode.childNodes.length);
 			
 			var fs = new ActiveXObject("Scripting.FileSystemObject");
 			//If windows 7, use this line
@@ -293,6 +299,8 @@
 					var n = xmlDoc.getElementsByTagName("Name")[i].childNodes[0];
 			}
 			var newMemberName = prompt("New Member Name: ", "");
+			if(newMemberName == null)
+				return;
 			n.nodeValue = newMemberName;
 			
 			var fs = new ActiveXObject("Scripting.FileSystemObject");
@@ -334,6 +342,9 @@
 					var n = xmlDoc.getElementsByTagName("Role")[i].childNodes[0];
 			}
 			var newRole = prompt("New Member Role: ", "");
+			
+			if(newRole == null)
+				return;
 			n.nodeValue = newRole;
 			
 			var fs = new ActiveXObject("Scripting.FileSystemObject");
@@ -355,6 +366,12 @@
 		}
 	</script>
 	
+	<script>
+		function showInfo() {
+			window.showModalDialog = ("box.hta", "", "dialogWidth:215px; dialogHeight:65px");
+		}
+	</script>
+	
     </head>
 <title>Lifecycle Documents</title>
     <body background="ProjectImages/water_texture2375.jpg">
@@ -364,7 +381,7 @@
                 <div id="siteControl">
                     <button id="create" onclick=setProject()>New Project</button>
                     <button id="open" onclick=showProjectInfo()>Show Project Info</button>
-					<input id="browse" type="file" onchange="getProjectInfo(0, '')">
+					<input id="browse" type="file" onchange="getProjectInfo(0, ''); showInfo();">
                 </div>
             </div>
 			
