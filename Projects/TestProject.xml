@@ -42,7 +42,7 @@
 		</xi:include>
 	</file_location>
 	<file_location>
-		<xi:include href="TestSave.xml">
+		<xi:include href="UserManual.xml">
 			<xi:fallback>
 				<p>The included document was not found!</p>
 			</xi:fallback>
