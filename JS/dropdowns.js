@@ -29,8 +29,9 @@ function addEditValues(ID, type, fromID){
 			}
 		}
 		if(type == '1'){//If type equals References
-			var referenceSpot = document.getElementById(ID+"References");
-			if(referenceSpot.length < 2){
+			//var referenceSpot = document.getElementById(ID+"References");
+			var refOptionSpot = document.getElementById("refOptions");
+			if(refOptionSpot.length < 2){
 				var refOptions = findRefs(ID);
 				var options = "";
 				for(var i = 0; i < refOptions.length; i++){
@@ -40,7 +41,7 @@ function addEditValues(ID, type, fromID){
 					var ref = document.createElement("option");
 					ref.text = refText;
 					ref.value = refOptions[i][0];
-					referenceSpot.add(ref);
+					refOptionSpot.add(ref);
 				}
 			}
 		}

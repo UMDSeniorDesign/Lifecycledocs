@@ -33,6 +33,7 @@ function getTabs() {
 function loadXSLT(withTabs, withCurrent, xmlToLoad){
 	var xml;
 	var xsl;
+	document.getElementById("addReference").style.display = 'none';
 	//Load tabs from project file
 	if(withTabs == 1){
 		getTabs();

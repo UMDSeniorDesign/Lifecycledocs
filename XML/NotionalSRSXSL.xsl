@@ -259,11 +259,11 @@
 					</div>
 				</div>
 			</div>
-			<div id ="{$vID}options" style="display: none;">
+			<!-- <div id ="{$vID}options" style="display: none;">
 				<button onclick="add('{$vID}', '0', '2')">Add Reference To: </button>
 				<select id="{$vID}References">
 				</select>
-			</div>
+			</div> -->
 		</xsl:if>
 		<xsl:apply-templates select="Section" mode="para"/>
         <xsl:apply-templates select="Requirement" mode="para"/>

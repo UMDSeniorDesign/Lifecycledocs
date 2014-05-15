@@ -71,7 +71,7 @@ function showMenu(ID, type, paraCount) {
 			}
 		}
 		else if(type == 3){//Add Reference Menu
-			var refOptions = document.getElementById(ID+"options");
+			var refOptions = document.getElementById("addReference");
 			refOptions.style.display = 'block';
 			addEditValues(ID, 1);
 		}

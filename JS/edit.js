@@ -34,9 +34,9 @@ function add(ID, aORb, type, index){
 			var divID = divSub.substring(-1, idEnd);
 			if(aORb == 0)
 				showMenu(divID, 3);
-			if(aORb == 1)
+			else if(aORb == 1)
 				add(divID, 1, 3, -1);
-			if(aORb == 2){
+			else if(aORb == 2){
 				if(index != "" && index != undefined){
 					var locArray = index.split("\\");
 					var imageName = locArray[locArray.length-1];
@@ -44,6 +44,8 @@ function add(ID, aORb, type, index){
 					//This is where we would copy the file to the Image folder
 					return add(divID, 0, 4, imagePath);
 				}
+				else
+					add(divID, 0, 2);
 			}
 		}
 		var sections = xml.getElementsByTagName("Section");
@@ -157,8 +159,8 @@ function add(ID, aORb, type, index){
 				}				
 			}
 			if(type == 2){
-				var options = document.getElementById(ID+"options");
-				var value = document.getElementById(ID+"References").value;
+				var options = document.getElementById("refOptions");
+				var value = document.getElementById("refOptions").value;
 				if(ID == sections[i].getAttribute("id")){
 					newRef = xml.createElement("Ref");
 					newRef.setAttribute("isNewest","true");
@@ -281,7 +283,7 @@ function add(ID, aORb, type, index){
 				}
 			}
 			if(type == 2){
-				var value = document.getElementById(ID+"References").value;
+				var value = document.getElementById("refOptions").value;
 				if(aORb == reqs[i].getAttribute("id")){
 					newRef = xml.createElement("Ref");
 					newRef.setAttribute("isNewest","true");
