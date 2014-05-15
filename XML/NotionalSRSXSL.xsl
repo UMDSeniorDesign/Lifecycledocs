@@ -34,7 +34,7 @@
 							subReqSpot.style.display = 'block';
 						else if(subReqStyle == 'block')
 							subReqSpot.style.display = 'none';
-						var section = document.getElementById("section");
+						var section = document.getElementById("view");
 						section.innerHTML = text;
 						if(sessvars.toggle = "1")
 							sessvars.toggle = "0";
@@ -64,7 +64,7 @@
                     }
                     #view {
                     float: right;
-                    width: 70%;
+                    width: 65%;
                     font-size: 12pt;
                     }
                     textarea {
@@ -78,9 +78,10 @@
             <body>
             	<div id="toc">
 					<xsl:apply-templates select="Section" mode="section"/>
+					<xsl:apply-templates select="Section" mode="para"/>
 				</div>
 				<div id="view">
-					<xsl:apply-templates select="Section" mode="para"/>
+					
 				</div>
 				<div id="refLocation">
 				</div>
