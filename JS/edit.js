@@ -26,7 +26,7 @@ function add(ID, aORb, type, index){
 		var newIndex = index;
 		var added = 0;
 		if(ID == 0){
-			var div = document.getElementById("section");
+			var div = document.getElementById("view");
 			var divHTML = div.innerHTML
 			var start = divHTML.search("<U>");
 			var divSub = divHTML.substring(start+3);
@@ -41,6 +41,7 @@ function add(ID, aORb, type, index){
 					var locArray = index.split("\\");
 					var imageName = locArray[locArray.length-1];
 					var imagePath = "../Images/"+imageName;
+					//This is where we would copy the file to the Image folder
 					return add(divID, 0, 4, imagePath);
 				}
 			}

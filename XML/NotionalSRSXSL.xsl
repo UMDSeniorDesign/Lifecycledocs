@@ -9,18 +9,16 @@
             <head>
                 <script>
                     function showSection(ID, title){
-						var para = document.getElementById(ID).innerHTML;
-						<!--var paras = document.getElementById(Para);
-						
-						var len = paras.length;
-						var textareas = [];
-						
-						for(var i = 0; i &lt; len;i++) {
-						textareas[i] = paras.getElementsByTagName("textarea");
-						
-						 textareas[i].row = (parseInt(this.value.length/this.cols)+2||1); 
+						var width = (window.innerWidth * 0.65) - 20;
+						if(sessvars.xml.length > 2)
+							width = (document.body.offsetWidth * 0.65) - 20;
+						var para = document.getElementById(ID);
+						textareas = para.getElementsByTagName("textarea");
+						for(var i = 0; i &lt; textareas.length; i ++){
+							var height = (parseInt(textareas[i].value.length/(width/10) + 1)||1);
+							textareas[i].style.width = width+"px";
+							textareas[i].rows = height;
 						}
-						alert(textareas.length);-->
 						var subReqs = document.getElementById("sub"+ID).innerHTML;
 						var subReqSpot = document.getElementById("sub"+ID);
 						var subReqStyle = subReqSpot.style.display;
@@ -28,7 +26,7 @@
 						text += " - ";
 						text += "<i>"+title+"</i></u>";
 						text += "<p>";
-						text += para;
+						text += para.innerHTML;
 						text += "</p>";
 						if(subReqStyle == 'none')
 							subReqSpot.style.display = 'block';
@@ -284,7 +282,7 @@
 			</xsl:variable>
 			<div id="Para">
 				
-				<textarea id="{$vID}Para{$vIndex}" rows='(parseInt(this.value.length/this.cols)+2||1)' oncontextmenu="showMenu('{$vID}', '2', '{$vIndex}');return false;">
+				<textarea id="{$vID}Para{$vIndex}" oncontextmenu="showMenu('{$vID}', '2', '{$vIndex}');return false;">
 				<xsl:value-of select="."/></textarea>
 				<br/>
 				<div id="{$vID}ParaMenu{$vIndex}" style="display: none;">

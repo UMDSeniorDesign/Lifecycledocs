@@ -5,7 +5,16 @@
             <head>
                 <script>
                     function showSection(ID, title){
-						var para = document.getElementById(ID).innerHTML;
+						var width = (window.innerWidth * 0.65) - 20;
+						if(sessvars.xml.length > 2)
+							width = (document.body.offsetWidth * 0.65) - 20;
+						var para = document.getElementById(ID);
+						textareas = para.getElementsByTagName("textarea");
+						for(var i = 0; i &lt; textareas.length; i ++){
+							var height = (parseInt(textareas[i].value.length/(width/10) + 1)||1);
+							textareas[i].style.width = width+'px';
+							textareas[i].rows = height;
+						}
 						var subReqs = document.getElementById("sub"+ID).innerHTML;
 						var subReqSpot = document.getElementById("sub"+ID);
 						var subReqStyle = subReqSpot.style.display;
@@ -13,7 +22,7 @@
 						text += " - ";
 						text += "<i>"+title+"</i></u>";
 						text += "<p>";
-						text += para;
+						text += para.innerHTML;
 						text += "</p>";
 						if(subReqStyle == 'none')
 							subReqSpot.style.display = 'block';
