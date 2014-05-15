@@ -143,6 +143,7 @@ function loadProject(file_name) {
 function loadRTM(){
 	var rtmLocation = document.getElementById("RTM");
 	var xml = loadXML(sessvars.projectName);
+	//alert(projectName);
 	var xsl = loadXML("RTM.xsl");
 	var rtm = xml.transformNode(xsl);
 	rtmLocation.innerHTML = rtm;

@@ -3,12 +3,53 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:msxsl="urn:schemas-microsoft-com:xslt"
     xmlns:ext="http://exslt.org/common"
-    exclude-result-prefixes="xs ext msxsl"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    exclude-result-prefixes="xs ext msxsl xi xsi"
     version="2.0">
     <xsl:output method="html" indent="yes"/>
     <xsl:strip-space elements="*"/>
     
+    <xsl:template match="ProjectLifecycleDocuments">
+        <xsl:text>im in the project xml</xsl:text>
+        <br/>
+    </xsl:template>
+    
     <xsl:template match="/">
+        <xsl:text>starting...</xsl:text>
+        <xsl:value-of select="concat('./XMLtest/', 'myTest')"/>
+        <br/>
+        <xsl:value-of select="node()"/>
+        <br/>
+        <xsl:value-of select="following::node()"/>
+        <br/>
+        <xsl:value-of select="count(preceding-sibling::*)"/>
+        <br/>
+        <xsl:value-of select="name()"/>
+        <br/>
+        <xsl:variable name="file1" select="descendant-or-self::*/@href"/>
+        <xsl:variable name="file2" select="(descendant-or-self::*/@href)[2]"/>
+        <xsl:variable name="file3" select="(descendant-or-self::*/@href)[3]"/>
+        
+        <xsl:variable name="file1path" select="concat('../XML/', $file1)"/>
+        <xsl:value-of select="name(document($file1)/*)"/>
+        <br/>
+        
+        <xsl:value-of select="$file1"/>
+        <br/>
+        <xsl:value-of select="$file2"/>
+        <br/>
+        <xsl:value-of select="$file3"/>
+        <br/>
+        
+        <xsl:value-of select="$file1path"/>
+        <br/>
+        <xsl:value-of select="ancestor-or-self::*/@xml:base"/>
+        <br/>
+        
+        <br/>
+        <xsl:text>ending test....</xsl:text>
+        <!--
         <xsl:variable name="doc1" select="document((descendant-or-self::*/@href)[1])"/>
         <xsl:variable name="doc2" select="document((descendant-or-self::*/@href)[2])"/>
         <xsl:variable name="doc3" select="document((descendant-or-self::*/@href)[3])"/>
@@ -26,7 +67,7 @@
             <xsl:otherwise>
                 <xsl:text>Error identifying requirements document!</xsl:text>
             </xsl:otherwise>
-        </xsl:choose>
+        </xsl:choose>-->
     </xsl:template>
        
        
