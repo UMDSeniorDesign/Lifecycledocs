@@ -238,7 +238,7 @@
                 <Name isNewest="true">Jeremiah Butler</Name>
                 <Para isNewest="true" index="0">derP</Para>
             </ApprovedBy>
-            <ApprovedBy isNewest="false">
+            <ApprovedBy isNewest="true">
                 <Name isNewest="true">Jeremiah Butler</Name>
                 <Para isNewest="true" index="0">can you fix the size of the buttons</Para>
             </ApprovedBy>

@@ -155,6 +155,65 @@
 							<button onclick="hideMenu()" id="close">Cancel</button>
 						</div>
 					</xsl:for-each>
+					<xsl:if test="TestResult">
+						<xsl:text>Test Result: </xsl:text>
+						<select id="TestResult" onmouseover="addEditValues('{$vID}', '0')" onchange="if (this.selectedIndex) selectBoxChange('{$vID}', '0', this.value);">
+							<option value="-1" selected="selected">
+								<xsl:value-of select="TestResult"/>
+							</option>
+						</select>
+						<br/>
+						<xsl:variable name="vDocumentBase" select="/*/@xml:base"/>
+						<xsl:variable name="vDocumentPath" select="string(concat('..//Projects//',$vDocumentBase))"/>
+						<xsl:variable name="vDocumentProj" select="document($vDocumentPath)"/>
+						<xsl:if test="not(ApprovedBy)">
+							<xsl:text>Approved By: </xsl:text>
+							<select id="ApprovedBy" onmouseover="addEditValues('{$vID}', '0')" onchange="if (this.selectedIndex) selectBoxChange('{$vID}', '1', this.value);">
+								<option value="-1" selected="selected">
+									<xsl:value-of select="Name"/>
+								</option>
+							</select>
+							<br/>
+							<div id="options" style="display: none;">
+								<xsl:for-each select="$vDocumentProj//*//*//TeamMember">
+									<xsl:variable name="vTeamMember" select="Name"/>
+									<xsl:value-of select="$vTeamMember"/>,
+								</xsl:for-each>
+							</div>
+							<div id="Other" style="display: none;">
+								<button onclick="changeApprovedBy('{$vID}')">Approved By: </button>
+								<textarea id="OtherText" rows="1">Other</textarea>
+								<br/>
+							</div>
+							<xsl:value-of select="Name"/>
+							<xsl:text>'s Comment: </xsl:text>
+						</xsl:if>
+						<xsl:for-each select="ApprovedBy[@isNewest='true']">
+							<xsl:text>Approved By: </xsl:text>
+							<select id="ApprovedBy" onmouseover="addEditValues('{$vID}', '0')" onchange="if (this.selectedIndex) selectBoxChange('{$vID}', '1', this.value);">
+								<option value="-1" selected="selected">
+									<xsl:value-of select="Name"/>
+								</option>
+							</select>
+							<br/>
+							<div id="options" style="display: none;">
+								<xsl:for-each select="$vDocumentProj//*//*//TeamMember">
+									<xsl:variable name="vTeamMember" select="Name"/>
+									<xsl:value-of select="$vTeamMember"/>,
+								</xsl:for-each>
+							</div>
+							<div id="Other" style="display: none;">
+								<button onclick="changeApprovedBy('{$vID}')">Approved By: </button>
+								<textarea id="OtherText" rows="1">Other</textarea>
+								<br/>
+							</div>
+							<xsl:value-of select="Name"/>
+							<xsl:text>'s Comment: </xsl:text>
+							<xsl:apply-templates select="Para"/>
+							<xsl:apply-templates select="ApprovedBy"/>
+						</xsl:for-each>
+						<br/><br/>
+					</xsl:if>
 					<div id="refs">
 					<xsl:apply-templates select="Ref"/>
 						<xsl:if test="position() != last()">
