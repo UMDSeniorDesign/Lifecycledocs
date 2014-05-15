@@ -9,9 +9,7 @@
             <head>
                 <script>
                     function showSection(ID, title){
-						var width = (window.innerWidth * 0.65) - 20;
-						if(sessvars.xml.length > 2)
-							width = (document.body.offsetWidth * 0.65) - 20;
+						var width = (document.body.offsetWidth * 0.65) - 20;
 						var para = document.getElementById(ID);
 						textareas = para.getElementsByTagName("textarea");
 						for(var i = 0; i &lt; textareas.length; i ++){
