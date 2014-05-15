@@ -36,13 +36,17 @@
 							sessvars.toggle = "0";
                     }
 					function showRef(ID){
-						var refSpot = document.getElementById("ref");
-						var infoSpot = document.getElementById(ID);
-						var openOrClose = infoSpot.style.display;
-						if(openOrClose == 'block')
-							infoSpot.style.display = 'none';
-						else
-							infoSpot.style.display = 'block';
+						var viewRefSpot = document.getElementById("view");
+						var viewDivs = viewRefSpot.getElementsByTagName("div");
+						for(var i = 0; i &lt; viewDivs.length; i++){
+							if(viewDivs[i].id == ID){
+								var openOrClose = viewDivs[i].style.display;
+								if(openOrClose == 'block')
+									return viewDivs[i].style.display = 'none';
+								else
+									return viewDivs[i].style.display = 'block';
+							}
+						}
 					}
                 </script>
                 <title>Lifecycle Documents</title>
@@ -321,7 +325,7 @@
 				<xsl:for-each select="$vDocumentProj//*//file_location">
 					<xsl:variable name="vLocations" select="*/@href"/>
 					<xsl:variable name="vDocumentNewPath" select="string(concat('..//XML//',$vLocations))"/>
-					<xsl:for-each select="document($vDocumentNewPath)/descendant-or-self::*/*[@id=$vID]/Requirement">
+					<xsl:for-each select="document($vDocumentNewPath)/descendant-or-self::*/*[@id=$vID]/*">
 						<xsl:for-each select="Para">
 							<xsl:value-of select="."/> 
 						</xsl:for-each>
