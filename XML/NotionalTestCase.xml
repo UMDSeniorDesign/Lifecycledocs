@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="NotionalTestCaseXSL.xsl"?>
+<?xml-stylesheet type="text/xsl" href="NotionalSRSXSL.xsl"?>
  
 <TestCaseDocument xml:base="ProjectLifecycleDocuments.xml" projectName="Lifecycle Documents with Requirements Tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="NotionalSchema.xsd" >
     
@@ -559,7 +559,13 @@
     <Section isNewest="true" id="TC3.0">
         <Title isNewest="true">Pop-up HTA</Title>
         <Para isNewest="true" index="0">The Pop-up HTA handles a small popup window with variable content, depending on what the user has previously selected.</Para>
-        <Section isNewest="true" id="TC3.1">
+        <TestResult>true</TestResult>
+            <ApprovedBy isNewest="true">
+                <Name isNewest="true">Jeremiah Butler</Name>
+                <Date isNewest="true">2014-04-17T15:20:13.8</Date>
+                <Para isNewest="true" index="0">cool</Para>
+            </ApprovedBy>
+			<Section isNewest="true" id="TC3.1">
             <Title isNewest="true">User has right clicked a button in table of contents pane.</Title>
             <Para isNewest="true" index="0">Once the user has right-clicked on a button, the application will display a pop-up window containing additional functionality. This functionality includes adding more sections or requirements, subsections, or changing the title.</Para>
             <Ref isNewest="true">RQ3.1.1</Ref>

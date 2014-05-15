@@ -4,7 +4,7 @@
 
 
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-    <xsl:template match="SoftwareRequirementsDocument">
+    <xsl:template match="/">
         <html>
             <head>
                 <script>
@@ -77,8 +77,8 @@
             </head>
             <body>
             	<div id="toc">
-					<xsl:apply-templates select="Section" mode="section"/>
-					<xsl:apply-templates select="Section" mode="para"/>
+					<xsl:apply-templates select="*/Section" mode="section"/>
+					<xsl:apply-templates select="*/Section" mode="para"/>
 				</div>
 				<div id="view">
 					
