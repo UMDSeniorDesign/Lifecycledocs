@@ -88,7 +88,7 @@ function previewAsDocument(){
 /////***START SAVEPARAS FUNCTION***/////
 function saveParas(xml){
 	var xml = loadXML(xml);
-	var saveInfo = document.getElementById("section").innerHTML;
+	var saveInfo = document.getElementById("view").innerHTML;
 	var editedIdStart = saveInfo.search("<U>");
 	var editedIdEnd = saveInfo.search(" - ");
 	var editedId = saveInfo.substring(editedIdStart+3, editedIdEnd);
