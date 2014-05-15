@@ -535,7 +535,7 @@ function checkReferences(oldIds, newIds){
 		var xml = loadXML(fileName);
 		var sections = xml.getElementsByTagName("Section");
 		for(var j = 0; j < sections.length; j++){
-			var refs = sections[i].getElementsByTagName("Ref");
+			var refs = sections[j].getElementsByTagName("Ref");
 			for(var k = 0; k < refs.length; k++){
 				for(var n = 0; n < oldIds.length; n++){
 					if(refs[k].childNodes[0].nodeValue == oldIds[n]){

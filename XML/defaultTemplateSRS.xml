@@ -68,13 +68,11 @@
 			<Para isNewest="true" index="0">INSERT EXTERNAL INTERFACE REQUIREMENTS</Para>
 			<Requirement isNewest="true" id="RQ3.1.1">
 				<Title isNewest="true"> User Interfaces </Title>
-				<Para isNewest="true" index="0">INSERT USER INTERFACE DESCRIPTION
-		</Para>
+				<Para isNewest="true" index="0">INSERT USER INTERFACE DESCRIPTION</Para>
 			</Requirement>
 			<Requirement isNewest="true" id="RQ3.1.2">
 				<Title isNewest="true">HardwareInterfaces</Title>
-				<Para isNewest="true" index="0">INSERT HARDWARE INTERFACE DESCRIPTION
-  		</Para>
+				<Para isNewest="true" index="0">INSERT HARDWARE INTERFACE DESCRIPTION</Para>
 			</Requirement>
 			<Requirement isNewest="true" id="RQ3.1.3">
 				<Title isNewest="true">Software Interfaces</Title>
@@ -85,13 +83,13 @@
 				<Para isNewest="true" index="0">INSERT COMMUNICATION INTERFACE DESCRIPTION </Para>
 			</Requirement>
 		</Section>
-	</Section>
-	<Section isNewest="true" id="RQ3.2">
-		<Title isNewest="true">Functional Requirements</Title>
-		<Para isNewest="true" index="0">INSERT FUNCTIONAL REQUIREMENTS</Para>
-	</Section>
-	<Section isNewest="true" id="RQ3.3">
-		<Title isNewest="true">Use Case</Title>
-		<Para isNewest="true" index="0">INSERT USE CASES</Para>
+		<Section isNewest="true" id="RQ3.2">
+			<Title isNewest="true">Functional Requirements</Title>
+			<Para isNewest="true" index="0">INSERT FUNCTIONAL REQUIREMENTS</Para>
+		</Section>
+		<Section isNewest="true" id="RQ3.3">
+			<Title isNewest="true">Use Case</Title>
+			<Para isNewest="true" index="0">INSERT USE CASES</Para>
+		</Section>
 	</Section>
 </SoftwareRequirementsDocument>
