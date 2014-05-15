@@ -283,13 +283,16 @@ function add(ID, aORb, type, index){
 				}
 			}
 			if(type == 2){
+				var options = document.getElementById("refOptions");
 				var value = document.getElementById("refOptions").value;
-				if(aORb == reqs[i].getAttribute("id")){
+				if(ID == reqs[i].getAttribute("id")){
 					newRef = xml.createElement("Ref");
 					newRef.setAttribute("isNewest","true");
 					newRefText = xml.createTextNode(value);
 					newRef.appendChild(newRefText);
 					reqs[i].appendChild(newRef);
+					if(options.style.display == 'block')
+						options.style.display = 'none';
 					return saveFile(xml, "Reference Added", ID);
 				}
 			}
