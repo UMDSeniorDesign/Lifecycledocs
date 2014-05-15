@@ -132,11 +132,17 @@ function selectBoxChange(ID, type, value) {
 		}
 		else{
 			for(var i = 0; i < childs.length; i++){
-				if(childs[i].nodeName == "ApprovedBy"){
-					childs[i].childNodes[0].nodeValue = value;
+				if(childs[i].nodeName == "ApprovedBy" && childs[i].getAttribute("isNewest") == 'true'){
+					var newNode = childs[i].cloneNode(true);
+					childs[i].setAttribute("isNewest", 'false');
+					var name = newNode.getElementsByTagName("Name")[0];
+					name.childNodes[0].nodeValue = value;
+					var comment = newNode.getElementsByTagName("Para")[0];
+					comment.childNodes[0].nodeValue = "Insert Comment";
+					sectionToChange.insertBefore(newNode, childs[i]);
 				}
 			}
-			var returnString = "Approved By Changed to "+value;
+			var returnString = "Approved By Changed to: "+value;
 			saveFile(xml, returnString, ID);
 		}
 	}
@@ -161,9 +167,15 @@ function changeApprovedBy(ID){
 	for(var i = 0; i < divs.length; i++){
 		if(divs[i].id == "OtherText"){
 			if(divs[i].value != "Other"){
-				for(var i = 0; i < childs.length; i++){
-					if(childs[i].nodeName == "ApprovedBy"){
-						childs[i].childNodes[0].nodeValue = divs[i].value;
+				for(var j = 0; j < childs.length; j++){
+					if(childs[j].nodeName == "ApprovedBy" && childs[j].getAttribute("isNewest") == 'true'){
+						var newNode = childs[j].cloneNode(true);
+						childs[j].setAttribute("isNewest", 'false');
+						var name = newNode.getElementsByTagName("Name")[0];
+						name.childNodes[0].nodeValue = divs[i].value;
+						var comment = newNode.getElementsByTagName("Para")[0];
+						comment.childNodes[0].nodeValue = "Insert Comment";
+						sectionToChange.insertBefore(newNode, childs[j]);
 					}
 				}
 				var returnString = "Approved By Changed to "+divs[i].value;
