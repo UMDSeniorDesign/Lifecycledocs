@@ -22,10 +22,11 @@
             <Ref isNewest="true">RQ3.2.2</Ref>
             <Section isNewest="true" id="TC1.1.1">
                 <Title isNewest="true">Buttons and textbox are displayed</Title>
-                <Para isNewest="true" index="0">New Project, Open Project, and Browse buttons are displayed, as well as a textbox that the user may click into, but is unable to type since this is only a URI display when selecting a project..</Para>
+                <Para isNewest="true" index="0">New Project, Show Project Info, and Browse buttons are displayed, as well as a textbox that the user may click into, but is unable to type since this is only a URI display when selecting a project..</Para>
                 <TestResult>true</TestResult>
                 <ApprovedBy isNewest="true">
                     <Name isNewest="true">Peter Magalhaes</Name>
+                    <Date isNewest="true">2014-05-15T00:44:00</Date>
                     <Para isNewest="true" index="0">nice!</Para>
                 </ApprovedBy>
                 <Ref isNewest="true">RQ3.1.1.2</Ref>
@@ -38,7 +39,8 @@
                 <ApprovedBy isNewest="true">
                     <Name isNewest="true">Jonathan</Name>
                     <Date isNewest="true">2014-04-12T13:20:15.5</Date>
-                    <Para isNewest="true" index="0"></Para>
+                    <UIC>EXT-UIC</UIC>
+                    <Para isNewest="true" index="0">external name is working</Para>
                 </ApprovedBy>
             </Section>
         </Section>
@@ -46,7 +48,12 @@
         <Section isNewest="true" id="TC1.2">
             <Title isNewest="true">Click browse button</Title>
             <Para isNewest="true" index="0">Browse button, when clicked, displays file explorer for user to select a project XML file.</Para>
-            <TestResult>false</TestResult>
+            <TestResult>true</TestResult>
+            <ApprovedBy isNewest="true">
+                <Name isNewest="true">Peter Magalhaes</Name>
+                <Date isNewest="true">2014-05-15T00:44:00</Date>
+                <Para isNewest="true" index="0">ok it's working!</Para>
+            </ApprovedBy>
             <ApprovedBy isNewest="true">
                 <Name isNewest="true">Peter Magalhaes</Name>
                 <Para isNewest="true" index="0">getting a script error here</Para>
@@ -68,7 +75,8 @@
                 <TestResult>true</TestResult>
                 <ApprovedBy isNewest="true">
                     <Name isNewest="true">Peter Magalhaes</Name>
-                    <Para isNewest="true" index="0">great!</Para>
+                    <Date isNewest="true">2014-05-15T00:52:00</Date>
+                    <Para isNewest="true" index="0">project information does not appear, and error message appears when trying to proceed</Para>
                 </ApprovedBy>
                 <Ref isNewest="true">RQ3.1.4</Ref>
             </Section>
@@ -78,14 +86,20 @@
                 <TestResult>true</TestResult>
                 <ApprovedBy isNewest="true">
                     <Name isNewest="true">Ari Ushani</Name>
+                    <Date isNewest="true">2014-05-01T14:56:35</Date>
                     <UIC isNewest="true">UMD-UIC</UIC>
                 </ApprovedBy>
                 <Ref isNewest="true">RQ3.1.4</Ref>
             </Section>
             <Section isNewest="true" id="TC1.2.4">
                 <Title isNewest="true">Team member information is displayed</Title>
-                <Para isNewest="true" index="0">Properly display the XSL containing team member names, file count, and buttons to remove team members. This should also remove the project title and the sponsor image.</Para>
+                <Para isNewest="true" index="0">Properly display the XSL containing team member names, file count, and buttons to remove team members. This should also remove the project title and the sponsor image and replace them with a table and project name.</Para>
                 <TestResult>false</TestResult>
+                <ApprovedBy isNewest="true">
+                    <Name isNewest="true">Peter Magalhaes</Name>
+                    <Date isNewest="true">2014-05-15T00:55:00</Date>
+                    <Para isNewest="true" index="0">project name doesn't work!</Para>
+                </ApprovedBy>
                 <ApprovedBy isNewest="true">
                     <Name isNewest="true">Peter Magalhaes</Name>
                     <Para isNewest="true" index="0">we are going to rearrange the buttons</Para>
@@ -93,15 +107,26 @@
             </Section>
         </Section>
         <Section isNewest="true" id="TC1.3">
-            <Title isNewest="true">Open Project button is clicked</Title>
-            <Para isNewest="true" index="0">When a valid URI appears in the textbox, and that URI leads to a valid project xml file, the user is then directed to the view HTA with one file open in the interface.</Para>
+            <Title isNewest="true">Show Project Info or Proceed to Project button is clicked</Title>
+            <Para isNewest="true" index="0">After browsing for file, a valid URI appears in the textbox, and that URI leads to a valid project xml file, the user is presented a table containing the project name, files, and members.</Para>
+            <TestResult>false</TestResult>
+            <ApprovedBy isNewest="true">
+                <Name isNewest="true">Peter Magalhaes</Name>
+                <Date isNewest="true">2014-05-15T00:56:00</Date>
+                <Para isNewest="true" index="0">project name doesn't work, still says PLCD.</Para>
+            </ApprovedBy>
             <Ref isNewest="true">RQ3.1</Ref>
             <Ref isNewest="true">RQ3.2.2</Ref>
             <Ref isNewest="true">RQ3.3.3</Ref>
             <Section isNewest="true" id="TC1.3.1">
-                <Title isNewest="true">Open project is clicked with valid XML in URI textbox</Title>
+                <Title isNewest="true">Show Project Info or Proceed to Project is clicked with valid XML in URI textbox</Title>
                 <Para isNewest="true" index="0">If project file is valid, project is opened in new view HTA.</Para>
-                <TestResult>false</TestResult>
+                <TestResult>true</TestResult>
+                <ApprovedBy isNewest="true">
+                    <Name isNewest="true">Peter Magalhaes</Name>
+                    <Date isNewest="true">2014-05-15T00:57:00</Date>
+                    <Para isNewest="true" index="0">nice!</Para>
+                </ApprovedBy>
                 <ApprovedBy isNewest="true">
                     <Name isNewest="true">Peter Magalhaes</Name>
                     <Para isNewest="true" index="0">this is a work in action</Para>
@@ -111,8 +136,8 @@
                 <Ref isNewest="true">RQ3.3.2</Ref>
             </Section>
             <Section isNewest="true" id="TC1.3.2">
-                <Title isNewest="true">Open project is clicked with empty textbox</Title>
-                <Para isNewest="true" index="0">User is prompted with error message: Please select a project to open!</Para>
+                <Title isNewest="true">Show Project Info is clicked with empty textbox</Title>
+                <Para isNewest="true" index="0">Nothing happens, and the interface waits for the user.</Para>
                 <TestResult>true</TestResult>
                 <ApprovedBy isNewest="true">
                     <Name isNewest="true">Peter Magalhaes</Name>
@@ -123,14 +148,31 @@
                 <Ref isNewest="true">RQ3.3.1</Ref>
             </Section>
             <Section isNewest="true" id="TC1.3.3">
-                <Title isNewest="true">Open project is clicked with invalid XML file in URI textbox</Title>
+                <Title isNewest="true">Show Project Info is clicked with invalid XML file in URI textbox</Title>
                 <Para isNewest="true" index="0">User is prompted with error message, and the project information does not display.</Para>
+                <TestResult>true</TestResult>
+                <ApprovedBy isNewest="true">
+                    <Name isNewest="true">Peter Magalhaes</Name>
+                    <Date isNewest="true">2014-05-15T01:02:00</Date>
+                    <Para isNewest="true" index="0">gets erro rwhen trying to proceed to the project.</Para>
+                </ApprovedBy>
+                <ApprovedBy isNewest="true">
+                    <Name isNewest="true">Peter Magalhaes</Name>
+                    <Date isNewest="true">2014-05-15T00:58:00</Date>
+                    <Para isNewest="true" index="0">error when trying to proceed</Para>
+                </ApprovedBy>
                 <Ref isNewest="true">RQ3.1.4</Ref>
             </Section>
         </Section>
         <Section isNewest="true" id="TC1.4">
             <Title isNewest="true">New Project button is clicked</Title>
             <Para isNewest="true" index="0">User selects new Project to create a new project, and is allowed to name files, while default templates fill a small portion of the XML data for the user to begin working.</Para>
+            <TestResult>true</TestResult>
+            <ApprovedBy isNewest="true">
+                <Name isNewest="true">Peter Magalhaes</Name>
+                <Date isNewest="true">2014-05-15T01:16:00</Date>
+                <Para isNewest="true" index="0">gets erro rwhen trying to proceed to the project.</Para>
+            </ApprovedBy>
             <Ref isNewest="true">RQ3.1.1</Ref>
             <Ref isNewest="true">RQ3.1.4</Ref>
             <Ref isNewest="true">RQ3.2.1</Ref>
@@ -138,23 +180,46 @@
             <Section isNewest="true" id="TC1.4.1">
                 <Title isNewest="true">Display information, button, and empty textbox.</Title>
                 <Para isNewest="true" index="0">Display button, empty textbox, and button for user to make project.</Para>
+                <TestResult>true</TestResult>
+                <ApprovedBy isNewest="true">
+                    <Name isNewest="true">Peter Magalhaes</Name>
+                    <Date isNewest="true">2014-05-15T01:30:00</Date>
+                    <Para isNewest="true" index="0">good job!</Para>
+                </ApprovedBy>
             </Section>
             <Section isNewest="true" id="TC1.4.2">
                 <Title isNewest="true">Text box is typeable.</Title>
-                <Para isNewest="true" index="0">The user is able to enter text into the text box representing the project name.</Para>
+                <Para isNewest="true" index="0">The user is able to enter text into the text box representing the project name, and a filename.</Para>
+                <TestResult>false</TestResult>
+                <ApprovedBy isNewest="true">
+                    <Name isNewest="true">Peter Magalhaes</Name>
+                    <Date isNewest="true">2014-05-15T01:36:00</Date>
+                    <Para isNewest="true" index="0">script error when trying to use illegal characters in filenames. (*/|\? etc)</Para>
+                </ApprovedBy>
                 <Ref isNewest="true">RQ3.1.4</Ref>
                 <Ref isNewest="true">RQ3.2.3</Ref>
                 <Ref isNewest="true">RQ3.3.3</Ref>
             </Section>
             <Section isNewest="true" id="TC1.4.3">
                 <Title isNewest="true">Button is clicked with invalid input in textbox.</Title>
-                <Para isNewest="true" index="0">User is prompted to re-enter a valid project name for the project.</Para>
+                <Para isNewest="true" index="0">User receives and error message.</Para>
+                <TestResult>true</TestResult>
+                <ApprovedBy isNewest="true">
+                    <Name isNewest="true">Peter Magalhaes</Name>
+                    <Date isNewest="true">2014-05-15T01:40:00</Date>
+                    <Para isNewest="true" index="0">script error</Para>
+                </ApprovedBy>
                 <Ref isNewest="true">RQ3.1.4</Ref>
             </Section>
             <Section isNewest="true" id="TC1.4.4">
                 <Title isNewest="true">User is able to cancel New Project selection.</Title>
                 <Para isNewest="true" index="0">If the user clicks the New Project button, and does not want to create a new project, the user can cancel his selection, browse for a valid project, or close the windows using the "X" in the top right corner.</Para>
                 <TestResult>false</TestResult>
+                <ApprovedBy isNewest="true">
+                    <Name isNewest="true">Peter Magalhaes</Name>
+                    <Date isNewest="true">2014-05-15T01:40:00</Date>
+                    <Para isNewest="true" index="0">still doesnt work. when user tries to browse, valid project info doesnt display, user is forced to close window and restart.</Para>
+                </ApprovedBy>
                 <ApprovedBy isNewest="true">
                     <Name isNewest="true">Peter Magalhaes</Name>
                     <Date isNewest="true">2014-05-07T09:38:13.8</Date>
@@ -165,7 +230,12 @@
             <Section isNewest="true" id="TC1.4.5">
                 <Title isNewest="true">Make My Project button is selected with an empty project name textbox.</Title>
                 <Para isNewest="true" index="0">The user is prompted to re-enter a project name into the textbox.</Para>
-                <TestResult>false</TestResult>
+                <TestResult>true</TestResult>
+                <ApprovedBy isNewest="true">
+                    <Name isNewest="true">Peter Magalhaes</Name>
+                    <Date isNewest="true">2014-05-15T01:40:00</Date>
+                    <Para isNewest="true" index="0">this will be ok, creates files, and asks to overwrite them. user cannot proceed to project info.</Para>
+                </ApprovedBy>
                 <ApprovedBy isNewest="true">
                     <Name isNewest="true">Peter Magalhaes</Name>
                     <Date isNewest="true">2014-05-07T09:38:00</Date>
@@ -179,6 +249,12 @@
             <Section isNewest="true" id="TC1.4.6">
                 <Title isNewest="true">Make My Project button is selected with an invalid project name.</Title>
                 <Para isNewest="true" index="0">If the user has appended ".xml" to the project name, the project name is corrected and proceeds, or the user is prompted to re-enter a valid project name for the project.</Para>
+                <TestResult>false</TestResult>
+                <ApprovedBy isNewest="true">
+                    <Name isNewest="true">Peter Magalhaes</Name>
+                    <Date isNewest="true">2014-05-15T01:47:00</Date>
+                    <Para isNewest="true" index="0">user is unable to cancel/close the overwrite confirmation, the user is forced to overwrite. also every cancel, appends more than 3 files to the project xml!</Para>
+                </ApprovedBy>
                 <Ref isNewest="true">RQ3.1.1</Ref>
                 <Ref isNewest="true">RQ3.1.4</Ref>
                 <Ref isNewest="true">RQ3.2.1</Ref>
@@ -187,18 +263,36 @@
             <Section isNewest="true" id="TC1.4.7">
                 <Title isNewest="true">Make My Project button is selected with an valid project name.</Title>
                 <Para isNewest="true" index="0">Once the user enters a valid name for the project, the user is allowed to name three initial project files. Once file for each document (requirement doc, use cases, and test cases).</Para>
+                <TestResult>true</TestResult>
+                <ApprovedBy isNewest="true">
+                    <Name isNewest="true">Peter Magalhaes</Name>
+                    <Date isNewest="true">2014-05-15T01:48:00</Date>
+                    <Para isNewest="true" index="0">works great!</Para>
+                </ApprovedBy>
                 <Ref isNewest="true">RQ3.1.1</Ref>
                 <Ref isNewest="true">RQ3.1.4</Ref>
                 <Ref isNewest="true">RQ3.2.1</Ref>
                 <Ref isNewest="true">RQ3.3.1</Ref>
                 <Section isNewest="true" id="TC1.4.7.1">
-                    <Title isNewest="true">Open Project button is selected with an invalid file name in any of the default template files.</Title>
+                    <Title isNewest="true">Show Project Info button is selected with an invalid file name in any of the default template files.</Title>
                     <Para isNewest="true" index="0">If the user has appended ".xml" to the file name, the file name is corrected and proceeds to open the project in the view HTA. Otherwise, the user is prompted to re-enter file names for the project.</Para>
+                    <TestResult>true</TestResult>
+                    <ApprovedBy isNewest="true">
+                        <Name isNewest="true">Peter Magalhaes</Name>
+                        <Date isNewest="true">2014-05-15T01:48:00</Date>
+                        <Para isNewest="true" index="0">works only for appending .xml. See TC1.4.6</Para>
+                    </ApprovedBy>
                     <Ref isNewest="true">RQ3.1.4</Ref>
                 </Section>
                 <Section isNewest="true" id="TC1.4.7.2">
-                    <Title isNewest="true">Open Project button is selected with valid file names entered by the user.</Title>
-                    <Para isNewest="true" index="0">The file names typed in by the user are created in the correct directory with the correct XPath. The view HTA is opened once the files are created on the hard disk, and the view HTA is populated with the information created by the user for this new project.</Para>
+                    <Title isNewest="true">Show Project Info button is selected with valid file names entered by the user.</Title>
+                    <Para isNewest="true" index="0">The file names typed in by the user are created in the correct directory with the correct XPath. The user is presented with the project infor.</Para>
+                    <TestResult>true</TestResult>
+                    <ApprovedBy isNewest="true">
+                        <Name isNewest="true">Peter Magalhaes</Name>
+                        <Date isNewest="true">2014-05-15T01:50:00</Date>
+                        <Para isNewest="true" index="0">works great!</Para>
+                    </ApprovedBy>
                     <Ref isNewest="true">RQ3.1.1</Ref>
                     <Ref isNewest="true">RQ3.1.4</Ref>
                     <Ref isNewest="true">RQ3.2.2</Ref>
@@ -210,7 +304,13 @@
     
     <Section isNewest="true" id="TC2.0">
         <Title isNewest="true">Open Project in view HTA</Title>
-        <Para isNewest="true" index="0">Once a valid project base xml is selected, and the 'Open Project' button is clicked. The user is then directed to the view HTA where there appears many divisions, to isolate buttons, table of contents, and different sections user interface appear, while some are hidden.</Para>
+        <Para isNewest="true" index="0">Once a valid project base xml is selected, and the 'Show Project Info' button  or the 'Proceed to Project' button is clicked. The user is then directed to the view HTA where there appears many divisions, to isolate buttons, table of contents, and different sections user interface appear, while some are hidden.</Para>
+        <TestResult>true</TestResult>
+        <ApprovedBy isNewest="true">
+            <Name isNewest="true">Peter Magalhaes</Name>
+            <Date isNewest="true">2014-05-15T01:54:00</Date>
+            <Para isNewest="true" index="0">works great!</Para>
+        </ApprovedBy>
         <Ref isNewest="true">RQ3.1.1</Ref>
         <Ref isNewest="true">RQ3.1.2</Ref>
         <Ref isNewest="true">RQ3.1.3.1</Ref>
@@ -232,8 +332,13 @@
         </Section>
         <Section isNewest="true" id="TC2.2">
             <Title isNewest="true">Export Table shows with buttons.</Title>
-            <Para isNewest="true" index="0">The Export Table is the table floating to the top right of the view HTA. This floating panel should offer exporting options. These include: Create Matrix, Preview Document, and Download as HTML</Para>
+            <Para isNewest="true" index="0">The Export Table is the table floating to the top right of the view HTA. This floating panel should offer exporting options. These include: Create Matrix, Preview Document, and Download as HTML. There is also a button for going back to the splash screen.</Para>
             <TestResult>true</TestResult>
+            <ApprovedBy isNewest="true">
+                <Name isNewest="true">Peter Magalhaes</Name>
+                <Date isNewest="true">2014-05-15T01:57:00</Date>
+                <Para isNewest="true" index="0">modified test case</Para>
+            </ApprovedBy>
             <ApprovedBy isNewest="true">
                 <Name isNewest="true">Jeremiah Butler</Name>
                 <Para isNewest="true" index="0">derP</Para>
@@ -252,6 +357,11 @@
                 <TestResult>false</TestResult>
                 <ApprovedBy isNewest="true">
                     <Name isNewest="true">Peter Magalhaes</Name>
+                    <Date isNewest="true">2014-05-15T02:00:00</Date>
+                    <Para isNewest="true" index="0">only works when project file is in same directory as xml files.</Para>
+                </ApprovedBy>
+                <ApprovedBy isNewest="true">
+                    <Name isNewest="true">Peter Magalhaes</Name>
                     <Para isNewest="true" index="0">back button need to be at top of page, but looks really good, i'll add some color to it</Para>
                 </ApprovedBy>
                 <ApprovedBy isNewest="false">
@@ -260,7 +370,7 @@
                 </ApprovedBy>
                 <ApprovedBy isNewest="false">
                     <Name isNewest="true">Peter Magalhaes</Name>
-                    <Para isNewest="true" index="0">somethings now working, i think we're missing files in the directory?</Para>
+                    <Para isNewest="true" index="0">somethings not working, i think we're missing files in the directory?</Para>
                 </ApprovedBy>
                 <Ref isNewest="true">RQ3.1.1.3</Ref>
                 <Ref isNewest="true">RQ3.1.3</Ref>
@@ -269,6 +379,12 @@
                 <Section isNewest="true" id="TC2.2.1.1">
                     <Title isNewest="true">Buttons, textbox, and populated table appears.</Title>
                     <Para isNewest="true" index="0">At the top of the page we see the Back button, and the Save RTM button with a textbox for the user to enter a file name should they choose to export the table. The requirements traceability matrix is displayed to the user, which displays all the columns and no empty elements.</Para>
+                    <TestResult>true</TestResult>
+                    <ApprovedBy isNewest="true">
+                        <Name isNewest="true">Peter Magalhaes</Name>
+                        <Date isNewest="true">2014-05-15T02:01:00</Date>
+                        <Para isNewest="true" index="0">works great!</Para>
+                    </ApprovedBy>
                     <Ref isNewest="true">RQ3.1.1</Ref>
                     <Ref isNewest="true">RQ3.1.3</Ref>
                     <Ref isNewest="true">RQ3.2.2</Ref>
@@ -288,7 +404,12 @@
                 <Section isNewest="true" id="TC2.2.1.3">
                     <Title isNewest="true">Save RTM as CSV</Title>
                     <Para isNewest="true" index="0">The user clicks save RTM as CSV, and the csv is autmatically generated using the text input by the user into the textbox.</Para>
-                    <TestResult>false</TestResult>
+                    <TestResult>true</TestResult>
+                    <ApprovedBy isNewest="true">
+                        <Name isNewest="true">Peter Magalhaes</Name>
+                        <Date isNewest="true">2014-05-15T02:01:00</Date>
+                        <Para isNewest="true" index="0">exports the csv, just missing a column in some rows.</Para>
+                    </ApprovedBy>
                     <ApprovedBy isNewest="true">
                         <Name isNewest="true">Peter Magalhaes</Name>
                         <Para isNewest="true" index="0">this doesnt look right, not even a little bit</Para>
@@ -301,6 +422,12 @@
                 <Section isNewest="true" id="TC2.2.1.4">
                     <Title isNewest="true">ID button clicked</Title>
                     <Para isNewest="true" index="0">ID buttons lead to popup containing information regarding the ID of the button clicked.</Para>
+                    <TestResult>false</TestResult>
+                    <ApprovedBy isNewest="true">
+                        <Name isNewest="true">Peter Magalhaes</Name>
+                        <Date isNewest="true">2014-05-15T02:02:00</Date>
+                        <Para isNewest="true" index="0">buttons dont work</Para>
+                    </ApprovedBy>
                     <Ref isNewest="true">RQ3.1.1</Ref>
                     <Ref isNewest="true">RQ3.2.2</Ref>
                     <Ref isNewest="true">RQ3.3.2</Ref>
@@ -309,6 +436,12 @@
             <Section isNewest="true" id="TC2.2.2">
                 <Title isNewest="true">Preview in Document Format</Title>
                 <Para isNewest="true" index="0">The user clicked preview in document format, and is directed to a popup of the document, transformed by XSL, into a formal readable document. The user can exit the window at any time.</Para>
+                <TestResult>true</TestResult>
+                <ApprovedBy isNewest="true">
+                    <Name isNewest="true">Peter Magalhaes</Name>
+                    <Date isNewest="true">2014-05-15T02:03:00</Date>
+                    <Para isNewest="true" index="0">works great!</Para>
+                </ApprovedBy>
                 <Ref isNewest="true">RQ3.1.1.3</Ref>
                 <Ref isNewest="true">RQ3.2.4</Ref>
                 <Ref isNewest="true">RQ3.3.4</Ref>
@@ -316,6 +449,12 @@
             <Section isNewest="true" id="TC2.2.3">
                 <Title isNewest="true">Download as HTML</Title>
                 <Para isNewest="true" index="0">The user clicks download as html, and a hidden table appears in a small popup window. The buttons in the popup should be one for each file in the project, and one button to download the entire project.</Para>
+                <TestResult>true</TestResult>
+                <ApprovedBy isNewest="true">
+                    <Name isNewest="true">Peter Magalhaes</Name>
+                    <Date isNewest="true">2014-05-15T02:05:00</Date>
+                    <Para isNewest="true" index="0">works!</Para>
+                </ApprovedBy>
                 <Ref isNewest="true">RQ3.2.1</Ref>
                 <Ref isNewest="true">RQ3.1.3.2</Ref>
                 <Ref isNewest="true">RQ3.1.4</Ref>
@@ -326,11 +465,23 @@
                 <Section isNewest="true" id="TC2.2.3.1">
                     <Title isNewest="true">Popup window appears with buttons.</Title>
                     <Para isNewest="true" index="0">Popup window apprears and is populated with buttons. One button for each xml file in the project, with an additional button to download all the files in the project as html.</Para>
+                    <TestResult>true</TestResult>
+                    <ApprovedBy isNewest="true">
+                        <Name isNewest="true">Peter Magalhaes</Name>
+                        <Date isNewest="true">2014-05-15T02:05:00</Date>
+                        <Para isNewest="true" index="0">works great!</Para>
+                    </ApprovedBy>
                     <Ref isNewest="true">RQ3.1.1</Ref>
                 </Section>
                 <Section isNewest="true" id="TC2.2.3.2">
                     <Title isNewest="true">Download Single XML button is clicked.</Title>
                     <Para isNewest="true" index="0">The appropriate xml selected by the user is then converted to html and saved into the "Saves" folder in the project directory.</Para>
+                    <TestResult>true</TestResult>
+                    <ApprovedBy isNewest="true">
+                        <Name isNewest="true">Peter Magalhaes</Name>
+                        <Date isNewest="true">2014-05-15T02:06:00</Date>
+                        <Para isNewest="true" index="0">works great!</Para>
+                    </ApprovedBy>
                     <Ref isNewest="true">RQ3.1.1</Ref>
                     <Ref isNewest="true">RQ3.1.2</Ref>
                     <Ref isNewest="true">RQ3.1.3.1</Ref>
@@ -341,6 +492,12 @@
                 <Section isNewest="true" id="TC2.2.3.3">
                     <Title isNewest="true">Download Project is clicked</Title>
                     <Para isNewest="true" index="0">All of the xml files contained in the project file are converted to html and saved to the "Saves" folder in the project directory.</Para>
+                    <TestResult>false</TestResult>
+                    <ApprovedBy isNewest="true">
+                        <Name isNewest="true">Peter Magalhaes</Name>
+                        <Date isNewest="true">2014-05-15T02:01:00</Date>
+                        <Para isNewest="true" index="0">missing the rtm when project xml not is same directory as xml.</Para>
+                    </ApprovedBy>
                     <Ref isNewest="true">RQ3.1.1</Ref>
                     <Ref isNewest="true">RQ3.1.2</Ref>
                     <Ref isNewest="true">RQ3.1.3.1</Ref>
@@ -351,12 +508,24 @@
                 <Section isNewest="true" id="TC2.2.3.4">
                     <Title isNewest="true">User closes popup window.</Title>
                     <Para isNewest="true" index="0">The popup window should close and return to the previous view in the view HTA window.</Para>
+                    <TestResult>true</TestResult>
+                    <ApprovedBy isNewest="true">
+                        <Name isNewest="true">Peter Magalhaes</Name>
+                        <Date isNewest="true">2014-05-15T02:07:00</Date>
+                        <Para isNewest="true" index="0">great!</Para>
+                    </ApprovedBy>
                 </Section>
             </Section>
         </Section>
         <Section isNewest="true" id="TC2.3">
             <Title isNewest="true">Sections are displayed with their titles in Table of Content div tag. </Title>
             <Para isNewest="true" index="0">The table of contents is automatically filled with sections from the requirements XML document. Also, when a section is clicked, the "toc" or table of contents div which is aligned to the left side of the screen is shown to have buttons with section id's in them, as well as the section title.</Para>
+            <TestResult>true</TestResult>
+            <ApprovedBy isNewest="true">
+                <Name isNewest="true">Peter Magalhaes</Name>
+                <Date isNewest="true">2014-05-15T02:08:00</Date>
+                <Para isNewest="true" index="0">works great!</Para>
+            </ApprovedBy>
             <Ref isNewest="true">RQ3.1.1</Ref>
             <Ref isNewest="true">RQ3.1.3.2</Ref>
             <Ref isNewest="true">RQ3.1.4.1</Ref>
@@ -369,6 +538,12 @@
             <Section isNewest="true" id="TC2.3.1">
                 <Title isNewest="true">Section or Requirement button is left clicked</Title>
                 <Para isNewest="true" index="0">When the Section or Requirement button is left clicked, all of the subsections or sub-requirements contained within the clicked section will be displayed below the pressed button, in the form of more buttons with ID and title. The left clicked button will display its contents in the view div located on the right side of the screen. This includes all para's, images, test result information, and references</Para>
+                <TestResult>true</TestResult>
+                <ApprovedBy isNewest="true">
+                    <Name isNewest="true">Peter Magalhaes</Name>
+                    <Date isNewest="true">2014-05-15T02:07:00</Date>
+                    <Para isNewest="true" index="0">works, when on widescreen, the view pane drops under the toc pane.</Para>
+                </ApprovedBy>
                 <Ref isNewest="true">RQ3.1.1</Ref>
                 <Ref isNewest="true">RQ3.2.2</Ref>
                 <Ref isNewest="true">RQ3.3.2</Ref>
@@ -376,6 +551,12 @@
             <Section isNewest="true" id="TC2.3.2">
                 <Title isNewest="true">Section or Requirement button is right clicked</Title>
                 <Para isNewest="true" index="0">When the Section or Requirement button is right clicked, options for editing the document are displayed.</Para>
+                <TestResult>false</TestResult>
+                <ApprovedBy isNewest="true">
+                    <Name isNewest="true">Peter Magalhaes</Name>
+                    <Date isNewest="true">2014-05-15T02:08:00</Date>
+                    <Para isNewest="true" index="0">script error when trying these function on ID 1.0, 2.0, 3.0, etc. this section needs retesting.</Para>
+                </ApprovedBy>
                 <Ref isNewest="true">RQ3.1.1</Ref>
                 <Ref isNewest="true">RQ3.1.4</Ref>
                 <Ref isNewest="true">RQ3.2.2</Ref>

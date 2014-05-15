@@ -49,11 +49,11 @@
 			function saveFiletoProject(xml, file){
 				var fso = new ActiveXObject("Scripting.FileSystemObject");
 				//If windows 7, use this line
-				//var f = fso.GetFolder("../Projects");
-				//var a = fso.CreateTextFile(f+"/"+xml, true);
+				var f = fso.GetFolder("../Projects");
+				var a = fso.CreateTextFile(f+"/"+xml, true);
 				//If windows 8, use this line
-				var f = fso.GetFolder("\Projects");
-				var a = fso.CreateTextFile(f+"\\"+xml, true);
+				//var f = fso.GetFolder("\Projects");
+				//var a = fso.CreateTextFile(f+"\\"+xml, true);
 				
 				a.Write(file.xml);
 				a.Close();
@@ -61,11 +61,11 @@
 			function saveFiletoXML(xml, file){
 				var fso = new ActiveXObject("Scripting.FileSystemObject");
 				//If windows 7, use this line
-				//var f = fso.GetFolder("../XML");
-				//var a = fso.CreateTextFile(f+"/"+xml+".xml", true);
+				var f = fso.GetFolder("../XML");
+				var a = fso.CreateTextFile(f+"/"+xml+".xml", true);
 				//If windows 8, use this line
-				var f = fso.GetFolder("\XML");
-				var a = fso.CreateTextFile(f+"\\"+xml, true);
+				//var f = fso.GetFolder("\XML");
+				//var a = fso.CreateTextFile(f+"\\"+xml, true);
 				
 				a.Write(file.xml);
 				a.Close();
@@ -81,9 +81,9 @@
 					file.getElementsByTagName("file_location")[j].childNodes[0].setAttribute("href", getName(j)+".xml");
 					
 					//windows 8
-					f.CopyFile("../Lifecycledocs/XML/"+attr, "../Lifecycledocs/XML/"+getName(j)+".xml", 1);
+					//f.CopyFile("../Lifecycledocs/XML/"+attr, "../Lifecycledocs/XML/"+getName(j)+".xml", 1);
 					//Windows 7
-					//f.CopyFile("../XML/"+attr, "../XML/"+getName(j)+".xml", 1);
+					f.CopyFile("../XML/"+attr, "../XML/"+getName(j)+".xml", 1);
 					
 					saveFiletoXML(getName(j), xmlFile);
 				}
@@ -118,29 +118,29 @@
 				var fso = new ActiveXObject("Scripting.FileSystemObject");
 				
 				//windows 8
-				if(fso.FileExists("../Lifecycledocs/Projects/"+projectName+".xml")) {
+				/*if(fso.FileExists("../Lifecycledocs/Projects/"+projectName+".xml")) {
 					var r = confirm("Overwrite?")	
-					if(r == true) 
-						alert("Overwriten");
-					else
-						createProject();
-				}
-				
-				//windows 7 
-				/*if(fso.FileExists("../Projects/"+projectName+".xml")) {
-					var r = confirm("Overwrite?")
 					if(r == true) 
 						alert("Overwriten");
 					else
 						createProject();
 				}*/
 				
+				//windows 7 
+				if(fso.FileExists("../Projects/"+projectName+".xml")) {
+					var r = confirm("Overwrite?")
+					if(r == true) 
+						alert("Overwriten");
+					else
+						createProject();
+				}
+				
 				
 				//Windows 8 function
-				fso.CopyFile("../Lifecycledocs/Projects/template.xml", "../Lifecycledocs/Projects/"+projectName+".xml", 1);
+				//fso.CopyFile("../Lifecycledocs/Projects/template.xml", "../Lifecycledocs/Projects/"+projectName+".xml", 1);
 								
 				//Windows 7 function
-				//fso.CopyFile("../Projects/template.xml", "../Projects/"+projectName+".xml", 1);
+				fso.CopyFile("../Projects/template.xml", "../Projects/"+projectName+".xml", 1);
 				
 				load(projectName);
 				//alert(projectName);
@@ -195,9 +195,9 @@
 			
 			var fs = new ActiveXObject("Scripting.FileSystemObject");
 			//If windows 7, use this line
-			//var f = fs.GetFolder("../Projects");
+			var f = fs.GetFolder("../Projects");
 			//If windows 8, use this line
-			var f = fs.GetFolder("\Projects");
+			//var f = fs.GetFolder("\Projects");
 
 			file = f.CreateTextFile(projectName, true);
 			file.write(xmlDoc.xml);
@@ -254,9 +254,9 @@
 			
 			var fs = new ActiveXObject("Scripting.FileSystemObject");
 			//If windows 7, use this line
-			//var f = fs.GetFolder("../Projects");
+			var f = fs.GetFolder("../Projects");
 			//If windows 8, use this line
-			var f = fs.GetFolder("\Projects");
+			//var f = fs.GetFolder("\Projects");
 
 			file = f.CreateTextFile(projectName, true);
 			file.write(xmlDoc.xml);
@@ -297,9 +297,9 @@
 			
 			var fs = new ActiveXObject("Scripting.FileSystemObject");
 			//If windows 7, use this line
-			//var f = fs.GetFolder("../Projects");
+			var f = fs.GetFolder("../Projects");
 			//If windows 8, use this line
-			var f = fs.GetFolder("\Projects");
+			//var f = fs.GetFolder("\Projects");
 
 			file = f.CreateTextFile(projectName, true);
 			file.write(xmlDoc.xml);
@@ -338,9 +338,9 @@
 			
 			var fs = new ActiveXObject("Scripting.FileSystemObject");
 			//If windows 7, use this line
-			//var f = fs.GetFolder("../Projects");
+			var f = fs.GetFolder("../Projects");
 			//If windows 8, use this line
-			var f = fs.GetFolder("\Projects");
+			//var f = fs.GetFolder("\Projects");
 
 			file = f.CreateTextFile(projectName, true);
 			file.write(xmlDoc.xml);
