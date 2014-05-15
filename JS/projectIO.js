@@ -196,10 +196,14 @@ function addMember() {
 	m.appendChild(newNode);
 	var newM = document.getElementById("member").value;
 	var newR = document.getElementById("role").value;
+	if(newM == undefined || newR == undefined){
+		alert("Please specify Name and Role before attempting to add!");
+		return window.location.reload();
+	}
 	for(var k = 0; k < newNode.childNodes.length; k++) {
-		if((k == 0) && (newNode.childNodes[k].childNodes[0].nodeValue == ""))
+		if((newNode.childNodes[k].nodeName == "Name") && (newNode.childNodes[k].childNodes[0].nodeValue == ""))
 			newNode.childNodes[k].childNodes[0].nodeValue = newM;
-		else if((k == 2) && (newNode.childNodes[k].childNodes[0].nodeValue == ""))
+		else if((newNode.childNodes[k].nodeName == "Role") && (newNode.childNodes[k].childNodes[0].nodeValue == ""))
 			newNode.childNodes[k].childNodes[0].nodeValue = newR;
 	}
 	var fs = new ActiveXObject("Scripting.FileSystemObject");
