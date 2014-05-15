@@ -45,19 +45,29 @@ function showMenu(ID, type, paraCount) {
 			var popup = document.createElement("div");
 			popup.style.display = 'none';
 			popup.innerHTML = rightClickMenu.innerHTML;
+			var title = popup.getElementsByTagName("textarea")[0];
+			title.rows = (parseInt(title.value.length / title.cols +1)||1);
 			//rightClickMenu.style.display = 'block';
 			var buttons = rightClickMenu.getElementsByTagName("button");
 			var popupButtons = popup.getElementsByTagName("button");
 			for(var i = 0; i < popupButtons.length; i++){
-				popupButtons[i].setAttribute('onclick', 'closePopup('+i+')');
+				if(popupButtons[i].value != "Change Title to:")
+					popupButtons[i].setAttribute('onclick', 'closePopup('+i+')');
+				else{
+					var closeFunct = "closePopup(document.getElementById('"+ID+"Title').value)";
+					popupButtons[i].setAttribute('onclick', closeFunct);
+				}
 				if(popupButtons[i].id == "close")
 					popupButtons[i].setAttribute('onclick', 'closePopup(-1)');
 			}
 			var popupString = ("<center>"+popup.innerHTML+"</center>");
 			var popObject = {html:popupString, id:ID};
-			var pop = window.showModalDialog("popup.hta", popObject, "dialogWidth:425px;dialogHeight: 125px");
+			var pop = window.showModalDialog("popup.hta", popObject, "dialogWidth:425px;dialogHeight: 150px");
 			if(pop != -1 && pop != undefined){
-				buttons[pop].click();
+				if(!parseInt(pop))
+					changeTitle(ID, pop);
+				else
+					buttons[pop].click();
 			}
 		}
 		else if(type == 3){//Add Reference Menu

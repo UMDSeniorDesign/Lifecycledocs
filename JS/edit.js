@@ -420,15 +420,15 @@ function remove(ID, fromID, type){
 	}
 }
 /////***START CHANGETITLE FUNCTION***/////
-function changeTitle(ID){
+function changeTitle(ID, newName){
 	var xml = loadXML(sessvars.xml);
-	var newTitle = document.getElementById(ID+"Title").value;
+	var newTitle = newName;
 	var sections = xml.getElementsByTagName("Section");
 	for(var i = 0; i < sections.length; i++){
 		if(ID == sections[i].getAttribute("id")){
-			var titles = sections[i].getElementsByTagName("Title");
+			var titles = sections[i].childNodes;
 			for(var j = 0; j < titles.length; j++){
-				if(titles[j].getAttribute("isNewest") == 'true'){
+				if(titles[j].nodeName == "Title" && titles[j].getAttribute("isNewest") == 'true'){
 					if(titles[j].childNodes[0].nodeValue == newTitle){
 						alert("Title not changed!");
 						return;
@@ -440,7 +440,7 @@ function changeTitle(ID){
 					newTitleElement.appendChild(newTitleText);
 					newTitleElement.setAttribute("isNewest","true");
 					parentNode.insertBefore(newTitleElement, titles[j]);
-					alert(titles[j].childNodes[0].nodeValue+" Changed to: "+newTitle);
+					//alert(titles[j].childNodes[0].nodeValue+" Changed to: "+newTitle);
 				}
 			}
 		}
@@ -462,7 +462,7 @@ function changeTitle(ID){
 					newTitleElement.appendChild(newTitleText);
 					newTitleElement.setAttribute("isNewest","true");
 					parentNode.insertBefore(newTitleElement, titles[j]);
-					alert(titles[j].childNodes[0].nodeValue+" Changed to: "+newTitle);
+					//alert(titles[j].childNodes[0].nodeValue+" Changed to: "+newTitle);
 				}
 			}
 		}
