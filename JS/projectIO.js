@@ -35,6 +35,17 @@ function saveFiletoProject(xml, file){
 	
 	a.Write(file.xml);
 	a.Close();
+	
+	var fso2 = new ActiveXObject("Scripting.FileSystemObject");
+	//If windows 7, use this line
+	var f2 = fso.GetFolder("../XML");
+	var a2 = fso.CreateTextFile(f2+"/"+xml, true);
+	//If windows 8, use this line
+	//var f = fso.GetFolder("\XML");
+	//var a = fso.CreateTextFile(f+"\\"+xml, true);
+	
+	a2.Write(file.xml);
+	a2.Close();
 }
 	
 function saveFiletoXML(xml, file){
@@ -103,12 +114,11 @@ function createProject() {
 	if(fso.FileExists("../Projects/"+projectName+".xml")) {
 		var r = confirm("Overwrite?")
 		if(r == true) 
-			alert("Overwriten");
+			alert("Overwritten");
 		else
 			return window.location.reload();
 	}
 	fso.CopyFile("../Projects/template.xml", "../Projects/"+projectName+".xml", 1);
-	
 	//windows 8
 	/*if(fso.FileExists("../Lifecycledocs/Projects/"+projectName+".xml")) {
 		var r = confirm("Overwrite?")	
@@ -122,7 +132,6 @@ function createProject() {
 	
 	load(projectName);
 	sessvars.projectName = projectName+".xml";
-	
 }
 
 function getProjectInfo(i, project) {
