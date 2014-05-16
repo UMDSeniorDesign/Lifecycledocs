@@ -81,7 +81,7 @@
 					<xsl:apply-templates select="*/Section" mode="para"/>
 				</div>
 				<div id="view">
-					
+					<!-- empty when start -->
 				</div>
 				<div id="refLocation">
 				</div>
@@ -301,7 +301,7 @@
 		<xsl:if test="@isNewest = 'true'">
 			<xsl:variable name="vID" select="."/>
 			<xsl:variable name="vfromID" select="../@id"/>
-			<xsl:variable name="vDocumentBase" select="/*/@xml:base"/>
+			<xsl:variable name="vDocumentBase" select="ancestor-or-self::*/@xml:base"/>
 			<xsl:variable name="vDocumentPath" select="string(concat('..//Projects//',$vDocumentBase))"/>
 			<xsl:variable name="vDocumentProj" select="document($vDocumentPath)"/>
 			<xsl:variable name="vTitle">
@@ -327,9 +327,50 @@
 					</xsl:for-each>
 				</xsl:for-each>
 			</xsl:variable>
+			<xsl:variable name="vTestResult">
+				<xsl:for-each select="$vDocumentProj//*//file_location">
+					<xsl:variable name="vLocations" select="*/@href"/>
+					<xsl:variable name="vDocumentNewPath" select="string(concat('..//XML//',$vLocations))"/>
+					<xsl:for-each select="document($vDocumentNewPath)/descendant-or-self::*/*[@id=$vID]">
+						<xsl:value-of select="TestResult"/>
+						<xsl:if test="position() != last()">
+							<br/>
+						</xsl:if>
+					</xsl:for-each>
+				</xsl:for-each>
+			</xsl:variable>
 			
 			<button type="button" onclick="showRef('{$vID}')" oncontextmenu="showMenu('{$vID}', '1');return false;">
-				<xsl:value-of select="$vID"/></button> - <xsl:value-of select="$vTitle"/>
+				<xsl:value-of select="$vID"/></button>
+			<xsl:text>&#160;&#160;</xsl:text>
+			<xsl:choose>
+				<xsl:when test="contains($vID, 'UC')">
+					- <xsl:value-of select="$vTitle"/>
+				</xsl:when>
+				<xsl:when test="$vTestResult = ''">
+					<b>
+						<font color="red">
+							<xsl:text>UNTESTED</xsl:text>
+						</font>
+					</b>
+				</xsl:when>
+				<xsl:when test="$vTestResult = 'true'">
+					<b>
+						<font color="green">
+							<xsl:text>Passed</xsl:text>
+						</font>
+					</b>
+					- <xsl:value-of select="$vTitle"/>
+				</xsl:when>
+				<xsl:when test="$vTestResult = 'false'">
+					<b>
+						<font color="red">
+							<xsl:text>Failed</xsl:text>
+						</font>
+					</b>
+					- <xsl:value-of select="$vTitle"/>
+				</xsl:when>
+			</xsl:choose>
 			<div id="ref">
 				<div id="{.}" style="display: none;">
 					<xsl:value-of select="$vPara"/>
