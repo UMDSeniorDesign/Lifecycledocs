@@ -97,18 +97,24 @@ function saveParas(xml){
 	var viewParas = saveMe.getElementsByTagName("textarea");
 	for(var i = 0; i < sections.length; i++){
 		if(editedId == sections[i].getAttribute("id")){
-			var originalParas = sections[i].getElementsByTagName("Para");
+			var childNodes = sections[i].childNodes;
+			var originalParas = [];
+			for(var j = 0; j < childNodes.length; j++){
+				if(childNodes[j].nodeName == "Para")
+					originalParas.push(childNodes[j]);
+			}
 			for(var j = 0, k = 0; j < originalParas.length; j++, k++){
-				while(originalParas[j].getAttribute("isNewest") != 'true')
+				while(j < originalParas.length && (originalParas[j].nodeName != "Para" || originalParas[j].getAttribute("isNewest") != 'true'))
 					j++;
 				for(var m = 0; m < viewParas.length; m++){
 					if(viewParas[m].id == (editedId+"Para"+k))
 						var editedPara = viewParas[m].value;
 				}
 				var originalCheck = originalParas[j].childNodes[0].nodeValue;
-				editedCheck = editedPara.replace("&nbsp;", "");
-				if(originalCheck != editedCheck){
-					//alert("You changed: "+originalCheck+"\nTo : "+editedCheck);
+				//editedCheck = editedPara.replace("&nbsp;", "");
+				var editedCheck = editedPara
+				if(originalCheck != editedCheck && editedCheck != undefined && editedCheck != ""){
+					alert("You changed "+sections[i].getAttribute("id")+" : "+originalCheck+"\nTo "+editedId+" : "+editedCheck);
 					originalParas[j].setAttribute("isNewest","false");
 					editedPara = xml.createElement("Para");
 					editedText=xml.createTextNode(editedCheck);
