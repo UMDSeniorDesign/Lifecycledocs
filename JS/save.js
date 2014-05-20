@@ -88,18 +88,23 @@ function previewAsDocument(){
 /////***START SAVEPARAS FUNCTION***/////
 function saveParas(xml){
 	var xml = loadXML(xml);
+	var saveMe = document.getElementById("view");
 	var saveInfo = document.getElementById("view").innerHTML;
 	var editedIdStart = saveInfo.search("<U>");
 	var editedIdEnd = saveInfo.search(" - ");
 	var editedId = saveInfo.substring(editedIdStart+3, editedIdEnd);
 	var sections = xml.getElementsByTagName("Section");
+	var viewParas = saveMe.getElementsByTagName("textarea");
 	for(var i = 0; i < sections.length; i++){
 		if(editedId == sections[i].getAttribute("id")){
 			var originalParas = sections[i].getElementsByTagName("Para");
 			for(var j = 0, k = 0; j < originalParas.length; j++, k++){
 				while(originalParas[j].getAttribute("isNewest") != 'true')
 					j++;
-				var editedPara = document.getElementById(editedId+"Para"+k).value;
+				for(var m = 0; m < viewParas.length; m++){
+					if(viewParas[m].id == (editedId+"Para"+k))
+						var editedPara = viewParas[m].value;
+				}
 				var originalCheck = originalParas[j].childNodes[0].nodeValue;
 				editedCheck = editedPara.replace("&nbsp;", "");
 				if(originalCheck != editedCheck){
