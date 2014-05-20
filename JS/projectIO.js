@@ -69,6 +69,7 @@ function save(projectName) {
 		var attr = file.getElementsByTagName("file_location")[j].childNodes[0].getAttribute("href");
 		var xmlFile = loadXML(attr);
 		xmlFile.documentElement.setAttribute("xml:base",project)
+		xmlFile.documentElement.setAttribute("projectName", projectName);
 		file.getElementsByTagName("file_location")[j].childNodes[0].setAttribute("href", getName(j)+".xml");
 		//Windows 7
 		f.CopyFile("../XML/"+attr, "../XML/"+getName(j)+".xml", 1);
