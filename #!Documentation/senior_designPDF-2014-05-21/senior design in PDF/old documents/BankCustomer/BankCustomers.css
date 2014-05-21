@@ -1,0 +1,38 @@
+Customer{
+	border : thick groove #A9A9A9;
+	display : block;
+	padding : 1em 1em 1em 1em;
+	line-height : 20pt;
+	font-size : 16pt;
+	margin-bottom : 10pt;
+	text-align : center;
+	margin-left : 10%;
+	margin-right : 10%;
+    }
+
+Name  {
+	color : Blue;
+	font-family : cursive;
+	font-size : 18pt;
+	display : block;
+	margin-bottom : .5em;
+}
+Street{
+	display : block;
+}
+
+Telephone{
+	display:block;
+	margin-bottom : 6px;
+	margin-top : 6px;
+}
+
+Email{
+	display : block;
+	font-style : italic;
+	font-size : 14pt;
+}
+
+Account{
+	display : none;
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="RTM.xsl">
+    <x:scenario pending="Not yet implemented"
+        label="Scenario for testing template with match 'SoftwareRequirementsDocument">
+        <x:context/>
+        <x:expect label="Not yet implemented" select="'Not yet implemented'"/>
+    </x:scenario>
+
+    <x:scenario pending="Not yet implemented"
+        label="Scenario for testing template with match 'Requirement[@isNewest='true']">
+        <x:context/>
+        <x:expect label="Not yet implemented" select="'Not yet implemented'"/>
+    </x:scenario>
+
+    <x:scenario pending="Not yet implemented" label="Scenario for testing function testCaseRow">
+        <x:call template="testCaseRow">
+            <x:param name="i" select="'no_value'"/>
+            <x:param name="rows" select="'no_value'"/>
+        </x:call>
+        <x:expect label="Not yet implemented" select="'Not yet implemented'"/>
+    </x:scenario>
+
+    <x:scenario pending="Not yet implemented" label="Scenario for testing function testResults">
+        <x:call template="testResults">
+            <x:param name="myRef" select="'no_value'"/>
+        </x:call>
+        <x:expect label="Not yet implemented" select="'Not yet implemented'"/>
+    </x:scenario>
+</x:description>

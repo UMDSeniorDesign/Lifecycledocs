@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="NotionalUseCaseXSL.xsl">
+    <x:scenario pending="Not yet implemented"
+        label="Scenario for testing template with match 'UseCaseDocument">
+        <x:context/>
+        <x:expect label="Not yet implemented" select="'Not yet implemented'"/>
+    </x:scenario>
+
+    <x:scenario pending="Not yet implemented"
+        label="Scenario for testing template with match 'Section | Requirement' and mode 'section'">
+        <x:context mode="section"/>
+        <x:expect label="Not yet implemented" select="'Not yet implemented'"/>
+    </x:scenario>
+
+    <x:scenario pending="Not yet implemented"
+        label="Scenario for testing template with match 'Section | Requirement' and mode 'para'">
+        <x:context mode="para"/>
+        <x:expect label="Not yet implemented" select="'Not yet implemented'"/>
+    </x:scenario>
+
+    <x:scenario pending="Not yet implemented" label="Scenario for testing template with match 'Para">
+        <x:context/>
+        <x:expect label="Not yet implemented" select="'Not yet implemented'"/>
+    </x:scenario>
+
+    <x:scenario pending="Not yet implemented" label="Scenario for testing template with match 'Ref">
+        <x:context/>
+        <x:expect label="Not yet implemented" select="'Not yet implemented'"/>
+    </x:scenario>
+</x:description>

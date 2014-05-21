@@ -1,0 +1,93 @@
+<SoftwareRequirementsSpecification projectName="Some Project">
+  
+  <ProjectTeam>
+    <TeamMember>
+      <Name></Name>
+      <Role></Role>  
+    </TeamMember>
+    <TeamMember>
+      <Name></Name>
+      <Role></Role>
+    </TeamMember>    
+  </ProjectTeam>
+  
+  <Introduction>
+    <Identification></Identification>
+    <Overview>
+      <Para></Para>
+      <Para></Para>
+    </Overview>
+    <GeneralRequirements>
+      <Para></Para>
+      <Para></Para>      
+    </GeneralRequirements>
+  </Introduction>
+
+  <GeneralDescription>
+    <ProductFunctions>
+      <Para></Para>
+      <Para></Para>
+    </ProductFunctions>
+    <UserCharacteristics>
+      <Para></Para>
+      <Para></Para>
+    </UserCharacteristics>
+    <GeneralConstraints>
+      <Para></Para>
+      <Constraint></Constraint>
+      <Para></Para>
+      <Constraint></Constraint>
+    </GeneralConstraints>
+    <Assumptions>
+      <Para></Para>
+      <Assumption></Assumption>
+      <Para></Para>
+      <Assumption></Assumption>
+    </Assumptions>
+  </GeneralDescription>
+
+  <FunctionalRequirements>
+    <Overview>
+      <Para></Para>
+      <Para></Para>
+    </Overview>
+    <GeneralRequirement id="FR01" type="input" shortName="StartUp">
+      <Name>System StartUp</Name>
+      <Description></Description>
+      <Requirement id="FR01.01" shortName="ExistingDocument"  testCaseID="FRT01.01">
+        <Name>Open existing document.</Name>
+	      <Description>The user shall be offered the option to open an existing document.</Description>
+        <Para>Use this para if additional information needs to be captured.</Para>
+	      <Requirement id="FR01.01.01" shortName="SomeDetailedRequirement" testCaseID="FRT01.01.01">
+		      <Description>The system must do something.</Description>
+          <Para>Use this para if additional information needs to be captured.</Para>
+	      </Requirement>
+      </Requirement>
+      <Requirement id="FR01.02" shortName="NewDocument">
+        <Name>Create new document</Name>
+        <Description>The user shall be offered the option to create a new document.</Description>
+        <Para>Use this para if additional information needs to be captured.</Para>
+        <Requirement id="FR01.02.01" shortName="SomeDetailedRequirement" testCaseID="FRT01.02.01">
+          <Description>The system must do something.</Description>
+          <Para>Use this para if additional information needs to be captured.</Para>
+        </Requirement>
+      </Requirement>
+    </GeneralRequirement>
+    <GeneralRequirement>
+      ...
+    </GeneralRequirement>
+  </FunctionalRequirements>
+
+  <InterfaceRequirements>
+    <!-- Pretty much the same stuff as 'Functional Requirements. -->
+  </InterfaceRequirements>
+
+  <PerformanceRequirements>
+    <!-- Pretty much the same stuff as 'Functional Requirements. -->
+  </PerformanceRequirements>
+
+  <ExternalRequirements>
+    <!-- Pretty much the same stuff as 'Functional Requirements. -->
+  </ExternalRequirements>
+
+</SoftwareRequirementsSpecification>
