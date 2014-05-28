@@ -98,30 +98,20 @@ function add(ID, aORb, type, index){
 							}
 						}
 						if(index == -1){
-						alert("index = -1");
-						
-						alert("highestIndex = " + highestIndex);
-							if(highestIndex > 0){
-								alert("highestIndex > 0");
+							if(highestIndex > 0)
 								return add(ID, aORb, 3, highestIndex);
-								}
 							else{
 								var newNode = xml.createElement("Para");
-								//changed this from 0 to highestIndex+1
-								newNode.setAttribute("index", highestIndex+1);
+								newNode.setAttribute("index", 0);
 								newNode.setAttribute("isNewest", "true");
 								newNodeText =  xml.createTextNode("New Para");
 								newNode.appendChild(newNodeText)
 								sections[i].appendChild(newNode);
-								//tried this 5-28-2014
-								highestIndex++;
 								return saveFile(xml, "Para Added!", ID);
 							}
 						}
-						if(added == 1) {
-						alert("in added 1");
+						if(added == 1)
 							return saveFile(xml, "Para Added!", ID);
-							}
 						else
 							continue;
 					}
@@ -201,7 +191,6 @@ function add(ID, aORb, type, index){
 							if(paras[j].nodeName == "Para"){
 								if(index == -1){
 									var curIndex = paras[j].getAttribute("index");
-									alert("curIndex = " + curIndex);
 									if(curIndex > highestIndex)
 										highestIndex = curIndex;
 								}
@@ -232,12 +221,8 @@ function add(ID, aORb, type, index){
 							}
 						}
 						if(index == -1){
-						alert("index = -1 second one");
 							if(highestIndex > 0)
-							{
-								
 								return add(ID, aORb, 3, highestIndex);
-								}
 							else{
 								var newNode = xml.createElement("Para");
 								newNode.setAttribute("index", 0);
@@ -248,10 +233,8 @@ function add(ID, aORb, type, index){
 								return saveFile(xml, "Para Added!", ID);
 							}
 						}
-						if(added == 1){
-						alert("added 1 asdasd");
+						if(added == 1)
 							return saveFile(xml, "Para Added!", ID);
-							}
 						else
 							continue;
 					}
