@@ -112,7 +112,7 @@ function saveParas(xml){
 				}
 				var originalCheck = originalParas[j].childNodes[0].nodeValue;
 				//editedCheck = editedPara.replace("&nbsp;", "");
-				var editedCheck = editedPara
+				var editedCheck = editedPara;
 				if(originalCheck != editedCheck && editedCheck != undefined && editedCheck != ""){
 					alert("You changed "+sections[i].getAttribute("id")+" : "+originalCheck+"\nTo "+editedId+" : "+editedCheck);
 					originalParas[j].setAttribute("isNewest","false");
