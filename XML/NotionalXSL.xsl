@@ -139,10 +139,15 @@
 			<xsl:variable name="vID">
 				<xsl:value-of select="@id"/>
 			</xsl:variable>
+			
 			<div id="section">
 				<div id="{@id}" style="display: none;">
 					<div id="edit">
-						<xsl:apply-templates select="Para"/>
+				
+						<xsl:apply-templates select="Para">
+						<xsl:sort select="@index"/>
+						</xsl:apply-templates>
+						
 						<xsl:if test="position() != last()">
 							<br/>
 						</xsl:if>
