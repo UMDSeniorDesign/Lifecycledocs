@@ -1,0 +1,10 @@
+-fixed error when adding para's. when using the edit menu, and left-clicking 'add para', the para always contained index 0. when the index should be respective of it's position amongst other para's in the section.
+
+-fixed notionalXSL to show para's in order by index, as they weren't before.
+
+
+
+
+
+
+-need to fix save paras!
