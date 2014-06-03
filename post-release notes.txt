@@ -1,10 +1,9 @@
 -fixed error when adding para's. when using the edit menu, and left-clicking 'add para', the para always contained index 0. when the index should be respective of it's position amongst other para's in the section.
+--This isn't fixed, I simply told you about the error, please attempt to address this if the save is fixed
+
 
 -fixed notionalXSL to show para's in order by index for each section, as they were listed in the order they appeared in the xml.
 
 
-
-
-
-
 -need to fix save paras!
+--The textarea paras need an index so they can be compared to the correct xml para
