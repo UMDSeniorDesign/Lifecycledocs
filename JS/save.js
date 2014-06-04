@@ -86,7 +86,11 @@ function previewAsDocument(){
 	window.open("../Saves/"+filename);
 }
 /////***START SAVEPARAS FUNCTION***/////
+
+//PLEASE NOTE WE ONLY ALLOW EDITING ONE PARA PER SAVE!!!!!
+
 function saveParas(xml){
+	var found = 0;
 	var xml = loadXML(xml);
 	var saveMe = document.getElementById("view");
 	var saveInfo = document.getElementById("view").innerHTML;
@@ -97,35 +101,47 @@ function saveParas(xml){
 	var viewParas = saveMe.getElementsByTagName("textarea");
 	for(var i = 0; i < sections.length; i++){
 		if(editedId == sections[i].getAttribute("id")){
-			var childNodes = sections[i].childNodes;
-			var originalParas = [];
-			for(var j = 0; j < childNodes.length; j++){
-				if(childNodes[j].nodeName == "Para")
-					originalParas.push(childNodes[j]);
+			found = 1;
+			var editingNode = sections[i];
+		}
+	}
+	if(found == 0){
+		var reqs = xml.getElementsByTagName("Requirement");
+		for(var i = 0; i < reqs.length; i++){
+			if(editedId == reqs[i].getAttribute("id")){
+				found = 1;
+				var editingNode = reqs[i];
 			}
-			for(var j = 0, k = 0; j < originalParas.length; j++, k++){
-				while(j < originalParas.length && (originalParas[j].nodeName != "Para" || originalParas[j].getAttribute("isNewest") != 'true'))
-					j++;
-				for(var m = 0; m < viewParas.length; m++){
-					//This is where we check to make sure we are comparing the correct textarea to the xml
-					if(viewParas[m].id == (editedId+"Para"+k))
-						alert("Found: "+viewParas[m].id);
-						var editedPara = viewParas[m].value;
-				}
-				var originalCheck = originalParas[j].childNodes[0].nodeValue;
-				var editedCheck = editedPara.replace("&nbsp;", "");
-				if(originalCheck != editedCheck && editedCheck != undefined && editedCheck != ""){
-					alert("You changed "+sections[i].getAttribute("id")+" : "+originalCheck+"\nTo "+editedId+" : "+editedCheck);
-					originalParas[j].setAttribute("isNewest","false");
-					editedPara = xml.createElement("Para");
-					editedText=xml.createTextNode(editedCheck);
-					editedPara.appendChild(editedText);
-					editedPara.setAttribute("isNewest","true");
-					editedPara.setAttribute("index", k);
-					sections[i].appendChild(editedPara);
-					return saveFile(xml, "File Saved!", editedId);
-				}
-			}
+		}
+	}
+	if(found != 1)
+		return alert("Save Error!");
+	var childNodes = editingNode.childNodes;
+	var originalParas = [];
+	for(var j = 0; j < childNodes.length; j++){
+		if(childNodes[j].nodeName == "Para")
+			originalParas.push(childNodes[j]);
+	}
+	for(var j = 0, k = 0; j < originalParas.length; j++, k++){
+		while(j < originalParas.length && (originalParas[j].nodeName != "Para" || originalParas[j].getAttribute("isNewest") != 'true'))
+			j++;
+		for(var m = 0; m < viewParas.length; m++){
+			//This is where we check to make sure we are comparing the correct textarea to the xml
+			if(viewParas[m].id == (editedId+"Para"+k))
+				var editedPara = viewParas[m].value;
+		}
+		var originalCheck = originalParas[j].childNodes[0].nodeValue;
+		var editedCheck = editedPara.replace("&nbsp;", "");
+		if(originalCheck != editedCheck && editedCheck != undefined && editedCheck != ""){
+			alert("You changed "+editingNode.getAttribute("id")+" : "+originalCheck+"\nTo "+editedId+" : "+editedCheck);
+			originalParas[j].setAttribute("isNewest","false");
+			editedPara = xml.createElement("Para");
+			editedText=xml.createTextNode(editedCheck);
+			editedPara.appendChild(editedText);
+			editedPara.setAttribute("isNewest","true");
+			editedPara.setAttribute("index", k);
+			editingNode.appendChild(editedPara);
+			return saveFile(xml, "File Saved!", editedId);
 		}
 	}
 }
