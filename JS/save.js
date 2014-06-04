@@ -109,6 +109,7 @@ function saveParas(xml){
 				for(var m = 0; m < viewParas.length; m++){
 					//This is where we check to make sure we are comparing the correct textarea to the xml
 					if(viewParas[m].id == (editedId+"Para"+k))
+						alert("Found: "+viewParas[m].id);
 						var editedPara = viewParas[m].value;
 				}
 				var originalCheck = originalParas[j].childNodes[0].nodeValue;

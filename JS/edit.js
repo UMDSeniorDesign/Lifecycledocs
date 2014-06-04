@@ -132,6 +132,7 @@ function add(ID, aORb, type, index){
 					newSectionParaText = xml.createTextNode("New Para");
 					newSectionParaElement.appendChild(newSectionParaText);
 					newSectionParaElement.setAttribute("isNewest","true");
+					newSectionParaElement.setAttribute("index","0");
 					newNode.appendChild(newSectionParaElement);
 					var parentNode = sections[i].parentNode;
 					if(aORb == 0){//If add above
@@ -255,6 +256,7 @@ function add(ID, aORb, type, index){
 					newReqParaText = xml.createTextNode("New Para");
 					newReqParaElement.appendChild(newReqParaText);
 					newReqParaElement.setAttribute("isNewest","true");
+					newReqParaElement.setAttribute("index","0");
 					newNode.appendChild(newReqParaElement);
 					var parentNode = reqs[i].parentNode;
 					parentNode.insertBefore(newNode, reqs[i]);
