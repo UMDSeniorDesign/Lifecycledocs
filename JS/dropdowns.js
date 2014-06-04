@@ -168,6 +168,7 @@ function changeApprovedBy(ID){
 		if(divs[i].id == "OtherText"){
 			if(divs[i].value != "Other"){
 				for(var j = 0; j < childs.length; j++){
+				//This needs a check for existing test cases because it currently won't create a test result or approved by if they don't exist
 					if(childs[j].nodeName == "ApprovedBy" && childs[j].getAttribute("isNewest") == 'true'){
 						var newNode = childs[j].cloneNode(true);
 						childs[j].setAttribute("isNewest", 'false');
