@@ -557,12 +557,14 @@ function checkReferences(oldIds, newIds){
 		}
 		var reqs = xml.getElementsByTagName("Requirement");
 		for(var j = 0; j < reqs.length; j++){
-			var refs = reqs[i].getElementsByTagName("Ref");
-			for(var k = 0; k < refs.length; k++){
-				for(var n = 0; n < oldIds.length; n++){
-					if(refs[k].childNodes[0].nodeValue == oldIds[n]){
-						refs[k].childNodes[0].nodeValue = newIds[n];
-						//alert("Changed ref: "+oldIds[n]+" in: "+fileName+" to: "+refs[k].childNodes[0].nodeValue);
+			if(reqs[i].getElementsByTagName("Ref").length > 0){
+				var refs = reqs[i].getElementsByTagName("Ref");
+				for(var k = 0; k < refs.length; k++){
+					for(var n = 0; n < oldIds.length; n++){
+						if(refs[k].childNodes[0].nodeValue == oldIds[n]){
+							refs[k].childNodes[0].nodeValue = newIds[n];
+							//alert("Changed ref: "+oldIds[n]+" in: "+fileName+" to: "+refs[k].childNodes[0].nodeValue);
+						}
 					}
 				}
 			}
