@@ -107,12 +107,12 @@ function saveParas(xml){
 				while(j < originalParas.length && (originalParas[j].nodeName != "Para" || originalParas[j].getAttribute("isNewest") != 'true'))
 					j++;
 				for(var m = 0; m < viewParas.length; m++){
+					//This is where we check to make sure we are comparing the correct textarea to the xml
 					if(viewParas[m].id == (editedId+"Para"+k))
 						var editedPara = viewParas[m].value;
 				}
 				var originalCheck = originalParas[j].childNodes[0].nodeValue;
-				//editedCheck = editedPara.replace("&nbsp;", "");
-				var editedCheck = editedPara
+				var editedCheck = editedPara.replace("&nbsp;", "");
 				if(originalCheck != editedCheck && editedCheck != undefined && editedCheck != ""){
 					alert("You changed "+sections[i].getAttribute("id")+" : "+originalCheck+"\nTo "+editedId+" : "+editedCheck);
 					originalParas[j].setAttribute("isNewest","false");

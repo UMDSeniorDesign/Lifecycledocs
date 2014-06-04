@@ -283,7 +283,7 @@
 				<xsl:value-of select="@index"/>
 			</xsl:variable>
 			<div id="Para">
-				
+				<!--The vIndex variable needs to be parsed in the saveParas method so we know what para is being compared-->
 				<textarea id="{$vID}Para{$vIndex}" oncontextmenu="showMenu('{$vID}', '2', '{$vIndex}');return false;">
 				<xsl:value-of select="."/></textarea>
 				<br/>
