@@ -102,7 +102,6 @@ function add(ID, aORb, type, index){
 								return add(ID, aORb, 3, highestIndex);
 							else{
 								var newNode = xml.createElement("Para");
-								alert("nope here");
 								newNode.setAttribute("index", (highestIndex + 1));
 								newNode.setAttribute("isNewest", "true");
 								newNodeText =  xml.createTextNode("New Para");
@@ -227,7 +226,6 @@ function add(ID, aORb, type, index){
 								return add(ID, aORb, 3, highestIndex);
 							else{
 								var newNode = xml.createElement("Para");
-								alert("here i am");
 								newNode.setAttribute("index", 0);
 								newNode.setAttribute("isNewest", "true");
 								newNodeText =  xml.createTextNode("New Para");
