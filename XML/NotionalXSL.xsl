@@ -143,11 +143,9 @@
 			<div id="section">
 				<div id="{@id}" style="display: none;">
 					<div id="edit">
-				
 						<xsl:apply-templates select="Para">
-						<xsl:sort select="@index"/>
+							<xsl:sort select="@index" data-type="number"/>
 						</xsl:apply-templates>
-						
 						<xsl:if test="position() != last()">
 							<br/>
 						</xsl:if>
