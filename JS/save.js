@@ -116,33 +116,61 @@ function saveParas(xml){
 	}
 	if(found != 1)
 		return alert("Save Error!");
-	var childNodes = editingNode.childNodes;
+	var cNodes = editingNode.childNodes;
 	var originalParas = [];
-	for(var j = 0; j < childNodes.length; j++){
-		if(childNodes[j].nodeName == "Para")
-			originalParas.push(childNodes[j]);
+	for(var g = 0; g < cNodes.length; g++){
+		if(cNodes[g].nodeName == "Para")
+			originalParas.push(cNodes[g]);
 	}
+	var index = 99;
+	/* just picked 99 random, so it's not 0-10
+	alert("originalParas length=" + originalParas.length);
 	for(var j = 0, k = 0; j < originalParas.length; j++, k++){
-		while(j < originalParas.length && (originalParas[j].nodeName != "Para" || originalParas[j].getAttribute("isNewest") != 'true'))
+		while(j < originalParas.length && (originalParas[j].nodeName != "Para" || originalParas[j].getAttribute("isNewest") != 'true')){
 			j++;
-		for(var m = 0; m < viewParas.length; m++){
-			//This is where we check to make sure we are comparing the correct textarea to the xml
-			if(viewParas[m].id == (editedId+"Para"+k))
-				var editedPara = viewParas[m].value;
+			index = j;
+			}
+	}*/
+	
+	for(var m = 0; m < viewParas.length; m++){
+		//This is where we check to make sure we are comparing the correct textarea to the xml
+		var nodeVal = originalParas[m].childNodes[0].nodeValue;
+		var viewVal = viewParas[m].value;
+		alert("nodeVal=" + nodeVal + " viewVal=" + viewVal);
+		if(nodeVal != viewVal){
+			index = m; //Index should be position of updated para
+			var editedPara = viewParas[m].value;
+			alert("editedPara=" + editedPara);
+			//alert(originalParas[m].childNodes[0].nodeValue + " viewPara value = " + viewParas[m].value);
 		}
-		var originalCheck = originalParas[j].childNodes[0].nodeValue;
-		var editedCheck = editedPara.replace("&nbsp;", "");
-		if(originalCheck != editedCheck && editedCheck != undefined && editedCheck != ""){
-			alert("You changed "+editingNode.getAttribute("id")+" : "+originalCheck+"\nTo "+editedId+" : "+editedCheck);
-			originalParas[j].setAttribute("isNewest","false");
-			editedPara = xml.createElement("Para");
-			editedText=xml.createTextNode(editedCheck);
-			editedPara.appendChild(editedText);
-			editedPara.setAttribute("isNewest","true");
-			editedPara.setAttribute("index", k);
-			editingNode.appendChild(editedPara);
-			return saveFile(xml, "File Saved!", editedId);
+	}
+
+	var originalCheck = originalParas[index].childNodes[0].nodeValue;
+	var editedCheck = editedPara.replace("&nbsp;", "");
+	//alert(originalCheck + " and " + editedCheck);
+	if((originalCheck != editedCheck) && (editedCheck != undefined) && (editedCheck != "")){
+		alert("You changed "+editingNode.getAttribute("id")+" : "+originalCheck+"\nTo "+editedId+" : "+editedCheck);
+		originalParas[index].setAttribute("isNewest","false");
+		editedPara = xml.createElement("Para");
+		editedText=xml.createTextNode(editedCheck);
+		editedPara.appendChild(editedText);
+		editedPara.setAttribute("isNewest","true");
+		editedPara.setAttribute("index", index);
+		editingNode.appendChild(editedPara);
+		originalParas.length = 0; //Trying to reset array here
+		
+		//This originalParas needs to be refreshed with the editted text
+		for(var z = 0; z < cNodes.length; z++){
+			if((cNodes[z].nodeName == "Para") && cNodes[z].getAttribute("isNewest") == "true"){
+				originalParas.push(cNodes[z]);
+			}
+			//alert("originalCheck=" + originalCheck); // originalParas[g].childNodes[0].nodeValue);
+		
 		}
+		
+		//This alert should be the updated para after it was changed
+		alert(originalParas[1].childNodes[0].nodeValue);
+		return saveFile(xml, "File Saved!", editedId);
 	}
 }
 /////***START SAVEFILE FUNCTION***/////
