@@ -119,10 +119,10 @@ function saveParas(xml){
 	var cNodes = editingNode.childNodes;
 	var originalParas = [];
 	for(var g = 0; g < cNodes.length; g++){
-		if(cNodes[g].nodeName == "Para")
+		if((cNodes[g].nodeName == "Para") && (cNodes[g].getAttribute("isNewest") == "true"))
 			originalParas.push(cNodes[g]);
 	}
-	var index = 99;
+	var index = originalParas[0].getAttribute("index");
 	/* just picked 99 random, so it's not 0-10
 	alert("originalParas length=" + originalParas.length);
 	for(var j = 0, k = 0; j < originalParas.length; j++, k++){
@@ -136,11 +136,12 @@ function saveParas(xml){
 		//This is where we check to make sure we are comparing the correct textarea to the xml
 		var nodeVal = originalParas[m].childNodes[0].nodeValue;
 		var viewVal = viewParas[m].value;
-		alert("nodeVal=" + nodeVal + " viewVal=" + viewVal);
+		//alert("nodeVal=" + nodeVal + " viewVal=" + viewVal);
 		if(nodeVal != viewVal){
-			index = m; //Index should be position of updated para
 			var editedPara = viewParas[m].value;
-			alert("editedPara=" + editedPara);
+			index = m; //Index should be position of updated para
+			alert("index=" + index);
+			//alert("editedPara=" + editedPara);
 			//alert(originalParas[m].childNodes[0].nodeValue + " viewPara value = " + viewParas[m].value);
 		}
 	}
@@ -160,16 +161,18 @@ function saveParas(xml){
 		originalParas.length = 0; //Trying to reset array here
 		
 		//This originalParas needs to be refreshed with the editted text
-		for(var z = 0; z < cNodes.length; z++){
-			if((cNodes[z].nodeName == "Para") && cNodes[z].getAttribute("isNewest") == "true"){
+		/*for(var z = 0; z < cNodes.length; z++){
+			//alert(cNodes[z].getAttribute("isNewest") == "true");
+			if((cNodes[z].nodeName == "Para") && (cNodes[z].getAttribute("isNewest") == "true")){
 				originalParas.push(cNodes[z]);
+				alert("myString1");
 			}
 			//alert("originalCheck=" + originalCheck); // originalParas[g].childNodes[0].nodeValue);
 		
-		}
-		
+		}*/
+			
 		//This alert should be the updated para after it was changed
-		alert(originalParas[1].childNodes[0].nodeValue);
+		//alert(originalParas[4].childNodes[0].nodeValue);
 		return saveFile(xml, "File Saved!", editedId);
 	}
 }
