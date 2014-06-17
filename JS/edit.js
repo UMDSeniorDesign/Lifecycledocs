@@ -66,11 +66,11 @@ function add(ID, aORb, type, index){
 						for(var j = 0; j < paras.length; j++){
 							if(paras[j].nodeName == "Para"){
 								if(index == -1){
-									var curIndex = paras[j].getAttribute("index");
+									var curIndex = parseInt(paras[j].getAttribute("index"));
 									if(curIndex > highestIndex)
 										highestIndex = curIndex;
 								}
-								if(index == paras[j].getAttribute("index")){
+								if(index == parseInt(paras[j].getAttribute("index"))){
 									if(paras[j].getAttribute("isNewest") == "false")
 										continue;
 									var newNode = paras[j].cloneNode(true);
@@ -98,8 +98,10 @@ function add(ID, aORb, type, index){
 							}
 						}
 						if(index == -1){
-							if(highestIndex > 0)
+							if(highestIndex > 0){
+								alert(highestIndex);
 								return add(ID, aORb, 3, highestIndex);
+								}
 							else{
 								var newNode = xml.createElement("Para");
 								newNode.setAttribute("index", (highestIndex + 1));
@@ -191,11 +193,11 @@ function add(ID, aORb, type, index){
 						for(var j = 0; j < paras.length; j++){
 							if(paras[j].nodeName == "Para"){
 								if(index == -1){
-									var curIndex = paras[j].getAttribute("index");
+									var curIndex = parseInt(paras[j].getAttribute("index"));
 									if(curIndex > highestIndex)
 										highestIndex = curIndex;
 								}
-								if(index == paras[j].getAttribute("index")){
+								if(index == parseInt(paras[j].getAttribute("index"))){
 									if(paras[j].getAttribute("isNewest") == "false")
 										continue;
 									var newNode = paras[j].cloneNode(true);
@@ -345,7 +347,7 @@ function remove(ID, fromID, type){
 					var paras = sections[i].childNodes;
 					for(var j = 0; j < paras.length; j++){
 						if(paras[j].nodeName == "Para"){
-							if(fromID == paras[j].getAttribute("index")){
+							if(fromID == parseInt(paras[j].getAttribute("index"))){
 								if(paras[j].getAttribute("isNewest") == "false")
 									continue;
 								paras[j].setAttribute("isNewest", "false");
@@ -401,7 +403,7 @@ function remove(ID, fromID, type){
 					var paras = reqs[i].childNodes;
 					for(var j = 0; j < paras.length; j++){
 						if(paras[j].nodeName == "Para"){
-							if(fromID == paras[j].getAttribute("index")){
+							if(fromID == parseInt(paras[j].getAttribute("index"))){
 								paras[j].setAttribute("isNewest", "false");
 								return saveFile(xml, "Para Removed", ID);
 							}

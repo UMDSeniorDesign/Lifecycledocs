@@ -122,7 +122,7 @@ function saveParas(xml){
 		if((cNodes[g].nodeName == "Para") && (cNodes[g].getAttribute("isNewest") == "true"))
 			originalParas.push(cNodes[g]);
 	}
-	var index = originalParas[0].getAttribute("index");
+	var index = parseInt(originalParas[0].getAttribute("index"));
 	/* just picked 99 random, so it's not 0-10
 	alert("originalParas length=" + originalParas.length);
 	for(var j = 0, k = 0; j < originalParas.length; j++, k++){
