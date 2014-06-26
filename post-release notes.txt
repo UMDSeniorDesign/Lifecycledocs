@@ -1,3 +1,20 @@
+-still getting error, example scenario:
+	1-after creating new project and naming the files
+	2-select a section that contains a default para
+	3-select edit, then add new para (should be correct with next index)
+	4-click edit again, change the text in the new para, and click save (should save correctly)
+	5-click edit again, change the default para text, and click save (should also save correctly)
+	6-click edit one more time, change the text in the new para again, and click save (saves wrong para)
+
+	+seems like the wrong para is getting isNewest set to false (ie its setting the attribute isNewest to false on the para with the wrong index)
+	+it does add the new text with the correct index, but when it changes the wrong isNewest, that para disappears
+	+
+
+
+
+
+
+
 -fixed error when adding para's. when using the edit menu, and left-clicking 'add para', the para always contained index 0. when the index should be respective of it's position amongst other para's in the section.
 --This isn't fixed, I simply told you about the error, please attempt to address this if the save is fixed
 ---I was wrong, this does work.

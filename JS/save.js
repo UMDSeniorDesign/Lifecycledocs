@@ -134,9 +134,30 @@ function saveParas(xml){
 	
 	for(var m = 0; m < viewParas.length; m++){
 		//This is where we check to make sure we are comparing the correct textarea to the xml
+		//var nodeIndex = originalParas[m].childNodes[0].getAttribute("index");
 		var nodeVal = originalParas[m].childNodes[0].nodeValue;
 		var viewVal = viewParas[m].value;
-		//alert("nodeVal=" + nodeVal + " viewVal=" + viewVal);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/*
+		this is where the error occurs.
+		regardless if nodeVal and viewVal, the if statement gets executed every single time.
+		the if statement doesnt seem like its evaluating the (nodeVal != viewVal)
+		because its executing the index=  alert everytime in the for-loop,
+		which the if statement should only execute on the newly editted para.
+		*/
+		
+		alert("nodeVal=" + nodeVal + " viewVal=" + viewVal);
 		if(nodeVal != viewVal){
 			var editedPara = viewParas[m].value;
 			index = m; //Index should be position of updated para
@@ -144,14 +165,24 @@ function saveParas(xml){
 			//alert("editedPara=" + editedPara);
 			//alert(originalParas[m].childNodes[0].nodeValue + " viewPara value = " + viewParas[m].value);
 		}
+		
+		
+		
 	}
 
 	var originalCheck = originalParas[index].childNodes[0].nodeValue;
 	var editedCheck = editedPara.replace("&nbsp;", "");
-	//alert(originalCheck + " and " + editedCheck);
+	
+	alert(originalCheck + " and " + editedCheck);
 	if((originalCheck != editedCheck) && (editedCheck != undefined) && (editedCheck != "")){
 		alert("You changed "+editingNode.getAttribute("id")+" : "+originalCheck+"\nTo "+editedId+" : "+editedCheck);
+		
+		
+		/*this index here doesnt match the stuff in the index below when we setAttribute index
+		the index for original paras is no longer the index in xml?
+		*/
 		originalParas[index].setAttribute("isNewest","false");
+		
 		editedPara = xml.createElement("Para");
 		editedText=xml.createTextNode(editedCheck);
 		editedPara.appendChild(editedText);
@@ -172,7 +203,7 @@ function saveParas(xml){
 		}*/
 			
 		//This alert should be the updated para after it was changed
-		//alert(originalParas[4].childNodes[0].nodeValue);
+		alert("last index= " + index);
 		return saveFile(xml, "File Saved!", editedId);
 	}
 }
