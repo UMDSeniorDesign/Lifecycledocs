@@ -7,6 +7,7 @@
 		<Para isNewest="true" index="0"> INSERT PROJECT GOAL </Para>
 		<Section isNewest="true" id="TC1.1">
 			<Title isNewest="true">CREATE PROJECT TEST CASES</Title>
+			<Para index="0" isNewest="true">Insert Test Case</Para></Section>
 		</Section>
 	</Section>
 </TestCaseDocument>

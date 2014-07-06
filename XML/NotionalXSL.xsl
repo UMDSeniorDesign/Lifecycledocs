@@ -191,9 +191,9 @@
 							</div>
 							<xsl:variable name="vIndex" select="@index"/>
 							<xsl:value-of select="Name"/>
-							<xsl:text>'s Comment: </xsl:text>
+							<!--<xsl:text>'s Comment: </xsl:text>
 							<textarea id="{$vID}Para{$vIndex}" rows='(parseInt(this.value.length/this.cols)+2||1)' oncontextmenu="showMenu('{$vID}', '2', '{$vIndex}');return false;">
-								<xsl:text>Enter Comment Here.</xsl:text></textarea>
+								<xsl:text>Enter Comment Here.</xsl:text></textarea>-->
 							<br/>
 							
 							
@@ -229,8 +229,8 @@
 								<textarea id="OtherText" rows="1">Other</textarea>
 								<br/>
 							</div>
-							<xsl:value-of select="Name"/>
-							<xsl:text>'s Comment: </xsl:text>
+							<!--<xsl:value-of select="Name"/>
+							<xsl:text>'s Comment: </xsl:text>-->
 						</xsl:if>
 						<xsl:for-each select="ApprovedBy[@isNewest='true']">
 							<xsl:text>Approved By: </xsl:text>
@@ -251,8 +251,8 @@
 								<textarea id="OtherText" rows="1">Other</textarea>
 								<br/>
 							</div>
-							<xsl:value-of select="Name"/>
-							<xsl:text>'s Comment: </xsl:text>
+							<!--<xsl:value-of select="Name"/>
+							<xsl:text>'s Comment: </xsl:text>-->
 							<xsl:apply-templates select="Para"/>
 							<xsl:apply-templates select="ApprovedBy"/>
 						</xsl:for-each>

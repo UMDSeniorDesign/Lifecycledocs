@@ -123,7 +123,8 @@ function saveParas(xml){
 			originalParas[cNodes[g].getAttribute("index")] = cNodes[g];
 			//originalParas.push(cNodes[g]);
 	}
-	var index = parseInt(originalParas[0].getAttribute("index"));
+	if(originalParas[0] != null)
+		var index = parseInt(originalParas[0].getAttribute("index"));
 	/* just picked 99 random, so it's not 0-10
 	alert("originalParas length=" + originalParas.length);
 	for(var j = 0, k = 0; j < originalParas.length; j++, k++){
@@ -136,6 +137,8 @@ function saveParas(xml){
 	for(var m = 0; m < viewParas.length; m++){
 		//This is where we check to make sure we are comparing the correct textarea to the xml
 		//var nodeIndex = originalParas[m].childNodes[0].getAttribute("index");
+		if(originalParas[m] == null)
+			continue;
 		var nodeVal = originalParas[m].childNodes[0].nodeValue;
 		var viewVal = viewParas[m].value;
 		
