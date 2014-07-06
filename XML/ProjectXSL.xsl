@@ -95,7 +95,7 @@
                         </xsl:for-each>
                         <tr>
                             <td colspan="2">
-							<xsl:variable name="vProjectName" select="ancestor-or-self::*/@projectName"/>
+							<xsl:variable name="vProjectName" select="name(ancestor-or-self::*)"/>
                             <button onclick="parent.location='{$vProjectName}RTM.html'">View RTM</button>
                             </td>
                         </tr>
