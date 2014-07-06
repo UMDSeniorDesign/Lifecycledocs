@@ -26,10 +26,10 @@ function addEditValues(ID, type, fromID){
 					if(resultSpot.length < 2){
 						var pass = document.createElement("option");
 						pass.text = "Pass";
-						pass.value = "True";
+						pass.value = "true";
 						var fail = document.createElement("option");
 						fail.text = "Fail";
-						fail.value = "False";
+						fail.value = "false";
 						resultSpot.add(pass);
 						resultSpot.add(fail);
 					}
