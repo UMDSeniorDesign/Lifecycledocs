@@ -136,6 +136,26 @@ function add(ID, aORb, type, index){
 					newSectionParaElement.setAttribute("isNewest","true");
 					newSectionParaElement.setAttribute("index","0");
 					newNode.appendChild(newSectionParaElement);
+					//Add test result stuff
+					newSectionTestResultElement = xml.createElement("TestResult");
+					newSectionTestResultText = xml.createTextNode("false");
+					newSectionTestResultElement.appendChild(newSectionTestResultText);
+					newNode.appendChild(newSectionParaElement);
+					newSectionApprovedByElement = xml.createElement("ApprovedBy");
+					newSectionApprovedByElement.setAttribute("isNewest", "true");
+					newApprovedByName = xml.createElement("Name");
+					newApprovedByNameText = xml.createTextNode("Insert Name");
+					newApprovedByName.setAttribute("isNewest", "true");
+					newApprovedByName.appendChild(newApprovedByNameText);
+					newApprovedByComment = xml.createElement("Para");
+					newApprovedByCommentText = xml.createTextNode("Comments");
+					newApprovedByComment.setAttribute("isNewest", "true");
+					newApprovedByComment.setAttribute("index", "0");
+					newApprovedByComment.appendChild(newApprovedByCommentText);
+					newSectionApprovedByElement.appendChild(newApprovedByName);
+					newSectionApprovedByElement.appendChild(newApprovedByComment);
+					newNode.appendChild(newSectionApprovedByElement)
+					
 					var parentNode = sections[i].parentNode;
 					if(aORb == 0){//If add above
 						parentNode.insertBefore(newNode, sections[i]);

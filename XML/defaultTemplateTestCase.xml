@@ -5,9 +5,21 @@
 	<Section isNewest="true" id="TC1.0">
 		<Title isNewest="true">PROJECT TITLE</Title>
 		<Para isNewest="true" index="0"> INSERT PROJECT GOAL </Para>
+		<TestResult>false</TestResult>
+		<ApprovedBy isNewest="true">
+			<Name isNewest="true">Name</Name>
+			<Date isNewest="true">2014-07-06T15:00.8</Date>
+			<Para isNewest="true" index="0">Comment</Para>
+		</ApprovedBy>
 		<Section isNewest="true" id="TC1.1">
 			<Title isNewest="true">CREATE PROJECT TEST CASES</Title>
-			<Para index="0" isNewest="true">Insert Test Case</Para></Section>
+			<Para index="0" isNewest="true">Insert Test Case</Para>
+			<TestResult>false</TestResult>
+			<ApprovedBy isNewest="true">
+				<Name isNewest="true">Name</Name>
+				<Date isNewest="true">2014-07-06T15:00.8</Date>
+				<Para isNewest="true" index="0">Comment</Para>
+			</ApprovedBy>
 		</Section>
 	</Section>
 </TestCaseDocument>
