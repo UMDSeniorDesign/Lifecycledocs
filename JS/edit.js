@@ -99,7 +99,7 @@ function add(ID, aORb, type, index){
 						}
 						if(index == -1){
 							if(highestIndex > 0){
-								alert(highestIndex);
+								//alert(highestIndex);
 								return add(ID, aORb, 3, highestIndex);
 								}
 							else{
