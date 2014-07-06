@@ -23,7 +23,7 @@ function downloadAsHTML(xml, type){
 	var xmlName = xml;
 	if(type != 1)
 		xml = loadXML(xml);
-	else
+	else if(type != -1)
 		xml = loadProject(xml);
 	var textVersion = xml.xml;
 	var styleStringStart = textVersion.search("href=");
@@ -34,7 +34,8 @@ function downloadAsHTML(xml, type){
 	xsl = loadXML(styleName);
 	if(type == -1 || type == -2){
 		xsl = loadXML("RTM.xsl");
-		xmlName = "RTM.xml";
+		xmlName = xmlName.substring(-1,xmlName.length-4);
+		xmlName += "RTM.xml";
 	}
 	var value = xml.transformNode(xsl);
 	
@@ -61,7 +62,7 @@ function downloadProject(xml){
 		var filename = fileNames[i].childNodes[0].getAttribute("href");
 		downloadAsHTML(filename, 0);
 	}
-	downloadAsHTML(firstFile, -1);
+	downloadAsHTML(xml, -1);
 	downloadAsHTML(xml, 1);
 	alert("Project saved");
 }

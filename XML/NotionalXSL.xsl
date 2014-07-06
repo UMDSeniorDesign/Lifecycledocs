@@ -252,8 +252,8 @@
 								<br/>
 							</div>
 							<!--<xsl:value-of select="Name"/>
-							<xsl:text>'s Comment: </xsl:text>-->
-							<xsl:apply-templates select="Para"/>
+							<xsl:text>'s Comment: </xsl:text>
+							<xsl:apply-templates select="Para"/>-->
 							<xsl:apply-templates select="ApprovedBy"/>
 						</xsl:for-each>
 						<br/><br/>
