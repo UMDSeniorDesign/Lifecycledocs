@@ -120,7 +120,8 @@ function saveParas(xml){
 	var originalParas = [];
 	for(var g = 0; g < cNodes.length; g++){
 		if((cNodes[g].nodeName == "Para") && (cNodes[g].getAttribute("isNewest") == "true"))
-			originalParas.push(cNodes[g]);
+			originalParas[cNodes[g].getAttribute("index")] = cNodes[g];
+			//originalParas.push(cNodes[g]);
 	}
 	var index = parseInt(originalParas[0].getAttribute("index"));
 	/* just picked 99 random, so it's not 0-10
@@ -138,17 +139,6 @@ function saveParas(xml){
 		var nodeVal = originalParas[m].childNodes[0].nodeValue;
 		var viewVal = viewParas[m].value;
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		/*
 		this is where the error occurs.
 		regardless if nodeVal and viewVal, the if statement gets executed every single time.
@@ -157,11 +147,11 @@ function saveParas(xml){
 		which the if statement should only execute on the newly editted para.
 		*/
 		
-		alert("nodeVal=" + nodeVal + " viewVal=" + viewVal);
+		//alert("nodeVal=" + nodeVal + " viewVal=" + viewVal);
 		if(nodeVal != viewVal){
 			var editedPara = viewParas[m].value;
 			index = m; //Index should be position of updated para
-			alert("index=" + index);
+			//alert("index=" + index);
 			//alert("editedPara=" + editedPara);
 			//alert(originalParas[m].childNodes[0].nodeValue + " viewPara value = " + viewParas[m].value);
 		}
@@ -173,7 +163,7 @@ function saveParas(xml){
 	var originalCheck = originalParas[index].childNodes[0].nodeValue;
 	var editedCheck = editedPara.replace("&nbsp;", "");
 	
-	alert(originalCheck + " and " + editedCheck);
+	//alert(originalCheck + " and " + editedCheck);
 	if((originalCheck != editedCheck) && (editedCheck != undefined) && (editedCheck != "")){
 		alert("You changed "+editingNode.getAttribute("id")+" : "+originalCheck+"\nTo "+editedId+" : "+editedCheck);
 		
@@ -203,7 +193,7 @@ function saveParas(xml){
 		}*/
 			
 		//This alert should be the updated para after it was changed
-		alert("last index= " + index);
+		//alert("last index= " + index);
 		return saveFile(xml, "File Saved!", editedId);
 	}
 }

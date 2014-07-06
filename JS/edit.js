@@ -93,8 +93,8 @@ function add(ID, aORb, type, index){
 									added = 1;
 									continue;
 								}
-								if(added == 1)
-									paras[j].setAttribute("index", ++newIndex);
+								//if(added == 1)
+									//paras[j].setAttribute("index", ++newIndex);
 							}
 						}
 						if(index == -1){
@@ -139,24 +139,24 @@ function add(ID, aORb, type, index){
 					var parentNode = sections[i].parentNode;
 					if(aORb == 0){//If add above
 						parentNode.insertBefore(newNode, sections[i]);
-						reNumber(xml, parentNode, sections[i]);
+						//reNumber(xml, parentNode, sections[i]);
 					}
 					else if(aORb == 1){//If add below
 						var nextSibling = sections[i].nextSibling;
 						if(nextSibling == null){
 							var parentNode = sections[i].parentNode;
 							parentNode.appendChild(newNode);
-							reNumber(xml, parentNode, sections[i]);
+							//reNumber(xml, parentNode, sections[i]);
 						}
 						else{
 							var parentNode = nextSibling.parentNode;
 							parentNode.insertBefore(newNode, nextSibling);
-							reNumber(xml, parentNode, sections[i]);
+							//reNumber(xml, parentNode, sections[i]);
 						}
 					}
 					else if(aORb == 3){//If add sub
 						sections[i].appendChild(newNode);
-						reNumber(xml, parentNode, sections[i]);
+						//reNumber(xml, parentNode, sections[i]);
 					}
 					return saveFile(xml, "Added to Section", ID);
 				}				
@@ -264,24 +264,24 @@ function add(ID, aORb, type, index){
 					parentNode.insertBefore(newNode, reqs[i]);
 					if(aORb == 0){//If add above
 						parentNode.insertBefore(newNode, reqs[i]);
-						reNumber(xml, parentNode, reqs[i]);
+						//reNumber(xml, parentNode, reqs[i]);
 					}
 					else if(aORb == 1){//If add below
 						var nextSibling = reqs[i].nextSibling;
 						if(nextSibling == null){
 							var parentNode = reqs[i].parentNode;
 							parentNode.appendChild(newNode);
-							reNumber(xml, parentNode, reqs[i]);
+							//reNumber(xml, parentNode, reqs[i]);
 						}
 						else{
 							var parentNode = nextSibling.parentNode;
 							parentNode.insertBefore(newNode, nextSibling);
-							reNumber(xml, parentNode, reqs[i]);
+							//reNumber(xml, parentNode, reqs[i]);
 						}
 					}
 					else if(aORb == 3){//If add sub
 						reqs[i].appendChild(newNode);
-						reNumber(xml, parentNode, reqs[i]);
+						//reNumber(xml, parentNode, reqs[i]);
 					}
 					return saveFile(xml, "Added to Requirement", ID);
 				}
