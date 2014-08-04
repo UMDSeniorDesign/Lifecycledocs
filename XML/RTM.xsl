@@ -96,6 +96,7 @@
         </xsl:variable>
         <xsl:variable name="vDocumentUC" select="document($findUCdoc)"/>
         <xsl:variable name="vDocumentTC" select="document($findTCdoc)"/>
+        
         <xsl:variable name="vID2" select="@id"/>
         <xsl:variable name="vTitle2">
             <xsl:choose>
@@ -171,7 +172,7 @@
                                         <xsl:value-of select="."/>
                                     </button>
                                 </xsl:if>
-                                <xsl:value-of select="$vDocumentUC/descendant-or-self::*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"/>
+                                <xsl:value-of select="$vDocumentUC/descendant-or-self::*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"/>
                                 <xsl:if test="position() != last()">
                                     <br/>    
                                 </xsl:if>
@@ -231,7 +232,27 @@
     <xsl:template name="testCaseRow">
         <xsl:param name="i"/>
         <xsl:param name="rows"/>
-        <xsl:variable name="vDocumentTC" select="document('NotionalTestCase.xml')"/>
+        <xsl:variable name="xmlBase" select="document(ancestor-or-self::*/@xml:base)"/>
+        <xsl:variable name="doc1" select="($xmlBase/descendant-or-self::*/@href)[1]"/>
+        <xsl:variable name="doc2" select="($xmlBase/descendant-or-self::*/@href)[2]"/>
+        <xsl:variable name="doc3" select="($xmlBase/descendant-or-self::*/@href)[3]"/>
+        <xsl:variable name="findTCdoc">
+            <xsl:choose>
+                <xsl:when test="name(document($doc1)/*) = 'TestCaseDocument'">
+                    <xsl:value-of select="$doc1"/>
+                </xsl:when>
+                <xsl:when test="name(document($doc2)/*) = 'TestCaseDocument'">
+                    <xsl:value-of select="$doc2"/>
+                </xsl:when>
+                <xsl:when test="name(document($doc3)/*) = 'TestCaseDocument'">
+                    <xsl:value-of select="$doc3"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:text>Error identifying test case document!</xsl:text>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+        <xsl:variable name="vDocumentTC" select="document($findTCdoc)"/>
         
         <xsl:if test="($i = 'no_value') or ($i = 'no_value')">
             <xsl:call-template name="testCaseRow">
@@ -246,7 +267,7 @@
                     <button type="button" onclick="">
                         <xsl:value-of select="."/>
                     </button>
-                    <xsl:value-of select="$vDocumentTC/descendant-or-self::*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"></xsl:value-of>
+                    <xsl:value-of select="$vDocumentTC/descendant-or-self::*[@id=$myRef][@isNewest='true']/Title[@isNewest='true']"/>
                 </td>
                 <xsl:choose>
                     <xsl:when test="$vDocumentTC/descendant-or-self::*/*[@isNewest='true']/*[@id=$myRef][@isNewest='true']/TestResult != ''">                            
@@ -285,7 +306,27 @@
     
     <xsl:template name="testResults">
         <xsl:param name="myRef"/>
-        <xsl:variable name="vDocumentTC" select="document('NotionalTestCase.xml')"/>
+        <xsl:variable name="xmlBase2" select="document(ancestor-or-self::*/@xml:base)"/>
+        <xsl:variable name="doc1" select="($xmlBase2/descendant-or-self::*/@href)[1]"/>
+        <xsl:variable name="doc2" select="($xmlBase2/descendant-or-self::*/@href)[2]"/>
+        <xsl:variable name="doc3" select="($xmlBase2/descendant-or-self::*/@href)[3]"/>
+        <xsl:variable name="findTCdoc">
+            <xsl:choose>
+                <xsl:when test="name(document($doc1)/*) = 'TestCaseDocument'">
+                    <xsl:value-of select="$doc1"/>
+                </xsl:when>
+                <xsl:when test="name(document($doc2)/*) = 'TestCaseDocument'">
+                    <xsl:value-of select="$doc2"/>
+                </xsl:when>
+                <xsl:when test="name(document($doc3)/*) = 'TestCaseDocument'">
+                    <xsl:value-of select="$doc3"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:text>Error identifying test case document!</xsl:text>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+        <xsl:variable name="vDocumentTC" select="document($findTCdoc)"/>
         
         <td>
             <xsl:choose>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="ProjectXSL.xsl"?>
 <!-- <root:ProjectLifeCycleDocuments -->
-<ProjectLifecycleDocuments projectName="a" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="NotionalSchema.xsd">
+<ProjectLifecycleDocuments projectName="august" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="NotionalSchema.xsd">
 	<Team>
 		<TeamMember isNewest="true">
 			<Name isNewest="true">Leader</Name>
@@ -14,21 +14,21 @@
 		</TeamMember>
 	</Team>
 	<file_location>
-		<xi:include href="a1.xml" parse="xml">
+		<xi:include href="augSRS.xml" parse="xml">
 			<xi:fallback>
 				<p>The included document was not found!</p>
 			</xi:fallback>
 		</xi:include>
 	</file_location>
 	<file_location>
-		<xi:include href="a2.xml">
+		<xi:include href="augUC.xml">
 			<xi:fallback>
 				<p>The included document was not found!</p>
 			</xi:fallback>
 		</xi:include>
 	</file_location>
 	<file_location>
-		<xi:include href="a3.xml">
+		<xi:include href="augTC.xml">
 			<xi:fallback>
 				<p>The included document was not found!</p>
 			</xi:fallback>
