@@ -240,8 +240,8 @@ function add(ID, aORb, type, index){
 									}
 									added = 1;
 								}
-								if(added == 1)
-									paras[j].setAttribute("index", ++newIndex);
+								//if(added == 1)
+									//paras[j].setAttribute("index", ++newIndex);
 							}
 						}
 						if(index == -1){
