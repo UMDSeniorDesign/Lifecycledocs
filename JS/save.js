@@ -165,7 +165,7 @@ function saveParas(xml){
 	}
 
 	var originalCheck = originalParas[index].childNodes[0].nodeValue;
-	var editedCheck = editedPara.replace("&nbsp;", "");
+	var editedCheck = editedPara;//.replace("&nbsp;", "");
 	
 	//alert(originalCheck + " and " + editedCheck);
 	if((originalCheck != editedCheck) && (editedCheck != undefined) && (editedCheck != "")){
