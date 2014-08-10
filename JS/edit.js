@@ -283,7 +283,7 @@ function add(ID, aORb, type, index){
 					newReqParaElement.setAttribute("isNewest","true");
 					newReqParaElement.setAttribute("index","0");
 					newNode.appendChild(newReqParaElement);
-					/*//Add test result stuff
+					//Add test result stuff
 					newSectionTestResultElement = xml.createElement("TestResult");
 					newSectionTestResultText = xml.createTextNode("false");
 					newSectionTestResultElement.appendChild(newSectionTestResultText);
@@ -304,7 +304,7 @@ function add(ID, aORb, type, index){
 					newSectionApprovedByElement.appendChild(newApprovedByComment);
 					newNode.appendChild(newSectionApprovedByElement)
 					var parentNode = reqs[i].parentNode;
-					parentNode.insertBefore(newNode, reqs[i]);*/
+					parentNode.insertBefore(newNode, reqs[i]);
 					if(aORb == 0){//If add above
 						parentNode.insertBefore(newNode, reqs[i]);
 						reNumber(xml, parentNode, reqs[i]);
@@ -326,7 +326,6 @@ function add(ID, aORb, type, index){
 						reqs[i].appendChild(newNode);
 						reNumber(xml, parentNode, reqs[i]);
 					}
-					alert("Save Called");
 					return saveFile(xml, "Added to Requirement", ID);
 				}
 			}
