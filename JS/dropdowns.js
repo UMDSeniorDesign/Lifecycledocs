@@ -137,8 +137,8 @@ function selectBoxChange(ID, type, value) {
 					childs[i].setAttribute("isNewest", 'false');
 					var name = newNode.getElementsByTagName("Name")[0];
 					name.childNodes[0].nodeValue = value;
-					var comment = newNode.getElementsByTagName("Para")[0];
-					comment.childNodes[0].nodeValue = "Insert Comment";
+					//var comment = newNode.getElementsByTagName("Para")[0];
+					//comment.childNodes[0].nodeValue = "Insert Comment";
 					sectionToChange.insertBefore(newNode, childs[i]);
 				}
 			}
@@ -174,12 +174,12 @@ function changeApprovedBy(ID){
 						childs[j].setAttribute("isNewest", 'false');
 						var name = newNode.getElementsByTagName("Name")[0];
 						name.childNodes[0].nodeValue = divs[i].value;
-						var comment = newNode.getElementsByTagName("Para")[0];
-						comment.childNodes[0].nodeValue = "Insert Comment";
+						//var comment = newNode.getElementsByTagName("Para")[0];
+						//comment.childNodes[0].nodeValue = "Insert Comment";
 						sectionToChange.insertBefore(newNode, childs[j]);
 					}
 				}
-				var returnString = "Approved By Changed to "+divs[i].value;
+				var returnString = "Approved By Changed to: "+divs[i].value;
 				saveFile(xml, returnString, ID);
 			}
 		}
