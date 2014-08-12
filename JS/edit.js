@@ -211,6 +211,7 @@ function add(ID, aORb, type, index){
 					}
 					else if(type == 3){
 						var paras = reqs[i].childNodes;
+						var highestIndex = 0;
 						for(var j = 0; j < paras.length; j++){
 							if(paras[j].nodeName == "Para"){
 								if(index == -1){
@@ -239,9 +240,10 @@ function add(ID, aORb, type, index){
 											reqs[i].insertBefore(newNode, nextSibling);
 									}
 									added = 1;
+									continue;
 								}
-								if(added == 1)
-									paras[j].setAttribute("index", ++newIndex);
+								//if(added == 1)
+									//paras[j].setAttribute("index", ++newIndex);
 							}
 						}
 						if(index == -1){
@@ -249,7 +251,7 @@ function add(ID, aORb, type, index){
 								return add(ID, aORb, 3, highestIndex);
 							else{
 								var newNode = xml.createElement("Para");
-								newNode.setAttribute("index", 0);
+								newNode.setAttribute("index", (highestIndex + 1));
 								newNode.setAttribute("isNewest", "true");
 								newNodeText =  xml.createTextNode("New Para");
 								newNode.appendChild(newNodeText)
@@ -281,6 +283,26 @@ function add(ID, aORb, type, index){
 					newReqParaElement.setAttribute("isNewest","true");
 					newReqParaElement.setAttribute("index","0");
 					newNode.appendChild(newReqParaElement);
+					//Add test result stuff
+					newSectionTestResultElement = xml.createElement("TestResult");
+					newSectionTestResultText = xml.createTextNode("false");
+					newSectionTestResultElement.appendChild(newSectionTestResultText);
+					newNode.appendChild(newSectionTestResultElement);
+					//add approvedBy
+					newSectionApprovedByElement = xml.createElement("ApprovedBy");
+					newSectionApprovedByElement.setAttribute("isNewest", "true");
+					newApprovedByName = xml.createElement("Name");
+					newApprovedByNameText = xml.createTextNode("Insert Name");
+					newApprovedByName.setAttribute("isNewest", "true");
+					newApprovedByName.appendChild(newApprovedByNameText);
+					newApprovedByComment = xml.createElement("Para");
+					newApprovedByCommentText = xml.createTextNode("Comments");
+					newApprovedByComment.setAttribute("isNewest", "true");
+					newApprovedByComment.setAttribute("index", "0");
+					newApprovedByComment.appendChild(newApprovedByCommentText);
+					newSectionApprovedByElement.appendChild(newApprovedByName);
+					newSectionApprovedByElement.appendChild(newApprovedByComment);
+					newNode.appendChild(newSectionApprovedByElement)
 					var parentNode = reqs[i].parentNode;
 					parentNode.insertBefore(newNode, reqs[i]);
 					if(aORb == 0){//If add above
