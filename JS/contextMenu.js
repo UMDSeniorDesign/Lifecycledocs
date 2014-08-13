@@ -40,6 +40,9 @@ function showMenu(ID, type, paraCount) {
 				buttons[pop].click();
 			}
 		}
+		////////////////////////////////////////////////////////
+		/*PROBLEM IS IN THIS IF BLOCK*/
+		////////////////////////////////////////////////////////
 		else if(type < 1){//If other type of menu, doesn't need to be in edit mode
 			var rightClickMenu = document.getElementById(ID+"Menu");
 			var popup = document.createElement("div");
@@ -50,15 +53,15 @@ function showMenu(ID, type, paraCount) {
 			//rightClickMenu.style.display = 'block';
 			var buttons = rightClickMenu.getElementsByTagName("button");
 			var popupButtons = popup.getElementsByTagName("button");
-			for(var i = 0; i < popupButtons.length; i++){
-				if(popupButtons[i].value != "Change Title to:")
+			for(var i = 1; i < popupButtons.length; i++){
+				if(popupButtons[i].id != "changeTitle")
 					popupButtons[i].setAttribute('onclick', 'closePopup('+i+')');
+				else if(popupButtons[i].id == "close")
+					popupButtons[i].setAttribute('onclick', 'closePopup(-1)');
 				else{
 					var closeFunct = "closePopup(document.getElementById('"+ID+"Title').value)";
 					popupButtons[i].setAttribute('onclick', closeFunct);
 				}
-				if(popupButtons[i].id == "close")
-					popupButtons[i].setAttribute('onclick', 'closePopup(-1)');
 			}
 			var popupString = ("<center>"+popup.innerHTML+"</center>");
 			var popObject = {html:popupString, id:ID};
@@ -66,10 +69,16 @@ function showMenu(ID, type, paraCount) {
 			if(pop != -1 && pop != undefined){
 				if(!parseInt(pop))
 					changeTitle(ID, pop);
-				else
+				else{
+					//pop = parseInt(pop)-1;
+					alert(pop);
 					buttons[pop].click();
+				}
 			}
 		}
+		/////////////////////////////////////////////////////////
+		/*ABOVE HERE!*/
+		/////////////////////////////////////////////////////////
 		else if(type == 3){//Add Reference Menu
 			var refOptions = document.getElementById("addReference");
 			refOptions.style.display = 'block';
